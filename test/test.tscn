@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+"
+
+[node name="Node" type="Node"]
+script = SubResource( 1 )

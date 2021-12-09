@@ -41,6 +41,10 @@ _global_script_class_icons={
 config/name="World Building Software"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

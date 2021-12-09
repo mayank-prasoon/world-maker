@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_pin_resources_template.gd" type="Script" id=1]
+
+[sub_resource type="Resource" id=1]
+
+[resource]
+script = ExtResource( 1 )
+pin_name = "pikachu"
+pin_symbol_template = SubResource( 1 )
+pin_location = Vector2( 0, 0 )
+pin_article = SubResource( 1 )
+map_link_state = true
+linked_chunk = SubResource( 1 )
