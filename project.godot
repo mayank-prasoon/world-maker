@@ -8,6 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "MapChunkData",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/map_layer_resources_template.gd"
+}, {
+"base": "Resource",
+"class": "MapData",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/map_resources_template.gd"
+}, {
+"base": "Resource",
+"class": "MapPin",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/map_pin_resources_template.gd"
+}, {
+"base": "Resource",
+"class": "MapSymbolTemplate",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd"
+} ]
+_global_script_class_icons={
+"MapChunkData": "",
+"MapData": "",
+"MapPin": "",
+"MapSymbolTemplate": ""
+}
+
 [application]
 
 config/name="World Building Software"
