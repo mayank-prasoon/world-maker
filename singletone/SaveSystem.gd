@@ -1,36 +1,27 @@
 extends Node
 
-export(Script) var mapIcon:Script
-export(Script) var mapPin:Script
-export(Script) var mapData:Script
+export(Script) var mapSymbolTemplate:Script = preload("res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd")
+export(Script) var mapPin:Script            = preload("res://assets/file templates/save_system_template/map_pin_resources_template.gd")
+export(Script) var mapData:Script           = preload("res://assets/file templates/save_system_template/map_resources_template.gd")
 
-var saveLocationData: = 'res://save_files/save_location_data.tres'
-var saveIconData:     = 'res://save_files/save_icon_data.tres'
-var saveMapData:      = 'res://save_files/save_map_data.tres'
+
+var savePinData:         = 'res://save_files/pins/{pin_name}_save_data.tres'
+var savePinTemplateData: = 'res://save_files/symbol_templates/{template_name}_save_data.tres'
+var saveMapData:         = 'res://save_files/save_map_data.tres'
+
+enum MAP_RESOURCE_TYPE {
+	PIN,
+	PIN_TEMPLATE,
+	MAP,
+	MAP_CHUNK
+}
 
 #func _ready() -> void:
 #	openFile()
 
 func saveFile() -> void:
 	pass
-#	_save_location()
-#	_save_icon()
-#	_save_map_data()
-#
-#
-# save location 
-func _save_map_pin(pin_name:String, template:Resource, location:Vector2, article:Resource, link_state:bool, chunk_link:Resource) -> void:
 
-	var newSaveLocation                  = mapPin.new()
-	newSaveLocation.pin_name             = pin_name
-	newSaveLocation.pin_symbol_template  = template
-	newSaveLocation.pin_location         = location
-	newSaveLocation.pin_article          = article
-	newSaveLocation.map_link_state       = link_state
-	newSaveLocation.linked_chunk         = chunk_link
-
-	var _x = ResourceSaver.save(saveLocationData, newSaveLocation)
-#
 ## save icon
 #func _save_icon() -> void:
 #
@@ -57,21 +48,13 @@ func _save_map_pin(pin_name:String, template:Resource, location:Vector2, article
 #	var _x = ResourceSaver.save(saveMapData, newSaveMapData)
 #
 #func openFile():
-#	_open_location()
+#	_open_Pin()
 #	_open_icon()
 #	_open_map_data()
 #
 #
-## open location data
-#func _open_location():
-#	verify(saveLocationData)
-#	var newSaveLocation = ResourceLoader.load(saveLocationData)
-#
-#	SystemLocationData.locationName     = newSaveLocation.locationName
-#	SystemLocationData.locationIcon     = newSaveLocation.locationIcon
-#	SystemLocationData.map              = newSaveLocation.map
-#	SystemLocationData.locationVector2D = newSaveLocation.location
-#
+# open map pin data
+
 ## open icon data
 #func _open_icon() -> void:
 #
@@ -97,10 +80,14 @@ func _save_map_pin(pin_name:String, template:Resource, location:Vector2, article
 #	SystemMapData.layerNumber           = newSaveMapData.layerNumber
 #	SystemMapData.layerTexture          = newSaveMapData.layerTexture
 
-func verify(path:String) -> void:
+func verify(path:String, _type:int, resource_name:String) -> void:
 	var file:File = File.new()
 	if !file.file_exists(path):
 		if !file.file_exists(path.get_base_dir()):
 			var dir:Directory = Directory.new()
 			var _x = dir.make_dir_recursive(path.get_base_dir())
-		saveFile()
+		match _type:
+			MAP_RESOURCE_TYPE.PIN:
+				$PinSystem._save_file(resource_name)
+			MAP_RESOURCE_TYPE.PIN_TEMPLATE:
+				$SymbolTemplateSystem._save_file(resource_name)

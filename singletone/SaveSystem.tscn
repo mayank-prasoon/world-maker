@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/file templates/save_system_template/map_pin_resources_template.gd" type="Script" id=1]
+[ext_resource path="res://singletone/dependency/system_tempate_system.gd" type="Script" id=1]
+[ext_resource path="res://singletone/dependency/pin_system.gd" type="Script" id=2]
 [ext_resource path="res://singletone/SaveSystem.gd" type="Script" id=3]
 
-[node name="Node" type="Node"]
+[node name="SystemDataManager" type="Node"]
 script = ExtResource( 3 )
-mapPin = ExtResource( 1 )
+
+[node name="PinSystem" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="SymbolTemplateSystem" type="Node" parent="."]
+script = ExtResource( 1 )
