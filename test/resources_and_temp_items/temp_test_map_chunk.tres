@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_chunk_resources_template.gd" type="Script" id=1]
+[ext_resource path="res://assets/file templates/save_system_template/map_pin_resources_template.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+pin_name = ""
+pin_location = Vector2( 0, 0 )
+map_link_state = false
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+pin_name = ""
+pin_location = Vector2( 0, 0 )
+map_link_state = false
+
+[resource]
+script = ExtResource( 1 )
+chunk_name = "temp_chunk"
+chunk_texture = "xyz"
+chunk_offset = Vector2( 10, 20 )
+chunk_pins = [ SubResource( 1 ), SubResource( 2 ) ]
