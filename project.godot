@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "MapChunkData",
 "language": "GDScript",
-"path": "res://assets/file templates/save_system_template/map_layer_resources_template.gd"
+"path": "res://assets/file templates/save_system_template/map_chunk_resources_template.gd"
 }, {
 "base": "Resource",
 "class": "MapData",
@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "MapSymbolTemplate",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd"
+}, {
+"base": "Node",
+"class": "RootSystemTest",
+"language": "GDScript",
+"path": "res://test/dependency/root_system_test_script.gd"
 } ]
 _global_script_class_icons={
 "MapChunkData": "",
 "MapData": "",
 "MapPin": "",
-"MapSymbolTemplate": ""
+"MapSymbolTemplate": "",
+"RootSystemTest": ""
 }
 
 [application]
