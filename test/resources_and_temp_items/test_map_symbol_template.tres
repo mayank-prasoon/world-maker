@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-template_name = ""
-template_offset = Vector2( 0, 0 )
-template_texture = ""
+template_name = "test_template_symbol"
+template_offset = Vector2( 500, -20 )
+template_texture = "xyz"
 template_color = Color( 0, 0, 0, 1 )

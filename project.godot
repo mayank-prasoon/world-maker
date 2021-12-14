@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "RootSystemTest",
 "language": "GDScript",
 "path": "res://test/dependency/root_system_test_script.gd"
+}, {
+"base": "Node",
+"class": "SaveSystem",
+"language": "GDScript",
+"path": "res://singletone/dependency/dependency/save_system.gd"
 } ]
 _global_script_class_icons={
 "MapChunkData": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "MapPin": "",
 "MapSymbolTemplate": "",
 "RootArticle": "",
-"RootSystemTest": ""
+"RootSystemTest": "",
+"SaveSystem": ""
 }
 
 [application]

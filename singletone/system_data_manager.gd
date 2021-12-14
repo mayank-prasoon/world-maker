@@ -10,7 +10,7 @@ export(Script) var mapPin:Script                    = preload("res://assets/file
 export(Script) var mapChunk:Script                  = preload("res://assets/file templates/save_system_template/map_chunk_resources_template.gd")
 export(Script) var map:Script                       = preload("res://assets/file templates/save_system_template/map_resources_template.gd")
 
-export(Script) var article:Script                   = preload("res://assets/file templates/save_system_template/dependency/root_article_template.gd")
+export(Script) var article:Script                   = preload("res://assets/file templates/save_system_template/root_article_template.gd")
 
 # === NODES AND RESOURCES ===
 

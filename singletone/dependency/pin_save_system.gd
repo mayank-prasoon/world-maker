@@ -1,14 +1,10 @@
-extends Node
-
-# === NODES ===
- 
-onready var root_node:Node = self.get_parent().get_parent()
+extends SaveSystem
 
 # === VARIABLES ===
 
-onready var save_location = self.root_node.root_save_file_path + '/pins/{uuid}_save_data.tres' 
-
-# === EXPORTS ===
+func _ready():
+	resource_type = root_node.MAP_RESOURCE_TYPE.PIN
+	save_location = root_node.root_save_file_path + '/pins/{uuid}_save_data.tres' 
 
 # save file
 func save_file(
@@ -36,33 +32,3 @@ func save_file(
 		save_location.format({"uuid": pin_id}),
 		newSavePin
 	)
-
-# open file
-func open_file(pin_id:String)->Resource:
-	root_node.verify(
-		save_location.format({"uuid": pin_id}),
-		root_node.MAP_RESOURCE_TYPE.PIN, pin_id
-	)
-	
-	return ResourceLoader.load(save_location.format({"uuid": pin_id}))
-
-# remove all file
-func remove_all_files() -> void:
-	var folder = Directory.new()
-	var base_folder = save_location.get_base_dir()
-
-	if folder.dir_exists(base_folder):
-		folder.open(base_folder)
-		folder.list_dir_begin()
-		while true:
-			var file = folder.get_next()
-			if file == "":
-				break
-			elif not file.begins_with("."):
-				folder.remove(base_folder + '/' + file)
-		folder.list_dir_end()
-
-# removes file
-func remove_file(pin_id:String) -> void:
-	var file = Directory.new()
-	file.remove(save_location.format({"uuid": pin_id}))

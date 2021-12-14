@@ -6,18 +6,23 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
 pin_name = ""
+pin_id = ""
 pin_location = Vector2( 0, 0 )
 map_link_state = false
+tags = [  ]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 2 )
 pin_name = ""
+pin_id = ""
 pin_location = Vector2( 0, 0 )
 map_link_state = false
+tags = [  ]
 
 [resource]
 script = ExtResource( 1 )
 chunk_name = "temp_chunk"
+chunk_id = ""
 chunk_texture = "xyz"
 chunk_offset = Vector2( 10, 20 )
 chunk_pins = [ SubResource( 1 ), SubResource( 2 ) ]

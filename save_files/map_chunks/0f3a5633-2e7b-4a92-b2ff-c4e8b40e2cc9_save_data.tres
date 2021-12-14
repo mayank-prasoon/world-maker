@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 chunk_name = ""
-chunk_id = "250d936b-30be-454e-836f-0f61c7b79979"
+chunk_id = "0f3a5633-2e7b-4a92-b2ff-c4e8b40e2cc9"
 chunk_texture = "xyz"
 chunk_offset = Vector2( 0, 0 )
 chunk_pins = [  ]
