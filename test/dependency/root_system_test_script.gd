@@ -1,7 +1,39 @@
 class_name RootSystemTest
-extends Node
+extends "res://addons/gut/test.gd"
+
+var test_scene
+
+var sub_folders:Array = [
+		"pins",
+		"maps",
+		"map_chunks",
+		"articles",
+		"map_symbol_templates"
+]
 
 func clean_system_save_files():
-	var dir:Directory = Directory.new()
+	var folder:Directory = Directory.new()
+	var base_folder:String = "res://save_files/"
 	
+	for x in sub_folders:
+		base_folder = base_folder + '/' + x
+		if folder.dir_exists(base_folder):
+			var _x = folder.open(base_folder)
+			var _y = folder.list_dir_begin()
+			while true:
+				var file = folder.get_next()
+				if file == "":
+					break
+				elif not file.begins_with("."):
+					var _z = folder.remove(base_folder + '/' + file)
+					gut.p("[color=#e51e48][Removed]: {file}[/color]".format({"file" : (base_folder + '/' + file)}))
+			folder.list_dir_end()
+
+func before_all():
+	gut.p("\n=>\t[color=#e6d11d]### SYSTEM TESTS ###[/color]")
+	clean_system_save_files()
 	
+
+func after_each():
+	clean_system_save_files()
+	gut.p('\n')

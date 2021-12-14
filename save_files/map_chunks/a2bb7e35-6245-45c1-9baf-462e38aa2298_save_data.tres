@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://test/resources_and_temp_items/temp_test_resource.tres" type="Resource" id=1]
+[ext_resource path="res://assets/file templates/save_system_template/map_chunk_resources_template.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+chunk_name = "fake_name"
+chunk_id = "a2bb7e35-6245-45c1-9baf-462e38aa2298"
+chunk_texture = "pqr"
+chunk_offset = Vector2( 5, 10 )
+chunk_pins = [ ExtResource( 1 ), ExtResource( 1 ) ]

@@ -10,7 +10,6 @@ onready var save_location = self.root_node.root_save_file_path + '/pins/{uuid}_s
 
 # === EXPORTS ===
 
-
 # save file
 func save_file(
 		pin_name:String,

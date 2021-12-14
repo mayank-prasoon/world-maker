@@ -1,13 +1,13 @@
 extends RootSystemTest
 
+var _temp_resource       = preload("res://test/resources_and_temp_items/temp_test_resource.tres")
 var test_pin_system_node:Node
-
 # === BEFORE ===
 
 func before_each():
 	# instance of the gd script
-	test_scene = add_child_autoqfree(load("res://singletone/SaveSystem.tscn").instance())
-	test_pin_system_node = test_scene.get_child(0).get_child(0)
+	test_scene           = add_child_autoqfree(load("res://singletone/SystemDataManager.tscn").instance())
+	test_pin_system_node = test_scene.get_node("PinSystem").get_node("SaveSystem")
 
 # === TESTS === 
 

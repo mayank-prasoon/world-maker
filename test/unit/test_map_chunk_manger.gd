@@ -1,11 +1,11 @@
 extends RootSystemTest
 
 var test_pin_system_node:Node
-var save_file_node
+var save_file_node:Node
 
 func before_each():
 	# instance of the gd script
-	test_scene = add_child_autoqfree(load("res://singletone/SaveSystem.tscn").instance())
+	test_scene           = add_child_autoqfree(load("res://singletone/SystemDataManager.tscn").instance())
 	test_pin_system_node = test_scene.get_node("MapChunkSystem").get_node("MapChunkManager")
 	save_file_node       = test_scene.get_node("MapChunkSystem").get_node("SaveSystem")
 
