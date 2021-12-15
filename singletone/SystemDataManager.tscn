@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://singletone/dependency/pin_manger.gd" type="Script" id=1]
 [ext_resource path="res://singletone/dependency/map_chunk_manager.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://singletone/dependency/article_save_system.gd" type="Script" id=7]
 [ext_resource path="res://singletone/system_data_manager.gd" type="Script" id=8]
 [ext_resource path="res://singletone/dependency/map_manager.gd" type="Script" id=9]
+[ext_resource path="res://singletone/dependency/article_manager.gd" type="Script" id=10]
 
 [node name="SystemDataManager" type="Node"]
 script = ExtResource( 8 )
@@ -50,3 +51,4 @@ script = ExtResource( 9 )
 script = ExtResource( 7 )
 
 [node name="ArticleManager" type="Node" parent="ArticleSystem"]
+script = ExtResource( 10 )
