@@ -12,8 +12,8 @@ export(Script) var map:Script                       = preload("res://assets/file
 
 export(Script) var article:Script                   = preload("res://assets/file templates/save_system_template/root_article_template.gd")
 
-# === NODES AND RESOURCES ===
-
+## === NODES AND RESOURCES ===
+#
 onready var pinSystem       = self.get_node("PinSystem")
 onready var symbolSystem    = self.get_node("SymbolTemplateSystem")
 onready var mapChunkSystem  = self.get_node("MapChunkSystem")                   # acess mapChunkSystem
@@ -46,4 +46,4 @@ func verify(path:String, _type:int, resource_name:String) -> void:
 			MAP_RESOURCE_TYPE.MAP:
 				$MapSystem/SaveSystem.save_file(resource_name)
 			MAP_RESOURCE_TYPE.ARTICLE:
-				$ArticleSystem/SaveSystem.save_file(resource_name)
+				$ArticleSystem/SaveSystem.save_file("", resource_name)

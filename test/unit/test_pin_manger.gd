@@ -5,8 +5,8 @@ var save_file_node:Node
 
 func before_each():
 	# instance of the gd script
-	test_scene           = add_child_autoqfree(load("res://singletone/SystemDataManager.tscn").instance())
-	test_pin_system_node = test_scene.get_node("PinSystem").get_node("PinManger")
+	test_scene           = add_child_autoqfree(preload("res://singletone/SystemDataManager.tscn").instance())
+	test_pin_system_node = test_scene.get_node("PinSystem").get_node("PinManager")
 	save_file_node       = test_scene.get_node("PinSystem").get_node("SaveSystem")
 
 func test_open_article():
