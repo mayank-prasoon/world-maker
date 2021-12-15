@@ -5,3 +5,4 @@ extends Resource
 
 export(String)                      var map_name:String               # name of the map
 export(Array, Array, Resource)      var layers:Array                  # layer used in the map
+export(Array, String)               var tags:Array 
