@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://singletone/dependency/pin_system/pin_manger.gd" type="Script" id=1]
 [ext_resource path="res://singletone/dependency/map_chunk_manager.gd" type="Script" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://singletone/dependency/pin_system/pin_save_system.gd" type="Script" id=4]
 [ext_resource path="res://singletone/dependency/symbol_template_save_system.gd" type="Script" id=5]
 [ext_resource path="res://singletone/dependency/map_system/map_save_system.gd" type="Script" id=6]
-[ext_resource path="res://singletone/dependency/article_save_system.gd" type="Script" id=7]
+[ext_resource path="res://singletone/dependency/article_system/article_save_system.gd" type="Script" id=7]
 [ext_resource path="res://singletone/system_data_manager.gd" type="Script" id=8]
 [ext_resource path="res://singletone/dependency/map_system/map_manager.gd" type="Script" id=9]
-[ext_resource path="res://singletone/dependency/article_manager.gd" type="Script" id=10]
+[ext_resource path="res://singletone/dependency/article_system/article_manager.gd" type="Script" id=10]
 [ext_resource path="res://singletone/dependency/pin_system/pin_system.gd" type="Script" id=11]
+[ext_resource path="res://singletone/dependency/article_system/article_system.gd" type="Script" id=12]
 
 [node name="SystemDataManager" type="Node"]
 script = ExtResource( 8 )
@@ -48,6 +49,7 @@ script = ExtResource( 9 )
 [node name="SystemInventory" type="Node" parent="."]
 
 [node name="ArticleSystem" type="Node" parent="."]
+script = ExtResource( 12 )
 
 [node name="SaveSystem" type="Node" parent="ArticleSystem"]
 script = ExtResource( 7 )
