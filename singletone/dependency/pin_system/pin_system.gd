@@ -1,7 +1,12 @@
 extends Node
 
-onready var save_system = self.get_node("SaveSystem")
+onready var root_node     = self.get_parent()
+onready var save_system   = self.get_node("SaveSystem")
+onready var system_manger = self.get_node("PinManager")
+var save_location:String
 
+func _ready():
+	save_location = root_node.root_save_file_path + '/pins/{uuid}_save_data.tres'
 
 # make new pin
 func make_new_pin(
@@ -94,5 +99,18 @@ func add_tags(pin_name:String, tags:Array)->void:
 
 func get_pins_with_tag()->Array:
 	var pins = []
+	
+	var folder      = Directory.new()
+	var base_folder = save_location.get_base_dir()
+	if folder.dir_exists(base_folder):
+		folder.open(base_folder)
+		folder.list_dir_begin()
+		while true:
+			var file = folder.get_next()
+			if file == "":
+				break
+			elif not file.begins_with("."):
+				system_manger.get_tags(file.replace(".tscn", ""))
+		folder.list_dir_end()
 	return pins
 	
