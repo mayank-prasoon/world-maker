@@ -1,11 +1,12 @@
 extends Node
 
-onready var root_node     = self.get_parent()
-onready var save_system   = self.get_node("SaveSystem")
-onready var system_manger = self.get_node("PinManager")
+onready var root_node:Node     = self.get_parent()
+onready var save_system:Node   = self.get_node("SaveSystem")
+onready var system_manger:Node = self.get_node("PinManager")
+
 var save_location:String
 
-func _ready():
+func _ready()-> void:
 	save_location = root_node.root_save_file_path + '/pins/{uuid}_save_data.tres'
 
 # make new pin
@@ -36,8 +37,8 @@ func make_new_pin(
 	
 	return uuid
 
-func add_chunk(pin_name:String, chunk:MapChunkData)->void:
-	var temp_file = save_system.open_file(pin_name)
+func add_chunk(pin_id:String, chunk:MapChunkData)->void:
+	var temp_file = save_system.open_file(pin_id)
 	save_system.save_file(
 		temp_file.pin_name,
 		temp_file.pin_id,
@@ -50,8 +51,8 @@ func add_chunk(pin_name:String, chunk:MapChunkData)->void:
 	)
 
 
-func add_article(pin_name:String, article:RootArticle)->void:
-	var temp_file = save_system.open_file(pin_name)
+func add_article(pin_id:String, article:RootArticle)->void:
+	var temp_file = save_system.open_file(pin_id)
 	save_system.save_file(
 		temp_file.pin_name,
 		temp_file.pin_id,
@@ -64,8 +65,8 @@ func add_article(pin_name:String, article:RootArticle)->void:
 	)
 
 
-func remove_tags(pin_name:String, tags:Array)->void:
-	var temp_file = save_system.open_file(pin_name)
+func remove_tags(pin_id:String, tags:Array)->void:
+	var temp_file = save_system.open_file(pin_id)
 	
 	for tag in tags:
 		temp_file.tags.remove(temp_file.tags.find(tag))
@@ -81,8 +82,8 @@ func remove_tags(pin_name:String, tags:Array)->void:
 		temp_file.tags
 	)
 
-func add_tags(pin_name:String, tags:Array)->void:
-	var temp_file = save_system.open_file(pin_name)
+func add_tags(pin_id:String, tags:Array)->void:
+	var temp_file = save_system.open_file(pin_id)
 
 	temp_file.tags.append_array(tags)
 	save_system.save_file(
@@ -115,4 +116,5 @@ func get_pins_with_tag(tag_name:String)->Array:
 					pins.append(temp_pin)
 		folder.list_dir_end()
 	return pins
+
 	
