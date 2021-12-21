@@ -97,7 +97,7 @@ func add_tags(pin_name:String, tags:Array)->void:
 	)
 
 
-func get_pins_with_tag()->Array:
+func get_pins_with_tag(tag_name:String)->Array:
 	var pins = []
 	
 	var folder      = Directory.new()
@@ -110,7 +110,9 @@ func get_pins_with_tag()->Array:
 			if file == "":
 				break
 			elif not file.begins_with("."):
-				system_manger.get_tags(file.replace(".tscn", ""))
+				var temp_pin = load(base_folder + "/" + file)
+				if temp_pin.tags.has(tag_name):
+					pins.append(temp_pin)
 		folder.list_dir_end()
 	return pins
 	

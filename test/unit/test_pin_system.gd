@@ -125,3 +125,47 @@ func test_add_remove_tags():
 	test_pin_system_node.remove_tags(uuid, ["home", "safe", "country side"])
 	var _z = save_system.open_file(uuid)
 	assert_eq_deep(_z.tags, ["book store", "city"])
+
+func test_fetch_pin_by_tags_name():
+	var uuid_1 = test_pin_system_node.make_new_pin(
+		"home",
+		MapSymbolTemplate.new(),
+		Vector2(20, 100),
+		RootArticle.new(),
+		false,
+		MapChunkData.new(),
+		[
+			"home",
+			"safe",
+			"country side"
+		]
+	)
+
+	var uuid_2 = test_pin_system_node.make_new_pin(
+		"book",
+		MapSymbolTemplate.new(),
+		Vector2(20, 100),
+		RootArticle.new(),
+		false,
+		MapChunkData.new(),
+		[
+			"home",
+			"country side"
+		]
+	)
+	
+	assert_file_exists("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_1}))
+	assert_file_exists("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_2}))
+
+	var pins_1:Array = test_pin_system_node.get_pins_with_tag("safe")
+	
+	assert_eq(1, pins_1.size())
+	assert_eq_deep([load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_1}))], pins_1)
+	
+	var pins_2:Array = test_pin_system_node.get_pins_with_tag("home")
+	
+	assert_eq(2, pins_2.size())
+	assert_eq_deep([
+			load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_1})),
+			load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_2}))
+		], pins_2)
