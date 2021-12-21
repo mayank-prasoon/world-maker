@@ -59,6 +59,10 @@ _global_script_class_icons={
 config/name="World Building Software"
 config/icon="res://icon.png"
 
+[autoload]
+
+SystemDataManager="*res://singletone/SystemDataManager.tscn"
+
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
