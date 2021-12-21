@@ -39,10 +39,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://test/dependency/root_system_test_script.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "SaveSystem",
 "language": "GDScript",
-"path": "res://singletone/dependency/dependency/save_system.gd"
+"path": "res://singletone/system_data_manager_dependency/dependency/save_system.gd"
 } ]
 _global_script_class_icons={
 "MapChunkData": "",
