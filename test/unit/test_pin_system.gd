@@ -165,7 +165,5 @@ func test_fetch_pin_by_tags_name():
 	var pins_2:Array = test_pin_system_node.get_pins_with_tag("home")
 	
 	assert_eq(2, pins_2.size())
-	assert_eq_deep([
-			load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_1})),
-			load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_2}))
-		], pins_2)
+	assert_true(pins_2.has(load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_2}))))
+	assert_true(pins_2.has(load("res://save_files/pins/{uid}_save_data.tres".format({"uid" : uuid_2}))))
