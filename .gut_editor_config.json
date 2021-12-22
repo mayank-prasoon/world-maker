@@ -11,7 +11,7 @@
  "font_size": 15,
  "hide_orphans": false,
  "ignore_pause": true,
- "include_subdirs": false,
+ "include_subdirs": true,
  "inner_class": null,
  "junit_xml_file": "",
  "junit_xml_timestamp": false,
