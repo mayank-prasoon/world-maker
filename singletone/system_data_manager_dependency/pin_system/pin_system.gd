@@ -12,12 +12,12 @@ func _ready()-> void:
 # make new pin
 func make_new_pin(
 		new_pin_name:String,
-		pin_template:MapSymbolTemplate,
-		pin_location:Vector2,
-		pin_article:RootArticle,
-		map_link_state:bool,
-		linked_chunk:MapChunkData,
-		tags:Array
+		pin_template:MapSymbolTemplate = MapSymbolTemplate.new(),
+		pin_location:Vector2           = Vector2(0,0),
+		pin_article:RootArticle        = RootArticle.new(),
+		map_link_state:bool            = false,
+		linked_chunk:MapChunkData      = MapChunkData.new(),
+		tags:Array                     = []
 )->String:
 	var uuid = get_parent().uuid_util.v4()
 
