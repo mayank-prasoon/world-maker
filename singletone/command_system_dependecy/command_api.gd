@@ -1,16 +1,40 @@
 extends Node
 
+# === NODES ===
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var root            = get_parent()
+onready var Console         = $"../CommandSystemInterface/Console/Log"
 
+# === SystemDataManager NODES ===
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+onready var PIN:Node      = SystemDataManager.get_node("PinSystem")
+onready var CHUNK:Node    = SystemDataManager.get_node("MapChunkSystem")
+onready var TEMPLATE:Node = SystemDataManager.get_node("SymbolTemplateSystem")
+onready var MAP:Node      = SystemDataManager.get_node("MapSystem")
+onready var ARTICLE:Node  = SystemDataManager.get_node("ArticleSystem")
 
+# === VERIABLES === 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+var Logs:Array = []
+
+func new_pin(pin_name:String):
+	var uuid = PIN.make_new_pin(pin_name)
+	echo("pin uuid: " + uuid)
+
+func echo(value, pos:int = Label.ALIGN_LEFT):
+	var result:String = str(value)
+	var output = Label.new()
+	output.align = pos
+	output.text = result
+	Logs.append(result)
+	Console.add_child(output)
+
+func clear():
+	for x in Console.get_children():
+		Console.remove_child(x)
+
+func ls_commands():
+	echo("=== LIST OF COMMAND ===", Label.ALIGN_CENTER)
+	for x in self.get_method_list():
+		echo(x["name"])
+	echo("=== END ===", Label.ALIGN_CENTER)
