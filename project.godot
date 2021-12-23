@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/root_article_template.gd"
 }, {
+"base": "RootSystemTest",
+"class": "RootCommandTest",
+"language": "GDScript",
+"path": "res://test/dependency/root_command_system_test.gd"
+}, {
 "base": "Node",
 "class": "RootSystemTest",
 "language": "GDScript",
@@ -50,6 +55,7 @@ _global_script_class_icons={
 "MapPin": "",
 "MapSymbolTemplate": "",
 "RootArticle": "",
+"RootCommandTest": "",
 "RootSystemTest": "",
 "SaveSystem": ""
 }
