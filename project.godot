@@ -68,6 +68,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SystemDataManager="*res://singletone/SystemDataManager.tscn"
+CommandSystem="*res://singletone/CommandSystem.tscn"
 
 [debug]
 

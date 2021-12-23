@@ -1,8 +1,8 @@
 extends Node
 
 onready var root_node     = self.get_parent()
-onready var save_system   = self.get_node("SaveSystem")
-onready var system_manger = self.get_node("ArticleManager")
+onready var save_system    = self.get_node("SaveSystem")
+onready var system_manager = self.get_node("ArticleManager")
 
 var save_location:String
 

@@ -32,3 +32,7 @@ func save_file(
 		save_location.format({"uuid": pin_id}),
 		newSavePin
 	)
+	
+	CommandSystem.API.echo("pin saved:")
+	CommandSystem.API.echo(save_location.format({"uuid": pin_id}))
+	

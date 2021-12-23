@@ -1,8 +1,8 @@
 extends Node
 
-onready var root_node:Node     = self.get_parent()
-onready var save_system:Node   = self.get_node("SaveSystem")
-onready var system_manger:Node = self.get_node("PinManager")
+onready var root_node:Node      = self.get_parent()
+onready var save_system:Node    = self.get_node("SaveSystem")
+onready var system_manager:Node = self.get_node("PinManager")
 
 var save_location:String
 
@@ -50,6 +50,8 @@ func add_chunk(pin_id:String, chunk:MapChunkData)->void:
 		temp_file.tags
 	)
 
+	CommandSystem.API.echo("{chunk} chunk linked to pin: {pin_name}".format({'pin_name':pin_id, 'chunk':str(chunk)}))
+
 
 func add_article(pin_id:String, article:RootArticle)->void:
 	var temp_file = save_system.open_file(pin_id)
@@ -63,7 +65,8 @@ func add_article(pin_id:String, article:RootArticle)->void:
 		temp_file.linked_chunk,
 		temp_file.tags
 	)
-
+	
+	CommandSystem.API.echo("{article} article added to pin: {pin_name}".format({'pin_name':pin_id, 'article':str(article)}))
 
 func remove_tags(pin_id:String, tags:Array)->void:
 	var temp_file = save_system.open_file(pin_id)
@@ -81,6 +84,8 @@ func remove_tags(pin_id:String, tags:Array)->void:
 		temp_file.linked_chunk,
 		temp_file.tags
 	)
+	
+	CommandSystem.API.echo("{tags} tags remove from pin: {pin_name}".format({'pin_name':pin_id, 'tags':str(tags)}))
 
 func add_tags(pin_id:String, tags:Array)->void:
 	var temp_file = save_system.open_file(pin_id)
@@ -96,7 +101,8 @@ func add_tags(pin_id:String, tags:Array)->void:
 		temp_file.linked_chunk,
 		temp_file.tags
 	)
-
+	
+	CommandSystem.API.echo("{tags} tags added to pin: {pin_name}".format({'pin_name':pin_id, 'tags':str(tags)}))
 
 func get_pins_with_tag(tag_name:String)->Array:
 	var pins = []

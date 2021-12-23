@@ -22,7 +22,7 @@ var command_history:Array  = []
 var rich_text = preload("res://singletone/command_system_dependecy/RichTextLabel.tscn")
 
 
-func echo(value, record:bool = true):
+func echo(value, record:bool = true)->void:
 	var result:String = str(value)
 	var output = rich_text.instance()
 	if record:
@@ -31,30 +31,30 @@ func echo(value, record:bool = true):
 	output.bbcode_text = result
 	Console.add_child(output)
 
-func clear():
+func clear()->void:
 	for x in Console.get_children():
 		Console.remove_child(x)
 		x.queue_free()
 
-func ls_commands():
+func ls_commands(node = self)->void:
 	echo("[center]=== LIST OF COMMAND ===[/center]", false)
-	for x in self.get_method_list():
+	for x in node.get_method_list():
 		echo(x["name"])
 	echo("[center]=== END ===[/center]", false)
 
-func ls_console_log():
+func ls_console_log()->void:
 	echo("[center]=== LIST OF COMMAND ===[/center]", false)
 	for x in console_log.size():
 		echo(console_log[x])
 	echo("[center]=== END ===[/center]", false)
 
-func ls_command_history():
+func ls_command_history()->void:
 	echo("[center]=== LIST OF COMMAND ===[/center]", false)
 	for x in command_history.size():
 		echo(command_history[x])
 	echo("[center]=== END ===[/center]", false)
 
-func remove_save_files():
+func remove_save_files()->void:
 	SystemDataManager.get_node("PinSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("MapSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("MapChunkSystem/SaveSystem").remove_all_files()
@@ -63,8 +63,10 @@ func remove_save_files():
 	
 	echo("all file removed")
 
-func run_script(path:String):
+func run_script(path:String)->void:
+	echo("=== RUNING EXTERNAL SCRIPT ({script_name}) ===".format({"script_name" : path}))
 	var script:Script = load(path)
 	var new_node = Node.new()
-	get_parent().add_child(new_node)
 	new_node.set_script(script)
+	new_node.queue_free()
+	echo("=== RUNING EXTERNAL SCRIPT ({script_name}) ===")

@@ -23,3 +23,6 @@ func save_file(
 		save_location.format({"uuid": chunk_id}),
 		newMapChunkData
 	)
+
+	CommandSystem.API.echo("chunk saved:")
+	CommandSystem.API.echo(save_location.format({"uuid": chunk_id}))

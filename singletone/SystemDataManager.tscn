@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://singletone/system_data_manager_dependency/pin_system/pin_manger.gd" type="Script" id=1]
-[ext_resource path="res://singletone/system_data_manager_dependency/map_chunk_manager.gd" type="Script" id=2]
-[ext_resource path="res://singletone/system_data_manager_dependency/map_chunk_save_system.gd" type="Script" id=3]
+[ext_resource path="res://singletone/system_data_manager_dependency/chunk_system/map_chunk_manager.gd" type="Script" id=2]
+[ext_resource path="res://singletone/system_data_manager_dependency/chunk_system/map_chunk_save_system.gd" type="Script" id=3]
 [ext_resource path="res://singletone/system_data_manager_dependency/pin_system/pin_save_system.gd" type="Script" id=4]
-[ext_resource path="res://singletone/system_data_manager_dependency/symbol_template_save_system.gd" type="Script" id=5]
+[ext_resource path="res://singletone/system_data_manager_dependency/symbol_template_system/symbol_template_save_system.gd" type="Script" id=5]
 [ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_save_system.gd" type="Script" id=6]
 [ext_resource path="res://singletone/system_data_manager_dependency/article_system/article_save_system.gd" type="Script" id=7]
 [ext_resource path="res://singletone/system_data_manager.gd" type="Script" id=8]
@@ -12,6 +12,9 @@
 [ext_resource path="res://singletone/system_data_manager_dependency/article_system/article_manager.gd" type="Script" id=10]
 [ext_resource path="res://singletone/system_data_manager_dependency/pin_system/pin_system.gd" type="Script" id=11]
 [ext_resource path="res://singletone/system_data_manager_dependency/article_system/article_system.gd" type="Script" id=12]
+[ext_resource path="res://singletone/system_data_manager_dependency/symbol_template_system/symbol_template_system.gd" type="Script" id=13]
+[ext_resource path="res://singletone/system_data_manager_dependency/chunk_system/map_chunk_system.gd" type="Script" id=14]
+[ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_system.gd" type="Script" id=15]
 
 [node name="SystemDataManager" type="Node"]
 script = ExtResource( 8 )
@@ -26,11 +29,13 @@ script = ExtResource( 4 )
 script = ExtResource( 1 )
 
 [node name="SymbolTemplateSystem" type="Node" parent="."]
+script = ExtResource( 13 )
 
 [node name="SaveSystem" type="Node" parent="SymbolTemplateSystem"]
 script = ExtResource( 5 )
 
 [node name="MapChunkSystem" type="Node" parent="."]
+script = ExtResource( 14 )
 
 [node name="SaveSystem" type="Node" parent="MapChunkSystem"]
 script = ExtResource( 3 )
@@ -39,6 +44,7 @@ script = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="MapSystem" type="Node" parent="."]
+script = ExtResource( 15 )
 
 [node name="SaveSystem" type="Node" parent="MapSystem"]
 script = ExtResource( 6 )

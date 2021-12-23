@@ -34,7 +34,10 @@ func remove_all_files():
 			elif not file.begins_with("."):
 				folder.remove(base_folder + '/' + file)
 		folder.list_dir_end()
+	
+	CommandSystem.API.echo("all files removed in the {folder}".format({"folder": base_folder}))
 
 func remove_file(item_uid:String) -> void:
 	var file = Directory.new()
 	file.remove(save_location.format({"uuid": item_uid}))
+	CommandSystem.API.echo("removed files: {file}".format({"file": file}))

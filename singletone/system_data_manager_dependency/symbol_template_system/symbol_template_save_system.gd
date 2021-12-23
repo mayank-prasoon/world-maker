@@ -21,3 +21,6 @@ func save_file(
 		save_location.format({"uuid": template_name}),
 		newMapSymbolTemplateData
 	)
+
+	CommandSystem.API.echo("symbol template saved:")
+	CommandSystem.API.echo(save_location.format({"uuid": template_name}))

@@ -12,13 +12,6 @@ export(Script) var map:Script                       = preload("res://assets/file
 
 export(Script) var article:Script                   = preload("res://assets/file templates/save_system_template/root_article_template.gd")
 
-## === NODES AND RESOURCES ===
-#
-onready var pinSystem       = self.get_node("PinSystem")
-onready var symbolSystem    = self.get_node("SymbolTemplateSystem")
-onready var mapChunkSystem  = self.get_node("MapChunkSystem")                   # acess mapChunkSystem
-onready var systemInventory = self.get_node("SystemInventory")                  # acess to the system wide data
-
 # === VERIABLES ===
 const uuid_util = preload("res://utilities/godot-uuid-master/uuid.gd")
 
