@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/log_file_template/log_file_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+events = [ "[20:45:5 - 23/12/2021] : pin name book added" ]
