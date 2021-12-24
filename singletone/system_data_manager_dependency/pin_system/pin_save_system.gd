@@ -20,7 +20,7 @@ func save_file(
 	
 	LoggingSystem.log_new_event(name + " - " + "save_file({0},{1},{2},{3},{4},{5},{6},{7})".format([pin_name, pin_id, str(template), str(location), str(article), link_state, str(chunk_link), str(tags)]))
 	
-	var newSavePin                  = root_node.mapPin.new()
+	var newSavePin                  = MapPin.new()
 	newSavePin.pin_name             = pin_name
 	newSavePin.pin_id               = pin_id
 	newSavePin.pin_symbol_template  = template

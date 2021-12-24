@@ -16,7 +16,7 @@ func save_file(
 
 	LoggingSystem.log_new_event(name + " - " + "save_file({0},{1},{2},{3},{5})".format([chunk_name, chunk_id, chunk_texture, chunk_offset, str(pins)]))
 
-	var newMapChunkData               = root_node.mapChunk.new()
+	var newMapChunkData               = MapChunkData.new()
 	newMapChunkData.chunk_name        = chunk_name
 	newMapChunkData.chunk_id          = chunk_id
 	newMapChunkData.chunk_offset      = chunk_offset

@@ -4,14 +4,6 @@ extends Node
 
 export(String, DIR) var root_save_file_path:String  = "res://save_files"
 
-# save file templates
-export(Script) var mapSymbolTemplate:Script         = preload("res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd")
-export(Script) var mapPin:Script                    = preload("res://assets/file templates/save_system_template/map_pin_resources_template.gd")
-export(Script) var mapChunk:Script                  = preload("res://assets/file templates/save_system_template/map_chunk_resources_template.gd")
-export(Script) var map:Script                       = preload("res://assets/file templates/save_system_template/map_resources_template.gd")
-
-export(Script) var article:Script                   = preload("res://assets/file templates/save_system_template/root_article_template.gd")
-
 # === VERIABLES ===
 const uuid_util = preload("res://utilities/godot-uuid-master/uuid.gd")
 

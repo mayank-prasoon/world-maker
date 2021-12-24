@@ -11,7 +11,7 @@ func save_file(
 		color:Color     = Color.white 
 	) -> void:
 
-	var newMapSymbolTemplateData               = root_node.mapSymbolTemplate.new()
+	var newMapSymbolTemplateData               = MapSymbolTemplate.new()
 	newMapSymbolTemplateData.template_name     = template_name
 	newMapSymbolTemplateData.template_offset   = offset
 	newMapSymbolTemplateData.template_texture  = texture

@@ -13,7 +13,7 @@ func save_file(
 
 	LoggingSystem.log_new_event(name + " - " + "save_file({0},{1},{2})".format([map_name, str(layers), str(tags)]))
 
-	var newMapChunkData        = root_node.map.new()
+	var newMapChunkData        = MapData.new()
 	newMapChunkData.map_name   = map_name
 	newMapChunkData.layers     = layers
 	newMapChunkData.tags       = tags

@@ -15,7 +15,7 @@ func save_file(
 	
 	LoggingSystem.log_new_event(name + " - " + "save_file({0},{1},{2},{3},{5})".format([article_name, article_id, banner, raw_data, str(tags)]))
 
-	var newArticleData        = root_node.article.new()
+	var newArticleData            = RootArticle.new()
 	newArticleData.article_name   = article_name
 	newArticleData.article_id     = article_id
 	newArticleData.banner         = banner
