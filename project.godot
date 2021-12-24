@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "EditorSettingsTemplate",
+"language": "GDScript",
+"path": "res://assets/file templates/editor_setting_system_template/editor_settings_template.gd"
+}, {
+"base": "Resource",
 "class": "MapChunkData",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_chunk_resources_template.gd"
@@ -50,6 +55,7 @@ _global_script_classes=[ {
 "path": "res://singletone/system_data_manager_dependency/dependency/save_system.gd"
 } ]
 _global_script_class_icons={
+"EditorSettingsTemplate": "",
 "MapChunkData": "",
 "MapData": "",
 "MapPin": "",

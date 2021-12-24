@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/editor_setting_system_template/editor_settings_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+last_projects = {
+"world_building": "xyz"
+}
+project_lists = [ {
+"game_dev": "pqr"
+}, {
+"world_building": "xyz"
+}, {
+"gg": "mno"
+} ]
+pinned_projects = [  ]
