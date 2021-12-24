@@ -24,6 +24,7 @@ var rich_text = preload("res://singletone/command_system_dependecy/RichTextLabel
 
 func echo(value, record:bool = true)->void:
 	var result:String = str(value)
+	LoggingSystem.log_new_event("command executed - echo({vale})".format({"value":result}))
 	var output = rich_text.instance()
 	if record:
 		console_log.append(result)
@@ -32,29 +33,34 @@ func echo(value, record:bool = true)->void:
 	Console.add_child(output)
 
 func clear()->void:
+	LoggingSystem.log_new_event("command executed - clear")
 	for x in Console.get_children():
 		Console.remove_child(x)
 		x.queue_free()
 
 func ls_commands(node = self)->void:
+	LoggingSystem.log_new_event("command executed - ls_commands({node})".format({"node":node}))
 	echo("[center]=== LIST OF COMMAND ===[/center]", false)
 	for x in node.get_method_list():
 		echo(x["name"])
 	echo("[center]=== END ===[/center]", false)
 
 func ls_console_log()->void:
+	LoggingSystem.log_new_event("command executed - ls_console_log")
 	echo("[center]=== LIST OF COMMAND ===[/center]", false)
 	for x in console_log.size():
 		echo(console_log[x])
 	echo("[center]=== END ===[/center]", false)
 
 func ls_command_history()->void:
+	LoggingSystem.log_new_event("command executed - ls_command_history")
 	echo("[center]=== LIST OF COMMAND ===[/center]", false)
 	for x in command_history.size():
 		echo(command_history[x])
 	echo("[center]=== END ===[/center]", false)
 
 func remove_save_files()->void:
+	LoggingSystem.log_new_event("command executed - remove_save_files")
 	SystemDataManager.get_node("PinSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("MapSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("MapChunkSystem/SaveSystem").remove_all_files()
@@ -64,9 +70,11 @@ func remove_save_files()->void:
 	echo("all file removed")
 
 func run_script(path:String)->void:
+	LoggingSystem.log_new_event("command executed - run_script({path})".format({"path":path}))
 	echo("=== RUNING EXTERNAL SCRIPT ({script_name}) ===".format({"script_name" : path}))
 	var script:Script = load(path)
 	var new_node = Node.new()
 	new_node.set_script(script)
 	new_node.queue_free()
 	echo("=== RUNING EXTERNAL SCRIPT ({script_name}) ===")
+	LoggingSystem.log_new_event("script was successfully executed")
