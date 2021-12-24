@@ -9,18 +9,28 @@ onready var root_node:Node = self.get_parent().get_parent()
 var save_location:String
 var resource_type:int
 
+func _ready():
+	LoggingSystem.log_new_event(name + " - loaded")
+
 func _save_file():
 	pass
 
 func open_file(item_uid:String)->Resource:
+	
 	root_node.verify(
 		save_location.format({"uuid": item_uid}),
 		resource_type, item_uid
-	)
-	
+		)
+		
+	LoggingSystem.log_new_event(name + " - open_file({0})".format([item_uid]))
+	CommandSystem.API.echo("{name} loaded".format({"name": item_uid}))
+
 	return ResourceLoader.load(save_location.format({"uuid": item_uid}))
 
+
 func remove_all_files():
+	LoggingSystem.log_new_event(name + " - remove_all_files()")
+
 	var folder = Directory.new()
 	var base_folder = save_location.get_base_dir()
 
@@ -38,6 +48,9 @@ func remove_all_files():
 	CommandSystem.API.echo("all files removed in the {folder}".format({"folder": base_folder}))
 
 func remove_file(item_uid:String) -> void:
+	LoggingSystem.log_new_event(name + " - remove_file({0})".format([item_uid]))
+	
 	var file = Directory.new()
 	file.remove(save_location.format({"uuid": item_uid}))
+
 	CommandSystem.API.echo("removed files: {file}".format({"file": file}))
