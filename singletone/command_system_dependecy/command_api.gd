@@ -26,7 +26,7 @@ var rich_text = preload("res://singletone/command_system_dependecy/RichTextLabel
 func echo(value, record:bool = true)->void:
 	if get_parent().command_line_state:
 		var result:String = str(value)
-		LoggingSystem.log_new_event("command executed - echo({vale})".format({"value":result}))
+		LoggingSystem.log_new_event("command executed - echo({value})".format({"value":result}))
 		var output = rich_text.instance()
 		if record:
 			console_log.append(result)
@@ -70,7 +70,7 @@ func remove_save_files()->void:
 	SystemDataManager.get_node("MapChunkSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("SymbolTemplateSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("ArticleSystem/SaveSystem").remove_all_files()
-	
+
 	echo("all file removed")
 
 func run_script(path:String)->void:
