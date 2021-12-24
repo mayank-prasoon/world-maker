@@ -5,6 +5,7 @@
 
 [node name="CommandSystem" type="Node" groups=["command_system"]]
 script = ExtResource( 1 )
+command_line_state = true
 
 [node name="CommandAPI" type="Node" parent="."]
 script = ExtResource( 3 )

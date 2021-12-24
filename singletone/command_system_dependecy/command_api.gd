@@ -13,7 +13,7 @@ onready var TEMPLATE:Node = SystemDataManager.get_node("SymbolTemplateSystem")
 onready var MAP:Node      = SystemDataManager.get_node("MapSystem")
 onready var ARTICLE:Node  = SystemDataManager.get_node("ArticleSystem")
 
-# === VERIABLES === 
+# === VARIABLES === 
 
 var console_log:Array      = []
 var command_history:Array  = []
@@ -21,16 +21,20 @@ var command_history:Array  = []
 # === PRELOAD ===
 var rich_text = preload("res://singletone/command_system_dependecy/RichTextLabel.tscn")
 
+# === FUNCTIONS ===
 
 func echo(value, record:bool = true)->void:
-	var result:String = str(value)
-	LoggingSystem.log_new_event("command executed - echo({vale})".format({"value":result}))
-	var output = rich_text.instance()
-	if record:
-		console_log.append(result)
-		
-	output.bbcode_text = result
-	Console.add_child(output)
+	if get_parent().command_line_state:
+		var result:String = str(value)
+		LoggingSystem.log_new_event("command executed - echo({vale})".format({"value":result}))
+		var output = rich_text.instance()
+		if record:
+			console_log.append(result)
+			
+		output.bbcode_text = result
+		Console.add_child(output)
+	else:
+		pass
 
 func clear()->void:
 	LoggingSystem.log_new_event("command executed - clear")

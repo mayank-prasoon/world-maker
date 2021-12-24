@@ -1,21 +1,28 @@
 extends Node
 
+# === NODES ===
+
 onready var console:VBoxContainer = $CommandSystemInterface/Console/Log
 onready var API:Node              = $CommandAPI
 onready var command_line:LineEdit = $CommandSystemInterface/HBoxContainer/CommandInput
 
+# === VARIABLES ===
 
-func _on_CommandInput_text_entered(command:String):
+export(bool) var command_line_state = false
+
+func _ready():
+	$CommandSystemInterface.visible = command_line_state
+
+func _on_CommandInput_text_entered(command:String) -> void:
 	execute_command(command)
 
-func _on_CommandInput_text_changed(_command:String):
+func _on_CommandInput_text_changed(_command:String) -> void:
 	pass
 
-func _on_RunButton_pressed():
+func _on_RunButton_pressed() -> void:
 	execute_command(command_line.text)
 
-
-func execute_command(command:String):
+func execute_command(command:String) -> void:
 	var expression = Expression.new()
 	var error
 
