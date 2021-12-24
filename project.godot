@@ -69,6 +69,7 @@ config/icon="res://icon.png"
 
 SystemDataManager="*res://singletone/SystemDataManager.tscn"
 CommandSystem="*res://singletone/CommandSystem.tscn"
+LoggingSystem="*res://singletone/logging_system.gd"
 
 [debug]
 
@@ -77,6 +78,12 @@ gdscript/completion/autocomplete_setters_and_getters=true
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+
+[logging]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="user://logs/system.log"
+file_logging/max_log_files=10
 
 [physics]
 
