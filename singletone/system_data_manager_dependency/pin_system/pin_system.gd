@@ -21,6 +21,9 @@ func make_new_pin(
 )->String:
 	var uuid = get_parent().uuid_util.v4()
 
+	LoggingSystem.log_new_event(name + " - " + "make_new_pin({0},{1},{2},{3},{4},{5},{6})".format([new_pin_name, pin_template, pin_location, pin_article, map_link_state, linked_chunk, str(tags)]))
+
+
 	if !map_link_state:
 		linked_chunk = MapChunkData.new()
 
@@ -35,9 +38,13 @@ func make_new_pin(
 			tags
 	)
 	
+	CommandSystem.API.echo("new pin generated")
+
 	return uuid
 
 func add_chunk(pin_id:String, chunk:MapChunkData)->void:
+	LoggingSystem.log_new_event(name + " - " + "add_chunk({0},{1})".format([pin_id, chunk]))
+
 	var temp_file = save_system.open_file(pin_id)
 	save_system.save_file(
 		temp_file.pin_name,
@@ -54,6 +61,9 @@ func add_chunk(pin_id:String, chunk:MapChunkData)->void:
 
 
 func add_article(pin_id:String, article:RootArticle)->void:
+
+	LoggingSystem.log_new_event(name + " - " + "add_article({0},{1})".format([pin_id, article]))
+
 	var temp_file = save_system.open_file(pin_id)
 	save_system.save_file(
 		temp_file.pin_name,
@@ -69,6 +79,9 @@ func add_article(pin_id:String, article:RootArticle)->void:
 	CommandSystem.API.echo("{article} article added to pin: {pin_name}".format({'pin_name':pin_id, 'article':str(article)}))
 
 func remove_tags(pin_id:String, tags:Array)->void:
+
+	LoggingSystem.log_new_event(name + " - " + "remove_tags({0},{1})".format([pin_id, str(tags)]))
+
 	var temp_file = save_system.open_file(pin_id)
 	
 	for tag in tags:
@@ -88,6 +101,9 @@ func remove_tags(pin_id:String, tags:Array)->void:
 	CommandSystem.API.echo("{tags} tags remove from pin: {pin_name}".format({'pin_name':pin_id, 'tags':str(tags)}))
 
 func add_tags(pin_id:String, tags:Array)->void:
+
+	LoggingSystem.log_new_event(name + " - " + "add_tags({0},{1})".format([pin_id, tags]))
+
 	var temp_file = save_system.open_file(pin_id)
 
 	temp_file.tags.append_array(tags)
@@ -105,6 +121,9 @@ func add_tags(pin_id:String, tags:Array)->void:
 	CommandSystem.API.echo("{tags} tags added to pin: {pin_name}".format({'pin_name':pin_id, 'tags':str(tags)}))
 
 func get_pins_with_tag(tag_name:String)->Array:
+
+	LoggingSystem.log_new_event(name + " - " + "get_pins_with_tag({0},{1})".format([tag_name]))
+
 	var pins = []
 	
 	var folder      = Directory.new()
@@ -121,6 +140,8 @@ func get_pins_with_tag(tag_name:String)->Array:
 				if temp_pin.tags.has(tag_name):
 					pins.append(temp_pin)
 		folder.list_dir_end()
+
+	CommandSystem.API.echo("list of all the pin: {0}".format([str(pins)]))
 	return pins
 
 	
