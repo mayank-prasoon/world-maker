@@ -24,8 +24,10 @@ enum MAP_RESOURCE_TYPE {
 }
 
 func verify(path:String, _type:int, resource_name:String) -> void:
+	LoggingSystem.log_new_event("verifing file intregity of {0} of type {1} - file_path: {3}".format([resource_name, _type, path]))
 	var file:File = File.new()
 	if !file.file_exists(path):
+		LoggingSystem.log_new_event("!file is missing! - new file is being created")
 		if !file.file_exists(path.get_base_dir()):
 			var dir:Directory = Directory.new()
 			var _x = dir.make_dir_recursive(path.get_base_dir())

@@ -26,6 +26,7 @@ func execute_command(command:String):
 
 	if error != OK:
 		API.echo(expression.get_error_text())
+		LoggingSystem.log_new_event("command - {command} failed to exicute with parsing error {error}".format({"command":command, "error":error}))
 		return
 	var result = expression.execute([], API, true)
 	if not expression.has_execute_failed():
@@ -34,5 +35,6 @@ func execute_command(command:String):
 			API.echo(str(result))
 	elif expression.has_execute_failed():
 		API.echo('failed to exicute command `{c}`'.format({"c" : command}))
+		LoggingSystem.log_new_event("command - {command} failed to exicute".format({"command":command}))
 	
 	command_line.text = ""
