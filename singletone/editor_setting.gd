@@ -5,6 +5,8 @@ extends Node
 var editor_settings_save_location:String   = "res://settings.tres"
 var settings:EditorSettingsTemplate        = EditorSettingsTemplate.new()
 
+var current_path = "res://"
+
 func _ready()->void:
 	LoggingSystem.log_new_event(name + " loaded")	
 	var file = File.new()
@@ -12,7 +14,7 @@ func _ready()->void:
 		var _x = ResourceSaver.save(editor_settings_save_location, settings)
 	else:
 		settings = ResourceLoader.load(editor_settings_save_location)
-
+	current_path = "res://"
 
 # === project ===
 
@@ -28,7 +30,6 @@ func add_new_project(project_name:String, project_path:String):
 
 
 func remove_project(project_name:String, project_path:String):
-	LoggingSystem.log_new_event(name + " - " + "remove_project({0},{1})".format([project_name,project_path]))
 	
 	var index = -1
 	
@@ -39,6 +40,7 @@ func remove_project(project_name:String, project_path:String):
 	if index != -1:
 		settings.project_list.remove(index)
 		var _x = ResourceSaver.save(editor_settings_save_location, settings)
+		LoggingSystem.log_new_event(name + " - " + "remove_project({0},{1})".format([project_name,project_path]))
 
 # === last project ===
 
@@ -72,3 +74,8 @@ func upin_project(project_index) -> void:
 	if x != -1:
 		settings.pinned_projects.remove(x)
 		LoggingSystem.log_new_event(name + " - " + "remove_pin_project({0})".format([project_index]))
+
+# === SIGNALS ===
+
+func open_project(index:int):
+	current_path = self.get_projects()[index]["path"]

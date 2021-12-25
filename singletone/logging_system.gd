@@ -1,13 +1,13 @@
 extends Node
 
-var log_file_template = preload("res://assets/file templates/log_file_template/log_file_template.gd")
-var log_file_location = SystemDataManager.root_save_file_path + "/.system_logs.tres"
+onready var log_file_template = preload("res://assets/file templates/log_file_template/log_file_template.gd")
+onready var log_file_location = SystemDataManager.root_save_file_path + "/.system_logs.tres"
 
 var logs = []
 
 # === SIGNAL ===
 
-func _init():
+func _ready():
 	var file      = File.new()
 	if !file.file_exists(log_file_location):
 		var y = log_file_template.new()

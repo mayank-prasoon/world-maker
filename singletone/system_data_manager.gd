@@ -1,8 +1,7 @@
 extends Node
 
 # === EXPORTS ===
-
-export(String, DIR) var root_save_file_path:String  = "res://save_files"
+var root_save_file_path
 
 # === VERIABLES ===
 const uuid_util = preload("res://utilities/godot-uuid-master/uuid.gd")
@@ -14,6 +13,8 @@ enum MAP_RESOURCE_TYPE {
 	MAP_CHUNK,
 	ARTICLE
 }
+
+
 
 func verify(path:String, _type:int, resource_name:String) -> void:
 	LoggingSystem.log_new_event("verifing file intregity of {0} of type {1} - file_path: {3}".format([resource_name, _type, path]))
