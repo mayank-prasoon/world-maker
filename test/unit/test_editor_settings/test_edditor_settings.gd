@@ -21,7 +21,7 @@ func test_add_new_project():
 
 	test_node.add_new_project("world_building", "xyz")
 	var z = ResourceLoader.load(save_file)
-	assert_eq_deep(z.project_lists, [{"game_dev" : "pqr"}, {"world_building" : "xyz"}])
+	assert_eq_deep(z.project_list, [{"game_dev" : "pqr"}, {"world_building" : "xyz"}])
 
 func test_remove_project():
 	test_node.add_new_project("game_dev", "pqr")
