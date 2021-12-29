@@ -76,7 +76,7 @@ config/icon="res://icon.png"
 SystemSettings="*res://singletone/EditorSetting.tscn"
 SystemDataManager="*res://singletone/SystemDataManager.tscn"
 CommandSystem="*res://singletone/CommandSystem.tscn"
-LoggingSystem="*res://singletone/logging_system.gd"
+Logger="*res://singletone/Logger.tscn"
 
 [debug]
 

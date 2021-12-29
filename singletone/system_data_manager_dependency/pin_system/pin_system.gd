@@ -21,7 +21,7 @@ func make_new_pin(
 )->String:
 	var uuid = get_parent().uuid_util.v4()
 
-	LoggingSystem.log_new_event(name + " - " + "make_new_pin({0},{1},{2},{3},{4},{5},{6})".format([new_pin_name, pin_template, pin_location, pin_article, map_link_state, linked_chunk, str(tags)]))
+	Logger.info(name + " - " + "make_new_pin({0},{1},{2},{3},{4},{5},{6})".format([new_pin_name, pin_template, pin_location, pin_article, map_link_state, linked_chunk, str(tags)]))
 
 
 	if !map_link_state:
@@ -43,7 +43,7 @@ func make_new_pin(
 	return uuid
 
 func add_chunk(pin_id:String, chunk:MapChunkData)->void:
-	LoggingSystem.log_new_event(name + " - " + "add_chunk({0},{1})".format([pin_id, chunk]))
+	Logger.info(name + " - " + "add_chunk({0},{1})".format([pin_id, chunk]))
 
 	var temp_file = save_system.open_file(pin_id)
 	save_system.save_file(
@@ -62,7 +62,7 @@ func add_chunk(pin_id:String, chunk:MapChunkData)->void:
 
 func add_article(pin_id:String, article:RootArticle)->void:
 
-	LoggingSystem.log_new_event(name + " - " + "add_article({0},{1})".format([pin_id, article]))
+	Logger.info(name + " - " + "add_article({0},{1})".format([pin_id, article]))
 
 	var temp_file = save_system.open_file(pin_id)
 	save_system.save_file(
@@ -80,7 +80,7 @@ func add_article(pin_id:String, article:RootArticle)->void:
 
 func remove_tags(pin_id:String, tags:Array)->void:
 
-	LoggingSystem.log_new_event(name + " - " + "remove_tags({0},{1})".format([pin_id, str(tags)]))
+	Logger.info(name + " - " + "remove_tags({0},{1})".format([pin_id, str(tags)]))
 
 	var temp_file = save_system.open_file(pin_id)
 	
@@ -102,7 +102,7 @@ func remove_tags(pin_id:String, tags:Array)->void:
 
 func add_tags(pin_id:String, tags:Array)->void:
 
-	LoggingSystem.log_new_event(name + " - " + "add_tags({0},{1})".format([pin_id, tags]))
+	Logger.info(name + " - " + "add_tags({0},{1})".format([pin_id, tags]))
 
 	var temp_file = save_system.open_file(pin_id)
 
@@ -122,7 +122,7 @@ func add_tags(pin_id:String, tags:Array)->void:
 
 func get_pins_with_tag(tag_name:String)->Array:
 
-	LoggingSystem.log_new_event(name + " - " + "get_pins_with_tag({0},{1})".format([tag_name]))
+	Logger.info(name + " - " + "get_pins_with_tag({0},{1})".format([tag_name]))
 
 	var pins = []
 	

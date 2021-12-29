@@ -9,7 +9,7 @@ onready var save_system:Node = self.get_parent().get_node("SaveSystem")
 
 # retruns the article associated with the pin
 func get_article(pin_name:String) -> Resource:
-	LoggingSystem.log_new_event(name + " - " + "get_article({0})".format([pin_name]))
+	Logger.info(name + " - " + "get_article({0})".format([pin_name]))
 	
 	var _temp_pin_resource:Resource    = save_system.open_file(pin_name)
 	var _raw_atricle_resource:Resource = _temp_pin_resource.pin_article
@@ -19,7 +19,7 @@ func get_article(pin_name:String) -> Resource:
 	return _raw_atricle_resource
 
 func get_chunk(pin_name:String) -> MapChunkData:
-	LoggingSystem.log_new_event(name + " - " + "get_chunk({0})".format([pin_name]))
+	Logger.info(name + " - " + "get_chunk({0})".format([pin_name]))
 
 	var _temp_pin_resource:Resource      = save_system.open_file(pin_name)
 	var _raw_chunk_resource:MapChunkData = _temp_pin_resource.linked_chunk
@@ -29,7 +29,7 @@ func get_chunk(pin_name:String) -> MapChunkData:
 	return _raw_chunk_resource
 
 func get_template(pin_name:String) -> MapSymbolTemplate:
-	LoggingSystem.log_new_event(name + " - " + "get_template({0})".format([pin_name]))
+	Logger.info(name + " - " + "get_template({0})".format([pin_name]))
 
 	var _temp_pin_resource:Resource              = save_system.open_file(pin_name)
 	var _raw_template_resource:MapSymbolTemplate = _temp_pin_resource.pin_symbol_template
@@ -39,7 +39,7 @@ func get_template(pin_name:String) -> MapSymbolTemplate:
 	return _raw_template_resource
 
 func get_tags(pin_name:String) -> Array:
-	LoggingSystem.log_new_event(name + " - " + "get_tags({0})".format([pin_name]))
+	Logger.info(name + " - " + "get_tags({0})".format([pin_name]))
 
 	var _temp_pin_resource:Resource     = save_system.open_file(pin_name)
 	var tags:Array                      = _temp_pin_resource.tags

@@ -1,7 +1,7 @@
 extends SaveSystem
 
 func _ready()->void:
-	LoggingSystem.log_new_event(name + " - node loaded")
+	Logger.info(name + " - node loaded")
 	save_location = self.root_node.root_save_file_path + '/articles/{uuid}_save_data.tres'
 	resource_type = self.root_node.MAP_RESOURCE_TYPE.ARTICLE
 	
@@ -13,7 +13,7 @@ func save_file(
 	tags:Array           = []
 	) -> void:
 	
-	LoggingSystem.log_new_event(name + " - " + "save_file({0},{1},{2},{3},{5})".format([article_name, article_id, banner, raw_data, str(tags)]))
+	Logger.info(name + " - " + "save_file({0},{1},{2},{3},{5})".format([article_name, article_id, banner, raw_data, str(tags)]))
 
 	var newArticleData            = RootArticle.new()
 	newArticleData.article_name   = article_name
