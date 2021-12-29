@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/godot-logging/log_base.gd" type="Script" id=1]
+[ext_resource path="res://addons/godot-logging/example/Example Logging.gd" type="Script" id=2]
+
+[node name="Example Logging" type="Node2D"]
+position = Vector2( 250, 250 )
+script = ExtResource( 2 )
+
+[node name="Logger" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Logger V1.0 ApolloX"
+}
+persist_debug = false
+file_dir = "res://addons/Logger/example/"

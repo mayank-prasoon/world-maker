@@ -84,7 +84,7 @@ gdscript/completion/autocomplete_setters_and_getters=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot-logging/plugin.cfg", "res://addons/gut/plugin.cfg" )
 
 [logging]
 
