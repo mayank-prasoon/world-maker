@@ -1,0 +1,420 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://assests/MainMenu/start dark.png" type="Texture" id=2]
+[ext_resource path="res://assests/MainMenu/World Builder.png" type="Texture" id=3]
+[ext_resource path="res://assests/MainMenu/A tool by a designer for designers.png" type="Texture" id=4]
+[ext_resource path="res://assests/MainMenu/Rectangle 2.png" type="Texture" id=5]
+[ext_resource path="res://assests/MainMenu/ant-design_instagram-filled.png" type="Texture" id=6]
+[ext_resource path="res://assests/MainMenu/settings.png" type="Texture" id=7]
+[ext_resource path="res://assests/MainMenu/akar-icons_github-fill.png" type="Texture" id=8]
+[ext_resource path="res://assests/Fonts/FrancoisOne-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assests/MainMenu/Rectangle 3.png" type="Texture" id=10]
+[ext_resource path="res://Effects/BackgroundBlur.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assests/Fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Scene/main_menu/submenus/StartMenu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scene/main_menu/scripts/Background.gd" type="Script" id=14]
+[ext_resource path="res://Scene/main_menu/scripts/MenuButton.gd" type="Script" id=15]
+[ext_resource path="res://Scene/main_menu/scripts/BottomMenu.gd" type="Script" id=16]
+[ext_resource path="res://Scene/main_menu/scripts/MainMenu.gd" type="Script" id=17]
+[ext_resource path="res://assests/progress/Rectangle 47.png" type="Texture" id=19]
+[ext_resource path="res://assests/progress/Rectangle 48.png" type="Texture" id=20]
+[ext_resource path="res://assests/progress/Rectangle 44.png" type="Texture" id=21]
+[ext_resource path="res://Scene/main_menu/LoadingScreen.gd" type="Script" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "StartMenu_animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MenuButton:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BottomMenu:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "_load_up_animation"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MenuButton:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BottomMenu:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Background/Title:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Background/SubText:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 12 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+resolution = 1
+
+[node name="VideoPlayer" type="VideoPlayer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+autoplay = true
+buffering_msec = 1000
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+modulate = Color( 0, 0, 0, 0.309804 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextureRect" parent="Background"]
+anchor_left = 0.236767
+anchor_top = 0.171472
+anchor_right = 0.770947
+anchor_bottom = 0.344805
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SubText" type="TextureRect" parent="Background"]
+anchor_left = 0.378906
+anchor_top = 0.361307
+anchor_right = 0.639648
+anchor_bottom = 0.391306
+margin_top = -1.52588e-05
+margin_bottom = 1.52588e-05
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MenuButton" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="MenuButton"]
+anchor_left = 0.469
+anchor_top = 0.564
+anchor_right = 0.531
+anchor_bottom = 0.59
+margin_left = -34.3651
+margin_top = -14.3998
+margin_right = 36.1469
+margin_bottom = 16.0002
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="MenuButton/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "START"
+align = 1
+valign = 1
+clip_text = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MenuButton/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomMenu"]
+anchor_left = -0.0134502
+anchor_top = 1.00128
+anchor_right = -0.0134502
+anchor_bottom = 1.00128
+margin_left = 44.0922
+margin_top = -64.7691
+margin_right = 197.092
+margin_bottom = -19.7691
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Settings" type="Button" parent="BottomMenu/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 45 )
+mouse_default_cursor_shape = 2
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="Github" type="Button" parent="BottomMenu/HBoxContainer"]
+margin_left = 54.0
+margin_right = 99.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 45, 45 )
+mouse_default_cursor_shape = 2
+icon = ExtResource( 8 )
+flat = true
+expand_icon = true
+
+[node name="Insta" type="Button" parent="BottomMenu/HBoxContainer"]
+margin_left = 103.0
+margin_right = 153.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 45 )
+mouse_default_cursor_shape = 2
+icon = ExtResource( 6 )
+flat = true
+expand_icon = true
+
+[node name="VersionText" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="version" type="Label" parent="VersionText"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -109.889
+margin_top = 14.2244
+margin_right = -14.8893
+margin_bottom = 35.2244
+custom_fonts/font = SubResource( 2 )
+text = "Version 0.01"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundBlur" parent="." instance=ExtResource( 11 )]
+visible = true
+Animate = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.0901961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="UIAnimation" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIAnimation"]
+autoplay = "_load_up_animation"
+anims/StartMenu_animation = SubResource( 3 )
+anims/_load_up_animation = SubResource( 4 )
+
+[node name="StartMenu" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="LoadingScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
+anims/close = SubResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LoadingScreen"]
+anchor_left = 0.437501
+anchor_top = 0.437595
+anchor_right = 0.552734
+anchor_bottom = 0.472595
+margin_right = 0.000793457
+custom_fonts/font = SubResource( 6 )
+text = "loading maps..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="LoadingScreen"]
+anchor_left = 0.0878906
+anchor_top = 0.503281
+anchor_right = 0.9228
+anchor_bottom = 0.503281
+margin_top = -6.96838
+margin_right = 0.0532227
+margin_bottom = 7.0314
+step = 0.01
+texture_under = ExtResource( 19 )
+texture_progress = ExtResource( 20 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Tween" type="Tween" parent="LoadingScreen/ProgressBar"]
+
+[connection signal="image_loaded" from="Background" to="LoadingScreen" method="_on_Background_image_loaded"]
+[connection signal="finished" from="Background/VideoPlayer" to="Background" method="_on_VideoPlayer_finished"]
+[connection signal="pressed" from="MenuButton/TextureButton" to="MenuButton" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="BottomMenu/HBoxContainer/Settings" to="BottomMenu" method="_on_Settings_pressed"]
+[connection signal="pressed" from="BottomMenu/HBoxContainer/Github" to="BottomMenu" method="_on_Github_pressed"]
+[connection signal="pressed" from="BottomMenu/HBoxContainer/Insta" to="BottomMenu" method="_on_Insta_pressed"]
+[connection signal="tween_all_completed" from="LoadingScreen/ProgressBar/Tween" to="LoadingScreen" method="_on_Tween_tween_all_completed"]
+
+[editable path="StartMenu"]

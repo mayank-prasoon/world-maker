@@ -1,0 +1,604 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Scene/map/scripts/ViewModifier.gd" type="Script" id=1]
+[ext_resource path="res://themes/basepanel_theme.tres" type="StyleBox" id=2]
+[ext_resource path="res://assests/map/controlpannel/fluent_line-horizontal-3-20-filled.png" type="Texture" id=3]
+[ext_resource path="res://themes/transparent_base_panel.tres" type="StyleBox" id=4]
+[ext_resource path="res://assests/map/controlpannel/mdi_magnify-minus.png" type="Texture" id=5]
+[ext_resource path="res://assests/map/controlpannel/carbon_center-to-fit.png" type="Texture" id=6]
+[ext_resource path="res://assests/map/controlpannel/mdi_magnify-close.png" type="Texture" id=7]
+[ext_resource path="res://Scene/map/ViewTools.gd" type="Script" id=8]
+[ext_resource path="res://Effects/BackgroundBlur.tscn" type="PackedScene" id=9]
+[ext_resource path="res://themes/popup_grey_normal.tres" type="StyleBox" id=10]
+[ext_resource path="res://Scene/map/scripts/InputHandeler.gd" type="Script" id=11]
+[ext_resource path="res://Scene/map/MapSymbolManger.gd" type="Script" id=12]
+[ext_resource path="res://Effects/Animation.gd" type="Script" id=13]
+[ext_resource path="res://Scene/map/Assests/map_wiki/MapWikiPanel.gd" type="Script" id=14]
+[ext_resource path="res://Scene/map/scripts/Camera2D.gd" type="Script" id=15]
+[ext_resource path="res://Scene/map/WindowSizeManager.gd" type="Script" id=16]
+[ext_resource path="res://assests/map/new Symbol/Polygon 6.png" type="Texture" id=17]
+[ext_resource path="res://Scene/map/Map.gd" type="Script" id=18]
+[ext_resource path="res://Scene/map/Assests/loadingScreen/LoadingScreen.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scene/map/Assests/control_panel/ConrolPanel.gd" type="Script" id=20]
+[ext_resource path="res://Scene/map/Locations.gd" type="Script" id=21]
+[ext_resource path="res://assests/map/NewIcon/icon/chevron-right.png" type="Texture" id=22]
+[ext_resource path="res://Scene/map/scripts/PopUpMenu.gd" type="Script" id=29]
+[ext_resource path="res://Scene/map/scripts/MapEditor.gd" type="Script" id=32]
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.890196, 0.176471, 0.176471, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color( 0, 0, 0, 0.164706 )
+
+[sub_resource type="StreamTexture" id=8]
+flags = 4
+
+[sub_resource type="StreamTexture" id=9]
+flags = 4
+
+[sub_resource type="StreamTexture" id=10]
+flags = 4
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="Animation" id=12]
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("PopUpMenuContainer:custom_constants/separation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( -2, 0.5, -2 ),
+"update": 0,
+"values": [ -45, 20, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PopUpMenuContainer/Filter:custom_styles/normal:shadow_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PopUpMenuContainer/DeleteAll:custom_styles/normal:shadow_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PopUpMenuContainer/Open/OpenClose2:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 0.5, -2, 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, -100.0, -90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PopUpMenuContainer/Filter:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PopUpMenuContainer/Search:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PopUpMenuContainer/DeleteAll:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 0.780392 )
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[node name="Map" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 512.0, 328.0, 728.0 ]
+}
+
+[node name="MapSymbolManger" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="InputHandler" type="Node" parent="MapSymbolManger"]
+script = ExtResource( 11 )
+
+[node name="MapEditor" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_right = -2.0
+mouse_filter = 2
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="TextureRect" parent="MapEditor"]
+anchor_right = 1.61133
+anchor_bottom = 1.78333
+margin_right = -625.998
+margin_bottom = -470.002
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Locations" type="Control" parent="MapEditor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512.167, 304 )
+current = true
+zoom = Vector2( 2, 2 )
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 15 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="PopUpMapSymbol" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Camera2D/CanvasLayer/PopUpMapSymbol"]
+position = Vector2( 791, 325 )
+
+[node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/PopUpMapSymbol/Node2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 23.0
+margin_top = -45.0
+margin_right = 286.0
+margin_bottom = 341.0
+rect_pivot_offset = Vector2( 144, 193 )
+custom_styles/panel = SubResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/PopUpMapSymbol/Node2D/Panel"]
+margin_left = -24.0
+margin_top = 29.0
+margin_right = 3.0
+margin_bottom = 60.0
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Camera2D/CanvasLayer/PopUpMapSymbol/Node2D/Panel"]
+margin_left = 40.0
+margin_top = 23.0
+margin_right = 242.0
+margin_bottom = 225.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Camera2D/CanvasLayer/PopUpMapSymbol/Node2D/Panel"]
+margin_left = 26.0
+margin_top = 253.0
+margin_right = 236.0
+margin_bottom = 294.0
+
+[node name="LineEdit2" type="LineEdit" parent="Camera2D/CanvasLayer/PopUpMapSymbol/Node2D/Panel"]
+margin_left = 26.0
+margin_top = 316.0
+margin_right = 236.0
+margin_bottom = 360.0
+
+[node name="MapWikiPanel" type="Control" parent="Camera2D/CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelBackground" type="Panel" parent="Camera2D/CanvasLayer/MapWikiPanel"]
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 15.0
+margin_right = 806.0
+margin_bottom = -16.0
+rect_pivot_offset = Vector2( 0, 524 )
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animaion" type="Tween" parent="Camera2D/CanvasLayer/MapWikiPanel/PanelBackground"]
+script = ExtResource( 13 )
+
+[node name="MapMenu" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="Camera2D/CanvasLayer/MapMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.24121
+margin_bottom = 1.24121
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Control" parent="Camera2D/CanvasLayer/MapMenu/Menu"]
+anchor_left = 0.007
+anchor_top = 0.018
+anchor_right = 0.123
+anchor_bottom = 0.018
+margin_left = -0.168
+margin_top = 0.2
+margin_right = 119.048
+margin_bottom = 44.2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="Camera2D/CanvasLayer/MapMenu/Menu/MainMenu"]
+anchor_top = -0.133664
+anchor_right = 0.131604
+anchor_bottom = 0.866336
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/MapMenu/Menu/MainMenu/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/MapMenu/Menu/MainMenu/Background/HBoxContainer"]
+margin_left = 3.0
+margin_right = 43.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 40, 0 )
+mouse_default_cursor_shape = 2
+icon = ExtResource( 3 )
+flat = true
+expand_icon = true
+
+[node name="ViewTools" type="Control" parent="Camera2D/CanvasLayer/MapMenu/Menu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -171.999
+margin_top = -60.0005
+margin_right = -15.9994
+margin_bottom = -16.0001
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Background" type="Panel" parent="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background"]
+anchor_left = 0.0128205
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Reset" type="Button" parent="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background/HBoxContainer"]
+margin_left = 5.0
+margin_right = 43.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 38, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+icon = ExtResource( 6 )
+flat = true
+expand_icon = true
+
+[node name="ZoomIn" type="Button" parent="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background/HBoxContainer"]
+margin_left = 57.0
+margin_right = 95.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 38, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="ZoomOut" type="Button" parent="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background/HBoxContainer"]
+margin_left = 109.0
+margin_right = 147.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 38, 38 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+icon = ExtResource( 5 )
+flat = true
+expand_icon = true
+
+[node name="PopUpMenu" type="Control" parent="Camera2D/CanvasLayer/MapMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.24121
+margin_bottom = 1.24121
+mouse_filter = 2
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopUpMenuContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = -265.241
+margin_right = 68.0
+margin_bottom = -25.2411
+custom_constants/separation = -45
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteAll" type="Button" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu/PopUpMenuContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 194.0
+margin_right = 45.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 45, 45 )
+mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 7 )
+icon = SubResource( 8 )
+expand_icon = true
+
+[node name="Search" type="Button" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu/PopUpMenuContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 194.0
+margin_right = 45.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 45, 45 )
+mouse_default_cursor_shape = 2
+custom_styles/normal = ExtResource( 10 )
+icon = SubResource( 9 )
+expand_icon = true
+
+[node name="Filter" type="Button" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu/PopUpMenuContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 194.0
+margin_right = 45.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 45, 45 )
+mouse_default_cursor_shape = 2
+custom_styles/normal = ExtResource( 10 )
+icon = SubResource( 10 )
+expand_icon = true
+
+[node name="Open" type="Control" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu/PopUpMenuContainer"]
+margin_top = 194.0
+margin_right = 45.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 45, 45 )
+rect_pivot_offset = Vector2( 22.75, 22.75 )
+
+[node name="OpenClose2" type="Button" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu/PopUpMenuContainer/Open"]
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 45, 45 )
+rect_pivot_offset = Vector2( 22.5, 22.5 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/MapMenu/PopUpMenu"]
+anims/popup = SubResource( 12 )
+
+[node name="BackgroundBlur" parent="Camera2D/CanvasLayer" instance=ExtResource( 9 )]
+Animate = false
+
+[node name="ConrolPanel" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/ConrolPanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -362.996
+margin_top = -56.0
+margin_right = -327.995
+margin_bottom = -21.0
+rect_min_size = Vector2( 35, 35 )
+focus_mode = 0
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+toggle_mode = true
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/ConrolPanel/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 17, 17 )
+texture = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animaion" type="Tween" parent="Camera2D/CanvasLayer/ConrolPanel/Button/TextureRect"]
+script = ExtResource( 13 )
+
+[node name="Animaion" type="Tween" parent="Camera2D/CanvasLayer/ConrolPanel/Button"]
+script = ExtResource( 13 )
+
+[node name="PanelBackground" type="Panel" parent="Camera2D/CanvasLayer/ConrolPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -328.0
+margin_top = 74.0
+margin_right = -16.0
+margin_bottom = -69.0
+rect_pivot_offset = Vector2( 328, 429 )
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animaion" type="Tween" parent="Camera2D/CanvasLayer/ConrolPanel/PanelBackground"]
+script = ExtResource( 13 )
+
+[node name="WindowSizeManager" type="Node" parent="Camera2D/CanvasLayer/ConrolPanel/PanelBackground"]
+script = ExtResource( 16 )
+
+[node name="ExtraMenu" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/ExtraMenu"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -328.0
+margin_top = 15.0
+margin_right = -16.0
+margin_bottom = 59.0
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingScreen" parent="Camera2D/CanvasLayer" instance=ExtResource( 19 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+
+[connection signal="gui_input" from="MapEditor" to="MapSymbolManger/InputHandler" method="_on_MapEditor_gui_input"]
+[connection signal="image_loaded" from="MapEditor" to="Camera2D/CanvasLayer/LoadingScreen" method="_on_MapEditor_image_loaded"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/MapMenu/Menu/MainMenu/Background/HBoxContainer/Button" to="Camera2D/CanvasLayer/MapMenu/Menu/MainMenu" method="_on_Button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background/HBoxContainer/Reset" to="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools" method="_on_Reset_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background/HBoxContainer/ZoomIn" to="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools" method="_on_Increase_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools/Background/HBoxContainer/ZoomOut" to="Camera2D/CanvasLayer/MapMenu/Menu/ViewTools" method="_on_Decrese_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/MapMenu/PopUpMenu/PopUpMenuContainer/Open/OpenClose2" to="Camera2D/CanvasLayer/MapMenu/PopUpMenu" method="_on_OpenClose_pressed"]
+[connection signal="toggled" from="Camera2D/CanvasLayer/ConrolPanel/Button" to="Camera2D/CanvasLayer/ConrolPanel" method="_on_Button_toggled"]
+
+[editable path="Camera2D/CanvasLayer/LoadingScreen"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scene/notes/TextEditor.gd" type="Script" id=1]
+
+[sub_resource type="Theme" id=1]
+CheckBox/fonts/font = null
+
+[node name="Notes" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -437, -202.659 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 150.0 ]
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 40, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 44.0
+margin_right = 853.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
+margin_right = 809.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Title"
+caret_blink = true
+
+[node name="TextEdit2" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 809.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 857.0
+margin_right = 1666.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer3"]
+margin_right = 809.0
+margin_bottom = 1080.0
+focus_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+selection_enabled = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 1670.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 250, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+margin_right = 250.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Article"
+align = 1
+valign = 1
+
+[node name="Tree" type="Tree" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 44.0
+margin_right = 250.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+theme = SubResource( 1 )
+
+[node name="TextEditor" type="Node" parent="."]
+script = ExtResource( 1 )

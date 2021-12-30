@@ -1,0 +1,237 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Effects/BackgroundBlur.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assests/Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assests/Tabs/backgruond.png" type="Texture" id=3]
+[ext_resource path="res://assests/Tabs/tab icons/rules.png" type="Texture" id=5]
+[ext_resource path="res://assests/Tabs/tab icons/stats.png" type="Texture" id=6]
+[ext_resource path="res://assests/Tabs/tab icons/character.png" type="Texture" id=7]
+[ext_resource path="res://assests/Tabs/tab icons/timeline.png" type="Texture" id=8]
+[ext_resource path="res://assests/Tabs/tab icons/bestiary.png" type="Texture" id=9]
+[ext_resource path="res://assests/Tabs/x.png" type="Texture" id=10]
+[ext_resource path="res://assests/Tabs/tab icons/notes.png" type="Texture" id=11]
+[ext_resource path="res://assests/Tabs/tab icons/family tree.png" type="Texture" id=12]
+[ext_resource path="res://assests/Tabs/tab icons/map.png" type="Texture" id=13]
+[ext_resource path="res://assests/Tabs/Rectangle 43.png" type="Texture" id=14]
+[ext_resource path="res://Scene/tab_menu/MainControl.gd" type="Script" id=15]
+[ext_resource path="res://Scene/tab_menu/Tabs.gd" type="Script" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Tabs" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundImage" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradiant" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundBlur" parent="." instance=ExtResource( 1 )]
+visible = true
+
+[node name="MainControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Button" parent="MainControl"]
+anchor_left = 0.01
+anchor_top = 0.0503121
+anchor_right = 0.01
+anchor_bottom = 0.0503121
+margin_left = 49.6329
+margin_top = -15.0
+margin_right = 116.633
+margin_bottom = 15.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 1 )
+text = "MENU"
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CloseTab" type="Button" parent="MainControl"]
+anchor_left = 0.01
+anchor_top = 0.052
+anchor_right = 0.01
+anchor_bottom = 0.052
+margin_left = -0.240001
+margin_top = -20.2
+margin_right = 47.76
+margin_bottom = 20.8
+mouse_default_cursor_shape = 2
+icon = ExtResource( 10 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Tabs" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tabs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.809
+margin_top = -74.0
+margin_right = 268.191
+margin_bottom = 108.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tabs/VBoxContainer"]
+margin_right = 539.0
+margin_bottom = 64.0
+custom_constants/separation = 40
+alignment = 1
+
+[node name="map" type="Button" parent="Tabs/VBoxContainer/HBoxContainer"]
+margin_right = 49.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 49, 58 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+icon = ExtResource( 13 )
+flat = true
+expand_icon = true
+
+[node name="FamilyTree" type="Button" parent="Tabs/VBoxContainer/HBoxContainer"]
+margin_left = 89.0
+margin_right = 157.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 68, 53 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+icon = ExtResource( 12 )
+flat = true
+expand_icon = true
+
+[node name="Timeline" type="Button" parent="Tabs/VBoxContainer/HBoxContainer"]
+margin_left = 197.0
+margin_right = 275.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 78, 63 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+icon = ExtResource( 8 )
+flat = true
+expand_icon = true
+
+[node name="Rules" type="Button" parent="Tabs/VBoxContainer/HBoxContainer"]
+margin_left = 315.0
+margin_right = 363.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 48, 53 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+icon = ExtResource( 5 )
+flat = true
+expand_icon = true
+
+[node name="Note" type="Button" parent="Tabs/VBoxContainer/HBoxContainer"]
+margin_left = 403.0
+margin_right = 451.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 48, 63 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+icon = ExtResource( 11 )
+flat = true
+expand_icon = true
+
+[node name="Stats" type="Button" parent="Tabs/VBoxContainer/HBoxContainer"]
+margin_left = 491.0
+margin_right = 539.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 48, 64 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+icon = ExtResource( 6 )
+flat = true
+expand_icon = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Tabs/VBoxContainer"]
+margin_top = 84.0
+margin_right = 539.0
+margin_bottom = 148.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Character" type="Button" parent="Tabs/VBoxContainer/HBoxContainer2"]
+margin_left = 178.0
+margin_right = 259.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 81, 44 )
+size_flags_vertical = 3
+icon = ExtResource( 7 )
+flat = true
+expand_icon = true
+
+[node name="bestiary" type="Button" parent="Tabs/VBoxContainer/HBoxContainer2"]
+margin_left = 289.0
+margin_right = 360.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 71, 64 )
+size_flags_vertical = 3
+icon = ExtResource( 9 )
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="MainControl/Menu" to="MainControl" method="_on_Menu_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer/map" to="Tabs" method="_on_map_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer/FamilyTree" to="Tabs" method="_on_FamilyTree_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer/Timeline" to="Tabs" method="_on_Timeline_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer/Rules" to="Tabs" method="_on_Rules_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer/Note" to="Tabs" method="_on_Note_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer/Stats" to="Tabs" method="_on_Stats_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer2/Character" to="Tabs" method="_on_Character_pressed"]
+[connection signal="pressed" from="Tabs/VBoxContainer/HBoxContainer2/bestiary" to="Tabs" method="_on_bestiary_pressed"]
+
+[editable path="BackgroundBlur"]
