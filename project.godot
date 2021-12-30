@@ -74,8 +74,9 @@ config/icon="res://icon.png"
 [autoload]
 
 SystemSettings="*res://singletone/EditorSetting.tscn"
-SystemDataManager="*res://singletone/SystemDataManager.tscn"
 CommandSystem="*res://singletone/CommandSystem.tscn"
+SystemDataManager="*res://singletone/SystemDataManager.tscn"
+ProjectSettingsManager="*res://singletone/ProjectSetting.tscn"
 Logger="*res://singletone/Logger.tscn"
 
 [debug]
@@ -85,6 +86,19 @@ gdscript/completion/autocomplete_setters_and_getters=true
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/godot-logging/plugin.cfg", "res://addons/gut/plugin.cfg" )
+
+[input]
+
+"full screen"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"command line interface"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [logging]
 

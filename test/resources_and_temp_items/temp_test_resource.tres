@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 template_name = ""
-template_offset = Vector2( 0, 0 )
 template_texture = ""
+template_offset = Vector2( 0, 0 )
 template_color = Color( 0, 0, 0, 1 )

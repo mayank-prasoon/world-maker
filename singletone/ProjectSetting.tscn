@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://singletone/project_setting.gd" type="Script" id=1]
+[ext_resource path="res://singletone/project_setting_dependecy/shortcut_settings.gd" type="Script" id=2]
+[ext_resource path="res://singletone/visual_settings.gd" type="Script" id=3]
 
 [node name="ProjectSetting" type="Node"]
 script = ExtResource( 1 )
+
+[node name="ShortcutSettings" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="VisualSettings" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[connection signal="load_data" from="." to="ShortcutSettings" method="_on_ProjectSetting_load_data"]

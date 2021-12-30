@@ -7,11 +7,12 @@ onready var Console         = $"../CommandSystemInterface/Console/Log"
 
 # === SystemDataManager NODES ===
 
-onready var PIN:Node      = SystemDataManager.get_node("PinSystem")
-onready var CHUNK:Node    = SystemDataManager.get_node("MapChunkSystem")
-onready var TEMPLATE:Node = SystemDataManager.get_node("SymbolTemplateSystem")
-onready var MAP:Node      = SystemDataManager.get_node("MapSystem")
-onready var ARTICLE:Node  = SystemDataManager.get_node("ArticleSystem")
+onready var PIN:Node         = SystemDataManager.get_node("PinSystem")
+onready var CHUNK:Node       = SystemDataManager.get_node("MapChunkSystem")
+onready var TEMPLATE:Node    = SystemDataManager.get_node("SymbolTemplateSystem")
+onready var MAP:Node         = SystemDataManager.get_node("MapSystem")
+onready var ARTICLE:Node     = SystemDataManager.get_node("ArticleSystem")
+onready var PORJECT_SETTINGS = ProjectSettingsManager
 
 # === VARIABLES === 
 
@@ -80,5 +81,5 @@ func run_script(path:String)->void:
 	var new_node = Node.new()
 	new_node.set_script(script)
 	new_node.queue_free()
-	echo("=== RUNING EXTERNAL SCRIPT ({script_name}) ===")
+	echo("=== RUNING EXTERNAL SCRIPT ({script_name}) ===".format({"script_name" : path}))
 	Logger.info("script was successfully executed")

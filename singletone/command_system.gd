@@ -3,7 +3,7 @@ extends Node
 # === NODES ===
 
 onready var console:VBoxContainer = $CommandSystemInterface/Console/Log
-onready var API:Node              = $CommandAPI
+onready var API:Node              = $"CommandAPI"
 onready var command_line:LineEdit = $CommandSystemInterface/HBoxContainer/CommandInput
 
 # === VARIABLES ===
@@ -21,6 +21,12 @@ func _on_CommandInput_text_changed(_command:String) -> void:
 
 func _on_RunButton_pressed() -> void:
 	execute_command(command_line.text)
+
+func _input(event):
+	if event.is_action_pressed("command line interface"):
+		command_line_state = !command_line_state
+		$CommandSystemInterface.visible = command_line_state
+
 
 func execute_command(command:String) -> void:
 	var expression = Expression.new()

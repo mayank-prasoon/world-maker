@@ -1,0 +1,6 @@
+[gd_resource type="InputEventKey" format=2]
+
+[resource]
+shift = true
+pressed = true
+scancode = 84
