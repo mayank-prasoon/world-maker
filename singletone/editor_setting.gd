@@ -5,10 +5,10 @@ extends Node
 var editor_settings_save_location:String   = "res://settings.tres"
 var settings:EditorSettingsTemplate        = EditorSettingsTemplate.new()
 
-var current_path = "res://"
+var current_path:String = "res://"
 
 func _ready()->void:
-	Logger.info(name + " loaded")	
+	Logger.info(name + " loaded")
 	var file = File.new()
 	if !file.file_exists(editor_settings_save_location):
 		var _x = ResourceSaver.save(editor_settings_save_location, settings)
@@ -30,9 +30,10 @@ func add_new_project(project_name:String, project_path:String):
 
 
 func remove_project(project_name:String, project_path:String):
+	Logger.info(name + " - " + "remove_project({0},{1})".format([project_name,project_path]))
 	
 	var index = -1
-	
+
 	for x in settings.project_list.size():
 		if str(settings.project_list[x]) == str({project_name : project_path}):
 			index = x
@@ -41,6 +42,9 @@ func remove_project(project_name:String, project_path:String):
 		settings.project_list.remove(index)
 		var _x = ResourceSaver.save(editor_settings_save_location, settings)
 		Logger.info(name + " - " + "remove_project({0},{1})".format([project_name,project_path]))
+	else:
+		Logger.info(name + " - " + "remove_project({0},{1})".format([project_name,project_path]) + " aborted")
+		Logger.error(name + " - " + "{0} : {1} could not be found".format([project_name,project_path]))
 
 # === last project ===
 
