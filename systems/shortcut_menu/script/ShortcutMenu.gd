@@ -9,7 +9,7 @@ func _on_Back_pressed():
 
 
 func _on_Default_pressed():
-	ProjectSettingsManager.shortcut_settings.default_keys()
+	ProjectSettingsManager.get_node("ShortcutSettings").default_keys()
 	load_shortcuts()
 
 func load_shortcuts():

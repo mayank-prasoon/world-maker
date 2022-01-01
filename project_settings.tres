@@ -1,18 +1,13 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
+[ext_resource path="res://assets/default_shortcut/default_fullscreen.tres" type="InputEventKey" id=1]
 [ext_resource path="res://assets/file templates/editor_setting_system_template/project_settings_template.gd" type="Script" id=3]
 
 [sub_resource type="InputEventKey" id=1]
 pressed = true
-scancode = 75
-physical_scancode = 75
-unicode = 107
-
-[sub_resource type="InputEventKey" id=2]
-pressed = true
-scancode = 70
-physical_scancode = 70
-unicode = 102
+scancode = 83
+physical_scancode = 83
+unicode = 115
 
 [resource]
 script = ExtResource( 3 )
@@ -22,7 +17,7 @@ date_of_creation = ""
 project_location = ""
 shortcuts = {
 "command line interface": SubResource( 1 ),
-"fullscreen": SubResource( 2 )
+"fullscreen": ExtResource( 1 )
 }
 visual_settings = {
 }

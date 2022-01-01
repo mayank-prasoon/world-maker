@@ -7,6 +7,11 @@ onready var shortcut_settings = $ShortcutSettings
 var save_file_location:String = "/project_settings.tres"
 var project_save_template     = preload("res://assets/file templates/editor_setting_system_template/project_settings_template.gd").new()
 
+var default_keybinding:Dictionary = {
+			"command line interface" : preload("res://assets/default_shortcut/default_command_line_interface.tres"),
+			"fullscreen"             : preload("res://assets/default_shortcut/default_fullscreen.tres")
+	}
+
 # === SETTINGS ===
 
 # basic imformation
@@ -16,8 +21,8 @@ export(String) var date_of_creation
 export(String) var project_location
 
 # shortcut
-export(Dictionary) var shortcuts
-export(Dictionary) var visual_settings
+export(Dictionary) var shortcuts:Dictionary
+export(Dictionary) var visual_settings:Dictionary
 
 # mods and addons
 export(Array,Dictionary) var addons
@@ -30,7 +35,7 @@ func _ready():
 	Logger.info(name + " - " + "Node loadded")
 	var file = File.new()
 	if !file.file_exists(SystemSettings.current_path + save_file_location):
-		shortcuts = get_node("ShortcutSettings").default_keybinding
+		shortcuts = default_keybinding.duplicate()
 		save_file()
 	else:
 		open_file()
