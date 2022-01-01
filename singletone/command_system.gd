@@ -2,16 +2,16 @@ extends Node
 
 # === NODES ===
 
-onready var console:VBoxContainer = $CommandSystemInterface/Console/Log
-onready var API:Node              = $"CommandAPI"
-onready var command_line:LineEdit = $CommandSystemInterface/HBoxContainer/CommandInput
+onready var console:VBoxContainer = $CanvasLayer/CommandSystemInterface/Console/Log
+onready var API:Node              = $CommandAPI
+onready var command_line:LineEdit = $CanvasLayer/CommandSystemInterface/HBoxContainer/CommandInput
 
 # === VARIABLES ===
 
 export(bool) var command_line_state = false
 
 func _ready():
-	$CommandSystemInterface.visible = command_line_state
+	$CanvasLayer/CommandSystemInterface.visible = command_line_state
 
 func _on_CommandInput_text_entered(command:String) -> void:
 	execute_command(command)
@@ -25,7 +25,7 @@ func _on_RunButton_pressed() -> void:
 func _input(event):
 	if event.is_action_pressed("command line interface"):
 		command_line_state = !command_line_state
-		$CommandSystemInterface.visible = command_line_state
+		$CanvasLayer/CommandSystemInterface.visible = command_line_state
 
 
 func execute_command(command:String) -> void:

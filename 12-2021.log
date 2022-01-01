@@ -4872,3 +4872,1080 @@
 12/31/2021 14:28:46 INFO     MainMenu _on_OpenProjectButton_pressed()
 12/31/2021 14:28:50 INFO     MainMenu _on_NewProjectButton_pressed()
 12/31/2021 14:28:52 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:03:16 INFO     SystemSettings loaded
+12/31/2021 19:03:16 INFO     SaveSystem - loaded
+12/31/2021 19:03:16 INFO     SaveSystem - loaded
+12/31/2021 19:03:16 INFO     SaveSystem - loaded
+12/31/2021 19:03:16 INFO     SaveSystem - node loaded
+12/31/2021 19:03:16 INFO     MapChunkManager - node loaded
+12/31/2021 19:03:16 INFO     MapChunkSystem - loaded
+12/31/2021 19:03:16 INFO     SaveSystem - loaded
+12/31/2021 19:03:16 INFO     SaveSystem node loaded
+12/31/2021 19:03:16 INFO     MapManager node loaded
+12/31/2021 19:03:16 INFO     MapSystem node loaded
+12/31/2021 19:03:16 INFO     SaveSystem - loaded
+12/31/2021 19:03:16 INFO     SaveSystem - node loaded
+12/31/2021 19:03:16 INFO     ArticleManager - node loaded
+12/31/2021 19:03:16 INFO     ArticleSystem - node loaded
+12/31/2021 19:03:16 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:03:16 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:03:16 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:03:16 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:03:16 INFO     NewProject - node loaded
+12/31/2021 19:03:16 INFO     MainMenu - node loaded
+12/31/2021 19:03:20 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:03:21 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:03:22 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:03:23 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:03:24 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:12:30 INFO     SystemSettings loaded
+12/31/2021 19:12:30 INFO     SaveSystem - loaded
+12/31/2021 19:12:30 INFO     SaveSystem - loaded
+12/31/2021 19:12:30 INFO     SaveSystem - loaded
+12/31/2021 19:12:30 INFO     SaveSystem - node loaded
+12/31/2021 19:12:30 INFO     MapChunkManager - node loaded
+12/31/2021 19:12:30 INFO     MapChunkSystem - loaded
+12/31/2021 19:12:30 INFO     SaveSystem - loaded
+12/31/2021 19:12:30 INFO     SaveSystem node loaded
+12/31/2021 19:12:30 INFO     MapManager node loaded
+12/31/2021 19:12:30 INFO     MapSystem node loaded
+12/31/2021 19:12:30 INFO     SaveSystem - loaded
+12/31/2021 19:12:30 INFO     SaveSystem - node loaded
+12/31/2021 19:12:30 INFO     ArticleManager - node loaded
+12/31/2021 19:12:30 INFO     ArticleSystem - node loaded
+12/31/2021 19:12:30 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:12:30 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:12:30 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:12:30 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:12:43 INFO     SystemSettings loaded
+12/31/2021 19:12:43 INFO     SaveSystem - loaded
+12/31/2021 19:12:43 INFO     SaveSystem - loaded
+12/31/2021 19:12:43 INFO     SaveSystem - loaded
+12/31/2021 19:12:43 INFO     SaveSystem - node loaded
+12/31/2021 19:12:43 INFO     MapChunkManager - node loaded
+12/31/2021 19:12:43 INFO     MapChunkSystem - loaded
+12/31/2021 19:12:43 INFO     SaveSystem - loaded
+12/31/2021 19:12:43 INFO     SaveSystem node loaded
+12/31/2021 19:12:43 INFO     MapManager node loaded
+12/31/2021 19:12:43 INFO     MapSystem node loaded
+12/31/2021 19:12:43 INFO     SaveSystem - loaded
+12/31/2021 19:12:43 INFO     SaveSystem - node loaded
+12/31/2021 19:12:43 INFO     ArticleManager - node loaded
+12/31/2021 19:12:43 INFO     ArticleSystem - node loaded
+12/31/2021 19:12:43 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:12:43 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:12:43 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:12:43 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:13:44 INFO     SystemSettings loaded
+12/31/2021 19:13:44 INFO     SaveSystem - loaded
+12/31/2021 19:13:44 INFO     SaveSystem - loaded
+12/31/2021 19:13:44 INFO     SaveSystem - loaded
+12/31/2021 19:13:44 INFO     SaveSystem - node loaded
+12/31/2021 19:13:44 INFO     MapChunkManager - node loaded
+12/31/2021 19:13:44 INFO     MapChunkSystem - loaded
+12/31/2021 19:13:44 INFO     SaveSystem - loaded
+12/31/2021 19:13:44 INFO     SaveSystem node loaded
+12/31/2021 19:13:44 INFO     MapManager node loaded
+12/31/2021 19:13:44 INFO     MapSystem node loaded
+12/31/2021 19:13:44 INFO     SaveSystem - loaded
+12/31/2021 19:13:44 INFO     SaveSystem - node loaded
+12/31/2021 19:13:44 INFO     ArticleManager - node loaded
+12/31/2021 19:13:44 INFO     ArticleSystem - node loaded
+12/31/2021 19:13:44 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:13:44 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:13:44 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:13:44 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:30:09 INFO     SystemSettings loaded
+12/31/2021 19:30:09 INFO     SaveSystem - loaded
+12/31/2021 19:30:09 INFO     SaveSystem - loaded
+12/31/2021 19:30:09 INFO     SaveSystem - loaded
+12/31/2021 19:30:09 INFO     SaveSystem - node loaded
+12/31/2021 19:30:09 INFO     MapChunkManager - node loaded
+12/31/2021 19:30:09 INFO     MapChunkSystem - loaded
+12/31/2021 19:30:09 INFO     SaveSystem - loaded
+12/31/2021 19:30:09 INFO     SaveSystem node loaded
+12/31/2021 19:30:09 INFO     MapManager node loaded
+12/31/2021 19:30:09 INFO     MapSystem node loaded
+12/31/2021 19:30:09 INFO     SaveSystem - loaded
+12/31/2021 19:30:09 INFO     SaveSystem - node loaded
+12/31/2021 19:30:09 INFO     ArticleManager - node loaded
+12/31/2021 19:30:09 INFO     ArticleSystem - node loaded
+12/31/2021 19:30:09 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:30:09 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:30:09 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:30:09 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:31:22 INFO     SystemSettings loaded
+12/31/2021 19:31:22 INFO     SaveSystem - loaded
+12/31/2021 19:31:22 INFO     SaveSystem - loaded
+12/31/2021 19:31:22 INFO     SaveSystem - loaded
+12/31/2021 19:31:22 INFO     SaveSystem - node loaded
+12/31/2021 19:31:22 INFO     MapChunkManager - node loaded
+12/31/2021 19:31:22 INFO     MapChunkSystem - loaded
+12/31/2021 19:31:22 INFO     SaveSystem - loaded
+12/31/2021 19:31:22 INFO     SaveSystem node loaded
+12/31/2021 19:31:22 INFO     MapManager node loaded
+12/31/2021 19:31:22 INFO     MapSystem node loaded
+12/31/2021 19:31:22 INFO     SaveSystem - loaded
+12/31/2021 19:31:22 INFO     SaveSystem - node loaded
+12/31/2021 19:31:22 INFO     ArticleManager - node loaded
+12/31/2021 19:31:22 INFO     ArticleSystem - node loaded
+12/31/2021 19:31:22 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:31:22 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:31:22 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:31:22 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:31:22 INFO     NewProject - node loaded
+12/31/2021 19:31:22 INFO     MainMenu - node loaded
+12/31/2021 19:31:26 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:31:27 INFO     NewProject _on_LineEdit_text_changed(g)
+12/31/2021 19:31:27 INFO     NewProject _on_LineEdit_text_changed(gm)
+12/31/2021 19:31:28 INFO     NewProject _on_LineEdit_text_changed(gma)
+12/31/2021 19:31:28 INFO     NewProject _on_LineEdit_text_changed(gmae)
+12/31/2021 19:31:28 INFO     NewProject _on_LineEdit_text_changed(gma)
+12/31/2021 19:31:28 INFO     NewProject _on_LineEdit_text_changed(gm)
+12/31/2021 19:31:29 INFO     NewProject _on_LineEdit_text_changed(g)
+12/31/2021 19:31:29 INFO     NewProject _on_LineEdit_text_changed(ga)
+12/31/2021 19:31:29 INFO     NewProject _on_LineEdit_text_changed(gam)
+12/31/2021 19:31:29 INFO     NewProject _on_LineEdit_text_changed(game)
+12/31/2021 19:31:31 INFO     NewProject _on_BrowseButton_pressed()
+12/31/2021 19:31:34 INFO     NewProject _on_FileDialog_dir_selected(res://test)
+12/31/2021 19:31:35 INFO     NewProject _on_CreateButton_pressed()
+12/31/2021 19:31:35 INFO     SystemSettings - get_pinned_project(game,res://test)
+12/31/2021 19:32:05 INFO     SystemSettings loaded
+12/31/2021 19:32:05 INFO     SaveSystem - loaded
+12/31/2021 19:32:05 INFO     SaveSystem - loaded
+12/31/2021 19:32:05 INFO     SaveSystem - loaded
+12/31/2021 19:32:05 INFO     SaveSystem - node loaded
+12/31/2021 19:32:05 INFO     MapChunkManager - node loaded
+12/31/2021 19:32:05 INFO     MapChunkSystem - loaded
+12/31/2021 19:32:05 INFO     SaveSystem - loaded
+12/31/2021 19:32:05 INFO     SaveSystem node loaded
+12/31/2021 19:32:05 INFO     MapManager node loaded
+12/31/2021 19:32:05 INFO     MapSystem node loaded
+12/31/2021 19:32:05 INFO     SaveSystem - loaded
+12/31/2021 19:32:05 INFO     SaveSystem - node loaded
+12/31/2021 19:32:05 INFO     ArticleManager - node loaded
+12/31/2021 19:32:05 INFO     ArticleSystem - node loaded
+12/31/2021 19:32:05 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:32:05 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:32:05 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:32:05 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:32:05 INFO     NewProject - node loaded
+12/31/2021 19:32:05 INFO     MainMenu - node loaded
+12/31/2021 19:41:56 INFO     SystemSettings loaded
+12/31/2021 19:41:56 INFO     SaveSystem - loaded
+12/31/2021 19:41:56 INFO     SaveSystem - loaded
+12/31/2021 19:41:56 INFO     SaveSystem - loaded
+12/31/2021 19:41:56 INFO     SaveSystem - node loaded
+12/31/2021 19:41:56 INFO     MapChunkManager - node loaded
+12/31/2021 19:41:56 INFO     MapChunkSystem - loaded
+12/31/2021 19:41:56 INFO     SaveSystem - loaded
+12/31/2021 19:41:56 INFO     SaveSystem node loaded
+12/31/2021 19:41:56 INFO     MapManager node loaded
+12/31/2021 19:41:56 INFO     MapSystem node loaded
+12/31/2021 19:41:56 INFO     SaveSystem - loaded
+12/31/2021 19:41:56 INFO     SaveSystem - node loaded
+12/31/2021 19:41:56 INFO     ArticleManager - node loaded
+12/31/2021 19:41:56 INFO     ArticleSystem - node loaded
+12/31/2021 19:41:56 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:41:56 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:41:56 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:41:56 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:41:56 INFO     NewProject - node loaded
+12/31/2021 19:41:56 INFO     MainMenu - node loaded
+12/31/2021 19:42:00 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:42:01 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:42:02 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:42:03 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:42:04 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:42:04 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:42:19 INFO     SystemSettings loaded
+12/31/2021 19:42:19 INFO     SaveSystem - loaded
+12/31/2021 19:42:19 INFO     SaveSystem - loaded
+12/31/2021 19:42:19 INFO     SaveSystem - loaded
+12/31/2021 19:42:19 INFO     SaveSystem - node loaded
+12/31/2021 19:42:19 INFO     MapChunkManager - node loaded
+12/31/2021 19:42:19 INFO     MapChunkSystem - loaded
+12/31/2021 19:42:19 INFO     SaveSystem - loaded
+12/31/2021 19:42:19 INFO     SaveSystem node loaded
+12/31/2021 19:42:19 INFO     MapManager node loaded
+12/31/2021 19:42:19 INFO     MapSystem node loaded
+12/31/2021 19:42:19 INFO     SaveSystem - loaded
+12/31/2021 19:42:19 INFO     SaveSystem - node loaded
+12/31/2021 19:42:19 INFO     ArticleManager - node loaded
+12/31/2021 19:42:19 INFO     ArticleSystem - node loaded
+12/31/2021 19:42:19 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:42:19 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:42:19 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:42:19 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:42:19 INFO     NewProject - node loaded
+12/31/2021 19:42:19 INFO     MainMenu - node loaded
+12/31/2021 19:42:23 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:42:24 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:42:25 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:42:27 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:42:28 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:42:29 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:51:03 INFO     SystemSettings loaded
+12/31/2021 19:51:03 INFO     SaveSystem - loaded
+12/31/2021 19:51:03 INFO     SaveSystem - loaded
+12/31/2021 19:51:03 INFO     SaveSystem - loaded
+12/31/2021 19:51:03 INFO     SaveSystem - node loaded
+12/31/2021 19:51:03 INFO     MapChunkManager - node loaded
+12/31/2021 19:51:03 INFO     MapChunkSystem - loaded
+12/31/2021 19:51:03 INFO     SaveSystem - loaded
+12/31/2021 19:51:03 INFO     SaveSystem node loaded
+12/31/2021 19:51:03 INFO     MapManager node loaded
+12/31/2021 19:51:03 INFO     MapSystem node loaded
+12/31/2021 19:51:03 INFO     SaveSystem - loaded
+12/31/2021 19:51:03 INFO     SaveSystem - node loaded
+12/31/2021 19:51:03 INFO     ArticleManager - node loaded
+12/31/2021 19:51:03 INFO     ArticleSystem - node loaded
+12/31/2021 19:51:03 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:51:03 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:51:03 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:51:03 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:51:03 INFO     NewProject - node loaded
+12/31/2021 19:51:03 INFO     MainMenu - node loaded
+12/31/2021 19:51:07 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:51:08 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:51:09 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:51:10 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:51:47 INFO     SystemSettings loaded
+12/31/2021 19:51:47 INFO     SaveSystem - loaded
+12/31/2021 19:51:47 INFO     SaveSystem - loaded
+12/31/2021 19:51:47 INFO     SaveSystem - loaded
+12/31/2021 19:51:47 INFO     SaveSystem - node loaded
+12/31/2021 19:51:47 INFO     MapChunkManager - node loaded
+12/31/2021 19:51:47 INFO     MapChunkSystem - loaded
+12/31/2021 19:51:47 INFO     SaveSystem - loaded
+12/31/2021 19:51:47 INFO     SaveSystem node loaded
+12/31/2021 19:51:47 INFO     MapManager node loaded
+12/31/2021 19:51:47 INFO     MapSystem node loaded
+12/31/2021 19:51:47 INFO     SaveSystem - loaded
+12/31/2021 19:51:47 INFO     SaveSystem - node loaded
+12/31/2021 19:51:47 INFO     ArticleManager - node loaded
+12/31/2021 19:51:47 INFO     ArticleSystem - node loaded
+12/31/2021 19:51:47 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:51:47 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:51:47 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:51:47 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:51:47 INFO     NewProject - node loaded
+12/31/2021 19:51:47 INFO     MainMenu - node loaded
+12/31/2021 19:51:51 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:51:51 INFO     SystemSettings - get_projects()
+12/31/2021 19:51:52 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:51:55 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:51:55 INFO     SystemSettings - get_projects()
+12/31/2021 19:52:46 INFO     SystemSettings loaded
+12/31/2021 19:52:46 INFO     SaveSystem - loaded
+12/31/2021 19:52:46 INFO     SaveSystem - loaded
+12/31/2021 19:52:46 INFO     SaveSystem - loaded
+12/31/2021 19:52:46 INFO     SaveSystem - node loaded
+12/31/2021 19:52:46 INFO     MapChunkManager - node loaded
+12/31/2021 19:52:46 INFO     MapChunkSystem - loaded
+12/31/2021 19:52:46 INFO     SaveSystem - loaded
+12/31/2021 19:52:46 INFO     SaveSystem node loaded
+12/31/2021 19:52:46 INFO     MapManager node loaded
+12/31/2021 19:52:46 INFO     MapSystem node loaded
+12/31/2021 19:52:46 INFO     SaveSystem - loaded
+12/31/2021 19:52:46 INFO     SaveSystem - node loaded
+12/31/2021 19:52:46 INFO     ArticleManager - node loaded
+12/31/2021 19:52:46 INFO     ArticleSystem - node loaded
+12/31/2021 19:52:46 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:52:46 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:52:46 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:52:46 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:52:46 INFO     NewProject - node loaded
+12/31/2021 19:52:46 INFO     MainMenu - node loaded
+12/31/2021 19:52:51 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:52:53 INFO     NewProject _on_LineEdit_text_changed(b)
+12/31/2021 19:52:53 INFO     NewProject _on_LineEdit_text_changed(bo)
+12/31/2021 19:52:53 INFO     NewProject _on_LineEdit_text_changed(boo)
+12/31/2021 19:52:53 INFO     NewProject _on_LineEdit_text_changed(book)
+12/31/2021 19:52:55 INFO     NewProject _on_BrowseButton_pressed()
+12/31/2021 19:52:58 INFO     NewProject _on_FileDialog_dir_selected(res://utilities)
+12/31/2021 19:53:00 INFO     NewProject _on_CreateButton_pressed()
+12/31/2021 19:53:00 INFO     SystemSettings - get_pinned_project(book,res://utilities)
+12/31/2021 19:53:09 INFO     SystemSettings loaded
+12/31/2021 19:53:09 INFO     SaveSystem - loaded
+12/31/2021 19:53:09 INFO     SaveSystem - loaded
+12/31/2021 19:53:09 INFO     SaveSystem - loaded
+12/31/2021 19:53:09 INFO     SaveSystem - node loaded
+12/31/2021 19:53:09 INFO     MapChunkManager - node loaded
+12/31/2021 19:53:09 INFO     MapChunkSystem - loaded
+12/31/2021 19:53:09 INFO     SaveSystem - loaded
+12/31/2021 19:53:09 INFO     SaveSystem node loaded
+12/31/2021 19:53:09 INFO     MapManager node loaded
+12/31/2021 19:53:09 INFO     MapSystem node loaded
+12/31/2021 19:53:09 INFO     SaveSystem - loaded
+12/31/2021 19:53:09 INFO     SaveSystem - node loaded
+12/31/2021 19:53:09 INFO     ArticleManager - node loaded
+12/31/2021 19:53:09 INFO     ArticleSystem - node loaded
+12/31/2021 19:53:09 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:53:09 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:53:09 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:53:09 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:53:09 INFO     NewProject - node loaded
+12/31/2021 19:53:09 INFO     MainMenu - node loaded
+12/31/2021 19:53:14 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:53:14 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:14 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:23 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:53:24 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:53:24 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:24 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:26 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:53:27 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:53:27 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:27 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:28 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:53:29 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:53:29 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:29 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:30 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:53:31 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:53:31 INFO     SystemSettings - get_projects()
+12/31/2021 19:53:31 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:27 INFO     SystemSettings loaded
+12/31/2021 19:54:27 INFO     SaveSystem - loaded
+12/31/2021 19:54:27 INFO     SaveSystem - loaded
+12/31/2021 19:54:27 INFO     SaveSystem - loaded
+12/31/2021 19:54:27 INFO     SaveSystem - node loaded
+12/31/2021 19:54:27 INFO     MapChunkManager - node loaded
+12/31/2021 19:54:27 INFO     MapChunkSystem - loaded
+12/31/2021 19:54:27 INFO     SaveSystem - loaded
+12/31/2021 19:54:27 INFO     SaveSystem node loaded
+12/31/2021 19:54:27 INFO     MapManager node loaded
+12/31/2021 19:54:27 INFO     MapSystem node loaded
+12/31/2021 19:54:27 INFO     SaveSystem - loaded
+12/31/2021 19:54:27 INFO     SaveSystem - node loaded
+12/31/2021 19:54:27 INFO     ArticleManager - node loaded
+12/31/2021 19:54:27 INFO     ArticleSystem - node loaded
+12/31/2021 19:54:27 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:54:27 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:54:27 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:54:27 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:54:27 INFO     NewProject - node loaded
+12/31/2021 19:54:27 INFO     MainMenu - node loaded
+12/31/2021 19:54:31 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:54:31 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:31 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:32 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:54:33 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:54:33 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:33 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:33 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:54:34 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:54:34 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:34 INFO     SystemSettings - get_projects()
+12/31/2021 19:54:35 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:55:32 INFO     SystemSettings loaded
+12/31/2021 19:55:32 INFO     SaveSystem - loaded
+12/31/2021 19:55:32 INFO     SaveSystem - loaded
+12/31/2021 19:55:32 INFO     SaveSystem - loaded
+12/31/2021 19:55:32 INFO     SaveSystem - node loaded
+12/31/2021 19:55:32 INFO     MapChunkManager - node loaded
+12/31/2021 19:55:32 INFO     MapChunkSystem - loaded
+12/31/2021 19:55:32 INFO     SaveSystem - loaded
+12/31/2021 19:55:32 INFO     SaveSystem node loaded
+12/31/2021 19:55:32 INFO     MapManager node loaded
+12/31/2021 19:55:32 INFO     MapSystem node loaded
+12/31/2021 19:55:32 INFO     SaveSystem - loaded
+12/31/2021 19:55:32 INFO     SaveSystem - node loaded
+12/31/2021 19:55:32 INFO     ArticleManager - node loaded
+12/31/2021 19:55:32 INFO     ArticleSystem - node loaded
+12/31/2021 19:55:32 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:55:32 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:55:32 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:55:32 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:55:32 INFO     NewProject - node loaded
+12/31/2021 19:55:32 INFO     MainMenu - node loaded
+12/31/2021 19:55:51 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:55:51 INFO     SystemSettings - get_projects()
+12/31/2021 19:55:51 INFO     SystemSettings - get_projects()
+12/31/2021 19:56:00 INFO     SystemSettings loaded
+12/31/2021 19:56:00 INFO     SaveSystem - loaded
+12/31/2021 19:56:00 INFO     SaveSystem - loaded
+12/31/2021 19:56:00 INFO     SaveSystem - loaded
+12/31/2021 19:56:00 INFO     SaveSystem - node loaded
+12/31/2021 19:56:00 INFO     MapChunkManager - node loaded
+12/31/2021 19:56:00 INFO     MapChunkSystem - loaded
+12/31/2021 19:56:00 INFO     SaveSystem - loaded
+12/31/2021 19:56:00 INFO     SaveSystem node loaded
+12/31/2021 19:56:00 INFO     MapManager node loaded
+12/31/2021 19:56:00 INFO     MapSystem node loaded
+12/31/2021 19:56:00 INFO     SaveSystem - loaded
+12/31/2021 19:56:00 INFO     SaveSystem - node loaded
+12/31/2021 19:56:00 INFO     ArticleManager - node loaded
+12/31/2021 19:56:00 INFO     ArticleSystem - node loaded
+12/31/2021 19:56:00 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:56:00 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:56:00 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:56:00 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:56:00 INFO     NewProject - node loaded
+12/31/2021 19:56:00 INFO     MainMenu - node loaded
+12/31/2021 19:56:43 INFO     SystemSettings loaded
+12/31/2021 19:56:43 INFO     SaveSystem - loaded
+12/31/2021 19:56:43 INFO     SaveSystem - loaded
+12/31/2021 19:56:43 INFO     SaveSystem - loaded
+12/31/2021 19:56:43 INFO     SaveSystem - node loaded
+12/31/2021 19:56:43 INFO     MapChunkManager - node loaded
+12/31/2021 19:56:43 INFO     MapChunkSystem - loaded
+12/31/2021 19:56:43 INFO     SaveSystem - loaded
+12/31/2021 19:56:43 INFO     SaveSystem node loaded
+12/31/2021 19:56:43 INFO     MapManager node loaded
+12/31/2021 19:56:43 INFO     MapSystem node loaded
+12/31/2021 19:56:43 INFO     SaveSystem - loaded
+12/31/2021 19:56:43 INFO     SaveSystem - node loaded
+12/31/2021 19:56:43 INFO     ArticleManager - node loaded
+12/31/2021 19:56:43 INFO     ArticleSystem - node loaded
+12/31/2021 19:56:43 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:56:43 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:56:43 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:56:43 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:56:43 INFO     NewProject - node loaded
+12/31/2021 19:56:43 INFO     MainMenu - node loaded
+12/31/2021 19:56:47 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:56:47 INFO     SystemSettings - get_projects()
+12/31/2021 19:56:47 INFO     SystemSettings - get_projects()
+12/31/2021 19:56:48 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:56:48 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:56:48 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:24 INFO     SystemSettings loaded
+12/31/2021 19:57:24 INFO     SaveSystem - loaded
+12/31/2021 19:57:24 INFO     SaveSystem - loaded
+12/31/2021 19:57:24 INFO     SaveSystem - loaded
+12/31/2021 19:57:24 INFO     SaveSystem - node loaded
+12/31/2021 19:57:24 INFO     MapChunkManager - node loaded
+12/31/2021 19:57:24 INFO     MapChunkSystem - loaded
+12/31/2021 19:57:24 INFO     SaveSystem - loaded
+12/31/2021 19:57:24 INFO     SaveSystem node loaded
+12/31/2021 19:57:24 INFO     MapManager node loaded
+12/31/2021 19:57:24 INFO     MapSystem node loaded
+12/31/2021 19:57:24 INFO     SaveSystem - loaded
+12/31/2021 19:57:24 INFO     SaveSystem - node loaded
+12/31/2021 19:57:24 INFO     ArticleManager - node loaded
+12/31/2021 19:57:24 INFO     ArticleSystem - node loaded
+12/31/2021 19:57:24 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:57:24 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:57:24 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:57:24 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:57:24 INFO     NewProject - node loaded
+12/31/2021 19:57:24 INFO     MainMenu - node loaded
+12/31/2021 19:57:29 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:57:29 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:29 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:30 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:57:30 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:57:30 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:30 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:31 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:57:32 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:57:32 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:32 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:32 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:57:33 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:57:34 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:57:36 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:57:37 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:57:38 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:57:38 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:38 INFO     SystemSettings - get_projects()
+12/31/2021 19:57:39 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:58:10 INFO     SystemSettings loaded
+12/31/2021 19:58:10 INFO     SaveSystem - loaded
+12/31/2021 19:58:10 INFO     SaveSystem - loaded
+12/31/2021 19:58:10 INFO     SaveSystem - loaded
+12/31/2021 19:58:10 INFO     SaveSystem - node loaded
+12/31/2021 19:58:10 INFO     MapChunkManager - node loaded
+12/31/2021 19:58:10 INFO     MapChunkSystem - loaded
+12/31/2021 19:58:10 INFO     SaveSystem - loaded
+12/31/2021 19:58:10 INFO     SaveSystem node loaded
+12/31/2021 19:58:10 INFO     MapManager node loaded
+12/31/2021 19:58:10 INFO     MapSystem node loaded
+12/31/2021 19:58:10 INFO     SaveSystem - loaded
+12/31/2021 19:58:10 INFO     SaveSystem - node loaded
+12/31/2021 19:58:10 INFO     ArticleManager - node loaded
+12/31/2021 19:58:10 INFO     ArticleSystem - node loaded
+12/31/2021 19:58:10 INFO     ShortcutSettings - Node loadded
+12/31/2021 19:58:10 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 19:58:10 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 19:58:10 INFO     ShortcutSettings - setup_keys()
+12/31/2021 19:58:10 INFO     NewProject - node loaded
+12/31/2021 19:58:10 INFO     MainMenu - node loaded
+12/31/2021 19:58:14 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:58:14 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:14 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:15 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:58:15 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:58:15 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:15 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:16 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:58:17 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:58:17 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:17 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:17 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:58:18 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 19:58:19 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 19:58:19 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 19:58:19 INFO     SystemSettings - get_projects()
+12/31/2021 19:58:19 INFO     SystemSettings - get_projects()
+12/31/2021 20:32:02 INFO     SystemSettings loaded
+12/31/2021 20:32:02 INFO     SaveSystem - loaded
+12/31/2021 20:32:02 INFO     SaveSystem - loaded
+12/31/2021 20:32:02 INFO     SaveSystem - loaded
+12/31/2021 20:32:02 INFO     SaveSystem - node loaded
+12/31/2021 20:32:02 INFO     MapChunkManager - node loaded
+12/31/2021 20:32:02 INFO     MapChunkSystem - loaded
+12/31/2021 20:32:02 INFO     SaveSystem - loaded
+12/31/2021 20:32:02 INFO     SaveSystem node loaded
+12/31/2021 20:32:02 INFO     MapManager node loaded
+12/31/2021 20:32:02 INFO     MapSystem node loaded
+12/31/2021 20:32:02 INFO     SaveSystem - loaded
+12/31/2021 20:32:02 INFO     SaveSystem - node loaded
+12/31/2021 20:32:02 INFO     ArticleManager - node loaded
+12/31/2021 20:32:02 INFO     ArticleSystem - node loaded
+12/31/2021 20:32:02 INFO     ShortcutSettings - Node loadded
+12/31/2021 20:32:02 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 20:32:02 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 20:32:02 INFO     ShortcutSettings - setup_keys()
+12/31/2021 20:32:02 INFO     NewProject - node loaded
+12/31/2021 20:32:02 INFO     MainMenu - node loaded
+12/31/2021 20:32:06 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:32:06 INFO     SystemSettings - get_projects()
+12/31/2021 20:32:12 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:32:13 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 20:32:15 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:32:16 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:32:16 INFO     SystemSettings - get_projects()
+12/31/2021 20:32:53 INFO     SystemSettings loaded
+12/31/2021 20:32:53 INFO     SaveSystem - loaded
+12/31/2021 20:32:53 INFO     SaveSystem - loaded
+12/31/2021 20:32:53 INFO     SaveSystem - loaded
+12/31/2021 20:32:53 INFO     SaveSystem - node loaded
+12/31/2021 20:32:53 INFO     MapChunkManager - node loaded
+12/31/2021 20:32:53 INFO     MapChunkSystem - loaded
+12/31/2021 20:32:53 INFO     SaveSystem - loaded
+12/31/2021 20:32:53 INFO     SaveSystem node loaded
+12/31/2021 20:32:53 INFO     MapManager node loaded
+12/31/2021 20:32:53 INFO     MapSystem node loaded
+12/31/2021 20:32:53 INFO     SaveSystem - loaded
+12/31/2021 20:32:53 INFO     SaveSystem - node loaded
+12/31/2021 20:32:53 INFO     ArticleManager - node loaded
+12/31/2021 20:32:53 INFO     ArticleSystem - node loaded
+12/31/2021 20:32:53 INFO     ShortcutSettings - Node loadded
+12/31/2021 20:32:53 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 20:32:53 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 20:32:53 INFO     ShortcutSettings - setup_keys()
+12/31/2021 20:32:53 INFO     NewProject - node loaded
+12/31/2021 20:32:53 INFO     MainMenu - node loaded
+12/31/2021 20:32:59 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:32:59 INFO     SystemSettings - get_projects()
+12/31/2021 20:33:00 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:33:00 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:33:00 INFO     SystemSettings - get_projects()
+12/31/2021 20:33:02 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:41:25 INFO     SystemSettings loaded
+12/31/2021 20:41:25 INFO     SaveSystem - loaded
+12/31/2021 20:41:25 INFO     SaveSystem - loaded
+12/31/2021 20:41:25 INFO     SaveSystem - loaded
+12/31/2021 20:41:25 INFO     SaveSystem - node loaded
+12/31/2021 20:41:25 INFO     MapChunkManager - node loaded
+12/31/2021 20:41:25 INFO     MapChunkSystem - loaded
+12/31/2021 20:41:25 INFO     SaveSystem - loaded
+12/31/2021 20:41:25 INFO     SaveSystem node loaded
+12/31/2021 20:41:25 INFO     MapManager node loaded
+12/31/2021 20:41:25 INFO     MapSystem node loaded
+12/31/2021 20:41:25 INFO     SaveSystem - loaded
+12/31/2021 20:41:25 INFO     SaveSystem - node loaded
+12/31/2021 20:41:25 INFO     ArticleManager - node loaded
+12/31/2021 20:41:25 INFO     ArticleSystem - node loaded
+12/31/2021 20:41:25 INFO     ShortcutSettings - Node loadded
+12/31/2021 20:41:25 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 20:41:25 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 20:41:25 INFO     ShortcutSettings - setup_keys()
+12/31/2021 20:41:25 INFO     NewProject - node loaded
+12/31/2021 20:41:25 INFO     MainMenu - node loaded
+12/31/2021 20:41:30 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:41:30 INFO     SystemSettings - get_projects()
+12/31/2021 20:41:31 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:41:32 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:41:32 INFO     SystemSettings - get_projects()
+12/31/2021 20:41:32 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:41:33 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:41:33 INFO     SystemSettings - get_projects()
+12/31/2021 20:41:34 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:41:34 INFO     MainMenu _on_NewProjectButton_pressed()
+12/31/2021 20:41:35 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 20:41:36 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 20:41:36 INFO     SystemSettings - get_projects()
+12/31/2021 21:02:41 INFO     SystemSettings loaded
+12/31/2021 21:02:41 INFO     SaveSystem - loaded
+12/31/2021 21:02:41 INFO     SaveSystem - loaded
+12/31/2021 21:02:41 INFO     SaveSystem - loaded
+12/31/2021 21:02:41 INFO     SaveSystem - node loaded
+12/31/2021 21:02:41 INFO     MapChunkManager - node loaded
+12/31/2021 21:02:41 INFO     MapChunkSystem - loaded
+12/31/2021 21:02:41 INFO     SaveSystem - loaded
+12/31/2021 21:02:41 INFO     SaveSystem node loaded
+12/31/2021 21:02:41 INFO     MapManager node loaded
+12/31/2021 21:02:41 INFO     MapSystem node loaded
+12/31/2021 21:02:41 INFO     SaveSystem - loaded
+12/31/2021 21:02:41 INFO     SaveSystem - node loaded
+12/31/2021 21:02:41 INFO     ArticleManager - node loaded
+12/31/2021 21:02:41 INFO     ArticleSystem - node loaded
+12/31/2021 21:02:41 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:02:41 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:02:41 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:02:41 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:02:41 INFO     NewProject - node loaded
+12/31/2021 21:02:41 INFO     MainMenu - node loaded
+12/31/2021 21:05:50 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:05:50 INFO     SystemSettings - get_projects()
+12/31/2021 21:06:10 INFO     SystemSettings loaded
+12/31/2021 21:06:10 INFO     SaveSystem - loaded
+12/31/2021 21:06:10 INFO     SaveSystem - loaded
+12/31/2021 21:06:10 INFO     SaveSystem - loaded
+12/31/2021 21:06:10 INFO     SaveSystem - node loaded
+12/31/2021 21:06:10 INFO     MapChunkManager - node loaded
+12/31/2021 21:06:10 INFO     MapChunkSystem - loaded
+12/31/2021 21:06:10 INFO     SaveSystem - loaded
+12/31/2021 21:06:10 INFO     SaveSystem node loaded
+12/31/2021 21:06:10 INFO     MapManager node loaded
+12/31/2021 21:06:10 INFO     MapSystem node loaded
+12/31/2021 21:06:10 INFO     SaveSystem - loaded
+12/31/2021 21:06:10 INFO     SaveSystem - node loaded
+12/31/2021 21:06:10 INFO     ArticleManager - node loaded
+12/31/2021 21:06:10 INFO     ArticleSystem - node loaded
+12/31/2021 21:06:10 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:06:10 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:06:10 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:06:10 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:06:10 INFO     NewProject - node loaded
+12/31/2021 21:06:10 INFO     MainMenu - node loaded
+12/31/2021 21:06:15 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:06:15 INFO     SystemSettings - get_projects()
+12/31/2021 21:13:18 INFO     SystemSettings loaded
+12/31/2021 21:13:18 INFO     SaveSystem - loaded
+12/31/2021 21:13:18 INFO     SaveSystem - loaded
+12/31/2021 21:13:18 INFO     SaveSystem - loaded
+12/31/2021 21:13:18 INFO     SaveSystem - node loaded
+12/31/2021 21:13:18 INFO     MapChunkManager - node loaded
+12/31/2021 21:13:18 INFO     MapChunkSystem - loaded
+12/31/2021 21:13:18 INFO     SaveSystem - loaded
+12/31/2021 21:13:18 INFO     SaveSystem node loaded
+12/31/2021 21:13:18 INFO     MapManager node loaded
+12/31/2021 21:13:18 INFO     MapSystem node loaded
+12/31/2021 21:13:18 INFO     SaveSystem - loaded
+12/31/2021 21:13:18 INFO     SaveSystem - node loaded
+12/31/2021 21:13:18 INFO     ArticleManager - node loaded
+12/31/2021 21:13:18 INFO     ArticleSystem - node loaded
+12/31/2021 21:13:18 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:13:18 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:13:18 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:13:18 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:13:18 INFO     NewProject - node loaded
+12/31/2021 21:13:18 INFO     MainMenu - node loaded
+12/31/2021 21:13:22 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:13:22 INFO     SystemSettings - get_projects()
+12/31/2021 21:13:32 INFO     SystemSettings loaded
+12/31/2021 21:13:32 INFO     SaveSystem - loaded
+12/31/2021 21:13:32 INFO     SaveSystem - loaded
+12/31/2021 21:13:32 INFO     SaveSystem - loaded
+12/31/2021 21:13:32 INFO     SaveSystem - node loaded
+12/31/2021 21:13:32 INFO     MapChunkManager - node loaded
+12/31/2021 21:13:32 INFO     MapChunkSystem - loaded
+12/31/2021 21:13:32 INFO     SaveSystem - loaded
+12/31/2021 21:13:32 INFO     SaveSystem node loaded
+12/31/2021 21:13:32 INFO     MapManager node loaded
+12/31/2021 21:13:32 INFO     MapSystem node loaded
+12/31/2021 21:13:32 INFO     SaveSystem - loaded
+12/31/2021 21:13:32 INFO     SaveSystem - node loaded
+12/31/2021 21:13:32 INFO     ArticleManager - node loaded
+12/31/2021 21:13:32 INFO     ArticleSystem - node loaded
+12/31/2021 21:13:32 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:13:32 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:13:32 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:13:32 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:13:32 INFO     NewProject - node loaded
+12/31/2021 21:13:32 INFO     MainMenu - node loaded
+12/31/2021 21:13:36 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:13:36 INFO     SystemSettings - get_projects()
+12/31/2021 21:14:49 INFO     SystemSettings loaded
+12/31/2021 21:14:49 INFO     SaveSystem - loaded
+12/31/2021 21:14:49 INFO     SaveSystem - loaded
+12/31/2021 21:14:49 INFO     SaveSystem - loaded
+12/31/2021 21:14:49 INFO     SaveSystem - node loaded
+12/31/2021 21:14:49 INFO     MapChunkManager - node loaded
+12/31/2021 21:14:49 INFO     MapChunkSystem - loaded
+12/31/2021 21:14:49 INFO     SaveSystem - loaded
+12/31/2021 21:14:49 INFO     SaveSystem node loaded
+12/31/2021 21:14:49 INFO     MapManager node loaded
+12/31/2021 21:14:49 INFO     MapSystem node loaded
+12/31/2021 21:14:49 INFO     SaveSystem - loaded
+12/31/2021 21:14:49 INFO     SaveSystem - node loaded
+12/31/2021 21:14:49 INFO     ArticleManager - node loaded
+12/31/2021 21:14:49 INFO     ArticleSystem - node loaded
+12/31/2021 21:14:49 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:14:49 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:14:49 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:14:49 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:14:49 INFO     NewProject - node loaded
+12/31/2021 21:14:49 INFO     MainMenu - node loaded
+12/31/2021 21:14:53 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:14:53 INFO     SystemSettings - get_projects()
+12/31/2021 21:15:17 INFO     SystemSettings loaded
+12/31/2021 21:15:17 INFO     SaveSystem - loaded
+12/31/2021 21:15:17 INFO     SaveSystem - loaded
+12/31/2021 21:15:17 INFO     SaveSystem - loaded
+12/31/2021 21:15:17 INFO     SaveSystem - node loaded
+12/31/2021 21:15:17 INFO     MapChunkManager - node loaded
+12/31/2021 21:15:17 INFO     MapChunkSystem - loaded
+12/31/2021 21:15:17 INFO     SaveSystem - loaded
+12/31/2021 21:15:17 INFO     SaveSystem node loaded
+12/31/2021 21:15:17 INFO     MapManager node loaded
+12/31/2021 21:15:17 INFO     MapSystem node loaded
+12/31/2021 21:15:17 INFO     SaveSystem - loaded
+12/31/2021 21:15:17 INFO     SaveSystem - node loaded
+12/31/2021 21:15:17 INFO     ArticleManager - node loaded
+12/31/2021 21:15:17 INFO     ArticleSystem - node loaded
+12/31/2021 21:15:17 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:15:17 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:15:17 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:15:17 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:15:17 INFO     NewProject - node loaded
+12/31/2021 21:15:17 INFO     MainMenu - node loaded
+12/31/2021 21:15:30 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:15:30 INFO     SystemSettings - get_projects()
+12/31/2021 21:16:33 INFO     SystemSettings loaded
+12/31/2021 21:16:33 INFO     SaveSystem - loaded
+12/31/2021 21:16:33 INFO     SaveSystem - loaded
+12/31/2021 21:16:33 INFO     SaveSystem - loaded
+12/31/2021 21:16:33 INFO     SaveSystem - node loaded
+12/31/2021 21:16:33 INFO     MapChunkManager - node loaded
+12/31/2021 21:16:33 INFO     MapChunkSystem - loaded
+12/31/2021 21:16:33 INFO     SaveSystem - loaded
+12/31/2021 21:16:33 INFO     SaveSystem node loaded
+12/31/2021 21:16:33 INFO     MapManager node loaded
+12/31/2021 21:16:33 INFO     MapSystem node loaded
+12/31/2021 21:16:33 INFO     SaveSystem - loaded
+12/31/2021 21:16:33 INFO     SaveSystem - node loaded
+12/31/2021 21:16:33 INFO     ArticleManager - node loaded
+12/31/2021 21:16:33 INFO     ArticleSystem - node loaded
+12/31/2021 21:16:33 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:16:33 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:16:33 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:16:33 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:16:33 INFO     NewProject - node loaded
+12/31/2021 21:16:33 INFO     MainMenu - node loaded
+12/31/2021 21:16:38 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:16:38 INFO     SystemSettings - get_projects()
+12/31/2021 21:20:59 INFO     SystemSettings loaded
+12/31/2021 21:20:59 INFO     SaveSystem - loaded
+12/31/2021 21:20:59 INFO     SaveSystem - loaded
+12/31/2021 21:20:59 INFO     SaveSystem - loaded
+12/31/2021 21:20:59 INFO     SaveSystem - node loaded
+12/31/2021 21:20:59 INFO     MapChunkManager - node loaded
+12/31/2021 21:20:59 INFO     MapChunkSystem - loaded
+12/31/2021 21:20:59 INFO     SaveSystem - loaded
+12/31/2021 21:20:59 INFO     SaveSystem node loaded
+12/31/2021 21:20:59 INFO     MapManager node loaded
+12/31/2021 21:20:59 INFO     MapSystem node loaded
+12/31/2021 21:20:59 INFO     SaveSystem - loaded
+12/31/2021 21:20:59 INFO     SaveSystem - node loaded
+12/31/2021 21:20:59 INFO     ArticleManager - node loaded
+12/31/2021 21:20:59 INFO     ArticleSystem - node loaded
+12/31/2021 21:20:59 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:20:59 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:20:59 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:20:59 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:20:59 INFO     NewProject - node loaded
+12/31/2021 21:20:59 INFO     MainMenu - node loaded
+12/31/2021 21:21:08 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:21:08 INFO     SystemSettings - get_projects()
+12/31/2021 21:21:43 INFO     SystemSettings loaded
+12/31/2021 21:21:43 INFO     SaveSystem - loaded
+12/31/2021 21:21:43 INFO     SaveSystem - loaded
+12/31/2021 21:21:43 INFO     SaveSystem - loaded
+12/31/2021 21:21:43 INFO     SaveSystem - node loaded
+12/31/2021 21:21:43 INFO     MapChunkManager - node loaded
+12/31/2021 21:21:43 INFO     MapChunkSystem - loaded
+12/31/2021 21:21:43 INFO     SaveSystem - loaded
+12/31/2021 21:21:43 INFO     SaveSystem node loaded
+12/31/2021 21:21:43 INFO     MapManager node loaded
+12/31/2021 21:21:43 INFO     MapSystem node loaded
+12/31/2021 21:21:43 INFO     SaveSystem - loaded
+12/31/2021 21:21:43 INFO     SaveSystem - node loaded
+12/31/2021 21:21:43 INFO     ArticleManager - node loaded
+12/31/2021 21:21:43 INFO     ArticleSystem - node loaded
+12/31/2021 21:21:43 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:21:43 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:21:43 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:21:43 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:21:43 INFO     NewProject - node loaded
+12/31/2021 21:21:43 INFO     MainMenu - node loaded
+12/31/2021 21:21:56 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:21:56 INFO     SystemSettings - get_projects()
+12/31/2021 21:25:37 INFO     SystemSettings loaded
+12/31/2021 21:25:37 INFO     SaveSystem - loaded
+12/31/2021 21:25:37 INFO     SaveSystem - loaded
+12/31/2021 21:25:37 INFO     SaveSystem - loaded
+12/31/2021 21:25:37 INFO     SaveSystem - node loaded
+12/31/2021 21:25:37 INFO     MapChunkManager - node loaded
+12/31/2021 21:25:37 INFO     MapChunkSystem - loaded
+12/31/2021 21:25:37 INFO     SaveSystem - loaded
+12/31/2021 21:25:37 INFO     SaveSystem node loaded
+12/31/2021 21:25:37 INFO     MapManager node loaded
+12/31/2021 21:25:37 INFO     MapSystem node loaded
+12/31/2021 21:25:37 INFO     SaveSystem - loaded
+12/31/2021 21:25:37 INFO     SaveSystem - node loaded
+12/31/2021 21:25:37 INFO     ArticleManager - node loaded
+12/31/2021 21:25:37 INFO     ArticleSystem - node loaded
+12/31/2021 21:25:37 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:25:37 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:25:37 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:25:37 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:25:37 INFO     NewProject - node loaded
+12/31/2021 21:25:37 INFO     MainMenu - node loaded
+12/31/2021 21:25:45 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:25:45 INFO     SystemSettings - get_projects()
+12/31/2021 21:26:32 INFO     SystemSettings loaded
+12/31/2021 21:26:32 INFO     SaveSystem - loaded
+12/31/2021 21:26:32 INFO     SaveSystem - loaded
+12/31/2021 21:26:32 INFO     SaveSystem - loaded
+12/31/2021 21:26:32 INFO     SaveSystem - node loaded
+12/31/2021 21:26:32 INFO     MapChunkManager - node loaded
+12/31/2021 21:26:32 INFO     MapChunkSystem - loaded
+12/31/2021 21:26:32 INFO     SaveSystem - loaded
+12/31/2021 21:26:32 INFO     SaveSystem node loaded
+12/31/2021 21:26:32 INFO     MapManager node loaded
+12/31/2021 21:26:32 INFO     MapSystem node loaded
+12/31/2021 21:26:32 INFO     SaveSystem - loaded
+12/31/2021 21:26:32 INFO     SaveSystem - node loaded
+12/31/2021 21:26:32 INFO     ArticleManager - node loaded
+12/31/2021 21:26:32 INFO     ArticleSystem - node loaded
+12/31/2021 21:26:32 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:26:32 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:26:32 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:26:32 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:26:32 INFO     NewProject - node loaded
+12/31/2021 21:26:32 INFO     MainMenu - node loaded
+12/31/2021 21:26:56 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:26:56 INFO     SystemSettings - get_projects()
+12/31/2021 21:27:11 INFO     SystemSettings loaded
+12/31/2021 21:27:11 INFO     SaveSystem - loaded
+12/31/2021 21:27:11 INFO     SaveSystem - loaded
+12/31/2021 21:27:11 INFO     SaveSystem - loaded
+12/31/2021 21:27:11 INFO     SaveSystem - node loaded
+12/31/2021 21:27:11 INFO     MapChunkManager - node loaded
+12/31/2021 21:27:11 INFO     MapChunkSystem - loaded
+12/31/2021 21:27:11 INFO     SaveSystem - loaded
+12/31/2021 21:27:11 INFO     SaveSystem node loaded
+12/31/2021 21:27:11 INFO     MapManager node loaded
+12/31/2021 21:27:11 INFO     MapSystem node loaded
+12/31/2021 21:27:11 INFO     SaveSystem - loaded
+12/31/2021 21:27:11 INFO     SaveSystem - node loaded
+12/31/2021 21:27:11 INFO     ArticleManager - node loaded
+12/31/2021 21:27:11 INFO     ArticleSystem - node loaded
+12/31/2021 21:27:11 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:27:11 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:27:11 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:27:11 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:27:11 INFO     NewProject - node loaded
+12/31/2021 21:27:11 INFO     MainMenu - node loaded
+12/31/2021 21:29:18 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:29:18 INFO     SystemSettings - get_projects()
+12/31/2021 21:34:54 INFO     SystemSettings loaded
+12/31/2021 21:34:54 INFO     SaveSystem - loaded
+12/31/2021 21:34:54 INFO     SaveSystem - loaded
+12/31/2021 21:34:54 INFO     SaveSystem - loaded
+12/31/2021 21:34:54 INFO     SaveSystem - node loaded
+12/31/2021 21:34:54 INFO     MapChunkManager - node loaded
+12/31/2021 21:34:54 INFO     MapChunkSystem - loaded
+12/31/2021 21:34:54 INFO     SaveSystem - loaded
+12/31/2021 21:34:54 INFO     SaveSystem node loaded
+12/31/2021 21:34:54 INFO     MapManager node loaded
+12/31/2021 21:34:54 INFO     MapSystem node loaded
+12/31/2021 21:34:54 INFO     SaveSystem - loaded
+12/31/2021 21:34:54 INFO     SaveSystem - node loaded
+12/31/2021 21:34:54 INFO     ArticleManager - node loaded
+12/31/2021 21:34:54 INFO     ArticleSystem - node loaded
+12/31/2021 21:34:54 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:34:54 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:34:54 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:34:54 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:34:54 INFO     NewProject - node loaded
+12/31/2021 21:34:54 INFO     MainMenu - node loaded
+12/31/2021 21:34:58 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:34:58 INFO     SystemSettings - get_projects()
+12/31/2021 21:38:12 INFO     SystemSettings loaded
+12/31/2021 21:38:12 INFO     SaveSystem - loaded
+12/31/2021 21:38:12 INFO     SaveSystem - loaded
+12/31/2021 21:38:12 INFO     SaveSystem - loaded
+12/31/2021 21:38:12 INFO     SaveSystem - node loaded
+12/31/2021 21:38:12 INFO     MapChunkManager - node loaded
+12/31/2021 21:38:12 INFO     MapChunkSystem - loaded
+12/31/2021 21:38:12 INFO     SaveSystem - loaded
+12/31/2021 21:38:12 INFO     SaveSystem node loaded
+12/31/2021 21:38:12 INFO     MapManager node loaded
+12/31/2021 21:38:12 INFO     MapSystem node loaded
+12/31/2021 21:38:12 INFO     SaveSystem - loaded
+12/31/2021 21:38:12 INFO     SaveSystem - node loaded
+12/31/2021 21:38:12 INFO     ArticleManager - node loaded
+12/31/2021 21:38:12 INFO     ArticleSystem - node loaded
+12/31/2021 21:38:12 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:38:12 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:38:12 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:38:12 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:38:12 INFO     NewProject - node loaded
+12/31/2021 21:38:12 INFO     MainMenu - node loaded
+12/31/2021 21:38:19 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:38:19 INFO     SystemSettings - get_projects()
+12/31/2021 21:39:06 INFO     SystemSettings loaded
+12/31/2021 21:39:06 INFO     SaveSystem - loaded
+12/31/2021 21:39:06 INFO     SaveSystem - loaded
+12/31/2021 21:39:06 INFO     SaveSystem - loaded
+12/31/2021 21:39:06 INFO     SaveSystem - node loaded
+12/31/2021 21:39:06 INFO     MapChunkManager - node loaded
+12/31/2021 21:39:06 INFO     MapChunkSystem - loaded
+12/31/2021 21:39:06 INFO     SaveSystem - loaded
+12/31/2021 21:39:06 INFO     SaveSystem node loaded
+12/31/2021 21:39:06 INFO     MapManager node loaded
+12/31/2021 21:39:06 INFO     MapSystem node loaded
+12/31/2021 21:39:06 INFO     SaveSystem - loaded
+12/31/2021 21:39:06 INFO     SaveSystem - node loaded
+12/31/2021 21:39:06 INFO     ArticleManager - node loaded
+12/31/2021 21:39:06 INFO     ArticleSystem - node loaded
+12/31/2021 21:39:06 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:39:06 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:39:06 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:39:06 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:39:06 INFO     NewProject - node loaded
+12/31/2021 21:39:06 INFO     MainMenu - node loaded
+12/31/2021 21:39:10 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:39:10 INFO     SystemSettings - get_projects()
+12/31/2021 21:39:39 INFO     SystemSettings loaded
+12/31/2021 21:39:39 INFO     SaveSystem - loaded
+12/31/2021 21:39:39 INFO     SaveSystem - loaded
+12/31/2021 21:39:39 INFO     SaveSystem - loaded
+12/31/2021 21:39:39 INFO     SaveSystem - node loaded
+12/31/2021 21:39:39 INFO     MapChunkManager - node loaded
+12/31/2021 21:39:39 INFO     MapChunkSystem - loaded
+12/31/2021 21:39:39 INFO     SaveSystem - loaded
+12/31/2021 21:39:39 INFO     SaveSystem node loaded
+12/31/2021 21:39:39 INFO     MapManager node loaded
+12/31/2021 21:39:39 INFO     MapSystem node loaded
+12/31/2021 21:39:39 INFO     SaveSystem - loaded
+12/31/2021 21:39:39 INFO     SaveSystem - node loaded
+12/31/2021 21:39:39 INFO     ArticleManager - node loaded
+12/31/2021 21:39:39 INFO     ArticleSystem - node loaded
+12/31/2021 21:39:39 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:39:39 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:39:39 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:39:39 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:39:39 INFO     NewProject - node loaded
+12/31/2021 21:39:39 INFO     MainMenu - node loaded
+12/31/2021 21:39:43 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:39:43 INFO     SystemSettings - get_projects()
+12/31/2021 21:39:50 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 21:39:50 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:39:50 INFO     SystemSettings - get_projects()
+12/31/2021 21:39:53 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 21:59:09 INFO     SystemSettings loaded
+12/31/2021 21:59:09 INFO     SaveSystem - loaded
+12/31/2021 21:59:09 INFO     SaveSystem - loaded
+12/31/2021 21:59:09 INFO     SaveSystem - loaded
+12/31/2021 21:59:09 INFO     SaveSystem - node loaded
+12/31/2021 21:59:09 INFO     MapChunkManager - node loaded
+12/31/2021 21:59:09 INFO     MapChunkSystem - loaded
+12/31/2021 21:59:09 INFO     SaveSystem - loaded
+12/31/2021 21:59:09 INFO     SaveSystem node loaded
+12/31/2021 21:59:09 INFO     MapManager node loaded
+12/31/2021 21:59:09 INFO     MapSystem node loaded
+12/31/2021 21:59:09 INFO     SaveSystem - loaded
+12/31/2021 21:59:09 INFO     SaveSystem - node loaded
+12/31/2021 21:59:09 INFO     ArticleManager - node loaded
+12/31/2021 21:59:09 INFO     ArticleSystem - node loaded
+12/31/2021 21:59:09 INFO     ShortcutSettings - Node loadded
+12/31/2021 21:59:09 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 21:59:09 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 21:59:09 INFO     ShortcutSettings - setup_keys()
+12/31/2021 21:59:09 INFO     NewProject - node loaded
+12/31/2021 21:59:09 INFO     MainMenu - node loaded
+12/31/2021 21:59:13 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 21:59:13 INFO     SystemSettings - get_projects()
+12/31/2021 22:27:06 INFO     SystemSettings loaded
+12/31/2021 22:27:06 INFO     SaveSystem - loaded
+12/31/2021 22:27:06 INFO     SaveSystem - loaded
+12/31/2021 22:27:06 INFO     SaveSystem - loaded
+12/31/2021 22:27:06 INFO     SaveSystem - node loaded
+12/31/2021 22:27:06 INFO     MapChunkManager - node loaded
+12/31/2021 22:27:06 INFO     MapChunkSystem - loaded
+12/31/2021 22:27:06 INFO     SaveSystem - loaded
+12/31/2021 22:27:06 INFO     SaveSystem node loaded
+12/31/2021 22:27:06 INFO     MapManager node loaded
+12/31/2021 22:27:06 INFO     MapSystem node loaded
+12/31/2021 22:27:06 INFO     SaveSystem - loaded
+12/31/2021 22:27:06 INFO     SaveSystem - node loaded
+12/31/2021 22:27:06 INFO     ArticleManager - node loaded
+12/31/2021 22:27:06 INFO     ArticleSystem - node loaded
+12/31/2021 22:27:06 INFO     ShortcutSettings - Node loadded
+12/31/2021 22:27:06 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 22:27:06 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 22:27:06 INFO     ShortcutSettings - setup_keys()
+12/31/2021 22:27:06 INFO     NewProject - node loaded
+12/31/2021 22:27:06 INFO     MainMenu - node loaded
+12/31/2021 22:27:12 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 22:27:12 INFO     SystemSettings - get_projects()
+12/31/2021 22:27:14 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 22:27:15 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 22:27:15 INFO     SystemSettings - get_projects()
+12/31/2021 22:27:37 INFO     SystemSettings loaded
+12/31/2021 22:27:37 INFO     SaveSystem - loaded
+12/31/2021 22:27:37 INFO     SaveSystem - loaded
+12/31/2021 22:27:37 INFO     SaveSystem - loaded
+12/31/2021 22:27:37 INFO     SaveSystem - node loaded
+12/31/2021 22:27:37 INFO     MapChunkManager - node loaded
+12/31/2021 22:27:37 INFO     MapChunkSystem - loaded
+12/31/2021 22:27:37 INFO     SaveSystem - loaded
+12/31/2021 22:27:37 INFO     SaveSystem node loaded
+12/31/2021 22:27:37 INFO     MapManager node loaded
+12/31/2021 22:27:37 INFO     MapSystem node loaded
+12/31/2021 22:27:37 INFO     SaveSystem - loaded
+12/31/2021 22:27:37 INFO     SaveSystem - node loaded
+12/31/2021 22:27:37 INFO     ArticleManager - node loaded
+12/31/2021 22:27:37 INFO     ArticleSystem - node loaded
+12/31/2021 22:27:37 INFO     ShortcutSettings - Node loadded
+12/31/2021 22:27:37 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 22:27:37 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 22:27:37 INFO     ShortcutSettings - setup_keys()
+12/31/2021 22:27:37 INFO     NewProject - node loaded
+12/31/2021 22:27:37 INFO     MainMenu - node loaded
+12/31/2021 22:27:41 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 22:27:41 INFO     SystemSettings - get_projects()
+12/31/2021 22:33:04 INFO     SystemSettings loaded
+12/31/2021 22:33:04 INFO     SaveSystem - loaded
+12/31/2021 22:33:04 INFO     SaveSystem - loaded
+12/31/2021 22:33:04 INFO     SaveSystem - loaded
+12/31/2021 22:33:04 INFO     SaveSystem - node loaded
+12/31/2021 22:33:04 INFO     MapChunkManager - node loaded
+12/31/2021 22:33:04 INFO     MapChunkSystem - loaded
+12/31/2021 22:33:04 INFO     SaveSystem - loaded
+12/31/2021 22:33:04 INFO     SaveSystem node loaded
+12/31/2021 22:33:04 INFO     MapManager node loaded
+12/31/2021 22:33:04 INFO     MapSystem node loaded
+12/31/2021 22:33:04 INFO     SaveSystem - loaded
+12/31/2021 22:33:04 INFO     SaveSystem - node loaded
+12/31/2021 22:33:04 INFO     ArticleManager - node loaded
+12/31/2021 22:33:04 INFO     ArticleSystem - node loaded
+12/31/2021 22:33:04 INFO     ShortcutSettings - Node loadded
+12/31/2021 22:33:04 INFO     ProjectSettingsManager - Node loadded
+12/31/2021 22:33:04 INFO     ShortcutSettings - delete_old_keys()
+12/31/2021 22:33:04 INFO     ShortcutSettings - setup_keys()
+12/31/2021 22:33:04 INFO     NewProject - node loaded
+12/31/2021 22:33:04 INFO     MainMenu - node loaded
+12/31/2021 22:33:09 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 22:33:09 INFO     SystemSettings - get_projects()
+12/31/2021 22:33:15 INFO     MainMenu _on_Button2_pressed()
+12/31/2021 22:33:16 INFO     MainMenu _on_OpenProjectButton_pressed()
+12/31/2021 22:33:16 INFO     SystemSettings - get_projects()

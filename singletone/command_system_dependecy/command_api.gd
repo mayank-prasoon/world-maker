@@ -3,7 +3,7 @@ extends Node
 # === NODES ===
 
 onready var root            = get_parent()
-onready var Console         = $"../CommandSystemInterface/Console/Log"
+onready var Console         = $"../CanvasLayer/CommandSystemInterface/Console/Log"
 
 # === SystemDataManager NODES ===
 

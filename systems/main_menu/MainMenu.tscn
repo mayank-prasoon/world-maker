@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://systems/main_menu/scripts/main_menu.gd" type="Script" id=2]
 [ext_resource path="res://systems/main_menu/scripts/new_project.gd" type="Script" id=3]
+[ext_resource path="res://systems/main_menu/scripts/open_project.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -17,6 +18,7 @@ __meta__ = {
 }
 
 [node name="NewProject" type="Control" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -126,7 +128,6 @@ align = 1
 autowrap = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -167,22 +168,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsButton" type="Button" parent="HBoxContainer"]
-margin_right = 63.0
-margin_bottom = 20.0
-text = "settings"
-
 [node name="SocialMediaButton" type="Button" parent="HBoxContainer"]
-margin_left = 83.0
-margin_right = 132.0
+margin_right = 49.0
 margin_bottom = 20.0
 text = "social"
 
 [node name="HelpButton" type="Button" parent="HBoxContainer"]
-margin_left = 152.0
-margin_right = 192.0
+margin_left = 69.0
+margin_right = 109.0
 margin_bottom = 20.0
 text = "help"
+
+[node name="OpenProject" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -60.0
+margin_right = 67.0
+margin_bottom = 140.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpenProject"]
+anchor_left = -0.216418
+anchor_top = 0.2
+anchor_right = 1.21642
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="FileDialog" type="FileDialog" parent="OpenProject"]
+margin_right = 394.0
+margin_bottom = 330.0
+window_title = "Open a Directory"
+mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="OpenProject"]
+margin_right = 58.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "<- back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Browse" type="Button" parent="OpenProject"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -58.0
+margin_bottom = 20.0
+text = "browse"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Version" type="Label" parent="."]
 anchor_left = 1.0
@@ -224,15 +271,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FileDialog" type="FileDialog" parent="."]
-margin_right = 394.0
-margin_bottom = 330.0
-window_title = "Open a Directory"
-mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="pressed" from="NewProject/VBoxContainer/BackButton" to="." method="_on_Button2_pressed"]
 [connection signal="text_changed" from="NewProject/VBoxContainer/HBoxContainer/LineEdit" to="NewProject" method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="NewProject/VBoxContainer/HBoxContainer2/BrowseButton" to="NewProject" method="_on_BrowseButton_pressed"]
@@ -240,4 +278,6 @@ __meta__ = {
 [connection signal="dir_selected" from="NewProject/FileDialog" to="NewProject" method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="VBoxContainer/NewProjectButton" to="." method="_on_NewProjectButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OpenProjectButton" to="." method="_on_OpenProjectButton_pressed"]
-[connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="dir_selected" from="OpenProject/FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="pressed" from="OpenProject/BackButton" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="OpenProject/Browse" to="OpenProject" method="_on_Browse_pressed"]

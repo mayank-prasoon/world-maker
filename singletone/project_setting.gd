@@ -30,7 +30,7 @@ func _ready():
 	Logger.info(name + " - " + "Node loadded")
 	var file = File.new()
 	if !file.file_exists(SystemSettings.current_path + save_file_location):
-		shortcuts = get_node("ShortcutSettings").default_value
+		shortcuts = get_node("ShortcutSettings").default_keybinding
 		save_file()
 	else:
 		open_file()

@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/setting_menu/setting_menu.gd" type="Script" id=1]
+
+[node name="SettingMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.0488281
+anchor_top = 0.0833333
+anchor_right = 0.951172
+anchor_bottom = 1.08333
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ProjectName" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 924.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ProjectName"]
+margin_top = 5.0
+margin_right = 670.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "project name"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ProjectName"]
+margin_left = 674.0
+margin_right = 924.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="ProjectLocation" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 924.0
+margin_bottom = 68.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/ProjectLocation"]
+margin_top = 5.0
+margin_right = 576.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "project location"
+
+[node name="Button" type="Button" parent="VBoxContainer/ProjectLocation"]
+margin_left = 596.0
+margin_right = 654.0
+margin_bottom = 24.0
+text = "browse"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ProjectLocation"]
+margin_left = 674.0
+margin_right = 924.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -58.0
+margin_top = -20.0
+margin_right = 59.0
+rect_pivot_offset = Vector2( -454, -204 )
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="HBoxContainer"]
+margin_right = 41.0
+margin_bottom = 20.0
+text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Button" parent="HBoxContainer"]
+margin_left = 61.0
+margin_right = 102.0
+margin_bottom = 20.0
+text = "save"
+
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="HBoxContainer/Save" to="." method="_on_Save_pressed"]
