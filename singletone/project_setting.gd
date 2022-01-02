@@ -33,6 +33,9 @@ signal load_data
 
 func _ready():
 	Logger.info(name + " - " + "Node loadded")
+	
+func open_project():
+	Logger.info(name + " - " + "open_project()")
 	var file = File.new()
 	if !file.file_exists(SystemSettings.current_path + save_file_location):
 		shortcuts = default_keybinding.duplicate()

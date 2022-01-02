@@ -26,6 +26,5 @@ func _ready():
 
 func open_project():
 	SystemSettings.current_path             = path
-	ProjectSettingsManager.project_name     = project_name
-	ProjectSettingsManager.project_location = path
+	ProjectSettingsManager.open_project()
 	var _x = get_tree().change_scene_to(load("res://systems/system_menu/SystemMenu.tscn"))

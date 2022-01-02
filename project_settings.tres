@@ -11,10 +11,10 @@ unicode = 115
 
 [resource]
 script = ExtResource( 3 )
-project_name = ""
+project_name = "test project"
 project_version = ""
 date_of_creation = ""
-project_location = ""
+project_location = "res://test/test_project"
 shortcuts = {
 "command line interface": SubResource( 1 ),
 "fullscreen": ExtResource( 1 )

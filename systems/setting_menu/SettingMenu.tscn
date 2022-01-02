@@ -62,6 +62,24 @@ margin_right = 924.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 250, 0 )
 
+[node name="ProjectVersion" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 88.0
+margin_right = 924.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ProjectVersion"]
+margin_top = 5.0
+margin_right = 670.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "project version"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/ProjectVersion"]
+margin_left = 674.0
+margin_right = 924.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 250, 0 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0

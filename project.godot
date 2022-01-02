@@ -75,6 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="World Building Software"
+run/main_scene="res://systems/main_menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
