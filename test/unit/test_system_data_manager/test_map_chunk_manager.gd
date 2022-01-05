@@ -11,15 +11,15 @@ func before_each():
 
 func test_get_all_pins():
 	gut.p('Testing get all pin method')
-	
+
 	var uuid = test_scene.uuid_util.v4()
 	var test_pin_save_file:Resource = load("res://test/resources_and_temp_items/temp_test_pin.tres")
 	# delete file
-	
+
 	save_file_node.save_file(
 		"temp_chunk_5",
 		uuid,
-		"xyz",
+		Texture.new(),
 		Vector2(65, 25),
 		[test_pin_save_file, test_pin_save_file, test_pin_save_file]
 	)
@@ -43,11 +43,11 @@ func test_get_specific_pin():
 	var uuid = test_scene.uuid_util.v4()
 	var test_pin_save_file:Resource = load("res://test/resources_and_temp_items/temp_test_pin.tres")
 	# delete file
-	
+
 	save_file_node.save_file(
 		"temp_chunk_5",
 		uuid,
-		"xyz",
+		Texture.new(),
 		Vector2(65, 25),
 		[test_pin_save_file, test_pin_save_file, test_pin_save_file]
 	)
@@ -77,7 +77,7 @@ func test_get_pin_by_name():
 	save_file_node.save_file(
 		"temp_chunk_5",
 		uuid,
-		"xyz",
+		Texture.new(),
 		Vector2(65, 25),
 		[test_pin_save_file_1, test_pin_save_file_2, test_pin_save_file_3, test_pin_save_file_4]
 	)
@@ -110,7 +110,7 @@ func test_get_last_pin():
 	save_file_node.save_file(
 		"temp_chunk_5",
 		uuid,
-		"xyz",
+		Texture.new(),
 		Vector2(65, 25),
 		[test_pin_save_file_1, test_pin_save_file_2, test_pin_save_file_3, test_pin_save_file_4]
 	)
@@ -138,7 +138,7 @@ func test_get_first_pin():
 	save_file_node.save_file(
 		"temp_chunk_5",
 		uuid,
-		"xyz",
+		Texture.new(),
 		Vector2(65, 25),
 		[test_pin_save_file_1, test_pin_save_file_2, test_pin_save_file_3, test_pin_save_file_4]
 	)

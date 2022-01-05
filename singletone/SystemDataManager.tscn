@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://singletone/system_data_manager_dependency/pin_system/pin_manger.gd" type="Script" id=1]
 [ext_resource path="res://singletone/system_data_manager_dependency/chunk_system/map_chunk_manager.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://singletone/system_data_manager_dependency/chunk_system/map_chunk_system.gd" type="Script" id=14]
 [ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_system.gd" type="Script" id=15]
 [ext_resource path="res://singletone/system_data_manager_dependency/system_inventory.gd" type="Script" id=16]
+[ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_chunk_generator.gd" type="Script" id=17]
 
 [node name="SystemDataManager" type="Node"]
 script = ExtResource( 8 )
@@ -55,6 +56,9 @@ script = ExtResource( 6 )
 
 [node name="MapManager" type="Node" parent="MapSystem"]
 script = ExtResource( 9 )
+
+[node name="MapchunkGenerator" type="Node" parent="MapSystem"]
+script = ExtResource( 17 )
 
 [node name="ArticleSystem" type="Node" parent="."]
 script = ExtResource( 12 )

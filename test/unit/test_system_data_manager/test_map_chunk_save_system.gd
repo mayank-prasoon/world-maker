@@ -2,6 +2,9 @@ extends RootSystemTest
 
 var _temp_resource:Resource         = preload("res://test/resources_and_temp_items/temp_test_resource.tres")
 var test_map_chunk_system_node:Node
+
+var temp_image                      = preload("res://test/resources_and_temp_items/pexels-tetyana-kovyrina-1692984.jpg")
+
 # === BEFORE ===
 
 func before_each():
@@ -16,9 +19,9 @@ func test_create_save_files():
 	var uuid = test_scene.uuid_util.v4()
 	var map_chunk_save_file:String = "res://save_files/map_chunks/{uid}_save_data.tres".format({"uid" : uuid})
 
-	
+
 	gut.p('=> \tTestting save file method')
-	test_map_chunk_system_node.save_file("temp_map_chunk_name", uuid, "xyz", Vector2(0,0), [_temp_resource, _temp_resource, _temp_resource])
+	test_map_chunk_system_node.save_file("temp_map_chunk_name", uuid, temp_image, Vector2(0,0), [_temp_resource, _temp_resource, _temp_resource])
 	
 	# assertion
 	assert_file_exists(map_chunk_save_file)
@@ -29,7 +32,7 @@ func test_file_open():
 
 	gut.p('Testting open file method')
 
-	test_map_chunk_system_node.save_file("fake_name", uuid, "pqr", Vector2(5,10), [_temp_resource, _temp_resource])
+	test_map_chunk_system_node.save_file("fake_name", uuid, temp_image, Vector2(5,10), [_temp_resource, _temp_resource])
 
 	# open files
 	var _test_resource = test_map_chunk_system_node.open_file(uuid)
@@ -39,7 +42,7 @@ func test_file_open():
 	assert_eq(_test_resource.chunk_name, "fake_name", "the pin name should be 'fake_name'") 
 	assert_eq(_test_resource.chunk_id, uuid, "the pin name should be '{uid}'".format({"uid" : uuid}))
 	assert_eq(_test_resource.chunk_offset, Vector2(5,10), "the pin location should be `Vector2(5,10)")
-	assert_eq(_test_resource.chunk_texture, "pqr", "the path name sould be 'pqr")
+	assert_eq(_test_resource.chunk_texture, temp_image, "the path name sould be ''")
 	assert_eq(_test_resource.chunk_pins.size(), 2, "the number of pin should be 2")
 	assert_eq_deep(_test_resource.chunk_pins, [_temp_resource, _temp_resource])
 
@@ -65,7 +68,6 @@ func test_file_verification_recreation():
 	assert_eq(_test_resource.chunk_name, "", "the pin name should be 'fake_name'")
 	assert_eq(_test_resource.chunk_id, uuid, "the pin name should be '{uid}'".format({"uid" : uuid}))
 	assert_eq(_test_resource.chunk_offset, Vector2(0,0), "the pin location should be `Vector2(0,0)")
-	assert_eq(_test_resource.chunk_texture, "xyz", "the path name sould be 'xyz")
 	assert_eq(_test_resource.chunk_pins.size(), 0, "the number of pin should be 0")
 	assert_eq_deep(_test_resource.chunk_pins, [])
 	

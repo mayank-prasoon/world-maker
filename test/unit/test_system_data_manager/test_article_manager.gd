@@ -13,7 +13,7 @@ func test_get_tags():
 	gut.p('Testing get method method')
 
 	var uuid = test_scene.uuid_util.v4()
-	
+
 	save_file_node.save_file(
 			"temp_file_1",
 			uuid,

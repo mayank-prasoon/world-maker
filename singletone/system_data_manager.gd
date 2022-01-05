@@ -14,8 +14,6 @@ enum MAP_RESOURCE_TYPE {
 	ARTICLE
 }
 
-
-
 func verify(path:String, _type:int, resource_name:String) -> void:
 	Logger.info("verifing file intregity of {0} of type {1} - file_path: {3}".format([resource_name, _type, path]))
 	var file:File = File.new()

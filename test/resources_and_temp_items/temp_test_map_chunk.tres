@@ -23,6 +23,5 @@ tags = [  ]
 script = ExtResource( 1 )
 chunk_name = "temp_chunk"
 chunk_id = ""
-chunk_texture = "xyz"
 chunk_offset = Vector2( 10, 20 )
 chunk_pins = [ SubResource( 1 ), SubResource( 2 ) ]

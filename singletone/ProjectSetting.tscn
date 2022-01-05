@@ -2,7 +2,7 @@
 
 [ext_resource path="res://singletone/project_setting.gd" type="Script" id=1]
 [ext_resource path="res://singletone/project_setting_dependecy/shortcut_settings.gd" type="Script" id=2]
-[ext_resource path="res://singletone/visual_settings.gd" type="Script" id=3]
+[ext_resource path="res://singletone/project_setting_dependecy/visual_settings.gd" type="Script" id=3]
 
 [node name="ProjectSetting" type="Node"]
 script = ExtResource( 1 )

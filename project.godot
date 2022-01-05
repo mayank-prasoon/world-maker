@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_resources_template.gd"
 }, {
+"base": "ImageTexture",
+"class": "MapFragment",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/map_fragment_resources_template.gd"
+}, {
 "base": "Resource",
 "class": "MapPin",
 "language": "GDScript",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "EditorSettingsTemplate": "",
 "MapChunkData": "",
 "MapData": "",
+"MapFragment": "",
 "MapPin": "",
 "MapSymbolTemplate": "",
 "ProjectButton": "",

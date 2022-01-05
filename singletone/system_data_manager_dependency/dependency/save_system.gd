@@ -12,9 +12,6 @@ var resource_type:int
 func _ready():
 	Logger.info(name + " - loaded")
 
-func _save_file():
-	pass
-
 func open_file(item_uid:String)->Resource:
 	
 	root_node.verify(

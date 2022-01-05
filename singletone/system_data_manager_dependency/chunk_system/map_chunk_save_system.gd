@@ -8,10 +8,10 @@ func _ready():
 	
 func save_file(
 		chunk_name:String,
-		chunk_id:String = root_node.uuid_util.v4(),
-		chunk_texture:String  = "xyz",
+		chunk_id:String       = root_node.uuid_util.v4(),
+		chunk_texture:Texture = Texture.new(),
 		chunk_offset:Vector2  = Vector2(0,0),
-		pins:Array      = []
+		pins:Array            = []
 	) -> void:
 
 	Logger.info(name + " - " + "save_file({0},{1},{2},{3},{5})".format([chunk_name, chunk_id, chunk_texture, chunk_offset, str(pins)]))

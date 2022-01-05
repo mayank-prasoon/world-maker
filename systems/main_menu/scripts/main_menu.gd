@@ -1,6 +1,5 @@
 extends Control
 
-
 func _ready():
 	Logger.info(name + " - " + "node loaded")
 	$NewProject.visible    = false
@@ -24,6 +23,7 @@ func _on_Button2_pressed():
 	for x in $OpenProject/VBoxContainer.get_children():
 		x.queue_free()
 
+
 func _on_OpenProjectButton_pressed():
 	Logger.info(name + " _on_OpenProjectButton_pressed()")
 	$NewProject.visible    = false
@@ -31,6 +31,7 @@ func _on_OpenProjectButton_pressed():
 	$VBoxContainer.visible = false
 
 	$OpenProject.add_projects()
-			 
+
+
 func _on_FileDialog_dir_selected(dir):
 	Logger.info(name + " _on_FileDialog_dir_selected({0})".format([dir]))
