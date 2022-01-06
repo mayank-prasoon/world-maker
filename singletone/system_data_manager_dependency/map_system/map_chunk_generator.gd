@@ -1,36 +1,23 @@
 extends Node
 
-var threads:Array          = []
-var mutex:Mutex            = Mutex.new()
-
-var array_of_texture:Array = [] 
-
-var counter:int      = 0
-
-onready var root_node = get_parent().get_parent()
+onready var root_node      = get_parent().get_parent()
 
 # slices image into small textures
 func slice_texture(texture_path:String, chunk_size:Vector2 = Vector2(512, 288))->Array:
-	array_of_texture = []
+	var image:Image           = load_image(texture_path)
+	var image_size:Vector2    = image.get_size()
 
-	var image:Image = load_image(texture_path)
-	var image_size:Vector2 = image.get_size()
+	var chunk_count:float     = Rect2(Vector2(0,0), image_size).get_area() / Rect2(Vector2(0,0), chunk_size).get_area()
+	var chunk_dimension:float = sqrt(chunk_count)
 
-	var chunk_count     = Rect2(Vector2(0,0), image_size).get_area() / Rect2(Vector2(0,0), chunk_size).get_area()
-	var chunk_dimension = sqrt(chunk_count)
-
+	var texture_array:Array   = []
 	for current_layer in range(chunk_dimension):
-		genrate_threads(chunk_dimension)
-		start_threads(
-			image.duplicate(),
-			chunk_size,
-			current_layer
-		)
+		var layers = []
+		for x in range(chunk_dimension):
+			layers.append(generate_texture([image.duplicate(), chunk_size, x, current_layer]))
+		texture_array.append(layers)
 
-		join_thread()
-
-
-	return array_of_texture
+	return texture_array
 
 # load image
 func load_image(image_path:String)->Image:
@@ -38,44 +25,6 @@ func load_image(image_path:String)->Image:
 	new_image.load(image_path)
 	
 	return new_image
-
-
-# generate threads
-func genrate_threads(number_of_threads:int)->void:
-	for _i in range(number_of_threads):
-		var t = Thread.new()
-		threads.append(t)
-
-# start the threads in the threads
-func start_threads(image, chunk_size, y)->void:
-	for x in threads.size():
-		threads[x].start(
-			self,
-			"generate_texture",
-			[
-				image,
-				chunk_size,
-				x, y
-			]
-		)
-
-# join the threads in the threads
-func join_thread()->void:
-	while true:
-		if (counter == threads.size()):
-			var layers = []
-			for t in threads:
-				layers.append(t.wait_to_finish())
-			
-			array_of_texture.append(layers)
-			
-#			mutex.lock()
-			counter = 0
-			threads = []
-#			mutex.unlock()
-
-			break
-
 
 # genereate and save map fragments
 # WARNING : this is only ment to be called through the `start_threads()`
@@ -106,13 +55,8 @@ func generate_texture(args:Array):
 	image_fragment.create_from_image(new_image)
 	image_fragment.chunk_position = position
 	image_fragment.chunk_uuid     = uuid
-	
+
 	# save the map fragment
 	var _z = ResourceSaver.save(save_location, image_fragment)
-	
-	# increase the counter
-	mutex.lock()
-	counter += 1
-	mutex.unlock()
-	
 	return save_location
+

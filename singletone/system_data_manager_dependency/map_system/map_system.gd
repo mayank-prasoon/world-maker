@@ -6,7 +6,7 @@ onready var map_gen        = get_node("MapchunkGenerator")
 
 func _ready()->void:
 	Logger.info(name + " node loaded")
-	generate_map("house", "/home/mayank/Downloads/pexels-james-wheeler-417074.jpg")
+	generate_map("house", "/home/mayank/Downloads/pexels-imad-clicks-10656139.jpg")
 
 func generate_map(map_name:String, img_path:String, tags:Array = []):
 	var map_chunks = map_gen.slice_texture(img_path)
