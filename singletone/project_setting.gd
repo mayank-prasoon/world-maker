@@ -33,7 +33,8 @@ signal load_data
 
 func _ready():
 	Logger.info(name + " - " + "Node loadded")
-	
+	open_project()
+
 func open_project():
 	Logger.info(name + " - " + "open_project()")
 	var file = File.new()

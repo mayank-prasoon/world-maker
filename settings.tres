@@ -7,6 +7,8 @@ script = ExtResource( 1 )
 last_project = {
 }
 project_list = [ {
-"test project": "res://test/test_project"
+"game_dev": "pqr"
+}, {
+"world_building": "xyz"
 } ]
-pinned_projects = [  ]
+pinned_projects = [ 1, 0 ]

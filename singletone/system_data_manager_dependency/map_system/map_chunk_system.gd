@@ -99,7 +99,7 @@ func generate_texture(image:Image, chunk_size:Vector2, index_x:int, index_y:int)
 
 func make_tile(tile_:TileSet, tile_counter:int, image_texture:ImageTexture)->void:
 	tile_.create_tile(tile_counter)
-	tile_.tile_set_name(tile_counter, "map_tile_" + str(tile_counter))
+	# tile_.tile_set_name(tile_counter, "map_tile_" + str(tile_counter))
 	tile_.tile_set_texture(tile_counter, image_texture)
 
 

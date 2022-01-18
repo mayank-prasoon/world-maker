@@ -23,7 +23,7 @@ func test_open_article():
 			Vector2(0,0),
 			test_article_file,
 			true,
-			MapChunkData.new(),
+			Vector2(0,0),
 			[]
 	)
 
@@ -39,32 +39,32 @@ func test_open_article():
 	assert_eq(_test_resource.tags.size(), 2, "the array size should be '2'")
 	assert_eq_deep(_test_resource.tags, ["random", "568"])
 
-
-func test_get_chunk():
-	gut.p('Testing get chunk method')
-	var uuid = test_scene.uuid_util.v4()	
-
-	var test_chunk_file:Resource = load("res://test/resources_and_temp_items/temp_test_map_chunk.tres")
-	# delete file
-	
-	save_file_node.save_file(
-			"temp_file_3",
-			uuid,
-			MapPin.new(),
-			Vector2(0,0),
-			RootArticle.new(),
-			true,
-			test_chunk_file,
-			[]
-	)
-
-	var _test_resource = test_pin_system_node.get_chunk(uuid)
-	
-	assert_eq(_test_resource, test_chunk_file, "the name should be 'test_chunk_file'")
-	assert_eq(_test_resource.chunk_name, "temp_chunk", "the name should be 'temp_file_3'")
-	assert_eq(_test_resource.chunk_texture, "xyz", "the texture should be 'xyz'")
-	assert_eq(_test_resource.chunk_offset, Vector2(10,20), "the raw data should be 'Vector(10,20)'")
-	assert_eq(_test_resource.chunk_pins.size(), 2, "the array size should be '2'")
+#
+#func test_get_chunk():
+#	gut.p('Testing get chunk method')
+#	var uuid = test_scene.uuid_util.v4()	
+#
+#	var test_chunk_file:Resource = load("res://test/resources_and_temp_items/temp_test_map_chunk.tres")
+#	# delete file
+#
+#	save_file_node.save_file(
+#			"temp_file_3",
+#			uuid,
+#			MapPin.new(),
+#			Vector2(0,0),
+#			RootArticle.new(),
+#			true,
+#			test_chunk_file,
+#			[]
+#	)
+#
+#	var _test_resource = test_pin_system_node.get_chunk(uuid)
+#
+#	assert_eq(_test_resource, test_chunk_file, "the name should be 'test_chunk_file'")
+#	assert_eq(_test_resource.chunk_name, "temp_chunk", "the name should be 'temp_file_3'")
+#	assert_eq(_test_resource.chunk_texture, "xyz", "the texture should be 'xyz'")
+#	assert_eq(_test_resource.chunk_offset, Vector2(10,20), "the raw data should be 'Vector(10,20)'")
+#	assert_eq(_test_resource.chunk_pins.size(), 2, "the array size should be '2'")
 
 
 func test_get_template():
@@ -81,7 +81,7 @@ func test_get_template():
 			Vector2(0,0),
 			RootArticle.new(),
 			true,
-			MapPin.new(),
+			Vector2(0,0),
 			[]
 	)
 
@@ -106,7 +106,7 @@ func test_get_tags():
 			Vector2(0,0),
 			RootArticle.new(),
 			true,
-			MapPin.new(),
+			Vector2(0,0),
 			test_array
 	)
 

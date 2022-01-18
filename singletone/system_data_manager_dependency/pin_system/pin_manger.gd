@@ -17,16 +17,16 @@ func get_article(pin_name:String) -> Resource:
 	CommandSystem.API.echo("article linked to pin: {0}".format([_raw_atricle_resource]))
 	
 	return _raw_atricle_resource
-
-func get_chunk(pin_name:String) -> MapChunkData:
-	Logger.info(name + " - " + "get_chunk({0})".format([pin_name]))
-
-	var _temp_pin_resource:Resource      = save_system.open_file(pin_name)
-	var _raw_chunk_resource:MapChunkData = _temp_pin_resource.linked_chunk
-
-	CommandSystem.API.echo("chunk linked to pin: {0}".format([_raw_chunk_resource]))
-
-	return _raw_chunk_resource
+#
+#func get_chunk(pin_name:String) -> MapChunkData:
+#	Logger.info(name + " - " + "get_chunk({0})".format([pin_name]))
+#
+#	var _temp_pin_resource:Resource      = save_system.open_file(pin_name)
+#	var _raw_chunk_resource:MapChunkData = _temp_pin_resource.linked_chunk
+#
+#	CommandSystem.API.echo("chunk linked to pin: {0}".format([_raw_chunk_resource]))
+#
+#	return _raw_chunk_resource
 
 func get_template(pin_name:String) -> MapSymbolTemplate:
 	Logger.info(name + " - " + "get_template({0})".format([pin_name]))

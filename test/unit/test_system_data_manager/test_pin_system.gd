@@ -19,7 +19,7 @@ func test_make_new_file():
 		Vector2(20, 100),
 		RootArticle.new(),
 		true,
-		MapChunkData.new(),
+		Vector2(0,0),
 		[
 			"home",
 			"safe",
@@ -44,7 +44,7 @@ func test_add_chunk():
 		Vector2(20, 100),
 		RootArticle.new(),
 		false,
-		MapChunkData.new(),
+		Vector2(0,0),
 		[
 			"home",
 			"safe",
@@ -53,7 +53,7 @@ func test_add_chunk():
 	)
 
 	# asserstions
-	var chunk = preload("res://test/resources_and_temp_items/temp_test_map_chunk.tres")
+	var chunk = Vector2(25, 10)
 
 	test_pin_system_node.add_chunk(uuid, chunk)
 	var _x = save_system.open_file(uuid)
@@ -64,10 +64,6 @@ func test_add_chunk():
 	assert_eq(_x.pin_location, Vector2(20, 100))
 
 	assert_eq_deep(_x.linked_chunk, chunk)
-	assert_eq(_x.linked_chunk.chunk_name, "temp_chunk")
-	assert_eq(_x.linked_chunk.chunk_texture, "xyz")
-	assert_eq(_x.linked_chunk.chunk_offset, Vector2(10, 20))
-	assert_eq_deep(_x.tags, ["home", "safe", "country side"])
 
 func test_add_artilce():
 	var uuid = test_pin_system_node.make_new_pin(
@@ -76,7 +72,7 @@ func test_add_artilce():
 		Vector2(20, 100),
 		RootArticle.new(),
 		false,
-		MapChunkData.new(),
+		Vector2(0,0),
 		[
 			"home",
 			"safe",
@@ -102,7 +98,7 @@ func test_add_remove_tags():
 		Vector2(20, 100),
 		RootArticle.new(),
 		false,
-		MapChunkData.new(),
+		Vector2(0,0),
 		[
 			"home",
 			"safe",
@@ -133,7 +129,7 @@ func test_fetch_pin_by_tags_name():
 		Vector2(20, 100),
 		RootArticle.new(),
 		false,
-		MapChunkData.new(),
+		Vector2(0,0),
 		[
 			"home",
 			"safe",
@@ -147,7 +143,7 @@ func test_fetch_pin_by_tags_name():
 		Vector2(20, 100),
 		RootArticle.new(),
 		false,
-		MapChunkData.new(),
+		Vector2(0,0),
 		[
 			"home",
 			"country side"

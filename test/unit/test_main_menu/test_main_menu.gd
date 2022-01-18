@@ -5,6 +5,7 @@ var test_scene:Node
 
 func before_each():
 	test_scene = t.instance()
+	add_child_autofree(test_scene)
 
 #test ui behavour
 func test_on_NewProjectButton_pressed():

@@ -25,7 +25,7 @@ func test_create_save_files():
 			Vector2(0,0),
 			_temp_resource,
 			true,
-			_temp_resource,
+			Vector2(0,0),
 			["books", "house"]
 	)
 	
@@ -44,7 +44,7 @@ func test_file_open():
 		Vector2(20,-100),
 		_temp_resource,
 		false,
-		_temp_resource,
+		Vector2(10,20),
 		["books", "house"]
 	)
 
@@ -62,7 +62,7 @@ func test_file_open():
 	gut.p('\n=> \tTest Resource File\n')
 	assert_eq(_test_resource.pin_symbol_template, _temp_resource, "the resource file sould be same as _temp_resource")
 	assert_eq(_test_resource.pin_article, _temp_resource, "the resource file sould be same as _temp_resource")
-	assert_eq(_test_resource.linked_chunk, _temp_resource, "the resource file sould be same as _temp_resource")
+	assert_eq(_test_resource.linked_chunk, Vector2(10,20), "the resource file sould be same as _temp_resource")
 
 # test verify files
 func test_file_verification_recreation():

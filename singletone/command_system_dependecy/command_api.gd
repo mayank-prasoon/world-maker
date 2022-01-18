@@ -8,7 +8,6 @@ onready var Console         = $"../CanvasLayer/CommandSystemInterface/Console/Lo
 # === SystemDataManager NODES ===
 
 onready var PIN:Node         = SystemDataManager.get_node("PinSystem")
-onready var CHUNK:Node       = SystemDataManager.get_node("MapChunkSystem")
 onready var TEMPLATE:Node    = SystemDataManager.get_node("SymbolTemplateSystem")
 onready var MAP:Node         = SystemDataManager.get_node("MapSystem")
 onready var ARTICLE:Node     = SystemDataManager.get_node("ArticleSystem")
@@ -68,7 +67,6 @@ func remove_save_files()->void:
 	Logger.info("command executed - remove_save_files")
 	SystemDataManager.get_node("PinSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("MapSystem/SaveSystem").remove_all_files()
-	SystemDataManager.get_node("MapChunkSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("SymbolTemplateSystem/SaveSystem").remove_all_files()
 	SystemDataManager.get_node("ArticleSystem/SaveSystem").remove_all_files()
 

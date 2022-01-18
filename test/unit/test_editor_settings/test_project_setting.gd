@@ -11,7 +11,7 @@ func test_remap_input():
 	
 	assert_eq_deep(x.shortcuts, {
 			"command line interface" :preload("res://assets/default_shortcut/default_command_line_interface.tres"),
-			"fullscreen"            :preload("res://assets/default_shortcut/default_fullscreen.tres")
+			"fullscreen"             :preload("res://assets/default_shortcut/default_fullscreen.tres")
 	})
 
 	x.shortcut_settings.remap_input(
@@ -30,7 +30,6 @@ func test_delete_old_keys():
 	add_child_autofree(x)
 	x.shortcut_settings.delete_old_keys()
 	assert_eq(InputMap.get_action_list("command line interface").size(), 0)
-
 
 	x.shortcut_settings.remap_input(
 		"command line interface",

@@ -49,13 +49,11 @@ func test_clear_save_files():
 	var _x = ResourceSaver.save("res://save_files/pins/pikachu.tres", MapPin.new())
 	var _y = ResourceSaver.save("res://save_files/maps/pikachu.tres", MapData.new())
 	var _z = ResourceSaver.save("res://save_files/map_symbol_templates/pikachu.tres", MapSymbolTemplate.new())
-	var _p = ResourceSaver.save("res://save_files/map_chunks/pikachu.tres", MapChunkData.new())
 	var _q = ResourceSaver.save("res://save_files/articles/pikachu.tres", RootArticle.new())
 
 	assert_file_exists("res://save_files/pins/pikachu.tres")
 	assert_file_exists("res://save_files/maps/pikachu.tres")
 	assert_file_exists("res://save_files/map_symbol_templates/pikachu.tres")
-	assert_file_exists("res://save_files/map_chunks/pikachu.tres")
 	assert_file_exists("res://save_files/articles/pikachu.tres")
 
 	C_API.remove_save_files()
@@ -63,7 +61,6 @@ func test_clear_save_files():
 	assert_file_does_not_exist("res://save_files/pins/pikachu.tres")
 	assert_file_does_not_exist("res://save_files/maps/pikachu.tres")
 	assert_file_does_not_exist("res://save_files/map_symbol_templates/pikachu.tres")
-	assert_file_does_not_exist("res://save_files/map_chunks/pikachu.tres")
 	assert_file_does_not_exist("res://save_files/articles/pikachu.tres")
 
 func test_run_script():

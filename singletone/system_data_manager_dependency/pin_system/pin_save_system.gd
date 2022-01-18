@@ -14,7 +14,7 @@ func save_file(
 		location:Vector2    = Vector2(0,0),
 		article:Resource    = Resource.new(),
 		link_state:bool     = false,
-		chunk_link:Resource = MapChunkData.new(),
+		chunk_link:Vector2  = Vector2(0,0),
 		tags:Array          = []
 	) -> void:
 	

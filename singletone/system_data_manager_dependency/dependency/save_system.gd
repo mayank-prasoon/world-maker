@@ -34,7 +34,8 @@ func open_file(item_uid:String)->Resource:
 	Logger.info(name + " - open_file({0})".format([item_uid]))
 	CommandSystem.API.echo("{name} loaded".format({"name": item_uid}))
 
-	return ResourceLoader.load(save_location.format({"uuid": item_uid}))
+	var map = ResourceLoader.load(save_location.format({"uuid": item_uid}))
+	return map
 
 
 func remove_all_files():

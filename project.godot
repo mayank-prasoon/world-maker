@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://assets/file templates/editor_setting_system_template/editor_settings_template.gd"
 }, {
 "base": "Resource",
-"class": "MapChunkData",
-"language": "GDScript",
-"path": "res://assets/file templates/save_system_template/map_chunk_resources_template.gd"
-}, {
-"base": "Resource",
 "class": "MapData",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_resources_template.gd"
@@ -72,7 +67,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "CameraMovement": "",
 "EditorSettingsTemplate": "",
-"MapChunkData": "",
 "MapData": "",
 "MapFragment": "",
 "MapPin": "",

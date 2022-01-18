@@ -8,7 +8,7 @@ func _ready():
 func save_file(
 		map_name:String,
 		layers:TileSet      = TileSet.new(),
-		chunk_size:Vector2  = Vector2(),
+		chunk_size:Vector2  = Vector2(0,0),
 		chunk_number:int    = 0,
 		map_pins:Array      = [],
 		tags:Array          = []

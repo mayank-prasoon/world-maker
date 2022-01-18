@@ -16,7 +16,7 @@ func make_new_pin(
 		pin_location:Vector2           = Vector2(0,0),
 		pin_article:RootArticle        = RootArticle.new(),
 		map_link_state:bool            = false,
-		linked_chunk:MapChunkData      = MapChunkData.new(),
+		linked_chunk:Vector2           = Vector2(0,0),
 		tags:Array                     = []
 )->String:
 	var uuid = get_parent().uuid_util.v4()
@@ -25,7 +25,7 @@ func make_new_pin(
 
 
 	if !map_link_state:
-		linked_chunk = MapChunkData.new()
+		linked_chunk = Vector2(0, 0)
 
 	save_system.save_file(
 			new_pin_name,
@@ -42,7 +42,7 @@ func make_new_pin(
 
 	return uuid
 
-func add_chunk(pin_id:String, chunk:MapChunkData)->void:
+func add_chunk(pin_id:String, chunk:Vector2)->void:
 	Logger.info(name + " - " + "add_chunk({0},{1})".format([pin_id, chunk]))
 
 	var temp_file = save_system.open_file(pin_id)

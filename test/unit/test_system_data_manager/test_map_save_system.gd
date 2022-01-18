@@ -15,13 +15,17 @@ func before_each():
 func test_create_save_files():
 	var pin_save_file:String = "res://save_files/maps/{uid}_save_data.tres".format({"uid" : "temp_map_name"})
 	
-
 	gut.p('=> \tTestting save file method')
 	test_pin_system_node.save_file(
 			"temp_map_name",
+			TileSet.new(),
+			Vector2(20, 10),
+			10,
 			[_temp_resource, _temp_resource, _temp_resource],
 			["books", "house"]
 	)
+
+	yield(get_tree().create_timer(1.0), "timeout")
 	
 	# assertion
 	assert_file_exists(pin_save_file)
@@ -32,20 +36,27 @@ func test_file_open():
 	
 	test_pin_system_node.save_file(
 		"fake_name",
+		TileSet.new(),
+		Vector2(20, 10),
+		10,
 		[_temp_resource, _temp_resource, _temp_resource],
 		["books", "house"]
 	)
 
+	yield(get_tree().create_timer(1.0), "timeout")
+	
 	# open files
 	var _test_resource = test_pin_system_node.open_file("fake_name")
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')
 	assert_eq(_test_resource.map_name, "fake_name", "the pin name should be 'fake_name'") 
-	assert_eq_deep(_test_resource.layers, [_temp_resource, _temp_resource, _temp_resource])
+	assert_eq(_test_resource.chunk_size, Vector2(20, 10))
+	assert_eq(_test_resource.chunk_number, 10)
+	assert_eq_deep(_test_resource.map_pins, [_temp_resource, _temp_resource, _temp_resource])
 	assert_eq_deep(_test_resource.tags, ["books", "house"])
 
-	
+
 # test verify files
 func test_file_verification_recreation():
 	var xyz_save_file:String = "res://save_files/maps/{id}_save_data.tres".format({"id":"xyz"})
@@ -53,16 +64,20 @@ func test_file_verification_recreation():
 	gut.p('=> \tTestting file verification method')
 	test_scene.verify(xyz_save_file, test_scene.MAP_RESOURCE_TYPE.MAP, "xyz")
 	
+	yield(get_tree().create_timer(1.0), "timeout")
+	
 	# assertion
 	assert_file_exists(xyz_save_file)
 	
 	# open files
 	var _test_resource = test_pin_system_node.open_file("xyz")
-
+	
 	# assertion
 	gut.p('\n=> \tTest Data\n')
 	assert_eq(_test_resource.map_name, "xyz", "the pin name should be ''") 
-	assert_eq_deep(_test_resource.layers, [])
+	assert_eq(_test_resource.chunk_size, Vector2(0,0))
+	assert_eq(_test_resource.chunk_number, 0)
+	assert_eq_deep(_test_resource.map_pins, [])
 	assert_eq_deep(_test_resource.tags, [])
 
 
