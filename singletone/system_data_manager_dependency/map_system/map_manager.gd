@@ -6,6 +6,7 @@ onready var save_system:Node = self.get_parent().get_node("SaveSystem")
 func _ready():
 	Logger.info(name + " node loaded")
 
+
 func get_tags(map_name:String) -> Array:
 	Logger.info(name + " - " + "get_tags({0})".format([map_name]))
 	
@@ -15,8 +16,8 @@ func get_tags(map_name:String) -> Array:
 	CommandSystem.API.echo("list of all tags: {0}".format([str(tags)]))
 
 	return tags
-	
-	
+
+
 func get_layers(map_name:String) -> Array:
 	Logger.info(name + " - " + "get_layers({0})".format([map_name]))
 	var _temp_pin_resource:Resource   = save_system.open_file(map_name)
@@ -26,6 +27,7 @@ func get_layers(map_name:String) -> Array:
 
 	return layers
 
+
 func get_first_layer(map_name:String)->Array:
 	Logger.info(name + " - " + "get_first_layer({0})".format([map_name]))
 	var layer = self.get_layers(map_name)[0]
@@ -33,6 +35,7 @@ func get_first_layer(map_name:String)->Array:
 	CommandSystem.API.echo("first layer: {0}".format([str(layer)]))
 
 	return layer
+
 
 func get_last_layer(map_name:String)->Array:
 	Logger.info(name + " - " + "get_last_layer({0})".format([map_name]))
@@ -42,7 +45,6 @@ func get_last_layer(map_name:String)->Array:
 	CommandSystem.API.echo("last layer: {0}".format([str(layer)]))
 	
 	return layer
-
 
 
 func get_layer(map_name:String, layer_index:int)->Array:

@@ -16,7 +16,7 @@
 [ext_resource path="res://singletone/system_data_manager_dependency/chunk_system/map_chunk_system.gd" type="Script" id=14]
 [ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_system.gd" type="Script" id=15]
 [ext_resource path="res://singletone/system_data_manager_dependency/system_inventory.gd" type="Script" id=16]
-[ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_chunk_generator.gd" type="Script" id=17]
+[ext_resource path="res://singletone/system_data_manager_dependency/map_system/map_chunk_system.gd" type="Script" id=17]
 
 [node name="SystemDataManager" type="Node"]
 script = ExtResource( 8 )
@@ -68,3 +68,5 @@ script = ExtResource( 7 )
 
 [node name="ArticleManager" type="Node" parent="ArticleSystem"]
 script = ExtResource( 10 )
+
+[connection signal="data_saved" from="MapSystem/SaveSystem" to="MapSystem" method="_on_SaveSystem_data_saved"]

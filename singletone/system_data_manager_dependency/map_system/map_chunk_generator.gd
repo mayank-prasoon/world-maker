@@ -23,7 +23,7 @@ func slice_texture(texture_path:String, chunk_size:Vector2 = Vector2(512, 288))-
 func load_image(image_path:String)->Image:
 	var new_image = Image.new()
 	new_image.load(image_path)
-	
+
 	return new_image
 
 # genereate and save map fragments
@@ -43,9 +43,10 @@ func generate_texture(args:Array):
 
 	# create new image form slice
 	var new_image:Image = Image.new()
-	new_image.create(chunk_size.x, chunk_size.y, true, image.get_format())
+	new_image.create(chunk_size.x + 1, chunk_size.y + 1, false, image.get_format())
 	new_image.blit_rect(image, Rect2(position, chunk_size), Vector2(0,0))
-	
+	var _i = new_image.generate_mipmaps()
+
 	# generate uuid and get save path
 	var uuid = root_node.uuid_util.v4()
 	var save_location = root_node.root_save_file_path + '/map_chunks/{uuid}_save_data.tres'.format({"uuid":uuid})

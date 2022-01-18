@@ -1,6 +1,8 @@
 class_name SaveSystem
 extends Node
 
+signal data_saved
+
 # === NODES ===
 onready var root_node:Node = self.get_parent().get_parent()
 
@@ -8,9 +10,19 @@ onready var root_node:Node = self.get_parent().get_parent()
 
 var save_location:String
 var resource_type:int
+var threads:Array
+
 
 func _ready():
 	Logger.info(name + " - loaded")
+
+# saves the data in a resource file
+# WARNING: This method is ment to be acess via thread
+func save_data(args):
+	var _x = ResourceSaver.save(args[0], args[1])
+	call_deferred(
+		"emit_signal", "data_saved"
+	)
 
 func open_file(item_uid:String)->Resource:
 	
