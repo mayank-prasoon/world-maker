@@ -15,8 +15,6 @@ func load_image(image_path:String)->Image:
 
 	return new_image
 
-# === Depricated === 
-
 # get the number of chunk
 func get_chunk_count(image_size:Vector2, chunk_size:Vector2)->int:
 	var image_rect:int = Rect2(Vector2(0,0), image_size).get_area()
@@ -59,8 +57,18 @@ func slice_texture(texture_path:String, chunk_size:Vector2 = Vector2(512, 288))-
 
 	return tile_set
 
-
+# generate tile
+# WARNING : this method is ment to be accessed via a thread
 func generate_tile(arg):
+
+# == Note ==
+# args[0] is copy of the image
+# args[1] is size of the chunk
+# args[2] is the x coordinate of the tile
+# args[3] is the y coorfinate of the tile
+# args[4] is the dimension of the one side of the image where 1 unit = chunk size
+# args[5] is the tile set
+
 	mutex.lock()
 	var image_slice:ImageTexture = generate_texture(arg[0], arg[1], arg[2], arg[3])
 	make_tile(arg[5], ((arg[4] * arg[3]) + arg[2]), image_slice)
@@ -96,13 +104,12 @@ func generate_texture(image:Image, chunk_size:Vector2, index_x:int, index_y:int)
 
 	return image_fragment
 
-
+# make tiles
 func make_tile(tile_:TileSet, tile_counter:int, image_texture:ImageTexture)->void:
 	tile_.create_tile(tile_counter)
-	# tile_.tile_set_name(tile_counter, "map_tile_" + str(tile_counter))
 	tile_.tile_set_texture(tile_counter, image_texture)
 
-
+# make 
 func _exit_tree():
 	for x in threads:
 		x.wait_to_finish()

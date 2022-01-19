@@ -32,5 +32,44 @@ func test_make_tile():
 	test_map_generation.make_tile(tile_set, 2, y)
 	test_map_generation.make_tile(tile_set, 1, y)
 
+	assert_eq(test_map_generation.tile_made, 0)
 	assert_eq_deep(tile_set.get_tiles_ids(), [1, 2])
 	assert_eq_deep(tile_set.tile_get_texture(1), y)
+
+func test_generate_tile():
+	var tile_set:TileSet = TileSet.new()
+
+	var x = test_map_generation.load_image(image_path)
+
+	test_map_generation.generate_tile(
+		[
+			x,
+			Vector2(512, 288),
+			2,
+			2,
+			15,
+			tile_set
+		]
+	)
+	
+	test_map_generation.generate_tile(
+		[
+			x,
+			Vector2(512, 288),
+			3,
+			1,
+			15,
+			tile_set
+		]
+	)
+	
+	assert_eq(test_map_generation.tile_made, 2)
+	assert_eq_deep(tile_set.get_tiles_ids(), [(15*1)+3, 32])
+
+func test_slice_texture():
+	var x:TileSet = test_map_generation.slice_texture(image_path)
+
+	yield(get_tree().create_timer(1.0), "timeout")
+
+	assert_eq(x.get_tiles_ids().size(), 225)
+	assert_eq(test_map_generation.tile_made, 225)
