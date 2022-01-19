@@ -4,9 +4,6 @@ var threads:Array    = []
 var map:MapData
 var mutex            = Mutex.new()
 
-func _ready():
-	display_entire_map(load("res://save_files/maps/test_save_data.tres"))
-
 func display_entire_map(map:MapData) -> void:
 	var new_texture = TextureRect.new()
 	$Map/TileMap.tile_set = map.image
