@@ -1,7 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://systems/map_system/map_system.gd" type="Script" id=1]
 [ext_resource path="res://systems/map_system/map_camera.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "PopUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( -2, 0.5, -2 ),
+"update": 0,
+"values": [ -40, 20, 10 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -40 ]
+}
 
 [node name="MapSystem" type="Control"]
 anchor_right = 1.0
@@ -10,6 +41,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MapSymbolManager" type="Node" parent="."]
 
 [node name="Map" type="Control" parent="."]
 anchor_right = 1.0
@@ -33,3 +66,125 @@ __meta__ = {
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Menu" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -495, 122 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RibbonMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 30, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuList" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="MapTabButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 40.0
+margin_right = 30.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="StatsTabButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 80.0
+margin_right = 30.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 30, 30 )
+
+[node name="ProjectMenuButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 530.0
+margin_right = 30.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 10
+
+[node name="SettingButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 570.0
+margin_right = 30.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 0
+
+[node name="PopUpMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/HBoxContainer"]
+margin_left = 34.0
+margin_right = 74.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 40, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = -236.0
+margin_right = 58.0
+margin_bottom = -16.0
+custom_constants/separation = -40
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
+margin_top = 180.0
+margin_right = 40.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Button2" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
+margin_top = 180.0
+margin_right = 40.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Button3" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
+margin_top = 180.0
+margin_right = 40.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Button4" type="Control" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
+margin_top = 180.0
+margin_right = 40.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer/Button4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu"]
+root_node = NodePath("../VBoxContainer")
+anims/PopUp = SubResource( 1 )
+anims/RESET = SubResource( 2 )
