@@ -13,16 +13,31 @@ func _ready():
 		cards.article = article
 		cards_grid.add_child(cards)
 
-func _on_AddNewCardButton_pressed():
-	pass # Replace with function body.
-
 func get_article(text:String)->void:
-	for card in cards_grid.get_children():
-		if text in card.article.article_name:
+	var cards = cards_grid.get_children()
+	
+	# hide cards
+	if (cards != []) or (text != ""):
+		for card in cards:
+			if text in card.article.article_name:
+				card.visible = true
+			elif text in card.article.article_id:
+				card.visible = true
+			elif card.article.tags.has(text):
+				card.visible = true
+			else:
+				card.visible = false
+	
+	# displays all cards
+	if text == "":
+		for card in cards:
 			card.visible = true
-		elif text in card.article.article_id:
-			card.visible = true
-		elif card.article.tags.has(text):
-			card.visible = true
-		else:
-			card.visible = false
+
+func open_card_reader(card_article):
+	$"../Reader".popup_centered_ratio()
+
+func _on_AddNewCardButton_pressed():
+	pass
+
+func _on_LineEdit_text_changed(new_text):
+	get_article(new_text)
