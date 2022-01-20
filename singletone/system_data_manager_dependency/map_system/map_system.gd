@@ -7,7 +7,6 @@ onready var map_gen        = get_node("MapchunkGenerator")
 
 func _ready()->void:
 	Logger.info(name + " node loaded")
-#	generate_map("test", "/home/mayank/Downloads/pexels-imad-clicks-10656139.jpg")
 
 
 func generate_map(map_name:String, img_path:String, tags:Array = [], pins:Array = [], chunk_size:Vector2 = Vector2(512, 288)):

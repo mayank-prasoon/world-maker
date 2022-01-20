@@ -6,6 +6,7 @@
 script = ExtResource( 1 )
 article_name = "test_article123"
 article_id = ""
-banner = "pqr"
-raw_data = "xyz"
+article_profile = ""
+article_banner = ""
+article_raw_data = ""
 tags = [ "random", "568" ]

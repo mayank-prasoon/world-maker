@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/wiki_dashboard/UI_elements/cards/Cards.gd" type="Script" id=1]
+
+[node name="Cards" type="Control"]
+anchor_right = 0.175781
+anchor_bottom = 0.39
+margin_right = -30.0
+margin_bottom = -39.0
+rect_min_size = Vector2( 180, 234 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.2, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.0666667
+anchor_top = 0.0512821
+anchor_right = 0.933333
+anchor_bottom = 0.948718
+margin_left = -9.53674e-07
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_left = 27.0
+margin_right = 127.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 6
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 110.0
+margin_right = 155.0
+margin_bottom = 124.0
+text = "name"
+align = 1
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+margin_top = 134.0
+margin_right = 155.0
+margin_bottom = 148.0
+text = "sample text"

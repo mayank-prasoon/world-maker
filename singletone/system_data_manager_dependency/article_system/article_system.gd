@@ -73,7 +73,7 @@ func add_tags(article_id:String, tags:Array)->void:
 func get_articles_with_tag(tag_name:String)->Array:
 	Logger.info(name + " - " + "get_articles_with_tag({0})".format([tag_name]))
 	
-	var pins = []
+	var articles = []
 	
 	var folder      = Directory.new()
 	var base_folder = save_location.get_base_dir()
@@ -87,10 +87,32 @@ func get_articles_with_tag(tag_name:String)->Array:
 			elif not file.begins_with("."):
 				var temp_artilce = load(base_folder + "/" + file)
 				if temp_artilce.tags.has(tag_name):
-					pins.append(temp_artilce)
+					articles.append(temp_artilce)
 		folder.list_dir_end()
 	
-	CommandSystem.API.echo("list of article with tag {0} : {1}".format([tag_name, str(pins)]))
+	CommandSystem.API.echo("list of article with tag {0} : {1}".format([tag_name, str(articles)]))
 	
-	return pins
+	return articles
 
+func get_articles()->Array:
+	Logger.info(name + " - " + "get_articles()")
+	
+	var articles = []
+	
+	var folder      = Directory.new()
+	var base_folder = save_location.get_base_dir()
+	if folder.dir_exists(base_folder):
+		folder.open(base_folder)
+		folder.list_dir_begin()
+		while true:
+			var file = folder.get_next()
+			if file == "":
+				break
+			elif not file.begins_with("."):
+				var temp_artilce = load(base_folder + "/" + file)
+				articles.append(temp_artilce)
+		folder.list_dir_end()
+	
+	CommandSystem.API.echo("list of article : {0}".format([str(articles)]))
+	
+	return articles

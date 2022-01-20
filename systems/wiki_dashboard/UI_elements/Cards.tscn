@@ -1,6 +1,0 @@
-[gd_scene format=2]
-
-[node name="Cards" type="Control"]
-margin_right = 150.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 150, 195 )
