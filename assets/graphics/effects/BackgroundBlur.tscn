@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Effects/BackgroundBlur.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(0, 5);
+
+void fragment() {
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/blur_amount = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "blur_background"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Black:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 0.0470588, 0.0431373, 0.0431373, 0 ), Color( 0.0470588, 0.0431373, 0.0431373, 0.27451 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Blur:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Blur:material:shader_param/blur_amount")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 0.0, 2.558 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+
+[node name="BackgroundBlur" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Black" type="ColorRect" parent="."]
+modulate = Color( 0.0470588, 0.0431373, 0.0431373, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/blur_background = SubResource( 3 )
