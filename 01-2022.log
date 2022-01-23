@@ -9565,3 +9565,575 @@
 01/18/2022 21:08:15 INFO     SaveSystem - node loaded
 01/18/2022 21:08:15 INFO     ArticleManager - node loaded
 01/18/2022 21:08:15 INFO     ArticleSystem - node loaded
+01/19/2022 17:00:45 INFO     SystemSettings loaded
+01/19/2022 17:00:45 INFO     SaveSystem - loaded
+01/19/2022 17:00:45 INFO     SaveSystem - loaded
+01/19/2022 17:00:45 INFO     SaveSystem - loaded
+01/19/2022 17:00:45 INFO     SaveSystem node loaded
+01/19/2022 17:00:45 INFO     MapManager node loaded
+01/19/2022 17:00:45 INFO     MapSystem node loaded
+01/19/2022 17:00:45 INFO     SaveSystem - loaded
+01/19/2022 17:00:45 INFO     SaveSystem - node loaded
+01/19/2022 17:00:45 INFO     ArticleManager - node loaded
+01/19/2022 17:00:45 INFO     ArticleSystem - node loaded
+01/19/2022 17:00:45 INFO     ShortcutSettings - Node loadded
+01/19/2022 17:00:45 INFO     ProjectSettingsManager - Node loadded
+01/19/2022 17:00:45 INFO     ProjectSettingsManager - open_project()
+01/19/2022 17:00:45 INFO     ShortcutSettings - delete_old_keys()
+01/19/2022 17:00:45 INFO     ShortcutSettings - setup_keys()
+01/19/2022 17:05:45 INFO     SystemSettings loaded
+01/19/2022 17:05:45 INFO     SaveSystem - loaded
+01/19/2022 17:05:45 INFO     SaveSystem - loaded
+01/19/2022 17:05:45 INFO     SaveSystem - loaded
+01/19/2022 17:05:45 INFO     SaveSystem node loaded
+01/19/2022 17:05:45 INFO     MapManager node loaded
+01/19/2022 17:05:45 INFO     MapSystem node loaded
+01/19/2022 17:05:45 INFO     SaveSystem - loaded
+01/19/2022 17:05:45 INFO     SaveSystem - node loaded
+01/19/2022 17:05:45 INFO     ArticleManager - node loaded
+01/19/2022 17:05:45 INFO     ArticleSystem - node loaded
+01/19/2022 17:05:45 INFO     ShortcutSettings - Node loadded
+01/19/2022 17:05:45 INFO     ProjectSettingsManager - Node loadded
+01/19/2022 17:05:45 INFO     ProjectSettingsManager - open_project()
+01/19/2022 17:05:45 INFO     ShortcutSettings - delete_old_keys()
+01/19/2022 17:05:45 INFO     ShortcutSettings - setup_keys()
+01/19/2022 17:09:55 INFO     SystemSettings loaded
+01/19/2022 17:09:55 INFO     SaveSystem - loaded
+01/19/2022 17:09:55 INFO     SaveSystem - loaded
+01/19/2022 17:09:55 INFO     SaveSystem - loaded
+01/19/2022 17:09:55 INFO     SaveSystem node loaded
+01/19/2022 17:09:55 INFO     MapManager node loaded
+01/19/2022 17:09:55 INFO     MapSystem node loaded
+01/19/2022 17:09:55 INFO     SaveSystem - loaded
+01/19/2022 17:09:55 INFO     SaveSystem - node loaded
+01/19/2022 17:09:55 INFO     ArticleManager - node loaded
+01/19/2022 17:09:55 INFO     ArticleSystem - node loaded
+01/19/2022 17:09:55 INFO     ShortcutSettings - Node loadded
+01/19/2022 17:09:55 INFO     ProjectSettingsManager - Node loadded
+01/19/2022 17:09:55 INFO     ProjectSettingsManager - open_project()
+01/19/2022 17:09:55 INFO     ShortcutSettings - delete_old_keys()
+01/19/2022 17:09:55 INFO     ShortcutSettings - setup_keys()
+01/19/2022 17:30:41 INFO     SystemSettings loaded
+01/19/2022 17:30:41 INFO     SaveSystem - loaded
+01/19/2022 17:30:41 INFO     SaveSystem - loaded
+01/19/2022 17:30:41 INFO     SaveSystem - loaded
+01/19/2022 17:30:41 INFO     SaveSystem node loaded
+01/19/2022 17:30:41 INFO     MapManager node loaded
+01/19/2022 17:30:41 INFO     MapSystem node loaded
+01/19/2022 17:30:41 INFO     SaveSystem - loaded
+01/19/2022 17:30:41 INFO     SaveSystem - node loaded
+01/19/2022 17:30:41 INFO     ArticleManager - node loaded
+01/19/2022 17:30:41 INFO     ArticleSystem - node loaded
+01/19/2022 17:30:41 INFO     ShortcutSettings - Node loadded
+01/19/2022 17:30:41 INFO     ProjectSettingsManager - Node loadded
+01/19/2022 17:30:41 INFO     ProjectSettingsManager - open_project()
+01/19/2022 17:30:41 INFO     ShortcutSettings - delete_old_keys()
+01/19/2022 17:30:41 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:02:23 INFO     SystemSettings loaded
+01/20/2022 16:02:23 INFO     SaveSystem - loaded
+01/20/2022 16:02:23 INFO     SaveSystem - loaded
+01/20/2022 16:02:23 INFO     SaveSystem - loaded
+01/20/2022 16:02:23 INFO     SaveSystem node loaded
+01/20/2022 16:02:23 INFO     MapManager node loaded
+01/20/2022 16:02:23 INFO     MapSystem node loaded
+01/20/2022 16:02:23 INFO     SaveSystem - loaded
+01/20/2022 16:02:23 INFO     SaveSystem - node loaded
+01/20/2022 16:02:23 INFO     ArticleManager - node loaded
+01/20/2022 16:02:23 INFO     ArticleSystem - node loaded
+01/20/2022 16:02:23 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:02:23 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:02:23 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:02:23 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:02:23 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:02:23 INFO     ArticleSystem - get_articles()
+01/20/2022 16:02:55 INFO     SystemSettings loaded
+01/20/2022 16:02:55 INFO     SaveSystem - loaded
+01/20/2022 16:02:55 INFO     SaveSystem - loaded
+01/20/2022 16:02:55 INFO     SaveSystem - loaded
+01/20/2022 16:02:55 INFO     SaveSystem node loaded
+01/20/2022 16:02:55 INFO     MapManager node loaded
+01/20/2022 16:02:55 INFO     MapSystem node loaded
+01/20/2022 16:02:55 INFO     SaveSystem - loaded
+01/20/2022 16:02:55 INFO     SaveSystem - node loaded
+01/20/2022 16:02:55 INFO     ArticleManager - node loaded
+01/20/2022 16:02:55 INFO     ArticleSystem - node loaded
+01/20/2022 16:02:55 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:02:55 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:02:55 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:02:55 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:02:55 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:02:55 INFO     ArticleSystem - get_articles()
+01/20/2022 16:04:24 INFO     SystemSettings loaded
+01/20/2022 16:04:24 INFO     SaveSystem - loaded
+01/20/2022 16:04:24 INFO     SaveSystem - loaded
+01/20/2022 16:04:24 INFO     SaveSystem - loaded
+01/20/2022 16:04:24 INFO     SaveSystem node loaded
+01/20/2022 16:04:24 INFO     MapManager node loaded
+01/20/2022 16:04:24 INFO     MapSystem node loaded
+01/20/2022 16:04:24 INFO     SaveSystem - loaded
+01/20/2022 16:04:24 INFO     SaveSystem - node loaded
+01/20/2022 16:04:24 INFO     ArticleManager - node loaded
+01/20/2022 16:04:24 INFO     ArticleSystem - node loaded
+01/20/2022 16:04:24 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:04:24 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:04:24 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:04:24 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:04:24 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:04:24 INFO     ArticleSystem - get_articles()
+01/20/2022 16:04:39 INFO     SystemSettings loaded
+01/20/2022 16:04:39 INFO     SaveSystem - loaded
+01/20/2022 16:04:39 INFO     SaveSystem - loaded
+01/20/2022 16:04:39 INFO     SaveSystem - loaded
+01/20/2022 16:04:39 INFO     SaveSystem node loaded
+01/20/2022 16:04:39 INFO     MapManager node loaded
+01/20/2022 16:04:39 INFO     MapSystem node loaded
+01/20/2022 16:04:39 INFO     SaveSystem - loaded
+01/20/2022 16:04:39 INFO     SaveSystem - node loaded
+01/20/2022 16:04:39 INFO     ArticleManager - node loaded
+01/20/2022 16:04:39 INFO     ArticleSystem - node loaded
+01/20/2022 16:04:39 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:04:39 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:04:39 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:04:39 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:04:39 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:04:39 INFO     ArticleSystem - get_articles()
+01/20/2022 16:04:54 INFO     SystemSettings loaded
+01/20/2022 16:04:54 INFO     SaveSystem - loaded
+01/20/2022 16:04:54 INFO     SaveSystem - loaded
+01/20/2022 16:04:54 INFO     SaveSystem - loaded
+01/20/2022 16:04:54 INFO     SaveSystem node loaded
+01/20/2022 16:04:54 INFO     MapManager node loaded
+01/20/2022 16:04:54 INFO     MapSystem node loaded
+01/20/2022 16:04:54 INFO     SaveSystem - loaded
+01/20/2022 16:04:54 INFO     SaveSystem - node loaded
+01/20/2022 16:04:54 INFO     ArticleManager - node loaded
+01/20/2022 16:04:54 INFO     ArticleSystem - node loaded
+01/20/2022 16:04:54 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:04:54 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:04:54 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:04:54 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:04:54 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:04:54 INFO     ArticleSystem - get_articles()
+01/20/2022 16:08:20 INFO     SystemSettings loaded
+01/20/2022 16:08:20 INFO     SaveSystem - loaded
+01/20/2022 16:08:20 INFO     SaveSystem - loaded
+01/20/2022 16:08:20 INFO     SaveSystem - loaded
+01/20/2022 16:08:20 INFO     SaveSystem node loaded
+01/20/2022 16:08:20 INFO     MapManager node loaded
+01/20/2022 16:08:20 INFO     MapSystem node loaded
+01/20/2022 16:08:20 INFO     SaveSystem - loaded
+01/20/2022 16:08:20 INFO     SaveSystem - node loaded
+01/20/2022 16:08:20 INFO     ArticleManager - node loaded
+01/20/2022 16:08:20 INFO     ArticleSystem - node loaded
+01/20/2022 16:08:20 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:08:20 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:08:20 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:08:20 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:08:20 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:08:20 INFO     ArticleSystem - get_articles()
+01/20/2022 16:08:37 INFO     SystemSettings loaded
+01/20/2022 16:08:37 INFO     SaveSystem - loaded
+01/20/2022 16:08:37 INFO     SaveSystem - loaded
+01/20/2022 16:08:37 INFO     SaveSystem - loaded
+01/20/2022 16:08:37 INFO     SaveSystem node loaded
+01/20/2022 16:08:37 INFO     MapManager node loaded
+01/20/2022 16:08:37 INFO     MapSystem node loaded
+01/20/2022 16:08:37 INFO     SaveSystem - loaded
+01/20/2022 16:08:37 INFO     SaveSystem - node loaded
+01/20/2022 16:08:37 INFO     ArticleManager - node loaded
+01/20/2022 16:08:37 INFO     ArticleSystem - node loaded
+01/20/2022 16:08:37 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:08:37 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:08:37 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:08:37 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:08:37 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:08:37 INFO     ArticleSystem - get_articles()
+01/20/2022 16:09:29 INFO     SystemSettings loaded
+01/20/2022 16:09:29 INFO     SaveSystem - loaded
+01/20/2022 16:09:29 INFO     SaveSystem - loaded
+01/20/2022 16:09:29 INFO     SaveSystem - loaded
+01/20/2022 16:09:29 INFO     SaveSystem node loaded
+01/20/2022 16:09:29 INFO     MapManager node loaded
+01/20/2022 16:09:29 INFO     MapSystem node loaded
+01/20/2022 16:09:29 INFO     SaveSystem - loaded
+01/20/2022 16:09:29 INFO     SaveSystem - node loaded
+01/20/2022 16:09:29 INFO     ArticleManager - node loaded
+01/20/2022 16:09:29 INFO     ArticleSystem - node loaded
+01/20/2022 16:09:29 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:09:29 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:09:29 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:09:29 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:09:29 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:09:29 INFO     ArticleSystem - get_articles()
+01/20/2022 16:10:21 INFO     SystemSettings loaded
+01/20/2022 16:10:21 INFO     SaveSystem - loaded
+01/20/2022 16:10:21 INFO     SaveSystem - loaded
+01/20/2022 16:10:21 INFO     SaveSystem - loaded
+01/20/2022 16:10:21 INFO     SaveSystem node loaded
+01/20/2022 16:10:21 INFO     MapManager node loaded
+01/20/2022 16:10:21 INFO     MapSystem node loaded
+01/20/2022 16:10:21 INFO     SaveSystem - loaded
+01/20/2022 16:10:21 INFO     SaveSystem - node loaded
+01/20/2022 16:10:21 INFO     ArticleManager - node loaded
+01/20/2022 16:10:21 INFO     ArticleSystem - node loaded
+01/20/2022 16:10:21 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:10:21 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:10:21 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:10:21 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:10:21 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:10:21 INFO     ArticleSystem - get_articles()
+01/20/2022 16:11:46 INFO     SystemSettings loaded
+01/20/2022 16:11:46 INFO     SaveSystem - loaded
+01/20/2022 16:11:46 INFO     SaveSystem - loaded
+01/20/2022 16:11:46 INFO     SaveSystem - loaded
+01/20/2022 16:11:46 INFO     SaveSystem node loaded
+01/20/2022 16:11:46 INFO     MapManager node loaded
+01/20/2022 16:11:46 INFO     MapSystem node loaded
+01/20/2022 16:11:46 INFO     SaveSystem - loaded
+01/20/2022 16:11:46 INFO     SaveSystem - node loaded
+01/20/2022 16:11:46 INFO     ArticleManager - node loaded
+01/20/2022 16:11:46 INFO     ArticleSystem - node loaded
+01/20/2022 16:11:46 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:11:46 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:11:46 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:11:46 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:11:46 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:11:46 INFO     ArticleSystem - get_articles()
+01/20/2022 16:18:32 INFO     SystemSettings loaded
+01/20/2022 16:18:32 INFO     SaveSystem - loaded
+01/20/2022 16:18:32 INFO     SaveSystem - loaded
+01/20/2022 16:18:32 INFO     SaveSystem - loaded
+01/20/2022 16:18:32 INFO     SaveSystem node loaded
+01/20/2022 16:18:32 INFO     MapManager node loaded
+01/20/2022 16:18:32 INFO     MapSystem node loaded
+01/20/2022 16:18:32 INFO     SaveSystem - loaded
+01/20/2022 16:18:32 INFO     SaveSystem - node loaded
+01/20/2022 16:18:32 INFO     ArticleManager - node loaded
+01/20/2022 16:18:32 INFO     ArticleSystem - node loaded
+01/20/2022 16:18:32 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:18:32 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:18:32 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:18:32 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:18:32 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:18:54 INFO     SystemSettings loaded
+01/20/2022 16:18:54 INFO     SaveSystem - loaded
+01/20/2022 16:18:54 INFO     SaveSystem - loaded
+01/20/2022 16:18:54 INFO     SaveSystem - loaded
+01/20/2022 16:18:54 INFO     SaveSystem node loaded
+01/20/2022 16:18:54 INFO     MapManager node loaded
+01/20/2022 16:18:54 INFO     MapSystem node loaded
+01/20/2022 16:18:54 INFO     SaveSystem - loaded
+01/20/2022 16:18:54 INFO     SaveSystem - node loaded
+01/20/2022 16:18:54 INFO     ArticleManager - node loaded
+01/20/2022 16:18:54 INFO     ArticleSystem - node loaded
+01/20/2022 16:18:54 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:18:54 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:18:54 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:18:54 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:18:54 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:37:31 INFO     SystemSettings loaded
+01/20/2022 16:37:31 INFO     SaveSystem - loaded
+01/20/2022 16:37:31 INFO     SaveSystem - loaded
+01/20/2022 16:37:31 INFO     SaveSystem - loaded
+01/20/2022 16:37:31 INFO     SaveSystem node loaded
+01/20/2022 16:37:31 INFO     MapManager node loaded
+01/20/2022 16:37:31 INFO     MapSystem node loaded
+01/20/2022 16:37:31 INFO     SaveSystem - loaded
+01/20/2022 16:37:31 INFO     SaveSystem - node loaded
+01/20/2022 16:37:31 INFO     ArticleManager - node loaded
+01/20/2022 16:37:31 INFO     ArticleSystem - node loaded
+01/20/2022 16:37:31 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:37:31 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:37:31 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:37:31 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:37:31 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:37:31 INFO     ArticleSystem - get_articles()
+01/20/2022 16:58:47 INFO     SystemSettings loaded
+01/20/2022 16:58:47 INFO     SaveSystem - loaded
+01/20/2022 16:58:47 INFO     SaveSystem - loaded
+01/20/2022 16:58:47 INFO     SaveSystem - loaded
+01/20/2022 16:58:47 INFO     SaveSystem node loaded
+01/20/2022 16:58:47 INFO     MapManager node loaded
+01/20/2022 16:58:47 INFO     MapSystem node loaded
+01/20/2022 16:58:47 INFO     SaveSystem - loaded
+01/20/2022 16:58:47 INFO     SaveSystem - node loaded
+01/20/2022 16:58:47 INFO     ArticleManager - node loaded
+01/20/2022 16:58:47 INFO     ArticleSystem - node loaded
+01/20/2022 16:58:47 INFO     ShortcutSettings - Node loadded
+01/20/2022 16:58:47 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 16:58:47 INFO     ProjectSettingsManager - open_project()
+01/20/2022 16:58:47 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 16:58:47 INFO     ShortcutSettings - setup_keys()
+01/20/2022 16:58:47 INFO     ArticleSystem - get_articles()
+01/20/2022 17:01:24 INFO     SystemSettings loaded
+01/20/2022 17:01:24 INFO     SaveSystem - loaded
+01/20/2022 17:01:24 INFO     SaveSystem - loaded
+01/20/2022 17:01:24 INFO     SaveSystem - loaded
+01/20/2022 17:01:24 INFO     SaveSystem node loaded
+01/20/2022 17:01:24 INFO     MapManager node loaded
+01/20/2022 17:01:24 INFO     MapSystem node loaded
+01/20/2022 17:01:24 INFO     SaveSystem - loaded
+01/20/2022 17:01:24 INFO     SaveSystem - node loaded
+01/20/2022 17:01:24 INFO     ArticleManager - node loaded
+01/20/2022 17:01:24 INFO     ArticleSystem - node loaded
+01/20/2022 17:01:24 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:01:24 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:01:24 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:01:24 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:01:24 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:01:24 INFO     ArticleSystem - get_articles()
+01/20/2022 17:19:23 INFO     SystemSettings loaded
+01/20/2022 17:19:23 INFO     SaveSystem - loaded
+01/20/2022 17:19:23 INFO     SaveSystem - loaded
+01/20/2022 17:19:23 INFO     SaveSystem - loaded
+01/20/2022 17:19:23 INFO     SaveSystem node loaded
+01/20/2022 17:19:23 INFO     MapManager node loaded
+01/20/2022 17:19:23 INFO     MapSystem node loaded
+01/20/2022 17:19:23 INFO     SaveSystem - loaded
+01/20/2022 17:19:23 INFO     SaveSystem - node loaded
+01/20/2022 17:19:23 INFO     ArticleManager - node loaded
+01/20/2022 17:19:23 INFO     ArticleSystem - node loaded
+01/20/2022 17:19:23 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:19:23 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:19:23 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:19:23 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:19:23 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:19:23 INFO     ArticleSystem - get_articles()
+01/20/2022 17:19:59 INFO     SystemSettings loaded
+01/20/2022 17:19:59 INFO     SaveSystem - loaded
+01/20/2022 17:19:59 INFO     SaveSystem - loaded
+01/20/2022 17:19:59 INFO     SaveSystem - loaded
+01/20/2022 17:19:59 INFO     SaveSystem node loaded
+01/20/2022 17:19:59 INFO     MapManager node loaded
+01/20/2022 17:19:59 INFO     MapSystem node loaded
+01/20/2022 17:19:59 INFO     SaveSystem - loaded
+01/20/2022 17:19:59 INFO     SaveSystem - node loaded
+01/20/2022 17:19:59 INFO     ArticleManager - node loaded
+01/20/2022 17:19:59 INFO     ArticleSystem - node loaded
+01/20/2022 17:19:59 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:19:59 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:19:59 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:19:59 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:19:59 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:19:59 INFO     ArticleSystem - get_articles()
+01/20/2022 17:21:48 INFO     SystemSettings loaded
+01/20/2022 17:21:48 INFO     SaveSystem - loaded
+01/20/2022 17:21:48 INFO     SaveSystem - loaded
+01/20/2022 17:21:48 INFO     SaveSystem - loaded
+01/20/2022 17:21:48 INFO     SaveSystem node loaded
+01/20/2022 17:21:48 INFO     MapManager node loaded
+01/20/2022 17:21:48 INFO     MapSystem node loaded
+01/20/2022 17:21:48 INFO     SaveSystem - loaded
+01/20/2022 17:21:48 INFO     SaveSystem - node loaded
+01/20/2022 17:21:48 INFO     ArticleManager - node loaded
+01/20/2022 17:21:48 INFO     ArticleSystem - node loaded
+01/20/2022 17:21:48 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:21:48 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:21:48 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:21:48 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:21:48 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:21:48 INFO     ArticleSystem - get_articles()
+01/20/2022 17:22:35 INFO     SystemSettings loaded
+01/20/2022 17:22:35 INFO     SaveSystem - loaded
+01/20/2022 17:22:35 INFO     SaveSystem - loaded
+01/20/2022 17:22:35 INFO     SaveSystem - loaded
+01/20/2022 17:22:35 INFO     SaveSystem node loaded
+01/20/2022 17:22:35 INFO     MapManager node loaded
+01/20/2022 17:22:35 INFO     MapSystem node loaded
+01/20/2022 17:22:35 INFO     SaveSystem - loaded
+01/20/2022 17:22:35 INFO     SaveSystem - node loaded
+01/20/2022 17:22:35 INFO     ArticleManager - node loaded
+01/20/2022 17:22:35 INFO     ArticleSystem - node loaded
+01/20/2022 17:22:35 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:22:35 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:22:35 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:22:35 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:22:35 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:22:35 INFO     ArticleSystem - get_articles()
+01/20/2022 17:23:05 INFO     SystemSettings loaded
+01/20/2022 17:23:05 INFO     SaveSystem - loaded
+01/20/2022 17:23:05 INFO     SaveSystem - loaded
+01/20/2022 17:23:05 INFO     SaveSystem - loaded
+01/20/2022 17:23:05 INFO     SaveSystem node loaded
+01/20/2022 17:23:05 INFO     MapManager node loaded
+01/20/2022 17:23:05 INFO     MapSystem node loaded
+01/20/2022 17:23:05 INFO     SaveSystem - loaded
+01/20/2022 17:23:05 INFO     SaveSystem - node loaded
+01/20/2022 17:23:05 INFO     ArticleManager - node loaded
+01/20/2022 17:23:05 INFO     ArticleSystem - node loaded
+01/20/2022 17:23:05 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:23:05 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:23:05 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:23:05 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:23:05 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:23:05 INFO     ArticleSystem - get_articles()
+01/20/2022 17:30:45 INFO     SystemSettings loaded
+01/20/2022 17:30:45 INFO     SaveSystem - loaded
+01/20/2022 17:30:45 INFO     SaveSystem - loaded
+01/20/2022 17:30:45 INFO     SaveSystem - loaded
+01/20/2022 17:30:45 INFO     SaveSystem node loaded
+01/20/2022 17:30:45 INFO     MapManager node loaded
+01/20/2022 17:30:45 INFO     MapSystem node loaded
+01/20/2022 17:30:45 INFO     SaveSystem - loaded
+01/20/2022 17:30:45 INFO     SaveSystem - node loaded
+01/20/2022 17:30:45 INFO     ArticleManager - node loaded
+01/20/2022 17:30:45 INFO     ArticleSystem - node loaded
+01/20/2022 17:30:45 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:30:45 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:30:45 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:30:45 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:30:45 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:30:45 INFO     ArticleSystem - get_articles()
+01/20/2022 17:31:07 INFO     SystemSettings loaded
+01/20/2022 17:31:07 INFO     SaveSystem - loaded
+01/20/2022 17:31:07 INFO     SaveSystem - loaded
+01/20/2022 17:31:07 INFO     SaveSystem - loaded
+01/20/2022 17:31:07 INFO     SaveSystem node loaded
+01/20/2022 17:31:07 INFO     MapManager node loaded
+01/20/2022 17:31:07 INFO     MapSystem node loaded
+01/20/2022 17:31:07 INFO     SaveSystem - loaded
+01/20/2022 17:31:07 INFO     SaveSystem - node loaded
+01/20/2022 17:31:07 INFO     ArticleManager - node loaded
+01/20/2022 17:31:07 INFO     ArticleSystem - node loaded
+01/20/2022 17:31:07 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:31:07 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:31:07 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:31:07 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:31:07 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:31:07 INFO     ArticleSystem - get_articles()
+01/20/2022 17:57:33 INFO     SystemSettings loaded
+01/20/2022 17:57:33 INFO     SaveSystem - loaded
+01/20/2022 17:57:33 INFO     SaveSystem - loaded
+01/20/2022 17:57:33 INFO     SaveSystem - loaded
+01/20/2022 17:57:33 INFO     SaveSystem node loaded
+01/20/2022 17:57:33 INFO     MapManager node loaded
+01/20/2022 17:57:33 INFO     MapSystem node loaded
+01/20/2022 17:57:33 INFO     SaveSystem - loaded
+01/20/2022 17:57:33 INFO     SaveSystem - node loaded
+01/20/2022 17:57:33 INFO     ArticleManager - node loaded
+01/20/2022 17:57:33 INFO     ArticleSystem - node loaded
+01/20/2022 17:57:33 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:57:33 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:57:33 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:57:33 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:57:33 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:57:33 INFO     ArticleSystem - get_articles()
+01/20/2022 17:58:25 INFO     SystemSettings loaded
+01/20/2022 17:58:25 INFO     SaveSystem - loaded
+01/20/2022 17:58:25 INFO     SaveSystem - loaded
+01/20/2022 17:58:25 INFO     SaveSystem - loaded
+01/20/2022 17:58:25 INFO     SaveSystem node loaded
+01/20/2022 17:58:25 INFO     MapManager node loaded
+01/20/2022 17:58:25 INFO     MapSystem node loaded
+01/20/2022 17:58:25 INFO     SaveSystem - loaded
+01/20/2022 17:58:25 INFO     SaveSystem - node loaded
+01/20/2022 17:58:25 INFO     ArticleManager - node loaded
+01/20/2022 17:58:25 INFO     ArticleSystem - node loaded
+01/20/2022 17:58:25 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:58:25 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:58:25 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:58:25 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:58:25 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:58:25 INFO     ArticleSystem - get_articles()
+01/20/2022 17:58:42 INFO     SystemSettings loaded
+01/20/2022 17:58:42 INFO     SaveSystem - loaded
+01/20/2022 17:58:42 INFO     SaveSystem - loaded
+01/20/2022 17:58:42 INFO     SaveSystem - loaded
+01/20/2022 17:58:42 INFO     SaveSystem node loaded
+01/20/2022 17:58:42 INFO     MapManager node loaded
+01/20/2022 17:58:42 INFO     MapSystem node loaded
+01/20/2022 17:58:42 INFO     SaveSystem - loaded
+01/20/2022 17:58:42 INFO     SaveSystem - node loaded
+01/20/2022 17:58:42 INFO     ArticleManager - node loaded
+01/20/2022 17:58:42 INFO     ArticleSystem - node loaded
+01/20/2022 17:58:42 INFO     ShortcutSettings - Node loadded
+01/20/2022 17:58:42 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 17:58:42 INFO     ProjectSettingsManager - open_project()
+01/20/2022 17:58:42 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 17:58:42 INFO     ShortcutSettings - setup_keys()
+01/20/2022 17:58:42 INFO     ArticleSystem - get_articles()
+01/20/2022 18:29:51 INFO     SystemSettings loaded
+01/20/2022 18:29:51 INFO     SaveSystem - loaded
+01/20/2022 18:29:51 INFO     SaveSystem - loaded
+01/20/2022 18:29:51 INFO     SaveSystem - loaded
+01/20/2022 18:29:51 INFO     SaveSystem node loaded
+01/20/2022 18:29:51 INFO     MapManager node loaded
+01/20/2022 18:29:51 INFO     MapSystem node loaded
+01/20/2022 18:29:51 INFO     SaveSystem - loaded
+01/20/2022 18:29:51 INFO     SaveSystem - node loaded
+01/20/2022 18:29:51 INFO     ArticleManager - node loaded
+01/20/2022 18:29:51 INFO     ArticleSystem - node loaded
+01/20/2022 18:29:51 INFO     ShortcutSettings - Node loadded
+01/20/2022 18:29:51 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 18:29:51 INFO     ProjectSettingsManager - open_project()
+01/20/2022 18:29:51 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 18:29:51 INFO     ShortcutSettings - setup_keys()
+01/20/2022 18:29:51 INFO     ArticleSystem - get_articles()
+01/20/2022 18:30:44 INFO     SystemSettings loaded
+01/20/2022 18:30:44 INFO     SaveSystem - loaded
+01/20/2022 18:30:44 INFO     SaveSystem - loaded
+01/20/2022 18:30:44 INFO     SaveSystem - loaded
+01/20/2022 18:30:44 INFO     SaveSystem node loaded
+01/20/2022 18:30:44 INFO     MapManager node loaded
+01/20/2022 18:30:44 INFO     MapSystem node loaded
+01/20/2022 18:30:44 INFO     SaveSystem - loaded
+01/20/2022 18:30:44 INFO     SaveSystem - node loaded
+01/20/2022 18:30:44 INFO     ArticleManager - node loaded
+01/20/2022 18:30:44 INFO     ArticleSystem - node loaded
+01/20/2022 18:30:44 INFO     ShortcutSettings - Node loadded
+01/20/2022 18:30:44 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 18:30:44 INFO     ProjectSettingsManager - open_project()
+01/20/2022 18:30:44 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 18:30:44 INFO     ShortcutSettings - setup_keys()
+01/20/2022 18:30:44 INFO     ArticleSystem - get_articles()
+01/20/2022 19:45:22 INFO     SystemSettings loaded
+01/20/2022 19:45:22 INFO     SaveSystem - loaded
+01/20/2022 19:45:22 INFO     SaveSystem - loaded
+01/20/2022 19:45:22 INFO     SaveSystem - loaded
+01/20/2022 19:45:22 INFO     SaveSystem node loaded
+01/20/2022 19:45:22 INFO     MapManager node loaded
+01/20/2022 19:45:22 INFO     MapSystem node loaded
+01/20/2022 19:45:22 INFO     SaveSystem - loaded
+01/20/2022 19:45:22 INFO     SaveSystem - node loaded
+01/20/2022 19:45:22 INFO     ArticleManager - node loaded
+01/20/2022 19:45:22 INFO     ArticleSystem - node loaded
+01/20/2022 19:45:22 INFO     ShortcutSettings - Node loadded
+01/20/2022 19:45:22 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 19:45:22 INFO     ProjectSettingsManager - open_project()
+01/20/2022 19:45:22 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 19:45:22 INFO     ShortcutSettings - setup_keys()
+01/20/2022 19:45:22 INFO     ArticleSystem - get_articles()
+01/20/2022 19:45:32 INFO     SystemSettings loaded
+01/20/2022 19:45:32 INFO     SaveSystem - loaded
+01/20/2022 19:45:32 INFO     SaveSystem - loaded
+01/20/2022 19:45:32 INFO     SaveSystem - loaded
+01/20/2022 19:45:32 INFO     SaveSystem node loaded
+01/20/2022 19:45:32 INFO     MapManager node loaded
+01/20/2022 19:45:32 INFO     MapSystem node loaded
+01/20/2022 19:45:32 INFO     SaveSystem - loaded
+01/20/2022 19:45:32 INFO     SaveSystem - node loaded
+01/20/2022 19:45:32 INFO     ArticleManager - node loaded
+01/20/2022 19:45:32 INFO     ArticleSystem - node loaded
+01/20/2022 19:45:32 INFO     ShortcutSettings - Node loadded
+01/20/2022 19:45:32 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 19:45:32 INFO     ProjectSettingsManager - open_project()
+01/20/2022 19:45:32 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 19:45:32 INFO     ShortcutSettings - setup_keys()
+01/20/2022 19:45:32 INFO     ArticleSystem - get_articles()
+01/20/2022 21:21:22 INFO     SystemSettings loaded
+01/20/2022 21:21:22 INFO     SaveSystem - loaded
+01/20/2022 21:21:22 INFO     SaveSystem - loaded
+01/20/2022 21:21:22 INFO     SaveSystem - loaded
+01/20/2022 21:21:22 INFO     SaveSystem node loaded
+01/20/2022 21:21:22 INFO     MapManager node loaded
+01/20/2022 21:21:22 INFO     MapSystem node loaded
+01/20/2022 21:21:22 INFO     SaveSystem - loaded
+01/20/2022 21:21:22 INFO     SaveSystem - node loaded
+01/20/2022 21:21:22 INFO     ArticleManager - node loaded
+01/20/2022 21:21:22 INFO     ArticleSystem - node loaded
+01/20/2022 21:21:22 INFO     ShortcutSettings - Node loadded
+01/20/2022 21:21:22 INFO     ProjectSettingsManager - Node loadded
+01/20/2022 21:21:22 INFO     ProjectSettingsManager - open_project()
+01/20/2022 21:21:22 INFO     ShortcutSettings - delete_old_keys()
+01/20/2022 21:21:22 INFO     ShortcutSettings - setup_keys()
+01/20/2022 21:21:22 INFO     ArticleSystem - get_articles()
