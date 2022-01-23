@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Tween",
+"class": "Animaion",
+"language": "GDScript",
+"path": "res://assets/graphics/effects/Animation.gd"
+}, {
 "base": "Camera2D",
 "class": "CameraMovement",
 "language": "GDScript",
@@ -44,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://systems/main_menu/scripts/project_buttons.gd"
 }, {
-"base": "Resource",
+"base": "Reference",
 "class": "RootArticle",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/root_article_template.gd"
@@ -65,6 +70,7 @@ _global_script_classes=[ {
 "path": "res://singletone/system_data_manager_dependency/dependency/save_system.gd"
 } ]
 _global_script_class_icons={
+"Animaion": "",
 "CameraMovement": "",
 "EditorSettingsTemplate": "",
 "MapData": "",
@@ -121,7 +127,6 @@ drag={
 
 [logging]
 
-file_logging/enable_file_logging=true
 file_logging/log_path="user://logs/system.log"
 file_logging/max_log_files=10
 
