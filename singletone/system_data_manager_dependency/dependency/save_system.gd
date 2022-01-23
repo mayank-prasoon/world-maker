@@ -1,6 +1,9 @@
 class_name SaveSystem
 extends Node
 
+# WARNING:
+# this signal is only ment to be emmited to call deffer in
+# a multi-threaded instance
 signal data_saved
 
 # === NODES ===
