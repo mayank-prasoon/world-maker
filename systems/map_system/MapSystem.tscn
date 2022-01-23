@@ -1,38 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://systems/map_system/map_system.gd" type="Script" id=1]
-[ext_resource path="res://systems/map_system/map_camera.gd" type="Script" id=2]
+[ext_resource path="res://systems/map_system/scripts/map_system.gd" type="Script" id=1]
+[ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
+[ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=3]
+[ext_resource path="res://systems/map_system/scripts/article_reader.gd" type="Script" id=4]
+[ext_resource path="res://systems/map_system/maps.gd" type="Script" id=5]
+[ext_resource path="res://systems/map_system/map_pin_manager.gd" type="Script" id=6]
 
-[sub_resource type="Animation" id=1]
-resource_name = "PopUp"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_constants/separation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5 ),
-"transitions": PoolRealArray( -2, 0.5, -2 ),
-"update": 0,
-"values": [ -40, 20, 10 ]
-}
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_constants/separation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -40 ]
-}
+[sub_resource type="Theme" id=1]
 
 [node name="MapSystem" type="Control"]
 anchor_right = 1.0
@@ -42,11 +17,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MapSymbolManager" type="Node" parent="."]
-
 [node name="Map" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,7 +30,7 @@ cell_size = Vector2( 512, 288 )
 cell_clip_uv = true
 format = 1
 
-[node name="MapSymbol" type="Control" parent="."]
+[node name="MapPins" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -72,119 +46,247 @@ script = ExtResource( 2 )
 [node name="Menu" type="Control" parent="Camera2D/CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -495, 122 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu"]
+[node name="MenuManger" type="Node" parent="Camera2D/CanvasLayer/Menu"]
+script = ExtResource( 6 )
+
+[node name="PopupMenu" type="PopupMenu" parent="Camera2D/CanvasLayer/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -29.0
+margin_top = -29.0
+margin_right = 88.0
+margin_bottom = 29.0
+theme = SubResource( 1 )
+allow_search = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddMenu" type="PopupMenu" parent="Camera2D/CanvasLayer/Menu/PopupMenu"]
+margin_left = 29.0
+margin_top = 9.0
+margin_right = 133.0
+margin_bottom = 79.0
+items = [ "pin", null, 0, false, false, 0, 0, null, "", false, "text", null, 0, false, false, 1, 0, null, "", false, "notes", null, 0, false, false, 2, 0, null, "", false ]
+allow_search = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RibbonMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/HBoxContainer"]
-margin_right = 30.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer"]
+margin_right = 1024.0
 margin_bottom = 600.0
-rect_min_size = Vector2( 30, 0 )
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuList" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu"]
+[node name="ArticleReader" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer"]
+visible = false
+margin_right = 450.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 450, 0 )
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
-margin_right = 30.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel"]
+anchor_left = 0.0222222
+anchor_top = 0.0166667
+anchor_right = 0.977778
+anchor_bottom = 0.983333
+margin_top = -9.53674e-07
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer"]
+margin_right = 430.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 406.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 410.0
+margin_right = 430.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer"]
+margin_top = 24.0
+margin_right = 430.0
+margin_bottom = 579.0
+size_flags_vertical = 3
+
+[node name="SideMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer"]
+margin_left = 724.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 1
+size_flags_horizontal = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu"]
+anchor_right = 0.966667
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MapMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer"]
+margin_right = 290.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu"]
+anchor_right = 1.0
+custom_constants/separation = 10
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MenuButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer"]
+margin_left = 100.0
+margin_right = 250.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 10
+text = "maps"
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer"]
+margin_left = 260.0
+margin_right = 290.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
 
-[node name="MapTabButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
-margin_top = 40.0
-margin_right = 30.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 30, 30 )
-
-[node name="StatsTabButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
-margin_top = 80.0
-margin_right = 30.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 30, 30 )
-
-[node name="ProjectMenuButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
-margin_top = 530.0
-margin_right = 30.0
-margin_bottom = 560.0
-rect_min_size = Vector2( 30, 30 )
-size_flags_vertical = 10
-
-[node name="SettingButton" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/RibbonMenu/MenuList"]
-margin_top = 570.0
-margin_right = 30.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 30, 30 )
-size_flags_vertical = 0
-
-[node name="PopUpMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/HBoxContainer"]
-margin_left = 34.0
-margin_right = 74.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 40, 0 )
+[node name="Inspector" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer"]
+margin_top = 50.0
+margin_right = 290.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 290, 400 )
+mouse_filter = 1
+size_flags_vertical = 7
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu"]
-anchor_top = 1.0
+[node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector"]
+anchor_left = 1.03448
+anchor_right = 2.03448
 anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = -236.0
-margin_right = 58.0
-margin_bottom = -16.0
-custom_constants/separation = -40
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TabContainer" type="TabContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inspector" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map Layers" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel"]
+anchor_left = -0.052
+anchor_top = 0.53
+anchor_right = -0.052
+anchor_bottom = 0.53
+margin_left = -14.9199
+margin_top = -15.0
+margin_right = 15.08
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector"]
+
+[node name="ViewTools" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer"]
+margin_top = 570.0
+margin_right = 290.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 30 )
+mouse_filter = 1
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
-margin_top = 180.0
-margin_right = 40.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 40, 40 )
+[node name="ZoomIn" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/HBoxContainer"]
+margin_left = 192.0
+margin_right = 222.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
 
-[node name="Button2" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
-margin_top = 180.0
-margin_right = 40.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 40, 40 )
+[node name="ZoomOut" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/HBoxContainer"]
+margin_left = 226.0
+margin_right = 256.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
 
-[node name="Button3" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
-margin_top = 180.0
-margin_right = 40.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 40, 40 )
+[node name="Rest" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/HBoxContainer"]
+margin_left = 260.0
+margin_right = 290.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
 
-[node name="Button4" type="Control" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer"]
-margin_top = 180.0
-margin_right = 40.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 40, 40 )
-
-[node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu/VBoxContainer/Button4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/Menu/HBoxContainer/PopUpMenu"]
-root_node = NodePath("../VBoxContainer")
-anims/PopUp = SubResource( 1 )
-anims/RESET = SubResource( 2 )
+[connection signal="gui_input" from="Camera2D/CanvasLayer/Menu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_Menu_gui_input"]
+[connection signal="id_pressed" from="Camera2D/CanvasLayer/Menu/PopupMenu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_PopupMenu_id_pressed"]
+[connection signal="id_pressed" from="Camera2D/CanvasLayer/Menu/PopupMenu/AddMenu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_AddMenu_id_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer/HBoxContainer/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader" method="_on_Button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector" method="_on_Button_pressed"]
