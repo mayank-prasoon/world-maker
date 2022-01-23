@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/reader/Reader.gd" type="Script" id=1]
+
+[node name="Reader" type="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -266.0
+margin_top = -8.0
+margin_right = 266.0
+margin_bottom = -16.0
+input_pass_on_modal_close_click = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
+margin_right = 532.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer"]
+margin_top = 104.0
+margin_right = 532.0
+margin_bottom = 592.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Control"]
+anchor_left = 0.018797
+anchor_right = 0.981203
+anchor_bottom = 0.976636
+margin_left = 9.53674e-07
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer/Control/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 14.0
+text = "Title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Control/VBoxContainer"]
+margin_top = 24.0
+margin_right = 512.0
+margin_bottom = 476.0
+size_flags_vertical = 3
+text = "
+
+"
+
+[node name="CloseButton" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_CloseButton_pressed"]
