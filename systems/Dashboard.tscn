@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://systems/wiki_dashboard/WikiDashboard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://systems/RibbonMenu.gd" type="Script" id=3]
+[ext_resource path="res://systems/ribbon_menu.tres" type="ButtonGroup" id=4]
+
+[node name="Dashboard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RibbonMenu" type="Control" parent="HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 30, 0 )
+script = ExtResource( 3 )
+
+[node name="MenuList" type="VBoxContainer" parent="HBoxContainer/RibbonMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+toggle_mode = true
+group = ExtResource( 4 )
+
+[node name="MapTabButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 40.0
+margin_right = 30.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 30, 30 )
+toggle_mode = true
+group = ExtResource( 4 )
+
+[node name="StatsTabButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 80.0
+margin_right = 30.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 30, 30 )
+toggle_mode = true
+group = ExtResource( 4 )
+
+[node name="ProjectMenuButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 530.0
+margin_right = 30.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 10
+
+[node name="SettingButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList"]
+margin_top = 570.0
+margin_right = 30.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 0
+
+[node name="WikiDashboard" parent="HBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 34.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/HomeButton" to="HBoxContainer/RibbonMenu" method="_on_HomeButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/MapTabButton" to="HBoxContainer/RibbonMenu" method="_on_MapTabButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/StatsTabButton" to="HBoxContainer/RibbonMenu" method="_on_StatsTabButton_pressed"]
