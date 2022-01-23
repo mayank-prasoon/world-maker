@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://systems/main_menu/scripts/project_buttons.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "RootArticle",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/root_article_template.gd"
@@ -68,6 +68,11 @@ _global_script_classes=[ {
 "class": "SaveSystem",
 "language": "GDScript",
 "path": "res://singletone/system_data_manager_dependency/dependency/save_system.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://systems/dependency/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "Animaion": "",
@@ -81,7 +86,8 @@ _global_script_class_icons={
 "RootArticle": "",
 "RootCommandTest": "",
 "RootSystemTest": "",
-"SaveSystem": ""
+"SaveSystem": "",
+"StateMachine": ""
 }
 
 [application]
