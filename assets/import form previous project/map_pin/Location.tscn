@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://systems/map_system/ui_elements/map_pin/Area2D.gd" type="Script" id=5]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin/FollowArround.gd" type="Script" id=6]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin/Location.gd" type="Script" id=7]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin/TextureRect2.gd" type="Script" id=8]
+[ext_resource path="res://assets/import form previous project/map_pin/Area2D.gd" type="Script" id=5]
+[ext_resource path="res://assets/import form previous project/map_pin/FollowArround.gd" type="Script" id=6]
+[ext_resource path="res://assets/import form previous project/map_pin/Location.gd" type="Script" id=7]
+[ext_resource path="res://assets/import form previous project/map_pin/TextureRect2.gd" type="Script" id=8]
 [ext_resource path="res://assests/Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="Animation" id=1]

@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "SaveSystem",
 "language": "GDScript",
 "path": "res://singletone/system_data_manager_dependency/dependency/save_system.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://systems/dependency/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "CameraMovement": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "RootArticle": "",
 "RootCommandTest": "",
 "RootSystemTest": "",
-"SaveSystem": ""
+"SaveSystem": "",
+"StateMachine": ""
 }
 
 [application]
