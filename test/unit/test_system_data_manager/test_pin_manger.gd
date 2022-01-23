@@ -34,8 +34,8 @@ func test_open_article():
 	gut.p('\n=> \tTest Data\n')
 	assert_eq(_test_resource,  test_article_file, "the name should be 'template_save_file'")
 	assert_eq(_test_resource.article_name, "test_article123", "the name should be 'test_article123'")
-	assert_eq(_test_resource.banner, "pqr", "the banner should be 'pqr'")
-	assert_eq(_test_resource.raw_data, "xyz", "the raw data should be 'xyz'")
+	assert_eq(_test_resource.article_banner, "", "the banner should be 'pqr'")
+	assert_eq(_test_resource.article_raw, "", "the raw data should be 'xyz'")
 	assert_eq(_test_resource.tags.size(), 2, "the array size should be '2'")
 	assert_eq_deep(_test_resource.tags, ["random", "568"])
 

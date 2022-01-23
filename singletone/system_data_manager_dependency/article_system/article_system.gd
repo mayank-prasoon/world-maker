@@ -14,10 +14,14 @@ func _ready() -> void:
 # creats new article with new uuid
 func make_new_article(
 		article_name:String,
-		banner:String,
-		raw_data:String,
-		tags:Array
+		profile:String            = "xyz",
+		banner:String             = "xyz",
+		article_type:int          = 0,
+		article_template:Resource = Resource.new(),
+		raw_data:String           = "",
+		tags:Array                = []
 	)->String:
+
 	var uuid = get_parent().uuid_util.v4()
 
 	Logger.info(name + " - " + "make_new_article({0},{1},{2},{3})".format([article_name, banner, raw_data, str(tags)]))
@@ -25,7 +29,10 @@ func make_new_article(
 	save_system.save_file(
 			article_name,
 			uuid,
+			profile,
 			banner,
+			article_type,
+			article_template,
 			raw_data,
 			tags
 		)
@@ -45,8 +52,11 @@ func remove_tags(article_id:String, tags:Array)->void:
 	save_system.save_file(
 		temp_file.article_name,
 		temp_file.article_id,
-		temp_file.banner,
-		temp_file.raw_data,
+		temp_file.article_profile,
+		temp_file.article_banner,
+		temp_file.article_type,
+		temp_file.article_template,
+		temp_file.article_raw,
 		temp_file.tags
 	)
 
@@ -62,8 +72,11 @@ func add_tags(article_id:String, tags:Array)->void:
 	save_system.save_file(
 		temp_file.article_name,
 		temp_file.article_id,
-		temp_file.banner,
-		temp_file.raw_data,
+		temp_file.article_profile,
+		temp_file.article_banner,
+		temp_file.article_type,
+		temp_file.article_template,
+		temp_file.article_raw,
 		temp_file.tags
 	)
 

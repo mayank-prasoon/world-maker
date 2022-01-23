@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://systems/main_menu/scripts/project_buttons.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "RootArticle",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/root_article_resources_template.gd"

@@ -16,6 +16,9 @@ func test_make_new_file():
 	var uuid = test_article_system_node.make_new_article(
 		"home",
 		"xyz",
+		"xyz",
+		2,
+		Resource.new(),
 		"sample text",
 		[
 			"home",
@@ -31,8 +34,10 @@ func test_make_new_file():
 	assert_file_exists("res://save_files/articles/{uid}_save_data.tres".format({"uid" : uuid}))
 	assert_eq(_x.article_name, "home")
 	assert_eq(_x.article_id, uuid)
-	assert_eq(_x.banner, "xyz")
-	assert_eq(_x.raw_data, "sample text")
+	assert_eq(_x.article_banner, "xyz")
+	assert_eq(_x.article_profile, "xyz")
+	assert_eq(_x.article_type, 2)
+	assert_eq(_x.article_raw, "sample text")
 	assert_eq_deep(_x.tags, ["home", "safe", "country side"])
 
 	
@@ -40,6 +45,9 @@ func test_add_remove_tags():
 	var uuid = test_article_system_node.make_new_article(
 		"home",
 		"xyz",
+		"xyz",
+		1,
+		Resource.new(),
 		"sample text",
 		[
 			"home",
@@ -56,8 +64,10 @@ func test_add_remove_tags():
 	assert_file_exists("res://save_files/articles/{uid}_save_data.tres".format({"uid" : uuid}))
 	assert_eq(_x.article_name, "home")
 	assert_eq(_x.article_id, uuid)
-	assert_eq(_x.banner, "xyz")
-	assert_eq(_x.raw_data, "sample text")
+	assert_eq(_x.article_banner, "xyz")
+	assert_eq(_x.article_profile, "xyz")
+	assert_eq(_x.article_type, 1)
+	assert_eq(_x.article_raw, "sample text")
 	assert_eq_deep(_x.tags, ["home", "safe", "country side", "book store", "city"])
 
 	test_article_system_node.remove_tags(uuid, ["home", "safe", "country side"])
@@ -68,6 +78,9 @@ func test_fetch_article_by_tags_name():
 	var uuid_1 = test_article_system_node.make_new_article(
 		"home",
 		"xyz",
+		"xyz",
+		1,
+		Resource.new(),
 		"sample text",
 		[
 			"home",
@@ -79,6 +92,9 @@ func test_fetch_article_by_tags_name():
 	var uuid_2 = test_article_system_node.make_new_article(
 		"shop",
 		"xyz",
+		"xyz",
+		1,
+		Resource.new(),
 		"sample text",
 		[
 			"home",

@@ -7,20 +7,26 @@ func _ready()->void:
 	
 func save_file(
 	article_name:String,
-	article_id:String    = root_node.uuid_util.v4(),
-	banner:String        = "xyz",
-	raw_data:String      = "",
-	tags:Array           = []
+	article_id:String         = root_node.uuid_util.v4(),
+	profile:String            = "xyz",
+	banner:String             = "xyz",
+	article_type:int          = 0,
+	article_template:Resource = Resource.new(),
+	raw_data:String           = "",
+	tags:Array                = []
 	) -> void:
 	
 	Logger.info(name + " - " + "save_file({0},{1},{2},{3},{5})".format([article_name, article_id, banner, raw_data, str(tags)]))
 
-	var newArticleData            = RootArticle.new()
-	newArticleData.article_name   = article_name
-	newArticleData.article_id     = article_id
-	newArticleData.banner         = banner
-	newArticleData.raw_data       = raw_data
-	newArticleData.tags           = tags
+	var newArticleData              = RootArticle.new()
+	newArticleData.article_name     = article_name
+	newArticleData.article_id       = article_id
+	newArticleData.article_profile  = profile
+	newArticleData.article_banner   = banner
+	newArticleData.article_type     = article_type
+	newArticleData.article_template = article_template
+	newArticleData.article_raw      = raw_data
+	newArticleData.tags             = tags
 
 	var _x = ResourceSaver.save(
 		save_location.format({"uuid": article_id}),

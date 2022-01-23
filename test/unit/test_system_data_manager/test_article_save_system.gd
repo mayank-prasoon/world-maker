@@ -22,7 +22,10 @@ func test_create_save_files():
 	test_article_system_node.save_file(
 			"temp_article_name",
 			uuid,
+			"xyz",
 			"pqr",
+			0,
+			Resource.new(),
 			"temp data",
 			["books", "house"]
 	)
@@ -38,7 +41,10 @@ func test_file_open():
 	test_article_system_node.save_file(
 			"fake_name",
 			uuid,
+			"xyz",
 			"pqr",
+			0,
+			Resource.new(),
 			"temp data",
 			["books", "house"]
 	)
@@ -50,8 +56,10 @@ func test_file_open():
 	gut.p('\n=> \tTest Data\n')
 	assert_eq(_test_resource.article_name, "fake_name", "the article name should be 'fake_name'") 
 	assert_eq(_test_resource.article_id, uuid, "the article id should be `{id}'".format({"id": uuid}))
-	assert_eq(_test_resource.banner, "pqr", "the article banner should be `pqr")
-	assert_eq(_test_resource.raw_data, "temp data", "the article banner should be `temp data")
+	assert_eq(_test_resource.article_profile, "xyz", "the article article_profile should be 'xyz'")
+	assert_eq(_test_resource.article_banner, "pqr", "the article article_banner should be `pqr")
+	assert_eq(_test_resource.article_type, 0, "the article type should be '0'")
+	assert_eq(_test_resource.article_raw, "temp data", "the article article_banner should be `temp data")
 	assert_eq_deep(_test_resource.tags, ["books", "house"])
 
 # test verify files
@@ -72,8 +80,10 @@ func test_file_verification_recreation():
 	gut.p('\n=> \tTest Data\n')
 	assert_eq(_test_resource.article_name, "", "the article name should be 'fake_name'") 
 	assert_eq(_test_resource.article_id, uuid, "the article id should be '{id}'".format({"id": uuid}))
-	assert_eq(_test_resource.banner, "xyz", "the article banner should be 'xyz'")
-	assert_eq(_test_resource.raw_data, "", "the article banner should be ''")
+	assert_eq(_test_resource.article_banner, "xyz", "the article article_banner should be 'xyz'")
+	assert_eq(_test_resource.article_profile, "xyz", "the article article_profile should be 'xyz'")
+	assert_eq(_test_resource.article_raw, "", "the article article_banner should be ''")
+	assert_eq(_test_resource.article_type, 0, "the article type should be '0'")
 	assert_eq(_test_resource.tags.size(), 0, "the no. tags should be '0'")
 	assert_eq_deep(_test_resource.tags, [])
 

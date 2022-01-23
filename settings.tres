@@ -5,8 +5,13 @@
 [resource]
 script = ExtResource( 1 )
 last_project = {
+"world_building": "xyz"
 }
 project_list = [ {
+"game_dev": "pqr"
+}, {
 "world_building": "xyz"
+}, {
+"gg": "mno"
 } ]
 pinned_projects = [  ]

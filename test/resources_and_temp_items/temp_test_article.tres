@@ -8,5 +8,6 @@ article_name = "test_article123"
 article_id = ""
 article_profile = ""
 article_banner = ""
-article_raw_data = ""
+article_type = 0
+article_raw = ""
 tags = [ "random", "568" ]

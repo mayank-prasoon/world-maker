@@ -18,6 +18,9 @@ func test_get_tags():
 			"temp_file_1",
 			uuid,
 			"xyz",
+			"xyz",
+			0,
+			Resource.new(),
 			"",
 			[
 				"random",
