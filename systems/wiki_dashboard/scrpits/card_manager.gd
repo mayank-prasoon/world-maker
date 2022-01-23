@@ -5,7 +5,7 @@ onready var cards_grid:GridContainer = $"../ScrollContainer/GridContainer"
 onready var article_list:Array = SystemDataManager.get_node("ArticleSystem").get_articles()
 
 # const
-const CARDS_TEMP = preload("res://systems/wiki_dashboard/UI_elements/cards/Cards.tscn")
+const CARDS_TEMP = preload("res://systems/wiki_dashboard/ui_elements/cards/Cards.tscn")
 
 func _ready():
 	for article in article_list:
@@ -34,10 +34,13 @@ func get_article(text:String)->void:
 			card.visible = true
 
 func open_card_reader(card_article):
-	$"../Reader".popup_centered_ratio()
+	var reader:PackedScene = load("res://systems/wiki_dashboard/UI_elements/Reader.tscn")
+	get_parent().add_child(reader.instance())
+
 
 func _on_AddNewCardButton_pressed():
 	pass
+
 
 func _on_LineEdit_text_changed(new_text):
 	get_article(new_text)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://systems/wiki_dashboard/UI_elements/cards/Cards.gd" type="Script" id=1]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/cards/Cards.gd" type="Script" id=1]
 
 [node name="Cards" type="Control"]
 anchor_right = 0.175781
