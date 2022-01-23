@@ -44,4 +44,4 @@ func _on_CreateButton_pressed():
 		ProjectSettingsManager.project_location = project_location
 		ProjectSettingsManager.date_of_creation = OS.get_date()
 		ProjectSettingsManager.save_file()
-		var _x = get_tree().change_scene_to(load("res://systems/system_menu/SystemMenu.tscn"))
+		var _x = get_tree().change_scene_to(load("res://systems/Dashboard.tscn"))
