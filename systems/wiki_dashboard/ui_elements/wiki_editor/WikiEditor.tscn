@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/PromptManager.gd" type="Script" id=1]
-[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/text_editor.gd" type="Script" id=2]
-[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/UIManager.gd" type="Script" id=3]
-[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/Preview.gd" type="Script" id=4]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/PromptManager.gd" type="Script" id=1]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/text_editor.gd" type="Script" id=2]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/UIManager.gd" type="Script" id=3]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/Preview.gd" type="Script" id=4]
 
 [node name="WikiEditor" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }

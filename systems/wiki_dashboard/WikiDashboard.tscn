@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://systems/wiki_dashboard/scrpits/grid_container_manager.gd" type="Script" id=1]
 [ext_resource path="res://systems/wiki_dashboard/scrpits/card_manager.gd" type="Script" id=2]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/cards/Cards.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/wiki_dashboard/scrpits/WikiDashboard.gd" type="Script" id=4]
+[ext_resource path="res://systems/wiki_dashboard/SearchBar.gd" type="Script" id=5]
 
 [node name="WikiDashboard" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,6 +27,7 @@ __meta__ = {
 margin_right = 1024.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
+script = ExtResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/SearchBar"]
 anchor_right = 1.0
@@ -50,6 +54,54 @@ margin_left = 410.0
 margin_right = 434.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
+
+[node name="Popup" type="Popup" parent="VBoxContainer/SearchBar"]
+visible = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 159.0
+margin_top = 60.0
+margin_right = 265.0
+margin_bottom = 166.0
+rect_scale = Vector2( 0.992251, 0.992251 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="VBoxContainer/SearchBar/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SearchBar/Popup/Panel"]
+anchor_left = 0.0943396
+anchor_top = 0.0943396
+anchor_right = 0.90566
+anchor_bottom = 0.90566
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/SearchBar/Popup/Panel/VBoxContainer"]
+margin_top = 2.0
+margin_right = 86.0
+margin_bottom = 26.0
+text = "maps"
+
+[node name="CheckBox2" type="CheckBox" parent="VBoxContainer/SearchBar/Popup/Panel/VBoxContainer"]
+margin_top = 30.0
+margin_right = 86.0
+margin_bottom = 54.0
+text = "pins"
+
+[node name="CheckBox3" type="CheckBox" parent="VBoxContainer/SearchBar/Popup/Panel/VBoxContainer"]
+margin_top = 58.0
+margin_right = 86.0
+margin_bottom = 82.0
+text = "notes"
 
 [node name="CardList" type="Control" parent="VBoxContainer"]
 margin_top = 64.0
@@ -101,5 +153,6 @@ __meta__ = {
 }
 
 [connection signal="text_changed" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/LineEdit" to="VBoxContainer/CardList/CardManager" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/Button" to="VBoxContainer/SearchBar" method="_on_Button_pressed"]
 [connection signal="item_rect_changed" from="VBoxContainer/CardList/ScrollContainer/GridContainer" to="VBoxContainer/CardList/GridContainerManager" method="_on_GridContainer_item_rect_changed"]
-[connection signal="pressed" from="VBoxContainer/CardList/AddNewCardButton" to="VBoxContainer/CardList/CardManager" method="_on_AddNewCardButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CardList/AddNewCardButton" to="." method="_on_AddNewCardButton_pressed"]

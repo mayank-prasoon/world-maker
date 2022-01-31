@@ -33,14 +33,14 @@ func get_article(text:String)->void:
 		for card in cards:
 			card.visible = true
 
+# NOTE: currently under developemnt
 func open_card_reader(card_article):
-	var reader:PackedScene = load("res://systems/wiki_dashboard/UI_elements/Reader.tscn")
+	var reader:PackedScene = load("res://systems/wiki_dashboard/ui_elements/reader/Reader.tscn")
 	get_parent().add_child(reader.instance())
 
 
 func _on_AddNewCardButton_pressed():
 	pass
-
 
 func _on_LineEdit_text_changed(new_text):
 	get_article(new_text)
