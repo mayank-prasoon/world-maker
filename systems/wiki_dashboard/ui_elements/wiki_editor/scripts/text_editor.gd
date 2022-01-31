@@ -22,7 +22,7 @@ func _ready():
 
 	ui.add_description_input(basics_tab,"Description", "short description of the article.\nwill show up in the card")
 	
-	self.get_node("Panel/TabContainer/Basic/VBoxContainer/Article Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_template")
+	var _x = self.get_node("Panel/TabContainer/Basic/VBoxContainer/Article Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_template")
 	self.get_node("Panel/TabContainer/Basic/VBoxContainer/Article Type/VBoxContainer/HBoxContainer/OptionButton").emit_signal("item_selected", 0)
 
 	
