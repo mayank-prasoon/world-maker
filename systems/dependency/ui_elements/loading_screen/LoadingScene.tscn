@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/map_system/ui_elements/LoadingScene.gd" type="Script" id=1]
+
+[node name="LoadingScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_left = 0.046875
+anchor_top = 0.478333
+anchor_right = 0.953125
+anchor_bottom = 0.501667
+step = 0.001
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_ProgressBar_value_changed"]

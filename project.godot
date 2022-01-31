@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/file templates/editor_setting_system_template/editor_settings_template.gd"
 }, {
+"base": "Node",
+"class": "FolderManager",
+"language": "GDScript",
+"path": "res://utilities/folder_handler/resourece_handler.gd"
+}, {
 "base": "Resource",
 "class": "MapData",
 "language": "GDScript",
@@ -78,6 +83,7 @@ _global_script_class_icons={
 "Animaion": "",
 "CameraMovement": "",
 "EditorSettingsTemplate": "",
+"FolderManager": "",
 "MapData": "",
 "MapFragment": "",
 "MapPin": "",
@@ -107,6 +113,10 @@ Logger="*res://singletone/Logger.tscn"
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
+
+[display]
+
+window/size/always_on_top=true
 
 [editor_plugins]
 
