@@ -124,24 +124,14 @@ func get_pins_with_tag(tag_name:String)->Array:
 
 	Logger.info(name + " - " + "get_pins_with_tag({0},{1})".format([tag_name]))
 
-	var pins = []
-	
 	var folder      = Directory.new()
 	var base_folder = save_location.get_base_dir()
-	if folder.dir_exists(base_folder):
-		folder.open(base_folder)
-		folder.list_dir_begin()
-		while true:
-			var file = folder.get_next()
-			if file == "":
-				break
-			elif not file.begins_with("."):
-				var temp_pin = load(base_folder + "/" + file)
-				if temp_pin.tags.has(tag_name):
-					pins.append(temp_pin)
-		folder.list_dir_end()
+
+	var pins = FolderManager.fetch_files_from(base_folder)
+
+	for i in range(pins.size()):
+		if !(pins[i].tags.has(tag_name)):
+			pins.remove(i)
 
 	CommandSystem.API.echo("list of all the pin: {0}".format([str(pins)]))
 	return pins
-
-	
