@@ -1,0 +1,179 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/map_system/ui_elements/map_creator/MapCreator.gd" type="Script" id=1]
+
+[node name="MapCreator" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -280.0
+margin_top = -148.0
+margin_right = 280.0
+margin_bottom = 148.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 0.0328947
+anchor_top = 0.0675676
+anchor_right = 0.967105
+anchor_bottom = 0.932432
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+margin_right = 523.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer"]
+margin_top = 3.0
+margin_right = 499.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Basic"
+
+[node name="Button" type="Button" parent="VBoxContainer2/HBoxContainer"]
+margin_left = 503.0
+margin_right = 523.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+margin_top = 40.0
+margin_right = 523.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer"]
+margin_right = 523.0
+margin_bottom = 14.0
+text = "Map Name"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 523.0
+margin_bottom = 42.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2"]
+margin_top = 102.0
+margin_right = 523.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer2"]
+margin_right = 523.0
+margin_bottom = 14.0
+text = "Map Texture"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 523.0
+margin_bottom = 42.0
+custom_constants/separation = 10
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/VBoxContainer2/HBoxContainer"]
+margin_right = 433.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer2/VBoxContainer2/HBoxContainer"]
+margin_left = 443.0
+margin_right = 523.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 0 )
+text = "browse"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2"]
+margin_top = 164.0
+margin_right = 523.0
+margin_bottom = 206.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer3"]
+margin_right = 523.0
+margin_bottom = 14.0
+text = "chunlk size"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer3"]
+margin_top = 18.0
+margin_right = 523.0
+margin_bottom = 42.0
+custom_constants/separation = 30
+
+[node name="ChunkX" type="SpinBox" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 2000.0
+value = 512.0
+suffix = "px"
+
+[node name="Chunky" type="SpinBox" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
+margin_left = 110.0
+margin_right = 190.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 0 )
+max_value = 2000.0
+value = 288.0
+suffix = "px"
+
+[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
+margin_left = 301.0
+margin_top = 5.0
+margin_right = 393.0
+margin_bottom = 19.0
+size_flags_horizontal = 10
+text = "chunk number"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit3" type="SpinBox" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
+margin_left = 423.0
+margin_right = 523.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 8
+max_value = 5000.0
+
+[node name="CreateButton" type="Button" parent="VBoxContainer2"]
+margin_left = 443.0
+margin_top = 235.0
+margin_right = 523.0
+margin_bottom = 255.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
+text = "create"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_left = 114.0
+margin_top = 8.0
+margin_right = 450.0
+margin_bottom = 296.0
+window_title = "Open a File"
+mode = 0
+access = 2
+current_dir = "/home/mayank/world-building-software"
+current_path = "/home/mayank/world-building-software/"
+
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/Button" to="." method="hide_map_creator"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="value_changed" from="VBoxContainer2/VBoxContainer3/HBoxContainer/ChunkX" to="." method="_on_ChunkX_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/VBoxContainer3/HBoxContainer/Chunky" to="." method="_on_Chunky_value_changed"]
+[connection signal="pressed" from="VBoxContainer2/CreateButton" to="." method="_on_CreateButton_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
