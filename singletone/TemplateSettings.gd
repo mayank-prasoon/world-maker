@@ -6,7 +6,6 @@ enum TYPE {
 	pin
 }
 
-
 func get_all_template()->Array:
 	var save_location:String = SystemDataManager.root_save_file_path + "/templates/"
 	var templates = []
@@ -33,7 +32,7 @@ func get_template(type:int)->Array:
 
 	var templates:Array = get_all_template()
 	for i in templates:
-		var template = load(i)
+		var template = load(i).new()
 		if template.template_type == type:
 			temp_templates.append(template)
 

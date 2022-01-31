@@ -1,6 +1,5 @@
 extends Control
 
-
 func add_projects():
 	for x in SystemSettings.get_projects():
 		var project  = ProjectButton.new()

@@ -24,6 +24,13 @@ margin_bottom = 600.0
 rect_min_size = Vector2( 30, 0 )
 script = ExtResource( 3 )
 
+[node name="Panel" type="Panel" parent="HBoxContainer/RibbonMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MenuList" type="VBoxContainer" parent="HBoxContainer/RibbonMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0

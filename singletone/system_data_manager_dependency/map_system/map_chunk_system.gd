@@ -3,26 +3,33 @@ extends Node
 var threads:Array = []
 var mutex:Mutex   = Mutex.new()
 
-
 var counter:int     = 0
 var tile_made:int   = 0
-
 
 # load the image
 func load_image(image_path:String)->Image:
 	var new_image:Image = Image.new()
 	var _error:int = new_image.load(image_path)
-
+	
 	return new_image
 
 # get the number of chunk
 func get_chunk_count(image_size:Vector2, chunk_size:Vector2)->int:
-	var image_rect:int = Rect2(Vector2(0,0), image_size).get_area()
-	var chunk_rect:int = Rect2(Vector2(0,0), chunk_size).get_area()
+	var image_rect:float = Rect2(Vector2(0,0), image_size).get_area()
+	var chunk_rect:float = Rect2(Vector2(0,0), chunk_size).get_area()
 	
-	var chunk_count:int = round(image_rect/chunk_rect)
+	var chunk_count:float = image_rect/chunk_rect
 	
-	return chunk_count
+	return int(round(chunk_count))
+
+
+#                 === DANGER ZONE ===                   #
+# ----------------------------------------------------- #
+#    following code are depricated or need a overhaul   #
+#                or a work in progress                  #
+#                                                       #
+#              !!PROCEED WITH CAUTION!!                 #
+#                                                       #
 
 
 # slice the texture into tile set
@@ -87,7 +94,12 @@ func generate_texture(image:Image, chunk_size:Vector2, index_x:int, index_y:int)
 
 	# create new image form slice
 	var new_image:Image = Image.new()
-	new_image.create(round(chunk_size.x), round(chunk_size.y), false, image.get_format())
+	new_image.create(
+		int(round(chunk_size.x)),
+		int(round(chunk_size.y)),
+		false,
+		image.get_format()
+	)
 	new_image.blit_rect(
 			image,
 			Rect2(

@@ -3,8 +3,7 @@ extends Control
 var wiki_dashboard:PackedScene = load("res://systems/wiki_dashboard/WikiDashboard.tscn")
 var map_dashboard:PackedScene  = load("res://systems/map_system/MapDashboard.tscn")
 
-func _ready():
-	pass
+onready var add_card_button:Button = get_parent().get_node("WikiDashboard/VBoxContainer/CardList/AddNewCardButton")
 
 func _on_HomeButton_pressed():
 	get_parent().get_child(1).queue_free()

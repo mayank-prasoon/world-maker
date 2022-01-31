@@ -1,6 +1,5 @@
 extends Node
 
-onready var root_node:Node   = self.get_parent().get_parent()
 onready var save_system:Node = self.get_parent().get_node("SaveSystem")
 
 func _ready():

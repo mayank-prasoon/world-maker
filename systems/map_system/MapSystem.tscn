@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://systems/map_system/scripts/map_system.gd" type="Script" id=1]
 [ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
 [ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=3]
 [ext_resource path="res://systems/map_system/scripts/article_reader.gd" type="Script" id=4]
-[ext_resource path="res://systems/map_system/maps.gd" type="Script" id=5]
-[ext_resource path="res://systems/map_system/map_pin_manager.gd" type="Script" id=6]
+[ext_resource path="res://systems/map_system/scripts/maps.gd" type="Script" id=5]
+[ext_resource path="res://systems/map_system/scripts/map_pin_manager.gd" type="Script" id=6]
+[ext_resource path="res://systems/map_system/scripts/MapMenu.gd" type="Script" id=7]
+[ext_resource path="res://systems/dependency/ui_elements/loading_screen/LoadingScene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://systems/map_system/scripts/MapManager.gd" type="Script" id=9]
 
 [sub_resource type="Theme" id=1]
 
@@ -16,6 +19,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MapManager" type="Node" parent="."]
+script = ExtResource( 9 )
 
 [node name="Map" type="Control" parent="."]
 anchor_right = 1.0
@@ -47,7 +53,8 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="MenuManger" type="Node" parent="Camera2D/CanvasLayer/Menu"]
@@ -160,6 +167,7 @@ margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 mouse_filter = 1
 size_flags_horizontal = 3
+script = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu"]
 anchor_right = 1.0
@@ -285,8 +293,13 @@ margin_right = 290.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
 
+[node name="LoadingScene" parent="Camera2D/CanvasLayer/Menu" instance=ExtResource( 8 )]
+
+[connection signal="load_map" from="MapManager" to="Map" method="_on_MapManager_load_map"]
 [connection signal="gui_input" from="Camera2D/CanvasLayer/Menu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_Menu_gui_input"]
 [connection signal="id_pressed" from="Camera2D/CanvasLayer/Menu/PopupMenu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_PopupMenu_id_pressed"]
 [connection signal="id_pressed" from="Camera2D/CanvasLayer/Menu/PopupMenu/AddMenu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_AddMenu_id_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer/HBoxContainer/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader" method="_on_Button_pressed"]
+[connection signal="item_selected" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/MenuButton" to="MapManager" method="_on_MenuButton_item_selected"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu" method="_on_Button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector" method="_on_Button_pressed"]

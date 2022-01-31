@@ -6,6 +6,8 @@ var root_save_file_path
 # === VERIABLES ===
 const uuid_util = preload("res://utilities/godot-uuid-master/uuid.gd")
 
+onready var mapSystem:Node = $MapSystem
+
 enum MAP_RESOURCE_TYPE {
 	PIN,
 	PIN_TEMPLATE,
@@ -14,6 +16,8 @@ enum MAP_RESOURCE_TYPE {
 	ARTICLE
 }
 
+
+# verify paths and check the intrigity of the folder system
 func verify(path:String, _type:int, resource_name:String) -> void:
 	Logger.info("verifing file intregity of {0} of type {1} - file_path: {3}".format([resource_name, _type, path]))
 	var file:File = File.new()
