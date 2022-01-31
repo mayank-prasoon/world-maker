@@ -2,6 +2,8 @@ extends Node
 
 signal open_menu
 
+# === enums ===
+
 enum MENU {
 	ADD,
 	DELETE,
@@ -16,12 +18,12 @@ enum ADD {
 	NOTES
 }
 
-# nodes
+# === nodes ===
+
 onready var pop_up_menu:PopupMenu = $"../PopupMenu"
 
-
 func _ready()->void:
-	connect("open_menu", self, "_open_menu")
+	var _x = connect("open_menu", self, "_open_menu")
 	
 	# add menus
 	pop_up_menu.add_submenu_item("add", "AddMenu")
@@ -31,18 +33,20 @@ func _ready()->void:
 	pop_up_menu.add_item("cut")
 	pop_up_menu.add_item("paste")
 
-
+# opens the menu
 func _open_menu()->void:
 	pop_up_menu.popup()
 	pop_up_menu.rect_global_position = get_viewport().get_mouse_position()
 
-
+# event loop
 func _on_Menu_gui_input(event):
+	# run when right mouse button is clicked
 	if event is InputEventMouseButton:
 		if event.is_pressed() && event.button_index == BUTTON_MASK_RIGHT:
 			emit_signal("open_menu")
 
-
+# right click pop up menu logic
+# NOTE : work in progress...
 func _on_PopupMenu_id_pressed(id):
 	match id:
 		MENU.DELETE:
@@ -50,7 +54,8 @@ func _on_PopupMenu_id_pressed(id):
 		MENU.COPY:
 			pass
 
-
+# right click pop up sub menu logic
+# NOTE : work in progress...
 func _on_AddMenu_id_pressed(id):
 	match id:
 		ADD.PIN:
