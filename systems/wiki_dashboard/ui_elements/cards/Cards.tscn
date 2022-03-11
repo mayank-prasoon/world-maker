@@ -51,5 +51,6 @@ margin_top = 134.0
 margin_right = 155.0
 margin_bottom = 148.0
 text = "sample text"
+autowrap = true
 
 [connection signal="gui_input" from="." to="." method="_on_Cards_gui_input"]

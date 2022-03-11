@@ -1,33 +1,28 @@
 extends RootSystemTest
 
-var test_pin_system_node:Node
-var save_file_node:Node
-
-func before_each():
-	# instance of the gd script
-	test_scene           = add_child_autoqfree(preload("res://singletone/SystemDataManager.tscn").instance())
-	test_pin_system_node = test_scene.get_node("MapSystem").get_node("MapManager")
-	save_file_node       = test_scene.get_node("MapSystem").get_node("SaveSystem")
-
 func test_get_tags():
 	gut.p('Testing get method method')
-	
-	save_file_node.save_file(
-			"temp_file_1",
-			TileSet.new(),
-			Vector2(0,0),
-			0,
-			[ ],
-			[
-				"random",
-				"568"
-			]
+
+	ResourceManager.save_file(
+		{
+			'map_name'     : "temp_file_1",
+			'map_chunks'   : [],
+			'chunk_size'   : Vector2(0,0),
+			'chunk_number' :  0,
+			'map_pins'     : [ ],
+			'tags'         : [
+					"random",
+					"568"
+				]
+		},
+
+		ResourceManager.MAP
 	)
-	
-	yield(get_tree().create_timer(1.0), "timeout")
-	
+
+	yield(get_tree().create_timer(0.5), "timeout")
+
 	# open files
-	var _test_resource = test_pin_system_node.get_tags("temp_file_1")
+	var _test_resource = MapPropertyManager.get_tags("temp_file_1")
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')
@@ -41,23 +36,27 @@ func test_get_all_pins():
 	var test_pin_save_file:Resource = load("res://test/resources_and_temp_items/temp_test_pin.tres")
 	# delete file
 
-	save_file_node.save_file(
-		"temp_chunk_5",
-		TileSet.new(),
-		Vector2(65, 25),
-		0,
-		[
-			test_pin_save_file,
-			test_pin_save_file,
-			test_pin_save_file
-		],
-		[]
+	ResourceManager.save_file(
+		{
+			'map_name'     : "temp_chunk_5",
+			'map_chunks'   : [],
+			'chunk_size'   : Vector2(65, 25),
+			'chunk_number' : 0,
+			'map_pins'     : [
+				test_pin_save_file,
+				test_pin_save_file,
+				test_pin_save_file
+				],
+			'tags'         : []
+		},
+
+		ResourceManager.MAP
 	)
 	
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	
 	# open files
-	var _test_resource = test_pin_system_node.get_all_pins("temp_chunk_5")
+	var _test_resource = MapPropertyManager.get_all_pins("temp_chunk_5")
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')
@@ -72,27 +71,30 @@ func test_get_all_pins():
 func test_get_specific_pin():
 	gut.p('Testing get specific pin method')
 	
-	var uuid = test_scene.uuid_util.v4()
 	var test_pin_save_file:Resource = load("res://test/resources_and_temp_items/temp_test_pin.tres")
 	# delete file
 
-	save_file_node.save_file(
-		"temp_chunk_5",
-		TileSet.new(),
-		Vector2(65, 25),
-		0,
-		[
-			test_pin_save_file,
-			test_pin_save_file,
-			test_pin_save_file
-		],
-		[]
+	ResourceManager.save_file(
+		{
+			'map_name'     : "temp_chunk_5",
+			'map_chunks'   : [],
+			'chunk_size'   : Vector2(65, 25),
+			'chunk_number' : 0,
+			'map_pins'     : [
+				test_pin_save_file,
+				test_pin_save_file,
+				test_pin_save_file
+				],
+			'tags'         : []
+		},
+
+		ResourceManager.MAP
 	)
 	
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	
 	# open files
-	var _test_resource = test_pin_system_node.get_pins_by_name("temp_chunk_5", "book")
+	var _test_resource = MapPropertyManager.get_pins_by_name("temp_chunk_5", "book")
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')
@@ -111,25 +113,30 @@ func test_get_pin_by_name():
 	var test_pin_save_file_4:Resource = load("res://test/resources_and_temp_items/test_pins/temp_test_pin_6.tres")
 	# delete file
 
-	save_file_node.save_file(
-		"temp_chunk_5",
-		TileSet.new(),
-		Vector2(65, 25),
-		0,
-		[
-			test_pin_save_file_1,
-			test_pin_save_file_2,
-			test_pin_save_file_3,
-			test_pin_save_file_4
-		],
-		[]
+
+	ResourceManager.save_file(
+		{
+			'map_name'     : "temp_chunk_5",
+			'map_chunks'   : [],
+			'chunk_size'   : Vector2(65, 25),
+			'chunk_number' : 0,
+			'map_pins'     : [
+				test_pin_save_file_1,
+				test_pin_save_file_2,
+				test_pin_save_file_3,
+				test_pin_save_file_4
+				],
+			'tags'         : []
+		},
+
+		ResourceManager.MAP
 	)
 	
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	
 	# open files
-	var _test_resource_1 = test_pin_system_node.get_pins_by_name("temp_chunk_5", "book")
-	var _test_resource_2 = test_pin_system_node.get_pins_by_name("temp_chunk_5", "book_7")
+	var _test_resource_1 = MapPropertyManager.get_pins_by_name("temp_chunk_5", "book")
+	var _test_resource_2 = MapPropertyManager.get_pins_by_name("temp_chunk_5", "book_7")
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')
@@ -143,8 +150,6 @@ func test_get_pin_by_name():
 # test if the method retruns the last pin
 func test_get_last_pin():
 	gut.p('Testing get last pin method')
-
-	var uuid = test_scene.uuid_util.v4()
 	
 	var test_pin_save_file_1:Resource = load("res://test/resources_and_temp_items/test_pins/temp_test_pin_1.tres")
 	var test_pin_save_file_2:Resource = load("res://test/resources_and_temp_items/test_pins/temp_test_pin_2.tres")
@@ -152,25 +157,29 @@ func test_get_last_pin():
 	var test_pin_save_file_4:Resource = load("res://test/resources_and_temp_items/test_pins/temp_test_pin_6.tres")
 	# delete file
 
-	save_file_node.save_file(
-		"temp_chunk_5",
-		TileSet.new(),
-		Vector2(65, 25),
-		0,
-		[
-			test_pin_save_file_1,
-			test_pin_save_file_2,
-			test_pin_save_file_3,
-			test_pin_save_file_4
-		],
-		[]
+	ResourceManager.save_file(
+		{
+			'map_name'     : "temp_chunk_5",
+			'map_chunks'   : [],
+			'chunk_size'   : Vector2(65, 25),
+			'chunk_number' : 0,
+			'map_pins'     : [
+				test_pin_save_file_1,
+				test_pin_save_file_2,
+				test_pin_save_file_3,
+				test_pin_save_file_4
+				],
+			'tags'         : []
+		},
+
+		ResourceManager.MAP
 	)
 
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 
 
 	# open files
-	var _test_resource = test_pin_system_node.get_last_pin("temp_chunk_5")
+	var _test_resource = MapPropertyManager.get_last_pin("temp_chunk_5")
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')
@@ -187,24 +196,28 @@ func test_get_first_pin():
 	var test_pin_save_file_4:Resource = load("res://test/resources_and_temp_items/test_pins/temp_test_pin_6.tres")
 	# delete file
 
-	save_file_node.save_file(
-		"temp_chunk_5",
-		TileSet.new(),
-		Vector2(65, 25),
-		0,
-		[
-			test_pin_save_file_1,
-			test_pin_save_file_2,
-			test_pin_save_file_3,
-			test_pin_save_file_4
-		],
-		[]
+	ResourceManager.save_file(
+		{
+			'map_name'     : "temp_chunk_5",
+			'map_chunks'   : [],
+			'chunk_size'   : Vector2(65, 25),
+			'chunk_number' : 0,
+			'map_pins'     : [
+				test_pin_save_file_1,
+				test_pin_save_file_2,
+				test_pin_save_file_3,
+				test_pin_save_file_4
+				],
+			'tags'         : []
+		},
+
+		ResourceManager.MAP
 	)
 	
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	
 	# open files
-	var _test_resource = test_pin_system_node.get_first_pin("temp_chunk_5")
+	var _test_resource = MapPropertyManager.get_first_pin("temp_chunk_5")
 	
 	# assertion
 	gut.p('\n=> \tTest Data\n')

@@ -1,0 +1,224 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/dependency/ui_elements/input_relatabe_database/InputRelatableDatabase.gd" type="Script" id=1]
+
+[node name="InputRelatableDatabase" type="Control"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 214 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Name"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_left = 467.0
+margin_top = 29.0
+margin_right = 557.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_horizontal = 6
+text = "edit item"
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+margin_left = 263.0
+margin_top = 25.0
+margin_right = 763.0
+margin_bottom = 369.0
+window_title = "setup relation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 104.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 14.0
+text = "Filter"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 480.0
+margin_bottom = 104.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 362.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Type" type="HBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+margin_right = 362.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/Type"]
+margin_top = 3.0
+margin_right = 100.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 100, 0 )
+text = "Type"
+
+[node name="OptionButton" type="OptionButton" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/Type"]
+margin_left = 104.0
+margin_right = 362.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="Article" type="HBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+margin_top = 30.0
+margin_right = 362.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/Article"]
+margin_top = 3.0
+margin_right = 100.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 100, 0 )
+text = "Article "
+
+[node name="OptionButton" type="OptionButton" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/Article"]
+margin_left = 104.0
+margin_right = 362.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="Database" type="HBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+margin_top = 60.0
+margin_right = 362.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( -217, -79 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/Database"]
+margin_top = 3.0
+margin_right = 100.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+text = "Database"
+
+[node name="OptionButton" type="OptionButton" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer3/Database"]
+margin_left = 104.0
+margin_right = 362.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 366.0
+margin_right = 480.0
+margin_bottom = 80.0
+size_flags_horizontal = 5
+custom_constants/separation = 5
+
+[node name="CheckBox" type="CheckBox" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_right = 114.0
+margin_bottom = 24.0
+size_flags_vertical = 2
+text = "use all type"
+
+[node name="CheckBox2" type="CheckBox" parent="WindowDialog/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_top = 56.0
+margin_right = 114.0
+margin_bottom = 80.0
+text = "use all article"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="WindowDialog/VBoxContainer"]
+margin_top = 124.0
+margin_right = 480.0
+margin_bottom = 324.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/VBoxContainer2"]
+margin_right = 480.0
+margin_bottom = 14.0
+text = "Assign"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 480.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="WindowDialog/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 182.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 230.0
+margin_right = 250.0
+margin_bottom = 182.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="WindowDialog/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 20.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 20, 20 )
+size_flags_vertical = 10
+
+[node name="Button2" type="Button" parent="WindowDialog/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_top = 93.0
+margin_right = 20.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 20, 20 )
+size_flags_vertical = 2
+
+[node name="ItemList2" type="ItemList" parent="WindowDialog/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 254.0
+margin_right = 480.0
+margin_bottom = 182.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

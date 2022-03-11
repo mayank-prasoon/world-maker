@@ -1,5 +1,6 @@
 # Note: The code might not be as pretty it could be, since it's written
 # in a way that maximizes performance. Methods are inlined and loops are avoided.
+class_name UUID
 extends Node
 
 const MODULO_8_BIT = 256
@@ -19,7 +20,7 @@ static func uuidbin():
 		getRandomInt(), getRandomInt(), getRandomInt(), getRandomInt(),
 	]
 
-static func v4():
+static func generate():
   # 16 random bytes with the bytes on index 6 and 8 modified
 	var b = uuidbin()
 

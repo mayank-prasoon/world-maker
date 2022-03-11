@@ -48,10 +48,16 @@ margin_top = 160.0
 margin_right = 683.0
 margin_bottom = 392.0
 window_title = "Open a File"
+resizable = true
 mode = 0
 access = 2
-current_dir = "/home/mayank/world-building-software"
-current_path = "/home/mayank/world-building-software/"
+current_dir = "/media/mayank/Assets/Software Dev/world building software"
+current_path = "/media/mayank/Assets/Software Dev/world building software/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="input_value_changed" from="." to="." method="_on_InputOpenFile_input_value_changed"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]

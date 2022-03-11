@@ -1,6 +1,6 @@
 extends Panel
 
-signal generate_map(map_name, map_texture, map_chunk_size)
+signal generate_map(map_name, map_texture, article)
 
 # === node ===
 onready var map_name:LineEdit        = $VBoxContainer2/VBoxContainer/LineEdit
@@ -21,12 +21,9 @@ func _ready():
 	
 	# map manager
 	var map_manager:Node = self.get_parent().get_owner().get_node("MapManager")
-	self.connect("generate_map", map_manager, "_on_MapCreator_generate_map")
-	
+	var _x = self.connect("generate_map", map_manager, "_on_MapCreator_generate_map")
+
 	# map save system
-	var map_save_system = get_node("/root/SystemDataManager").get_node("MapSystem/SaveSystem")
-	map_save_system.connect("data_saved", self, "hide_map_creator")
-	
 	create_confirmation_dialog()
 
 # generate confirmation dialog
@@ -53,14 +50,10 @@ func _on_CreateButton_pressed():
 			"generate_map",
 			map_name.get_text(),
 			map_texture.get_text(),
-			
-			Vector2(
-				map_chunk_size_x.get_value(),
-				map_chunk_size_y.get_value()
-			)
-	)
+			$VBoxContainer2/HBoxContainer2/CheckBox.pressed
+		)
 
-	self.visible = false
+	self.close_the_dialog()
 
 
 func _on_Button_pressed():
@@ -69,31 +62,6 @@ func _on_Button_pressed():
 
 func _on_FileDialog_file_selected(path):
 	map_texture.text = path
-	assign_chunk_number()
-
-
-func _on_ChunkX_value_changed(_value):
-	assign_chunk_number()
-
-
-func _on_Chunky_value_changed(_value):
-	assign_chunk_number()
-
-
-# display the number of chunks that will be generated 
-func assign_chunk_number():
-	# get the node
-	var map_generator = SystemDataManager.get_node("MapSystem/MapchunkGenerator")
-	var chunk_counter:SpinBox = $VBoxContainer2/VBoxContainer3/HBoxContainer/LineEdit3
-
-	var x:Image = map_generator.load_image(map_texture)
-
-	# check if the x
-	if !(x.is_empty()):
-		chunk_counter.set_value(map_generator.get_chunk_count()) 
-	else:
-		chunk_counter.set_value(0)
-
 
 # hide dialog box
 func hide_map_creator():
@@ -108,4 +76,11 @@ func hide_map_creator():
 
 # close the dialog box~
 func close_the_dialog():
+	get_tree().get_nodes_in_group('camera_movement')[0].disableMouse = false
+	self.get_node("ConfirmationDialog").queue_free()
 	self.queue_free()
+#
+#
+#func _on_CheckBox_toggled(button_pressed):
+#	pass # Replace with function body.
+

@@ -3,34 +3,34 @@ extends RootSystemTest
 var test_pin_system_node:Node
 var save_file_node:Node
 
-func before_each():
-	# instance of the gd script
-	test_scene           = add_child_autoqfree(preload("res://singletone/SystemDataManager.tscn").instance())
-	test_pin_system_node = test_scene.get_node("ArticleSystem").get_node("ArticleManager")
-	save_file_node       = test_scene.get_node("ArticleSystem").get_node("SaveSystem")
-
 func test_get_tags():
 	gut.p('Testing get method method')
 
-	var uuid = test_scene.uuid_util.v4()
+	var uuid = UUID.generate()
 
-	save_file_node.save_file(
-			"temp_file_1",
-			uuid,
-			"xyz",
-			"xyz",
-			0,
-			Resource.new(),
-			"",
-			[
+	ResourceManager.save_file(
+		{
+			'article_name'     : "temp_file_1",
+			'article_id'       : uuid,
+			'article_profile'  : "xyz",
+			'article_banner'   : "xyz",
+			'article_type'     : 0,
+			'article_template' : Resource.new(),
+			'article_raw'      : "",
+			'tags'             : [
 				"random",
 				"568",
 				"diginemo"
 			]
+		},
+
+		ResourceManager.ARTICLE
 	)
+	
+	yield(get_tree().create_timer(0.5), "timeout")
 
 	# open files
-	var _test_resource = test_pin_system_node.get_tags(uuid)
+	var _test_resource = ArticleManager.get_tags(uuid)
 
 	# assertion
 	gut.p('\n=> \tTest Data\n')

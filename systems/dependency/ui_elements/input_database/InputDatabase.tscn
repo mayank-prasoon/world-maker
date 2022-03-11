@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/dependency/ui_elements/input_database/InputDatabase.gd" type="Script" id=1]
+
+[node name="InputDatabase" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 0.363333
+margin_bottom = -218.0
+rect_min_size = Vector2( 0, 218 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 29.0
+margin_right = 1024.0
+margin_bottom = 53.0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 482.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "add item"
+
+[node name="Add" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 486.0
+margin_right = 510.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 0 )
+size_flags_horizontal = 0
+
+[node name="Remove" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 514.0
+margin_right = 538.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 0 )
+size_flags_horizontal = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 542.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 1024.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 150 )
+allow_reselect = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Add" to="." method="_on_Add_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Remove" to="." method="_on_Remove_pressed"]
+[connection signal="item_selected" from="VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]

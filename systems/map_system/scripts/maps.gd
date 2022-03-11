@@ -1,55 +1,90 @@
 extends Control
 
-# === Nodes ===
-var canvas_layer = get_parent().get_node("Camera2D/CanvasLayer")
+var thread:Thread
 
-# thread and thread related vars
-var threads:Array    = []
-var mutex:Mutex      = Mutex.new()
+# === NODES ===
+onready var layers = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/Panel/Layers"
+onready var map_manager = $"../MapManager"
+
+# === VARIABLES ===
+var map:MapData
+
+
+func _ready()->void:
+	self.focus_mode = Control.FOCUS_ALL
 
 # map manager laod map method
 func _on_MapManager_load_map(map_path:String) -> void:
-	display_entire_map(load(map_path))
+	# load map
+	map    = load(map_path)
 
-# NOTE: depricated
-func _exit_tree()->void:
-	for x in threads:
-		x.wait_to_finish()
+	# display map
+	thread = Thread.new()
+	var _x = thread.start(self, 'display_entire_map')
 
-
-#                 === DANGER ZONE ===                   #
-# ----------------------------------------------------- #
-#    following code are depricated or need a overhall   #
-#                or a work in progress                  #
-#                                                       #
-#              !!PROCEED WITH CAUTION!!                 #
-#                                                       #
-
+#join thread
+func join_thread()->void:
+	thread.wait_to_finish()
 
 # display entire map
 # NOTE: this only for testing purposes
-func display_entire_map(map:MapData) -> void:
-	self.get_child(0).tile_set = map.image
+func display_entire_map(_x = null) -> void:
+	for x in self.get_children():
+		x.queue_free()
 	
-	# instance and add the loading scene to the scene	
-	var temp_packed_scene:PackedScene = load("res://systems/dependency/ui_elements/loading_screen/LoadingScene.tscn")
-	var loading_screen:Control        = temp_packed_scene.instance()
-
-	# add min and max value
-	loading_screen.min_value = 0
-	loading_screen.max_value = map.chunk_number
 	
-	# initialize the node
-	canvas_layer.add_child(loading_screen)
-	canvas_layer.get_node("LoadingScene").set_min_max(0, map.chunk_number)
+	var texture = TextureRect.new()
+	texture.texture = ImageHandler.load_image_texture(map.image_path)
+	texture.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	$"../Camera2D".setup_camera_for_map(texture.texture.get_size()/2)
 
-	# display the tile set
-	# Note:x is the x-axis and y is the y-axis
-	for y in sqrt(map.chunk_number):
-		for x in sqrt(map.chunk_number):
-			# position of the tile in the tilset
-			var tile_index:int = (y * 15 + x)
-			
-			self.get_child(0).set_cell(x, y, tile_index)
-			# increase the new_value based on the index of the tile in the tilset
-			canvas_layer.get_node("LoadingScene").emit_signal("set_new_value", tile_index)
+	self.call_deferred("add_child", texture)
+	self.call_deferred('join_thread')
+	self.call_deferred('assign_layers')
+
+
+func create_layer(map_layer_resource:MapLayer, index:int)->void:
+	if index == -1: # check if the index is -1
+		map.layers.append(map_layer_resource)
+	else: # check if the index is not -1
+		map.layers[index] = map_layer_resource
+
+		# remove layer
+		layers.get_children()[index].queue_free()
+		self.get_children()[index].queue_free()
+	
+	# create layer node and texture and assign them
+	create_layer_node(map_layer_resource)
+
+	map_manager.save_map(
+		map.map_name,
+		map.image_path,
+		map.layers,
+		map.map_pins,
+		map.tags
+	)
+
+
+func assign_layers()->void:
+	for node in layers.get_children():
+		node.queue_free()
+
+	for map_layer in map.layers:
+		create_layer_node(map_layer)
+
+# create the layer node
+func create_layer_node(map_layer_resource)-> void:
+
+	# create texture node
+	var texture = TextureRect.new()
+	texture.texture = ImageHandler.load_image_texture(map_layer_resource.layer_path)
+	texture.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	self.call_deferred("add_child", texture)
+
+	# create layer node
+	var layer_node:Control = load("res://systems/map_system/ui_elements/map_layers/Layers.tscn").instance()
+	layer_node.map_layer_node           = texture
+	layer_node.map_layer_resources      = map_layer_resource
+	
+	layers.add_child(layer_node)
+	layer_node.rect_size      = Vector2(272, 30)

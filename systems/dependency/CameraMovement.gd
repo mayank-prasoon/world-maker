@@ -1,9 +1,10 @@
 class_name CameraMovement
 extends Camera2D
 
-export(Vector2) var zoomSpeed:Vector2 = Vector2(0.100001, 0.100001)
-export(Vector2) var minZoom:Vector2 = Vector2(0.500001, 0.500001)
-export(Vector2) var maxZoom:Vector2 = Vector2(2.600001, 2.600001)
+export(Vector2) var zoomSpeed:Vector2       = Vector2(0.100001, 0.100001)
+export(Vector2) var minZoom:Vector2         = Vector2(0.500001, 0.500001)
+export(Vector2) var maxZoom:Vector2         = Vector2(2.600001, 2.600001)
+export(Vector2) var defaultPosition:Vector2 = Vector2(0, 0)
 
 var desiredZooom:Vector2 = self.zoom
 
@@ -14,7 +15,7 @@ var disableMouse:bool = false
 var desiredOffset:Vector2 = self.offset
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta:float) -> void:
 	self.zoom = lerp(self.zoom, desiredZooom, 0.2)
 	self.offset = lerp(self.offset, desiredOffset, 0.2)
 
@@ -40,12 +41,25 @@ func zoomControl(event:InputEvent) -> void:
 				if maxZoom > desiredZooom:
 					desiredZooom += zoomSpeed
 
+
 #camera control
 func cameraMovement(event:InputEvent)->void:
-	if event.is_action_pressed("drag"):
-		panning = true
-	elif event.is_action_released("drag"):
-		panning = false
+	if event is InputEventKey:
+		if event.is_pressed() and event.scancode == KEY_SPACE:
+			panning = true
+			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+		else:
+			panning = false
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+	if event is InputEventMouseButton:
+		if event.is_pressed() and event.button_index == BUTTON_MIDDLE:
+			panning = true
+			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+		else:
+			panning = false
+			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
 	if event is InputEventMouseMotion and panning == true:
 		desiredOffset -= event.relative * zoom
 
@@ -56,7 +70,7 @@ func checkCameraReset(event:InputEvent)->void:
 
 
 func cameraReset()->void:
-	desiredOffset = Vector2(0,0)
+	desiredOffset = defaultPosition
 	desiredZooom = defaultZoom
 
 

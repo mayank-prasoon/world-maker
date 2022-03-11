@@ -1,0 +1,49 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=1]
+[ext_resource path="res://save_files/templates/test_name_templates.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+template_name = "test_name"
+template_type = 1
+template_prompts = [ {
+"description": "name of the place/region that will help identify it",
+"display": "the name of the land is {value}",
+"name": "Name",
+"null_value": "unknown",
+"type": 0,
+"value": "Lothric"
+}, {
+"description": "long form description of the place",
+"display": "{value}",
+"name": "Description",
+"null_value": "",
+"type": 1,
+"value": "Lothric is a place in darksouls floaded with the hollow and zombie like dogs"
+}, {
+"description": "click the checkbox if the place is hospitable",
+"display": "this place is{value} fit for living",
+"input_value_if_false": " not",
+"input_value_if_true": "",
+"name": "Hospitable",
+"type": 5,
+"value": false
+} ]
+
+[resource]
+script = ExtResource( 1 )
+article_name = "Lothric"
+article_id = "808fd380-2e50-4ce4-994e-9cc0d32730fd"
+article_profile = ""
+article_banner = ""
+article_type = 1
+article_template = SubResource( 1 )
+article_notes = "this place is a horrible place to live in"
+article_raw = "the name of the land is Lothric
+Lothric is a place in darksouls floaded with the hollow and zombie like dogs
+this place is not fit for living
+this place is a horrible place to live in"
+article_description = "Lothric games"
+tags = [  ]
+article_resources = ""

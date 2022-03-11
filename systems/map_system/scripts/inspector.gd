@@ -3,8 +3,11 @@ extends Control
 #show the inspector
 export var show_inspector:bool = false
 
+var dragged_node
+
 func _ready():
 	pass
+
 
 func _on_Button_pressed()->void:
 	show_inspector = !show_inspector
@@ -20,7 +23,7 @@ func _on_Button_pressed()->void:
 				Vector2(0, 0),
 				Vector2(300, 0)
 		)
-		
+
 
 # play the open/close animation of the inspector
 func inspector_slide_animation(init_pos, final_pos)->void:

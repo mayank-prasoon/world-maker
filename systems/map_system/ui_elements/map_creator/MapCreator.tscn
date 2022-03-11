@@ -96,6 +96,7 @@ rect_min_size = Vector2( 80, 0 )
 text = "browse"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2"]
+visible = false
 margin_top = 164.0
 margin_right = 523.0
 margin_bottom = 206.0
@@ -150,6 +151,17 @@ rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 8
 max_value = 5000.0
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+margin_top = 164.0
+margin_right = 523.0
+margin_bottom = 188.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer2/HBoxContainer2"]
+margin_right = 118.0
+margin_bottom = 24.0
+custom_constants/hseparation = 10
+text = "create article"
+
 [node name="CreateButton" type="Button" parent="VBoxContainer2"]
 margin_left = 443.0
 margin_top = 235.0
@@ -165,11 +177,14 @@ margin_left = 114.0
 margin_top = 8.0
 margin_right = 450.0
 margin_bottom = 296.0
-window_title = "Open a File"
-mode = 0
+window_title = "Open a File or Directory"
+resizable = true
+dialog_hide_on_ok = true
+mode = 3
 access = 2
-current_dir = "/home/mayank/world-building-software"
-current_path = "/home/mayank/world-building-software/"
+filters = PoolStringArray( "*.png", "*.jpg" )
+current_dir = "/media/mayank/Assets/Software Dev/world building software"
+current_path = "/media/mayank/Assets/Software Dev/world building software/"
 
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/Button" to="." method="hide_map_creator"]
 [connection signal="pressed" from="VBoxContainer2/VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]

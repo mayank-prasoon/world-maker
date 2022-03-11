@@ -1,15 +1,22 @@
-extends Control
+extends RootFieldInput
 
-export(String) var input_name:String            = ""
-export(String) var input_description:String     = ""
-export(int)    var input_value:int              = 0
+# export(int)    var input_value:int              = 0
 export(Array)  var input_dropdown_option:Array  = [""]
 
-func _ready():
+onready var drop_down_menu:OptionButton = $VBoxContainer/HBoxContainer/OptionButton
+
+func _ready()->void:
 	$VBoxContainer/Label.text = input_name
 
 	for x in input_dropdown_option:
-		$VBoxContainer/HBoxContainer/OptionButton.add_item(x)
-	$VBoxContainer/HBoxContainer/OptionButton.selected = input_value
+		drop_down_menu.add_item(x)
 
-	self.set_tooltip(input_description)
+	drop_down_menu.selected = input_value
+
+func dispaly()->String:
+	var value:String = drop_down_menu.get_item_text(input_value)
+	return input_display.format({'value': value})
+
+
+func _on_OptionButton_item_selected(index):
+	set_input_value(index)

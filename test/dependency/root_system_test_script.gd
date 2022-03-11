@@ -14,7 +14,7 @@ var sub_folders:Array = [
 func clean_system_save_files():
 	var folder:Directory = Directory.new()
 	var base_folder:String = "res://save_files/"
-	
+
 	for x in sub_folders:
 		var new_folder = base_folder + x
 		if folder.dir_exists(new_folder):

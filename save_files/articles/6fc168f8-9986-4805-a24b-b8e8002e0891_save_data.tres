@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+article_name = "game"
+article_id = "6fc168f8-9986-4805-a24b-b8e8002e0891"
+article_profile = ""
+article_banner = ""
+article_type = 0
+article_notes = ""
+article_raw = ""
+article_description = ""
+tags = [  ]
+article_resources = "res:///save_files/maps/game_save_data.tres"

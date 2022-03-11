@@ -49,7 +49,7 @@ func test_clear_save_files():
 	var _x = ResourceSaver.save("res://save_files/pins/pikachu.tres", MapPin.new())
 	var _y = ResourceSaver.save("res://save_files/maps/pikachu.tres", MapData.new())
 	var _z = ResourceSaver.save("res://save_files/map_symbol_templates/pikachu.tres", MapSymbolTemplate.new())
-	var _q = ResourceSaver.save("res://save_files/articles/pikachu.tres", RootArticle.new())
+	var _q = ResourceSaver.save("res://save_files/articles/pikachu.tres", Article.new())
 
 	assert_file_exists("res://save_files/pins/pikachu.tres")
 	assert_file_exists("res://save_files/maps/pikachu.tres")

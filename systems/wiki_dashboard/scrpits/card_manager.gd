@@ -1,46 +1,61 @@
 extends Node
 
-# node
-onready var cards_grid:GridContainer = $"../ScrollContainer/GridContainer"
-onready var article_list:Array = SystemDataManager.get_node("ArticleSystem").get_articles()
-
-# const
-const CARDS_TEMP = preload("res://systems/wiki_dashboard/ui_elements/cards/Cards.tscn")
-
-func _ready():
-	for article in article_list:
-		var cards = CARDS_TEMP.new()
-		cards.article = article
-		cards_grid.add_child(cards)
+onready var cards_grid = $"../ScrollContainer/GridContainer"
 
 func get_article(text:String)->void:
 	var cards = cards_grid.get_children()
-	
+
 	# hide cards
-	if (cards != []) or (text != ""):
+	if !(cards == []) or !(text == ""):
 		for card in cards:
-			if text in card.article.article_name:
-				card.visible = true
-			elif text in card.article.article_id:
-				card.visible = true
-			elif card.article.tags.has(text):
-				card.visible = true
-			else:
-				card.visible = false
-	
+			card.visible = search_card(text, card)
+
 	# displays all cards
 	if text == "":
 		for card in cards:
-			card.visible = true
+			card.visible = filter_card(card)
+
+# the search the cards based on the text provided
+func search_card(text:String, card:Control)->bool:
+	var state:bool = false
+	
+	if text.to_lower() in card.article.article_name.to_lower():
+		state = filter_card(card)
+	elif text.to_lower() in card.article.article_id.to_lower():
+		state = filter_card(card)
+	elif card.article.tags.has(text.to_lower()):
+		state = filter_card(card)
+	else:
+		state = false
+	
+	return state
+
+# filter card based on the check box ticked
+func filter_card(card:Control)->bool:
+	var filter = $"../../SearchBar/FilterPopup/Panel/VBoxContainer".get_children()
+	
+	var state:bool = false
+	
+	if card.article.article_type == Article.BASIC:
+		if filter[Article.BASIC].pressed:
+			state = true
+
+	if card.article.article_type == Article.MAP:
+		if filter[Article.MAP].pressed:
+			state = true
+
+	if card.article.article_type == Article.PIN:
+		if filter[Article.PIN].pressed:
+			state = true
+
+	return state
 
 # NOTE: currently under developemnt
-func open_card_reader(card_article):
+func open_card_reader(card_article:Resource):
 	var reader:PackedScene = load("res://systems/wiki_dashboard/ui_elements/reader/Reader.tscn")
-	get_parent().add_child(reader.instance())
-
-
-func _on_AddNewCardButton_pressed():
-	pass
+	var x = reader.instance()
+	x.article = card_article
+	get_parent().add_child(x)
 
 func _on_LineEdit_text_changed(new_text):
 	get_article(new_text)

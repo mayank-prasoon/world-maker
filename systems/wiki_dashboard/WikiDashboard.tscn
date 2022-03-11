@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://systems/wiki_dashboard/scrpits/grid_container_manager.gd" type="Script" id=1]
 [ext_resource path="res://systems/wiki_dashboard/scrpits/card_manager.gd" type="Script" id=2]
-[ext_resource path="res://systems/wiki_dashboard/ui_elements/cards/Cards.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/wiki_dashboard/scrpits/WikiDashboard.gd" type="Script" id=4]
 [ext_resource path="res://systems/wiki_dashboard/SearchBar.gd" type="Script" id=5]
 
@@ -47,6 +46,10 @@ custom_constants/separation = 10
 margin_right = 400.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 400, 0 )
+focus_neighbour_left = NodePath("../Button")
+focus_neighbour_top = NodePath("../Button")
+focus_neighbour_right = NodePath("../Button")
+focus_neighbour_bottom = NodePath("../Button")
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar"]
@@ -54,9 +57,12 @@ margin_left = 410.0
 margin_right = 434.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
+focus_neighbour_left = NodePath("../LineEdit")
+focus_neighbour_top = NodePath("../LineEdit")
+focus_neighbour_right = NodePath("../LineEdit")
+focus_neighbour_bottom = NodePath("../LineEdit")
 
-[node name="Popup" type="Popup" parent="VBoxContainer/SearchBar"]
-visible = true
+[node name="FilterPopup" type="Popup" parent="VBoxContainer/SearchBar"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 159.0
@@ -68,14 +74,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="VBoxContainer/SearchBar/Popup"]
+[node name="Panel" type="Panel" parent="VBoxContainer/SearchBar/FilterPopup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SearchBar/Popup/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SearchBar/FilterPopup/Panel"]
 anchor_left = 0.0943396
 anchor_top = 0.0943396
 anchor_right = 0.90566
@@ -85,23 +91,26 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/SearchBar/Popup/Panel/VBoxContainer"]
+[node name="Notes" type="CheckBox" parent="VBoxContainer/SearchBar/FilterPopup/Panel/VBoxContainer"]
 margin_top = 2.0
-margin_right = 86.0
+margin_right = 85.0
 margin_bottom = 26.0
+pressed = true
+text = "notes"
+
+[node name="Maps" type="CheckBox" parent="VBoxContainer/SearchBar/FilterPopup/Panel/VBoxContainer"]
+margin_top = 30.0
+margin_right = 85.0
+margin_bottom = 54.0
+pressed = true
 text = "maps"
 
-[node name="CheckBox2" type="CheckBox" parent="VBoxContainer/SearchBar/Popup/Panel/VBoxContainer"]
-margin_top = 30.0
-margin_right = 86.0
-margin_bottom = 54.0
-text = "pins"
-
-[node name="CheckBox3" type="CheckBox" parent="VBoxContainer/SearchBar/Popup/Panel/VBoxContainer"]
+[node name="Pins" type="CheckBox" parent="VBoxContainer/SearchBar/FilterPopup/Panel/VBoxContainer"]
 margin_top = 58.0
-margin_right = 86.0
+margin_right = 85.0
 margin_bottom = 82.0
-text = "notes"
+pressed = true
+text = "pins"
 
 [node name="CardList" type="Control" parent="VBoxContainer"]
 margin_top = 64.0
@@ -123,20 +132,14 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/CardList/ScrollContainer"]
-margin_left = 422.0
-margin_right = 602.0
+margin_left = 512.0
+margin_right = 512.0
 margin_bottom = 536.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
 custom_constants/vseparation = 30
 custom_constants/hseparation = 30
 columns = 4
-
-[node name="Cards" parent="VBoxContainer/CardList/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 180.0
-margin_bottom = 234.0
 
 [node name="AddNewCardButton" type="Button" parent="VBoxContainer/CardList"]
 anchor_left = 1.0

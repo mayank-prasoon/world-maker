@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://systems/map_system/ui_elements/map_layers/layers.gd" type="Script" id=1]
+[ext_resource path="res://systems/map_system/ui_elements/map_layers/theme/default_layer_style_box.tres" type="StyleBox" id=2]
+
+[node name="Layers" type="Control"]
+anchor_right = 0.265625
+anchor_bottom = 0.05
+rect_min_size = Vector2( 0, 30 )
+rect_pivot_offset = Vector2( 141, 15 )
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+custom_constants/separation = 10
+
+[node name="Visible" type="Button" parent="Panel/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 0 )
+toggle_mode = true
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 262.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "layer name"
+
+[connection signal="gui_input" from="." to="." method="_on_Layers_gui_input"]
+[connection signal="mouse_pointer_entered" from="." to="." method="_on_Layers_mouse_pointer_entered"]
+[connection signal="mouse_pointer_exited" from="." to="." method="_on_Layers_mouse_pointer_exited"]
+[connection signal="pressed" from="Panel/HBoxContainer/Visible" to="." method="_on_Visible_pressed"]
+[connection signal="toggled" from="Panel/HBoxContainer/Visible" to="." method="_on_Visible_toggled"]

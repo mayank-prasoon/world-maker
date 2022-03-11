@@ -45,3 +45,5 @@ margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
+
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]

@@ -31,3 +31,5 @@ margin_bottom = 118.0
 rect_min_size = Vector2( 0, 100 )
 smooth_scrolling = true
 wrap_enabled = true
+
+[connection signal="text_changed" from="VBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]

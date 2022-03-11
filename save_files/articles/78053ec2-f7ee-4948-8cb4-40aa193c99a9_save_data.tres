@@ -1,0 +1,49 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=1]
+[ext_resource path="res://save_files/templates/test_name_templates.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+template_name = "test_name"
+template_type = 1
+template_prompts = [ {
+"description": "name of the place/region that will help identify it",
+"display": "the name of the land is {value}",
+"name": "Name",
+"null_value": "unknown",
+"type": 0,
+"value": "Hollow Nest"
+}, {
+"description": "long form description of the place",
+"display": "{value}",
+"name": "Description",
+"null_value": "",
+"type": 1,
+"value": "It is a home to many creatures and bugss"
+}, {
+"description": "click the checkbox if the place is hospitable",
+"display": "this place is{value} fit for living",
+"input_value_if_false": " not",
+"input_value_if_true": "",
+"name": "Hospitable",
+"type": 5,
+"value": true
+} ]
+
+[resource]
+script = ExtResource( 1 )
+article_name = "Hollow Nest"
+article_id = "78053ec2-f7ee-4948-8cb4-40aa193c99a9"
+article_profile = ""
+article_banner = ""
+article_type = 1
+article_template = SubResource( 1 )
+article_notes = ""
+article_raw = "the name of the land is Hollow Nest
+It is a home to many creatures and bugss
+this place is fit for living
+"
+article_description = "Hollownest is a place in the Game called Hollow Knight."
+tags = [  ]
+article_resources = ""

@@ -14,6 +14,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/graphics/effects/Animation.gd"
 }, {
+"base": "Resource",
+"class": "Article",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/root_article_resources_template.gd"
+}, {
+"base": "Reference",
+"class": "ArticleManager",
+"language": "GDScript",
+"path": "res://systems/dependency/article_deb/article_manager.gd"
+}, {
+"base": "Reference",
+"class": "ArticleSystem",
+"language": "GDScript",
+"path": "res://systems/dependency/article_deb/article_system.gd"
+}, {
 "base": "Camera2D",
 "class": "CameraMovement",
 "language": "GDScript",
@@ -24,10 +39,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/file templates/editor_setting_system_template/editor_settings_template.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "FolderManager",
 "language": "GDScript",
 "path": "res://utilities/folder_handler/resourece_handler.gd"
+}, {
+"base": "Reference",
+"class": "ImageHandler",
+"language": "GDScript",
+"path": "res://systems/dependency/image_handler.gd"
 }, {
 "base": "Resource",
 "class": "MapData",
@@ -39,61 +59,131 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_fragment_resources_template.gd"
 }, {
+"base": "Reference",
+"class": "MapGen",
+"language": "GDScript",
+"path": "res://systems/dependency/map_dep/map_generator.gd"
+}, {
+"base": "Resource",
+"class": "MapLayer",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/map_layer_resource_template.gd"
+}, {
 "base": "Resource",
 "class": "MapPin",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_pin_resources_template.gd"
+}, {
+"base": "Reference",
+"class": "MapPropertyManager",
+"language": "GDScript",
+"path": "res://systems/dependency/map_dep/map_manager.gd"
 }, {
 "base": "Resource",
 "class": "MapSymbolTemplate",
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd"
 }, {
+"base": "Reference",
+"class": "MapSystem",
+"language": "GDScript",
+"path": "res://systems/dependency/map_dep/map_system.gd"
+}, {
+"base": "Reference",
+"class": "PinManager",
+"language": "GDScript",
+"path": "res://systems/dependency/pin_dep/pin_manger.gd"
+}, {
+"base": "Reference",
+"class": "PinSystem",
+"language": "GDScript",
+"path": "res://systems/dependency/pin_dep/pin_system.gd"
+}, {
+"base": "Reference",
+"class": "PresetInputManager",
+"language": "GDScript",
+"path": "res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/preset_input_manager.gd"
+}, {
 "base": "HBoxContainer",
 "class": "ProjectButton",
 "language": "GDScript",
 "path": "res://systems/main_menu/scripts/project_buttons.gd"
 }, {
-"base": "Resource",
-"class": "RootArticle",
+"base": "Reference",
+"class": "ResourceManager",
 "language": "GDScript",
-"path": "res://assets/file templates/save_system_template/root_article_resources_template.gd"
+"path": "res://systems/dependency/resource_dep/resource_manager.gd"
 }, {
 "base": "RootSystemTest",
 "class": "RootCommandTest",
 "language": "GDScript",
 "path": "res://test/dependency/root_command_system_test.gd"
 }, {
+"base": "Control",
+"class": "RootFieldInput",
+"language": "GDScript",
+"path": "res://systems/dependency/ui_elements/root_input_class.gd"
+}, {
 "base": "Node",
 "class": "RootSystemTest",
 "language": "GDScript",
 "path": "res://test/dependency/root_system_test_script.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "SaveSystem",
 "language": "GDScript",
-"path": "res://singletone/system_data_manager_dependency/dependency/save_system.gd"
+"path": "res://assets/depricated scripts/system_data_manager_dependency/dependency/save_system.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://systems/dependency/StateMachine.gd"
+}, {
+"base": "Reference",
+"class": "ThreadPool",
+"language": "GDScript",
+"path": "res://systems/dependency/multi_thread_dep/threadpool.gd"
+}, {
+"base": "Reference",
+"class": "UIManager",
+"language": "GDScript",
+"path": "res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/UIManager.gd"
+}, {
+"base": "Node",
+"class": "UUID",
+"language": "GDScript",
+"path": "res://utilities/godot-uuid-master/uuid.gd"
 } ]
 _global_script_class_icons={
 "Animaion": "",
+"Article": "",
+"ArticleManager": "",
+"ArticleSystem": "",
 "CameraMovement": "",
 "EditorSettingsTemplate": "",
 "FolderManager": "",
+"ImageHandler": "",
 "MapData": "",
 "MapFragment": "",
+"MapGen": "",
+"MapLayer": "",
 "MapPin": "",
+"MapPropertyManager": "",
 "MapSymbolTemplate": "",
+"MapSystem": "",
+"PinManager": "",
+"PinSystem": "",
+"PresetInputManager": "",
 "ProjectButton": "",
-"RootArticle": "",
+"ResourceManager": "",
 "RootCommandTest": "",
+"RootFieldInput": "",
 "RootSystemTest": "",
 "SaveSystem": "",
-"StateMachine": ""
+"StateMachine": "",
+"ThreadPool": "",
+"UIManager": "",
+"UUID": ""
 }
 
 [application]
@@ -106,9 +196,11 @@ config/icon="res://icon.png"
 
 SystemSettings="*res://singletone/EditorSetting.tscn"
 CommandSystem="*res://singletone/CommandSystem.tscn"
-SystemDataManager="*res://singletone/SystemDataManager.tscn"
+SystemDataManager="*res://singletone/system_data_manager.gd"
 ProjectSettingsManager="*res://singletone/ProjectSetting.tscn"
+LoadingSystem="*res://singletone/loading_system.gd"
 Logger="*res://singletone/Logger.tscn"
+GlobalActions="*res://singletone/global_actions.gd"
 
 [debug]
 
@@ -117,6 +209,7 @@ gdscript/completion/autocomplete_setters_and_getters=true
 [display]
 
 window/size/always_on_top=true
+window/vsync/use_vsync=false
 
 [editor_plugins]
 

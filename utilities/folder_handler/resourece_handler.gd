@@ -5,7 +5,7 @@
 #                                     #
 
 class_name FolderManager
-extends Node
+extends Reference
 
 # loop though folder and returns the file path in the form of array
 static func fetch_files_from(base_folder:String, return_path:bool = false)-> Array:
@@ -16,8 +16,8 @@ static func fetch_files_from(base_folder:String, return_path:bool = false)-> Arr
 	# if the folder exists
 	if folder.dir_exists(base_folder):
 		# open the directory
-		folder.open(base_folder)
-		folder.list_dir_begin()
+		var _x = folder.open(base_folder)
+		var _y = folder.list_dir_begin()
 		
 		# loop though the base folder
 		while true:
