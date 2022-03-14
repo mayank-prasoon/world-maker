@@ -25,6 +25,7 @@ var default_rect_pos
 var rect_size_value:Vector2 = Vector2(272, 30)
 var rect_pos_value:Vector2  = Vector2(0, 0)
 
+
 func layer_selected()->void:
 	for node in get_tree().get_nodes_in_group('map_layers'):
 		node.get_node("Panel").set("custom_styles/panel", default_style_box)
@@ -66,10 +67,16 @@ func _ready()->void:
 func _physics_process(_delta:float)->void:
 	lerp_animation()
 	check_mouse_enter()
-	
+
 # system input loop
 func _input(event):
-	#	if if_inside_rect(event):
+	if move == true:
+		if event is InputEventMouseButton:
+			if !event.is_pressed() and event.button_index == BUTTON_LEFT:
+				get_tree().call_group('map_layers', '_on_being_dragged', false)
+
+# gui input loop
+func _on_Layers_gui_input(event)->void:
 	if if_inside_rect():
 		if event is InputEventMouse:
 			if event.is_pressed() and event.button_index == BUTTON_LEFT:
@@ -77,15 +84,6 @@ func _input(event):
 				get_tree().call_group('map_layers', '_on_being_dragged', true)
 				reset_to_default()
 
-	if move == true:
-		if event is InputEventMouseButton:
-			if !event.is_pressed() and event.button_index == BUTTON_LEFT:
-				get_tree().call_group('map_layers', '_on_being_dragged', false)
-	
-
-# gui input loop
-func _on_Layers_gui_input(event)->void:
-	pass
 
 # === UI ANIMATIONS ===
 
@@ -100,11 +98,9 @@ func lerp_animation()->void:
 		lerp($Panel.rect_size.y, rect_size_value.y, 0.35)
 	)
 
-
 func set_position_size_value(pos:Vector2, size:Vector2):
 	rect_pos_value  = pos
 	rect_size_value = size
-
 
 func reset_to_default()->void:
 	set_position_size_value(default_rect_pos, default_rect_size)
@@ -163,17 +159,31 @@ func drop_data(_position, data)->void:
 
 # moves layer
 func move_layer(data):
-	var map_node:Control = get_parent().get_owner().get_node("Map")
+	var map_node:Control = get_parent().get_owner().get_parent().get_owner().get_node("MapOrganise")
+	print_debug(map_node.map.layers)
+	print_debug(data["layer"].map_layer_resources.layer_name)
+	print_debug(self.map_layer_resources.layer_name)
 
 	# move the node which was being dragged and is now dropped 'data["layer"]'
 	get_parent().move_child(data["layer"], self.get_position_in_parent())
 	data["layer_node"].get_parent().move_child(data["layer_node"], self.get_position_in_parent() + 1)
-#	map_node.map.layers[self.get_position_in_parent()] = data["layer"].map_layer_resources
-
+	
+	
 	# move the node on which the other node is dropped 'self'
 	map_layer_node.get_parent().move_child(map_layer_node, data["node_position"] + 1)
 	get_parent().move_child(self, data["node_position"])
-	map_node.map.layers[data["node_position"]] = self.map_layer_resources
+	
+	var layers:Array = []
+	
+	var layer_nodes:Array = get_parent().get_children()
+	
+	for resource in layer_nodes:
+		layers.append(resource.map_layer_resources.duplicate())
+	
+	map_node.map.layers = layers
+	
+	print_debug(map_node.map.layers)
+
 
 # on being_dragged signal reciver 
 func _on_being_dragged(state:bool)->void:
@@ -227,7 +237,6 @@ func _on_Layers_mouse_pointer_entered()->void:
 		)
 		hover = true
 
-
 # layer hide and show system
 func _on_Visible_toggled(button_pressed)->void:
 	pass
@@ -235,4 +244,4 @@ func _on_Visible_toggled(button_pressed)->void:
 func _on_Visible_pressed()->void:
 	layer_selected()
 	get_tree().call_group("layer_option", 'set_layer_visibility', !$Panel/HBoxContainer/Visible.pressed)
-	pass
+

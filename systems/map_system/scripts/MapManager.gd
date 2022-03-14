@@ -11,8 +11,10 @@ onready var canvas_layer:CanvasLayer = get_parent().get_node("Camera2D/CanvasLay
 
 var map_list:Dictionary = {}
 
+
 func _ready() -> void:
 	load_maps_name()
+
 
 # load maps
 func load_maps_name() -> void:
@@ -78,5 +80,6 @@ func _on_MenuButton_item_selected(index:int) -> void:
 		emit_signal("load_map", map_path)
 
 
+# depricated
 func _on_MenuButton_item_focused(index):
 	load_maps_name()

@@ -4,13 +4,15 @@ signal map_layer_changed
 # signal blend_mode_changed
 # signal opacity_changed
 
-onready var maps_manager_node:Node = get_owner().get_node("MapManager")
-onready var maps_node:Control = get_owner().get_node("Map")
+onready var maps_manager_node:Node = get_owner().get_parent().get_owner().get_node("MapManager")
+onready var maps_node:Control = get_owner().get_parent().get_owner().get_node("MapOrganise")
 
 var layerNode:Control setget set_map_layer, get_map_layer 
 
+
 func _ready():
 	add_to_group('layer_option')
+
 
 func set_layer_blend_mode(blend_mode:int)->void:
 	maps_node.map.layers[layerNode.get_position_in_parent()].layer_shader = blend_mode
@@ -24,6 +26,11 @@ func set_layer_opacity(opacity:float)->void:
 	save_map()
 
 
+func set_layer_visibility(visiblity:bool)->void:
+	maps_node.map.layers[layerNode.get_position_in_parent()].layer_visibility = visiblity
+	layerNode.map_layer_node.visible  = visiblity
+	save_map()
+
 func set_map_layer(node:Control)->void:
 	emit_signal("map_layer_changed")
 	layerNode = node
@@ -36,7 +43,6 @@ func get_map_layer()->Control:
 
 
 func save_map()->void:
-	print_debug("print saved ", maps_node.map.layers[0].layer_opacity)
 	var _x = ResourceManager.SaveData.new(
 		MapData.fetch_save_path().format({'uuid':maps_node.map.map_name}),
 		maps_node.map

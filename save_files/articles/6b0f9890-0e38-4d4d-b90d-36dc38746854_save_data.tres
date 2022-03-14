@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-article_name = "Pika pika"
+article_name = "Pika"
 article_id = "6b0f9890-0e38-4d4d-b90d-36dc38746854"
 article_profile = ""
 article_banner = ""
@@ -13,4 +13,4 @@ article_notes = ""
 article_raw = ""
 article_description = ""
 tags = [  ]
-article_resources = "res:///save_files/maps/Pika pika_save_data.tres"
+article_resources = ""

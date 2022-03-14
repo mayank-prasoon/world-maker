@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 # === NODE ===
-onready var maps_node:Control = $"../../../../../../../../../../../Map"
+onready var maps_node:Control = get_owner().get_parent().get_owner().get_node("MapOrganise")
 onready var menu:Control      = $"../../../../../../../.."
 
 var create_layer:PackedScene   = preload("res://systems/map_system/ui_elements/layer_creator/LayerCreator.tscn")
@@ -11,7 +11,8 @@ func _on_Add_pressed():
 
 
 func _on_Delete_pressed():
-	pass # Replace with function body.
+	maps_node.map.layers.pop_at($LayerOptions.layerNode.get_position())
+	$LayerOptions.layerNode.queue_free()
 
 
 func create_layer()->void:

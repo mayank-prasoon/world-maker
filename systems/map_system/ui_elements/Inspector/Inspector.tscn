@@ -1,0 +1,182 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://systems/map_system/Map Layers.gd" type="Script" id=1]
+[ext_resource path="res://systems/map_system/LayerOptions.gd" type="Script" id=2]
+[ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.196078, 0.188235, 0.219608, 1 )
+
+[node name="Inspector" type="Control"]
+margin_top = 50.0
+margin_right = 290.0
+margin_bottom = 529.0
+rect_min_size = Vector2( 290, 400 )
+mouse_filter = 1
+size_flags_vertical = 7
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 1.03448
+anchor_right = 2.03448
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TabContainer" type="TabContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inspector" type="VBoxContainer" parent="Panel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map Layers" type="VBoxContainer" parent="Panel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayerOptions" type="Control" parent="Panel/TabContainer/Map Layers"]
+margin_right = 282.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Map Layers/LayerOptions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer"]
+margin_right = 282.0
+margin_bottom = 24.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer"]
+margin_right = 142.0
+margin_bottom = 24.0
+size_flags_horizontal = 7
+text = "Normal"
+items = [ "Normal", null, false, 0, null, "Multiply", null, false, 1, null, "Divide", null, false, 2, null, "Difference", null, false, 3, null, "Add", null, false, 4, null, "Darken", null, false, 5, null, "Burn", null, false, 6, null, "Dodge", null, false, 7, null, "Lighten", null, false, 8, null, "Overlay", null, false, 9, null, "Screen", null, false, 10, null, "Soft Lighting", null, false, 11, null, "Hard Lighting", null, false, 12, null, "Custom Shader", null, false, 13, null ]
+selected = 0
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer"]
+margin_left = 152.0
+margin_top = 5.0
+margin_right = 198.0
+margin_bottom = 19.0
+text = "opacity"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer"]
+margin_left = 208.0
+margin_right = 282.0
+margin_bottom = 24.0
+value = 100.0
+align = 1
+suffix = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayersContainer" type="Panel" parent="Panel/TabContainer/Map Layers"]
+margin_top = 29.0
+margin_right = 282.0
+margin_bottom = 414.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Map Layers/LayersContainer"]
+anchor_left = 0.0177305
+anchor_top = 0.0103896
+anchor_right = 0.985816
+anchor_bottom = 0.987013
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LayerMenu" type="Control" parent="Panel/TabContainer/Map Layers"]
+margin_top = 418.0
+margin_right = 282.0
+margin_bottom = 443.0
+rect_min_size = Vector2( 0, 25 )
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/TabContainer/Map Layers/LayerMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Add" type="Button" parent="Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer"]
+margin_right = 25.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 0 )
+
+[node name="Edit" type="Button" parent="Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer"]
+margin_left = 29.0
+margin_right = 54.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 0 )
+
+[node name="Delete" type="Button" parent="Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer"]
+margin_left = 257.0
+margin_right = 282.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 0 )
+size_flags_horizontal = 10
+
+[node name="Button" type="Button" parent="Panel"]
+anchor_left = -0.052
+anchor_top = 0.53
+anchor_right = -0.052
+anchor_bottom = 0.53
+margin_left = -14.9199
+margin_top = -15.0
+margin_right = 15.08
+margin_bottom = 15.0
+rect_min_size = Vector2( 30, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="item_selected" from="Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer/OptionButton" to="Panel/TabContainer/Map Layers/LayerOptions" method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer/SpinBox" to="Panel/TabContainer/Map Layers/LayerOptions" method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer/Add" to="Panel/TabContainer/Map Layers" method="_on_Add_pressed"]
+[connection signal="pressed" from="Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer/Edit" to="Panel/TabContainer/Map Layers" method="_on_Edit_pressed"]
+[connection signal="pressed" from="Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer/Delete" to="Panel/TabContainer/Map Layers" method="_on_Delete_pressed"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]

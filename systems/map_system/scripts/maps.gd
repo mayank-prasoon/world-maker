@@ -3,7 +3,7 @@ extends Control
 var thread:Thread
 
 # === NODES ===
-onready var layers = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/Panel/Layers"
+onready var layers = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayersContainer/VBoxContainer"
 onready var map_manager = $"../MapManager"
 
 # === VARIABLES ===

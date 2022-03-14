@@ -20,7 +20,7 @@ func _ready():
 	# === connect signals ===
 	
 	# map manager
-	var map_manager:Node = self.get_parent().get_owner().get_node("MapManager")
+	var map_manager:Node = self.get_parent().get_owner()
 	var _x = self.connect("generate_map", map_manager, "_on_MapCreator_generate_map")
 
 	# map save system
@@ -79,8 +79,3 @@ func close_the_dialog():
 	get_tree().get_nodes_in_group('camera_movement')[0].disableMouse = false
 	self.get_node("ConfirmationDialog").queue_free()
 	self.queue_free()
-#
-#
-#func _on_CheckBox_toggled(button_pressed):
-#	pass # Replace with function body.
-

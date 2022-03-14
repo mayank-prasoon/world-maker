@@ -26,7 +26,7 @@ func _ready():
 	# === connect signals ===
 
 	# layer manager
-	var map:Control = self.get_parent().get_owner().get_node("Map")
+	var map:Control = self.get_parent().get_owner().get_node("MapOrganise")
 	var _x = self.connect("create_layer", map, "create_layer")
 
 

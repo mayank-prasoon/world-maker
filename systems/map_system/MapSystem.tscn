@@ -1,15 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://systems/map_system/scripts/map_system.gd" type="Script" id=1]
+[ext_resource path="res://systems/map_system/map_system.gd" type="Script" id=1]
 [ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
-[ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=3]
+[ext_resource path="res://systems/map_system/LayerOptions.gd" type="Script" id=3]
 [ext_resource path="res://systems/map_system/scripts/article_reader.gd" type="Script" id=4]
-[ext_resource path="res://systems/map_system/scripts/maps.gd" type="Script" id=5]
+[ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=5]
 [ext_resource path="res://systems/map_system/scripts/map_pin_manager.gd" type="Script" id=6]
 [ext_resource path="res://systems/map_system/scripts/MapMenu.gd" type="Script" id=7]
-[ext_resource path="res://systems/map_system/LayerOptions.gd" type="Script" id=8]
-[ext_resource path="res://systems/map_system/scripts/MapManager.gd" type="Script" id=9]
-[ext_resource path="res://systems/map_system/Map Layers.gd" type="Script" id=10]
+[ext_resource path="res://systems/map_system/Map Layers.gd" type="Script" id=8]
 
 [sub_resource type="Theme" id=1]
 
@@ -21,19 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 
-[node name="MapManager" type="Node" parent="."]
-script = ExtResource( 9 )
-
-[node name="Map" type="Control" parent="."]
+[node name="MapCollectionNode" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 2
-script = ExtResource( 5 )
-
-[node name="MapPins" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -52,7 +41,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
@@ -86,9 +74,6 @@ allow_search = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer"]
 margin_right = 1024.0
@@ -203,10 +188,7 @@ margin_bottom = 529.0
 rect_min_size = Vector2( 290, 400 )
 mouse_filter = 1
 size_flags_vertical = 7
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 5 )
 
 [node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector"]
 anchor_left = 1.03448
@@ -243,7 +225,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
-script = ExtResource( 10 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -252,7 +234,7 @@ __meta__ = {
 margin_right = 282.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 0, 25 )
-script = ExtResource( 8 )
+script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerOptions"]
 anchor_right = 1.0
@@ -302,7 +284,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers"]
+[node name="LayersContainer" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers"]
 margin_top = 29.0
 margin_right = 282.0
 margin_bottom = 414.0
@@ -313,15 +295,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Layers" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 4.99999
-margin_right = -4.99985
-margin_bottom = -5.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayersContainer"]
+anchor_left = 0.0177305
+anchor_top = 0.0103896
+anchor_right = 0.985816
+anchor_bottom = 0.987013
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="LayerMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers"]
@@ -334,9 +314,6 @@ size_flags_horizontal = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Add" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerMenu/HBoxContainer"]
 margin_right = 25.0
@@ -413,13 +390,11 @@ rect_min_size = Vector2( 30, 30 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 
-[connection signal="load_map" from="MapManager" to="Map" method="_on_MapManager_load_map"]
 [connection signal="gui_input" from="Camera2D/CanvasLayer/Menu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_Menu_gui_input"]
 [connection signal="id_pressed" from="Camera2D/CanvasLayer/Menu/PopupMenu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_PopupMenu_id_pressed"]
 [connection signal="id_pressed" from="Camera2D/CanvasLayer/Menu/PopupMenu/AddMenu" to="Camera2D/CanvasLayer/Menu/MenuManger" method="_on_AddMenu_id_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader/Panel/VBoxContainer/HBoxContainer/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/ArticleReader" method="_on_Button_pressed"]
-[connection signal="item_focused" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/MenuButton" to="MapManager" method="_on_MenuButton_item_focused"]
-[connection signal="item_selected" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/MenuButton" to="MapManager" method="_on_MenuButton_item_selected"]
+[connection signal="item_selected" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/Button" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu" method="_on_Button_pressed"]
 [connection signal="item_selected" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer/OptionButton" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerOptions" method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerOptions/VBoxContainer/HBoxContainer/SpinBox" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayerOptions" method="_on_SpinBox_value_changed"]
