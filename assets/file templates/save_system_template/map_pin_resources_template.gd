@@ -3,13 +3,13 @@ extends Resource
 
 # === MAP PIN ===
 
-export(String)        var pin_name:String                                    # name of the pin
+export(String)        var pin_name:String              = ""                        # name of the pin
 export(String)        var pin_id:String                                            # id of the pin
-export(Resource)      var pin_symbol_template:Resource                             # symbol template used for the pin
+export(Resource)      var pin_symbol_template:Resource = MapSymbolTemplate.new()   # symbol template used for the pin
 export(Vector2)       var pin_location:Vector2                                     # location of the pin in the map
-export(Resource)      var pin_article:Resource                                     # article attached to the pin
-export(bool)          var map_link_state:bool                                      # state of the link
-export(Vector2)       var linked_chunk:Vector2                                     # chunk which is linked to the pin
+export(Resource)      var pin_article:Resource         = Article.new()             # article attached to the pin
+export(bool)          var linked_map:bool                                          # state of the link
+export(Vector2)       var linked_map_location:Vector2                              # chunk which is linked to the pin
 export(Array, String) var tags:Array
 
 # === methods ===

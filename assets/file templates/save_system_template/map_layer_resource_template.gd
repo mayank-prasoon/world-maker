@@ -45,7 +45,7 @@ const custom_shader:int = 13
 export(String)                var layer_name:String                  = ""
 export(String, FILE)          var layer_path:String                  = ""
 export(String, MULTILINE)     var layer_description:String           = ""
-export(bool)                  var layer_visibility                   = false
+export(bool)                  var layer_visibility                   = false setget set_layer_visibility
 export(blending_mode)         var layer_shader:int                   = 0
 export(VisualShader)          var layer_custom_shader:VisualShader   = VisualShader.new()
 export(float, EXP, 0, 100, 1) var layer_opacity:float                = 100.0 
@@ -86,3 +86,6 @@ static func fetch_shader_material(blend_mode:int, custom_shader_resource:VisualS
 			new_material.shader = custom_shader_resource
 
 	return new_material
+
+func set_layer_visibility(value:int)->void:
+	layer_visibility = value
