@@ -3,7 +3,7 @@ extends RootFieldInput
 #export(String) var input_value:String       = ""
 
 func _ready()->void:
-	$VBoxContainer/Label.text                   = input_name
+	$VBoxContainer/Label.text    = input_name
 	$VBoxContainer/LineEdit.text = input_value
 
 func display()->String:
