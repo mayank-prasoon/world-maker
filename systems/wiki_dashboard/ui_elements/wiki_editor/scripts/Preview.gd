@@ -1,8 +1,8 @@
 extends Control
 
-onready var vbox_container:VBoxContainer = $"../TextEditor/Panel/TabContainer/Prompts/VBoxContainer"
+onready var vbox_container:VBoxContainer = $"../TextEditor/Panel/TabContainer/Prompts/ScrollContainer/VBoxContainer"
 onready var rich_text:RichTextLabel      = $VBoxContainer/RichTextLabel
-onready var basic_tab                    = $"../TextEditor/Panel/TabContainer/Basic/VBoxContainer"
+onready var basic_tab                    = $"../TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer"
 onready var notes                        = $"../TextEditor/Panel/TabContainer/Notes/VBoxContainer/TextEdit"
 onready var preview_title                = $VBoxContainer/HBoxContainer/Label
 

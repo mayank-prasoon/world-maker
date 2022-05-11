@@ -10,6 +10,7 @@ export(Vector2)             var template_offset:Vector2                         
 export(Color)               var template_color:Color                                         # color of the symbol
 export(float)               var template_area2D_radius:int = 48
 export(Array, String)       var template_default_tag:Array
+export(String, FILE)        var template_default_article_template:String
 
 # === methods ===
 

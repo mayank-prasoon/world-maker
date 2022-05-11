@@ -1,105 +1,463 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/themes/MainMenu.tres" type="Theme" id=1]
 [ext_resource path="res://systems/main_menu/scripts/main_menu.gd" type="Script" id=2]
 [ext_resource path="res://systems/main_menu/scripts/new_project.gd" type="Script" id=3]
 [ext_resource path="res://systems/main_menu/scripts/open_project.gd" type="Script" id=4]
+[ext_resource path="res://assets/graphics/main_menu/flower-6328348.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/main_menu/World Designer.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/main_menu/icon/akar-icons_twitter-fill.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/main_menu/icon/akar-icons_github-fill.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/main_menu/icon/Vector.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=11]
 
-[sub_resource type="DynamicFont" id=1]
-size = 48
-font_data = ExtResource( 1 )
+[sub_resource type="Theme" id=20]
+
+[sub_resource type="StyleBoxFlat" id=17]
+content_margin_left = 10.0
+bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="GDScript" id=16]
+script/source = "extends LineEdit
+
+
+func _on_LineEdit_focus_entered():
+	$AnimationPlayer.play(\"focus\")
+
+func _on_LineEdit_focus_exited():
+	$AnimationPlayer.play_backwards(\"focus\")
+"
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/focus:border_width_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_styles/focus:border_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "focus"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/focus:border_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 0 ), Color( 0.219608, 0.564706, 0.886275, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.34902, 0.486275, 0.972549, 1 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "load"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "load"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Control
+
+func _on_WhatsNew_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			$AnimationPlayer.play_backwards(\"load (copy)\")
+
+"
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/VBoxContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "load"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/VBoxContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 380 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "load (copy)"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/VBoxContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 380 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_menu_ui"
+} ]
+}
+
+[sub_resource type="GDScript" id=15]
+script/source = "extends Control
+
+
+func _on_SocialMediaButton_pressed():
+	OS.shell_open('https://www.youtube.com/')
+
+func _on_HelpButton_pressed():
+	OS.shell_open('https://www.youtube.com/')
+	
+"
+
+[sub_resource type="DynamicFont" id=21]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "load"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 20 )
 script = ExtResource( 2 )
+
+[node name="BackGround" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": "This is a Background for the Main Menu"
+}
+
+[node name="ColorRect" type="ColorRect" parent="BackGround"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="BackGround"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+
+[node name="ColorRect2" type="ColorRect" parent="BackGround"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.317647 )
+
+[node name="BackgroundBlur" parent="." instance=ExtResource( 10 )]
+Animate = false
+
+[node name="Title" type="TextureRect" parent="."]
+anchor_left = 0.252441
+anchor_top = 0.226667
+anchor_right = 0.747559
+anchor_bottom = 0.343334
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
 }
 
 [node name="NewProject" type="Control" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
+margin_left = -192.0
 margin_top = -36.0
-margin_right = 160.0
-margin_bottom = 92.0
+margin_right = 192.0
+margin_bottom = 176.0
+theme = ExtResource( 1 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NewProject"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_constants/separation = 40
 
 [node name="BackButton" type="Button" parent="NewProject/VBoxContainer"]
-margin_right = 58.0
-margin_bottom = 20.0
+margin_right = 64.0
+margin_bottom = 19.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
-text = "<- back"
+custom_constants/hseparation = 10
+text = "back"
+icon = ExtResource( 9 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NewProject/VBoxContainer"]
-margin_top = 30.0
-margin_right = 320.0
-margin_bottom = 54.0
+[node name="VBoxContainer" type="VBoxContainer" parent="NewProject/VBoxContainer"]
+margin_top = 59.0
+margin_right = 384.0
+margin_bottom = 134.0
+custom_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewProject/VBoxContainer/VBoxContainer"]
+margin_right = 384.0
+margin_bottom = 30.0
 size_flags_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NewProject/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="NewProject/VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_top = 5.0
-margin_right = 158.0
-margin_bottom = 19.0
+margin_right = 190.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "name "
 
-[node name="LineEdit" type="LineEdit" parent="NewProject/VBoxContainer/HBoxContainer"]
-margin_left = 162.0
-margin_right = 320.0
-margin_bottom = 24.0
+[node name="LineEdit" type="LineEdit" parent="NewProject/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 194.0
+margin_right = 384.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
+custom_styles/focus = SubResource( 17 )
+script = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="NewProject/VBoxContainer"]
-margin_top = 66.0
-margin_right = 320.0
-margin_bottom = 86.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewProject/VBoxContainer/VBoxContainer/HBoxContainer/LineEdit"]
+anims/RESET = SubResource( 18 )
+anims/focus = SubResource( 19 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NewProject/VBoxContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 384.0
+margin_bottom = 75.0
 size_flags_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NewProject/VBoxContainer/HBoxContainer2"]
-margin_top = 3.0
-margin_right = 258.0
-margin_bottom = 17.0
+[node name="Label" type="Label" parent="NewProject/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 280.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "project path"
 
-[node name="BrowseButton" type="Button" parent="NewProject/VBoxContainer/HBoxContainer2"]
-margin_left = 262.0
-margin_right = 320.0
-margin_bottom = 20.0
+[node name="BrowseButton" type="Button" parent="NewProject/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 284.0
+margin_right = 384.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 1 )
 text = "browse"
 
 [node name="CreateButton" type="Button" parent="NewProject/VBoxContainer"]
-margin_left = 134.0
-margin_top = 102.0
-margin_right = 186.0
-margin_bottom = 122.0
+margin_left = 142.0
+margin_top = 174.0
+margin_right = 242.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 100, 30 )
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_colors/font_color_hover = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 text = "create"
 
 [node name="FileDialog" type="FileDialog" parent="NewProject"]
@@ -127,72 +485,23 @@ margin_top = 5.0
 align = 1
 autowrap = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -46.5
-margin_top = -40.0
-margin_right = 46.5
-margin_bottom = 40.0
-custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NewProjectButton" type="Button" parent="VBoxContainer"]
-margin_right = 93.0
-margin_bottom = 20.0
-text = "new project"
-
-[node name="OpenProjectButton" type="Button" parent="VBoxContainer"]
-margin_top = 30.0
-margin_right = 93.0
-margin_bottom = 50.0
-text = "open project"
-
-[node name="DonateButton" type="Button" parent="VBoxContainer"]
-margin_top = 60.0
-margin_right = 93.0
-margin_bottom = 80.0
-text = "donate"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -20.0
-margin_right = 192.0
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SocialMediaButton" type="Button" parent="HBoxContainer"]
-margin_right = 49.0
-margin_bottom = 20.0
-text = "social"
-
-[node name="HelpButton" type="Button" parent="HBoxContainer"]
-margin_left = 69.0
-margin_right = 109.0
-margin_bottom = 20.0
-text = "help"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewProject"]
+anims/RESET = SubResource( 4 )
+anims/load = SubResource( 5 )
 
 [node name="OpenProject" type="Control" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -67.0
+margin_left = -118.0
 margin_top = -60.0
-margin_right = 67.0
+margin_right = 118.0
 margin_bottom = 140.0
+theme = ExtResource( 1 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OpenProject"]
 anchor_left = -0.216418
@@ -213,52 +522,165 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Button" parent="OpenProject"]
-margin_right = 58.0
+margin_right = 64.0
 margin_bottom = 20.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
-text = "<- back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_constants/hseparation = 10
+text = "back"
+icon = ExtResource( 9 )
 
 [node name="Browse" type="Button" parent="OpenProject"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -58.0
 margin_bottom = 20.0
-text = "browse"
+mouse_default_cursor_shape = 2
+text = "import"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenProject"]
+anims/RESET = SubResource( 6 )
+anims/load = SubResource( 7 )
+
+[node name="WhatsNew" type="Control" parent="."]
+visible = false
+anchor_left = 0.0078125
+anchor_top = 0.0138889
+anchor_right = 0.992188
+anchor_bottom = 0.986111
+theme = ExtResource( 1 )
+script = SubResource( 10 )
+
+[node name="Control" type="Control" parent="WhatsNew"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.371429
+anchor_top = 0.437143
+anchor_right = 0.628571
+anchor_bottom = 0.991429
+mouse_filter = 2
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="Version" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="VBoxContainer" type="VBoxContainer" parent="WhatsNew/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -71.0
-margin_top = -14.0
-text = "version 0.1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 0.000488281
+mouse_filter = 2
+custom_constants/separation = 30
 
-[node name="Title" type="Label" parent="."]
+[node name="Label" type="Label" parent="WhatsNew/Control/VBoxContainer"]
+margin_right = 485.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "whats new"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="WhatsNew/Control/VBoxContainer"]
+margin_top = 49.0
+margin_right = 485.0
+margin_bottom = 533.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
+margin_right = 485.0
+margin_bottom = 19.0
+text = "+ added book"
+align = 1
+
+[node name="Label2" type="Label" parent="WhatsNew/Control/VBoxContainer"]
+margin_top = 563.0
+margin_right = 485.0
+margin_bottom = 582.0
+text = "16/04/22"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WhatsNew"]
+anims/RESET = SubResource( 9 )
+anims/load = SubResource( 8 )
+"anims/load (copy)" = SubResource( 11 )
+
+[node name="UIElement" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+script = SubResource( 15 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIElement"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -162.0
-margin_top = -156.0
-margin_right = 162.0
-margin_bottom = -99.0
-custom_fonts/font = SubResource( 1 )
-text = "World Designer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = -84.5
+margin_top = -64.0
+margin_right = 84.5
+margin_bottom = 64.0
+custom_constants/separation = 20
 
-[node name="WhatsNewButton" type="Button" parent="."]
+[node name="NewProjectButton" type="Button" parent="UIElement/VBoxContainer"]
+margin_right = 169.0
+margin_bottom = 22.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 21 )
+text = "new project"
+
+[node name="OpenProjectButton" type="Button" parent="UIElement/VBoxContainer"]
+margin_top = 42.0
+margin_right = 169.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 21 )
+text = "open project"
+
+[node name="DonateButton" type="Button" parent="UIElement/VBoxContainer"]
+margin_top = 84.0
+margin_right = 169.0
+margin_bottom = 106.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 21 )
+text = "donate"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIElement"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -30.0
+margin_right = 192.0
+custom_constants/separation = 20
+
+[node name="SocialMediaButton" type="Button" parent="UIElement/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 30.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+icon = ExtResource( 8 )
+
+[node name="HelpButton" type="Button" parent="UIElement/HBoxContainer"]
+margin_left = 50.0
+margin_right = 80.0
+margin_bottom = 30.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+icon = ExtResource( 7 )
+
+[node name="Version" type="Label" parent="UIElement"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -77.0
+margin_top = -19.0
+theme = ExtResource( 1 )
+text = "version 0.1"
+
+[node name="WhatsNewButton" type="Button" parent="UIElement"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -266,18 +688,28 @@ anchor_bottom = 1.0
 margin_left = -41.0
 margin_top = -20.0
 margin_right = 41.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
 text = "what's new"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIElement"]
+anims/RESET = SubResource( 12 )
+anims/load = SubResource( 13 )
 
 [connection signal="pressed" from="NewProject/VBoxContainer/BackButton" to="." method="_on_Button2_pressed"]
-[connection signal="text_changed" from="NewProject/VBoxContainer/HBoxContainer/LineEdit" to="NewProject" method="_on_LineEdit_text_changed"]
-[connection signal="pressed" from="NewProject/VBoxContainer/HBoxContainer2/BrowseButton" to="NewProject" method="_on_BrowseButton_pressed"]
+[connection signal="focus_entered" from="NewProject/VBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="NewProject/VBoxContainer/VBoxContainer/HBoxContainer/LineEdit" method="_on_LineEdit_focus_entered"]
+[connection signal="focus_exited" from="NewProject/VBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="NewProject/VBoxContainer/VBoxContainer/HBoxContainer/LineEdit" method="_on_LineEdit_focus_exited"]
+[connection signal="text_changed" from="NewProject/VBoxContainer/VBoxContainer/HBoxContainer/LineEdit" to="NewProject" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="NewProject/VBoxContainer/VBoxContainer/HBoxContainer2/BrowseButton" to="NewProject" method="_on_BrowseButton_pressed"]
 [connection signal="pressed" from="NewProject/VBoxContainer/CreateButton" to="NewProject" method="_on_CreateButton_pressed"]
 [connection signal="dir_selected" from="NewProject/FileDialog" to="NewProject" method="_on_FileDialog_dir_selected"]
-[connection signal="pressed" from="VBoxContainer/NewProjectButton" to="." method="_on_NewProjectButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/OpenProjectButton" to="." method="_on_OpenProjectButton_pressed"]
 [connection signal="dir_selected" from="OpenProject/FileDialog" to="." method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="OpenProject/BackButton" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="OpenProject/Browse" to="OpenProject" method="_on_Browse_pressed"]
+[connection signal="gui_input" from="WhatsNew" to="WhatsNew" method="_on_WhatsNew_gui_input"]
+[connection signal="pressed" from="UIElement/VBoxContainer/NewProjectButton" to="." method="_on_NewProjectButton_pressed"]
+[connection signal="pressed" from="UIElement/VBoxContainer/OpenProjectButton" to="." method="_on_OpenProjectButton_pressed"]
+[connection signal="pressed" from="UIElement/VBoxContainer/DonateButton" to="." method="_on_DonateButton_pressed"]
+[connection signal="pressed" from="UIElement/HBoxContainer/SocialMediaButton" to="UIElement" method="_on_SocialMediaButton_pressed"]
+[connection signal="pressed" from="UIElement/HBoxContainer/HelpButton" to="UIElement" method="_on_HelpButton_pressed"]
+[connection signal="pressed" from="UIElement/WhatsNewButton" to="." method="_on_WhatsNewButton_pressed"]

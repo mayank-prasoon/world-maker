@@ -16,12 +16,16 @@ func _ready():
 		cards.article = article
 		cards_grid.add_child(cards)
 
-func _on_AddNewCardButton_pressed():
-	get_parent().add_child(wiki_editor.instance())
-	self.queue_free()
 
 func edit_article(article):
 	var node = wiki_editor.instance()
-	get_parent().add_child(node)
+	get_parent().get_owner().editor_layer.add_child(node)
 	node.open_article(article)
 	self.queue_free()
+
+
+func _on_Button_pressed():
+	var node = wiki_editor.instance()
+	get_parent().get_owner().editor_layer.add_child(node)
+	self.queue_free()
+

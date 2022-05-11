@@ -7,15 +7,19 @@ var path:String         = ""
 
 func _ready():
 	self.add_constant_override("separation", 20)
-	self.grow_horizontal = Control.GROW_DIRECTION_BOTH 
+	self.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 
 	var label   = Label.new()
 	label.text  = path
+	
+	var p_name   = Label.new()
+	p_name.text  = project_name
+	p_name.align = Label.ALIGN_CENTER
 
-	var p_name  = Label.new()
-	p_name.text = project_name
+	p_name.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 
-	var open    = Button.new() 
+	var open    = Button.new()
+	open.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	open.text   = "open"
 
 	self.add_child(label)

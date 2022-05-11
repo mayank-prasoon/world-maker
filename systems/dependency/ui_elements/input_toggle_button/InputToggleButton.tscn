@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://systems/dependency/ui_elements/input_toggle_button/InputToggleButton.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="InputToggleButton" type="Control"]
 anchor_right = 1.0
 rect_min_size = Vector2( 0, 40 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -19,24 +28,30 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_top = 13.0
-margin_right = 312.0
+margin_right = 614.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 
 [node name="SpinBox" type="CheckButton" parent="HBoxContainer"]
-margin_left = 316.0
-margin_right = 392.0
+margin_left = 618.0
+margin_right = 682.0
 margin_bottom = 40.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/hover_pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 396.0
-margin_right = 708.0
+margin_left = 686.0
+margin_right = 1301.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 712.0
-margin_right = 1024.0
+margin_left = 1305.0
+margin_right = 1920.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 

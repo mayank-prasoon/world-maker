@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_pin_resources_template.gd" type="Script" id=1]
+[ext_resource path="res://save_files/map_symbol_templates/engine_save_data.tres" type="Resource" id=2]
+[ext_resource path="res://save_files/articles/931d9722-6368-48f9-80d5-1a3fe86f49da_save_data.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+pin_name = "bingus"
+pin_id = "f0ba8077-b457-4095-9525-57710283f59f"
+pin_symbol_template = ExtResource( 2 )
+pin_location = Vector2( 1346.03, 2215.89 )
+pin_article = ExtResource( 3 )
+linked_map = false
+linked_map_location = Vector2( 0, 0 )
+tags = [ "" ]

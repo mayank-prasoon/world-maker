@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends ColorRect
+
+onready var button:Button = $\"../CenterContainer\".get_child(0)
+
+func _physics_process(delta:float)->void:
+	self.visible = button.pressed
+"
+
+[node name="TabButton" type="Control"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.5
+margin_bottom = 0.5
+mouse_filter = 2
+color = Color( 0.133333, 0.133333, 0.133333, 0.588235 )
+script = SubResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddButtonNode" type="Node" parent="CenterContainer"]
+__meta__ = {
+"_editor_description_": "Add button node here of rect size Vector2(25, 25)"
+}

@@ -2,7 +2,7 @@ extends Control
 
 # === Node ===
 
-onready var basics_tab:VBoxContainer = $Panel/TabContainer/Basic/VBoxContainer
+onready var basics_tab:VBoxContainer = $Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
 
 var prompts:Array = [
 	{
@@ -18,6 +18,7 @@ func _ready():
 	UIManager.add_select_file(basics_tab, "Banner", "choose and image for the banner")
 	UIManager.add_dropdown_input(basics_tab, "Article Type", "type of article", ["basic", "map", "pin" ])
 	UIManager.add_dropdown_input(basics_tab, "Article Template", "prompt template for article")
+	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',')")
 	UIManager.add_description_input(basics_tab, "Description", "short description of the article.\nwill show up in the card")
 	
 	var _x = basics_tab.get_node("Article Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_template")
@@ -29,7 +30,7 @@ func _ready():
 
 # assin template
 func assign_template(id:int)->void:
-	var input_drop_down:OptionButton = self.get_node("Panel/TabContainer/Basic/VBoxContainer/Article Template/VBoxContainer/HBoxContainer/OptionButton")
+	var input_drop_down:OptionButton = self.get_node("Panel/TabContainer/Basic/ScrollContainer/VBoxContainer/Article Template/VBoxContainer/HBoxContainer/OptionButton")
 	
 	var templates:Array = FolderManager.fetch_files_from(SystemDataManager.root_temp_save_path.get_base_dir(), true)
 
@@ -74,7 +75,7 @@ func assign_template(id:int)->void:
 
 # assign promts
 func assign_prompts(id:int):
-	var pannel_container = $Panel/TabContainer/Prompts/VBoxContainer
+	var pannel_container = $Panel/TabContainer/Prompts/ScrollContainer/VBoxContainer
 	for i in pannel_container.get_children():
 		i.free()
 

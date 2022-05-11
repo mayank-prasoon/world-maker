@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+article_name = "book"
+article_id = "eb1f5896-cb0c-46ba-bfe9-e280aed6d419"
+article_profile = ""
+article_banner = ""
+article_type = 0
+article_notes = ""
+article_raw = ""
+article_description = ""
+tags = [  ]
+article_resources = "res:///save_files/maps/book_save_data.tres"

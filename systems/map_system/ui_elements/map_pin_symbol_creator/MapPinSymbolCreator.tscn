@@ -1,0 +1,846 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://systems/dependency/ui_elements/input_text/InputText.gd" type="Script" id=1]
+[ext_resource path="res://systems/dependency/ui_elements/input_open_file/InputOpenFile.gd" type="Script" id=2]
+[ext_resource path="res://systems/dependency/ui_elements/input_spin_box/InputSpinBox.gd" type="Script" id=3]
+[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://systems/dependency/ui_elements/input_dropdown/InputDropDown.gd" type="Script" id=7]
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Control
+
+# ------------------------------------------------------------------------------x
+
+# generate confirmation dialog
+func create_confirmation_dialog():
+	# ConfirmationDialog
+	var new_pop_up:ConfirmationDialog = ConfirmationDialog.new()
+	new_pop_up.name            = \"ConfirmationDialog\"
+	new_pop_up.window_title    = \"Please Confirm...\"
+	new_pop_up.dialog_text     = \"you are closing the map creation dialog box,\\n\\nnote: all filled info will be lost\"
+	new_pop_up.dialog_autowrap = true
+	new_pop_up.rect_size       = Vector2(300, 150)
+
+	# Label
+	var lable:Label            = new_pop_up.get_child(1)
+	lable.align                = Label.ALIGN_CENTER
+	lable.valign               = Label.VALIGN_CENTER
+
+	var _x = new_pop_up.connect(\"confirmed\", self, 'close_the_dialog')
+	$CanvasLayer/Panel.add_child(new_pop_up)
+
+# ------------------------------------------------------------------------------
+
+# hide dialog box
+func close_map_creator():
+	var filled:bool = false
+
+	for x in get_tree().get_nodes_in_group('input_field'):
+		if str(x.input_value) != \"\":
+			filled = true
+
+	if !filled: 
+		close_the_dialog()
+	else:
+		# display the dialog box if the fields are empty
+		create_confirmation_dialog()
+		var confirm:ConfirmationDialog  = $CanvasLayer/Panel.get_node(\"ConfirmationDialog\")
+		confirm.popup_centered()
+
+
+# close the dialog box~
+func close_the_dialog():
+	$AnimationPlayer.play(\"close\")
+	
+"
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 10.0
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 10.0
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+expand_margin_top = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="DynamicFont" id=23]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 23 )
+Button/styles/focus = SubResource( 10 )
+Button/styles/hover = SubResource( 11 )
+Button/styles/normal = SubResource( 12 )
+Button/styles/pressed = SubResource( 13 )
+LineEdit/styles/focus = SubResource( 14 )
+LineEdit/styles/normal = SubResource( 15 )
+Panel/styles/panel = SubResource( 8 )
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Control
+
+onready var map_symbol_template_container = $\"../SymbolViewer/VBoxContainer/SymbolTemplateContainer\"
+
+var article_template_list:Array = [\"\"]
+
+func _ready()->void:
+	for nodes in get_tree().get_nodes_in_group('input_field'):
+		nodes.connect('input_value_changed', self, 'change_in_input')
+
+	$\"../SymbolViewer/VBoxContainer/Label2\".text = \"select an Image\"
+	
+	$\"VBoxContainer/PinArea2DRadius\".input_value = 48
+	load_article_template()
+
+func load_article_template()->void:
+	$VBoxContainer/InputDropDown.input_value = 0
+	var drop_down_option:OptionButton = $VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer/OptionButton
+	var templates:Array = FolderManager.fetch_files_from(SystemDataManager.root_temp_save_path.get_base_dir(), true)
+	
+	article_template_list.clear()
+	drop_down_option.items = []
+
+	drop_down_option.add_item(\"no template\")
+	article_template_list.append(\"\")
+
+	$VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer/OptionButton.selected = 0
+
+	for article_template_path in templates:
+		var article_template:Resource = load(article_template_path).new()
+		if article_template.template_type == Article.PIN:
+			drop_down_option.add_item(article_template.template_name)
+			article_template_list.append(article_template_path)
+	
+
+
+func change_in_input()->void:
+	var symbol_template = MapSymbolTemplate.new() 
+
+	symbol_template.template_name            = $VBoxContainer/PinName.input_value
+	symbol_template.template_texture         = $VBoxContainer/PinTexture.input_value
+	symbol_template.template_hover_animation = $VBoxContainer/PinHoverAnimation.input_value.split(\", \")
+	symbol_template.template_offset          = Vector2($VBoxContainer/HBoxContainer/PinXOffset.input_value, $VBoxContainer/HBoxContainer/PinYOffset.input_value)
+	symbol_template.template_default_tag     = $VBoxContainer/PinTags.input_value.split(\", \")
+	symbol_template.template_area2D_radius   = $VBoxContainer/PinArea2DRadius.input_value
+	symbol_template.template_default_article_template = article_template_list[$VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer/OptionButton.selected]
+	
+	map_symbol_template_container.load_map_pin(symbol_template)
+
+	if symbol_template.template_texture != \"\":
+		var image_size = ImageHandler.load_image(symbol_template.template_texture).get_size()
+		$\"../SymbolViewer/VBoxContainer/Label2\".text = \"image_size : \" + String(image_size.x) + \" X \" + String(image_size.y) + \" px\"
+	else:
+		$\"../SymbolViewer/VBoxContainer/Label2\".text = \"select an Image\"
+
+# load game
+func load_map_symbol_template(symbol_template:MapSymbolTemplate)->void:
+	$VBoxContainer/PinName.input_value                  = symbol_template.template_name 
+	$VBoxContainer/PinTexture.input_value               = symbol_template.template_texture
+	$VBoxContainer/PinHoverAnimation.input_value        = PoolStringArray(symbol_template.template_hover_animation).join(\", \")
+	$VBoxContainer/HBoxContainer/PinXOffset.input_value = symbol_template.template_offset.x
+	$VBoxContainer/HBoxContainer/PinYOffset.input_value = symbol_template.template_offset.y
+	$VBoxContainer/PinTags.input_value                  = PoolStringArray(symbol_template.template_default_tag)
+	$VBoxContainer/PinArea2DRadius.input_value          = symbol_template.template_area2D_radius
+
+# save games
+func _on_save_pressed()->void:
+	ResourceManager.save_file(
+		{
+		\"template_name\"            : $VBoxContainer/PinName.input_value,
+		\"template_texture\"         : $VBoxContainer/PinTexture.input_value,
+		\"template_hover_animation\" : $VBoxContainer/PinHoverAnimation.input_value.split(\", \"),
+		\"template_offset\"          : Vector2($VBoxContainer/HBoxContainer/PinXOffset.input_value, $VBoxContainer/HBoxContainer/PinYOffset.input_value),
+		\"template_default_tag\"     : $VBoxContainer/PinTags.input_value.split(\", \"),
+		\"template_area2D_radius\"   : $VBoxContainer/PinArea2DRadius.input_value
+		},
+
+		ResourceManager.SYMBOL_TEMP
+	)
+	
+	get_tree().call_group(\"map_pin_inspector\", 'load_pin_template')
+	
+	get_owner().close_the_dialog()
+"
+
+[sub_resource type="Theme" id=24]
+
+[sub_resource type="Theme" id=25]
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var radius = 48
+
+func _ready():
+	self.rect_pivot_offset = Vector2(get_size().x/2, get_size().y/2)
+
+
+func _on_SymbolTemplateContainer_size_flags_changed()->void:
+	self.rect_pivot_offset = Vector2(get_size().x/2, get_size().y/2)
+
+func load_map_pin(symbol_template:MapSymbolTemplate)->void:
+	if get_child_count() != 0:
+		self.get_child(0).queue_free()
+	
+	radius = symbol_template.template_area2D_radius
+	
+	var map_pin:MapPin   = MapPin.new()
+	map_pin.pin_symbol_template = symbol_template
+	map_pin.pin_name     = \"sample name\"
+	map_pin.pin_location = self.get_pivot_offset() 
+
+	var map_pin_scene:PackedScene = load(\"res://systems/map_system/ui_elements/map_pin/MapPin.tscn\")
+	var map_pin_node:Node2D       = map_pin_scene.instance()
+	map_pin_node.pin_resource     = map_pin
+	self.add_child(map_pin_node)
+	update()
+
+func _draw():
+	draw_circle(self.get_pivot_offset(), radius, Color( 0, 1, 1, 0.3))
+"
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 604, 305 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Panel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 604, 265 ), Vector2( 604, 1100 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("EffectLayer/BackgroundBlur")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unBlurBackground"
+} ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Panel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 604, 1100 ), Vector2( 604, 265 ) ]
+}
+
+[node name="MapPinSymbolCreator" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = SubResource( 7 )
+
+[node name="EffectLayer" type="CanvasLayer" parent="."]
+
+[node name="BackgroundBlur" parent="EffectLayer" instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 604.0
+margin_top = 305.0
+margin_right = 1316.0
+margin_bottom = 905.0
+mouse_filter = 2
+theme = SubResource( 9 )
+
+[node name="MarginContainer" type="Control" parent="CanvasLayer/Panel"]
+anchor_left = 0.00976562
+anchor_top = 0.0166667
+anchor_right = 0.990234
+anchor_bottom = 0.983333
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+margin_right = 678.0
+margin_bottom = 20.0
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 654.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Map Pin Template Creator"
+valign = 1
+
+[node name="Close" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 658.0
+margin_right = 678.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Close"]
+modulate = Color( 1, 1, 1, 0.627451 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Dashboard" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 678.0
+margin_bottom = 559.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MapSymbolCreator" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer"]
+margin_right = 424.0
+margin_bottom = 519.0
+rect_min_size = Vector2( 250, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+script = SubResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 20
+
+[node name="PinName" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Pin Template Name"
+input_description = "Name of the pin.
+Tip: try to pick a unique name."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 42 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer"]
+margin_top = 23.0
+margin_right = 424.0
+margin_bottom = 52.0
+placeholder_text = "sample text"
+
+[node name="PinTexture" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_top = 72.0
+margin_right = 424.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 0, 52 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Pin Texture"
+input_description = "choose a primary Pin texture"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer"]
+margin_top = 23.0
+margin_right = 424.0
+margin_bottom = 52.0
+custom_constants/separation = 20
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
+margin_right = 329.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
+margin_left = 349.0
+margin_right = 424.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 75, 0 )
+text = "browse "
+
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture"]
+margin_left = 344.0
+margin_top = 160.0
+margin_right = 683.0
+margin_bottom = 392.0
+theme = SubResource( 24 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PinHoverAnimation" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_top = 144.0
+margin_right = 424.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 0, 52 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Pin Hover Animation"
+input_description = "choose a primary Pin textures for animation"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer"]
+margin_top = 23.0
+margin_right = 424.0
+margin_bottom = 52.0
+custom_constants/separation = 20
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer"]
+margin_right = 329.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer"]
+margin_left = 349.0
+margin_right = 424.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 75, 0 )
+text = "browse "
+
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation"]
+margin_left = 344.0
+margin_top = 160.0
+margin_right = 683.0
+margin_bottom = 392.0
+theme = SubResource( 25 )
+window_title = "Open File(s)"
+resizable = true
+mode = 1
+access = 2
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_top = 216.0
+margin_right = 424.0
+margin_bottom = 268.0
+
+[node name="PinXOffset" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer"]
+margin_right = 210.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "X Offset"
+input_description = "Set the offset of the PIn Symbol"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset"]
+anchor_right = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer"]
+margin_right = 210.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer"]
+margin_top = 23.0
+margin_right = 210.0
+margin_bottom = 52.0
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+align = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="PinYOffset" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer"]
+margin_left = 214.0
+margin_right = 424.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 52 )
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Y Offset"
+input_description = "Set the offset of the PIn Symbol"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset"]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer"]
+margin_right = 210.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer"]
+margin_top = 23.0
+margin_right = 210.0
+margin_bottom = 52.0
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+align = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="PinArea2DRadius" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_top = 288.0
+margin_right = 424.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 0, 52 )
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Pin Area2D Radius"
+input_description = "Set the offset of the PIn Symbol.
+
+Tip: try having slightly bigger radius"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius"]
+anchor_right = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer"]
+margin_top = 23.0
+margin_right = 424.0
+margin_bottom = 52.0
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+min_value = -10000.0
+max_value = 10000.0
+value = 48.0
+align = 2
+suffix = "px"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+margin_left = 214.0
+margin_right = 317.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+margin_left = 321.0
+margin_right = 424.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="PinTags" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_top = 360.0
+margin_right = 424.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 0, 52 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Pin Default Tags"
+input_description = "deafult tags for the symbol.
+
+note: seprate the tags with comma (,)"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 42 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 19.0
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer"]
+margin_top = 23.0
+margin_right = 424.0
+margin_bottom = 52.0
+placeholder_text = "eg: cat, house, rural"
+
+[node name="InputDropDown" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_top = 432.0
+margin_right = 424.0
+margin_bottom = 497.0
+rect_min_size = Vector2( 0, 65 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+input_name = "Defalut template"
+input_description = "select a default template for the article associated with a map pin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown"]
+anchor_right = 1.0
+custom_constants/separation = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 0, 19 )
+text = "Name"
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer"]
+margin_top = 24.0
+margin_right = 424.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
+margin_right = 210.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
+margin_left = 214.0
+margin_right = 424.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="save" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+margin_left = 349.0
+margin_top = 517.0
+margin_right = 424.0
+margin_bottom = 542.0
+rect_min_size = Vector2( 75, 25 )
+size_flags_horizontal = 8
+size_flags_vertical = 10
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+text = "save"
+
+[node name="SymbolViewer" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer"]
+margin_left = 428.0
+margin_right = 678.0
+margin_bottom = 519.0
+rect_min_size = Vector2( 250, 0 )
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 19.0
+text = "Symbol Viewer"
+align = 1
+valign = 1
+
+[node name="SymbolTemplateContainer" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 250.0
+margin_bottom = 496.0
+rect_pivot_offset = Vector2( 125, 179 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
+margin_top = 500.0
+margin_right = 250.0
+margin_bottom = 519.0
+size_flags_vertical = 1
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
+anims/RESET = SubResource( 22 )
+anims/close = SubResource( 20 )
+anims/open = SubResource( 21 )
+
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="close_map_creator"]
+[connection signal="text_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer/LineEdit" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName" method="_on_LineEdit_text_changed"]
+[connection signal="input_value_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_InputOpenFile_input_value_changed"]
+[connection signal="text_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer/LineEdit" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_Button_pressed"]
+[connection signal="file_selected" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/FileDialog" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_FileDialog_file_selected"]
+[connection signal="input_value_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_InputOpenFile_input_value_changed"]
+[connection signal="text_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer/LineEdit" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_Button_pressed"]
+[connection signal="file_selected" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/FileDialog" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_FileDialog_file_selected"]
+[connection signal="files_selected" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/FileDialog" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_FileDialog_files_selected"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset" method="_on_SpinBox_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset" method="_on_SpinBox_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius" method="_on_SpinBox_value_changed"]
+[connection signal="text_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer/LineEdit" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags" method="_on_LineEdit_text_changed"]
+[connection signal="item_selected" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer/OptionButton" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown" method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/save" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator" method="_on_save_pressed"]
+[connection signal="size_flags_changed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer/SymbolTemplateContainer" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer/SymbolTemplateContainer" method="_on_SymbolTemplateContainer_size_flags_changed"]

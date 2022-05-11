@@ -1,8 +1,303 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.gd" type="Script" id=1]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/text_editor.gd" type="Script" id=2]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa6-solid_user-pen.svg" type="Texture" id=3]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/Preview.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa6-solid_person-circle-question.svg" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa-solid_pen-nib.svg" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/Rectangle 1.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Italic.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-BoldItalic.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/fonts/Roboto/NovaMono-Regular.ttf" type="DynamicFontData" id=13]
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+border_width_bottom = 1
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+content_margin_left = 10.0
+bg_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+
+[sub_resource type="StyleBoxFlat" id=41]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=33]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 14
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 25.0
+content_margin_right = 25.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 25.0
+content_margin_right = 25.0
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+border_width_bottom = 1
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.372549, 0.360784, 0.360784, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.456116, 0.662465, 0.828125, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 3.0
+bg_color = Color( 0.709804, 0.709804, 0.709804, 0.176471 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=6]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 6 )
+Button/styles/hover = SubResource( 14 )
+Button/styles/normal = SubResource( 15 )
+Button/styles/pressed = SubResource( 16 )
+Label/colors/font_color = Color( 0.768627, 0.768627, 0.768627, 1 )
+LineEdit/styles/focus = SubResource( 25 )
+LineEdit/styles/normal = SubResource( 26 )
+LineEdit/styles/read_only = SubResource( 29 )
+OptionButton/styles/focus = SubResource( 39 )
+OptionButton/styles/hover = SubResource( 40 )
+OptionButton/styles/normal = SubResource( 41 )
+OptionButton/styles/pressed = SubResource( 33 )
+Panel/styles/panel = SubResource( 1 )
+PopupMenu/fonts/font = SubResource( 37 )
+PopupMenu/styles/panel = SubResource( 36 )
+TabContainer/constants/side_margin = 0
+TabContainer/styles/panel = SubResource( 2 )
+TabContainer/styles/tab_bg = SubResource( 3 )
+TabContainer/styles/tab_fg = SubResource( 4 )
+TextEdit/styles/focus = SubResource( 27 )
+TextEdit/styles/normal = SubResource( 28 )
+TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/decrement_pressed = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/icons/increment_pressed = null
+VScrollBar/styles/grabber = SubResource( 17 )
+VScrollBar/styles/grabber_highlight = SubResource( 23 )
+VScrollBar/styles/grabber_pressed = SubResource( 24 )
+VScrollBar/styles/scroll = SubResource( 19 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="ButtonGroup" id=9]
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Button
+
+onready var basic_tab = $\"../../Basic\"
+
+func _physics_process(_delta:float)->void:
+	if self.pressed:
+		$ColorRect.color  = Color('343434')
+		$HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		basic_tab.visible = true
+	elif !self.pressed:
+		$HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 0.5)
+		$ColorRect.color = Color('252525')
+		basic_tab.visible = false
+"
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends Button
+
+onready var prompts_tab = $\"../../Prompts\"
+
+func _physics_process(delta:float)->void:
+	if self.pressed:
+		$ColorRect.color = Color('343434')
+		$HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		prompts_tab.visible = true
+	elif !self.pressed:
+		$HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 0.5)
+		$ColorRect.color = Color('252525')
+		prompts_tab.visible = false
+	
+"
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends Button
+
+onready var notes_tab:Control = $\"../../Notes\"
+
+func _physics_process(delta:float)->void:
+	if self.pressed:
+		$ColorRect.color = Color('343434')
+		$HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		notes_tab.visible = true
+	elif !self.pressed:
+		$HBoxContainer.modulate = Color(1.0, 1.0, 1.0, 0.5)
+		$ColorRect.color = Color('252525')
+		notes_tab.visible = false
+	
+"
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="DynamicFont" id=35]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.219608, 0.356863, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=42]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=43]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="DynamicFont" id=38]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=45]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=46]
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=47]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=48]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=49]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="WikiEditor" type="Control"]
 anchor_right = 1.0
@@ -10,7 +305,7 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 32.0, 49.0 ]
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -22,144 +317,314 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
+custom_styles/panel = SubResource( 44 )
 
 [node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextEditor" type="Control" parent="HBoxContainer/Panel/HSplitContainer"]
-margin_right = 300.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 300, 0 )
+margin_right = 500.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 500, 0 )
+theme = SubResource( 5 )
 script = ExtResource( 2 )
+
+[node name="shadow" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 93.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
 
 [node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel"]
+[node name="TabContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-tab_align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_constants/separation = 0
 
-[node name="Basic" type="Tabs" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
+[node name="TabContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
+margin_right = 500.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+custom_constants/separation = 0
+
+[node name="Basic" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer"]
+margin_right = 150.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+toggle_mode = true
+pressed = true
+group = SubResource( 9 )
+script = SubResource( 10 )
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Basic"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+mouse_filter = 2
+color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic"]
-anchor_left = 0.0200803
-anchor_top = 0.0177305
-anchor_right = 0.97992
-anchor_bottom = 0.911348
-custom_constants/separation = 20
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Basic"]
+anchor_left = 0.0537634
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+mouse_filter = 2
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Basic/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Basic/HBoxContainer"]
+margin_left = 40.0
+margin_top = 5.0
+margin_right = 79.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Basic"
+
+[node name="Prompts" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer"]
+margin_left = 150.0
+margin_right = 300.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+toggle_mode = true
+group = SubResource( 9 )
+script = SubResource( 11 )
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Prompts"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Prompts"]
+anchor_left = 0.133333
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Title" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/VBoxContainer"]
-margin_right = 280.0
-margin_bottom = 14.0
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Prompts/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+mouse_filter = 2
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Prompts/HBoxContainer"]
+margin_left = 40.0
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Prompts"
+
+[node name="Notes" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer"]
+margin_left = 300.0
+margin_right = 450.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+toggle_mode = true
+group = SubResource( 9 )
+script = SubResource( 12 )
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Notes"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Notes"]
+anchor_left = 0.133333
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.90735e-06
+mouse_filter = 2
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Notes/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+mouse_filter = 2
+texture = ExtResource( 7 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Notes/HBoxContainer"]
+margin_left = 40.0
+margin_top = 5.0
+margin_right = 81.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Notes"
+
+[node name="Basic" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
+visible = false
+margin_top = 30.0
+margin_right = 500.0
+margin_bottom = 555.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 13 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic"]
+anchor_left = 0.02
+anchor_top = 0.0190476
+anchor_right = 0.98
+anchor_bottom = 0.942857
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer"]
+margin_right = 480.0
+margin_bottom = 485.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+custom_colors/font_color = Color( 0.901961, 0.901961, 0.901961, 1 )
+custom_fonts/font = SubResource( 35 )
 text = "Basics"
+valign = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -85.0
-margin_top = -32.0
-margin_right = -13.0
-margin_bottom = -12.0
+margin_left = -96.0
+margin_top = -44.0
+margin_right = -16.0
+margin_bottom = -14.0
+rect_min_size = Vector2( 80, 30 )
+mouse_default_cursor_shape = 2
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/normal = SubResource( 22 )
 text = "save"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Prompts" type="Tabs" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
+[node name="Prompts" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
+margin_top = 30.0
+margin_right = 500.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 13 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts"]
+anchor_left = 0.0179211
+anchor_top = 0.0190476
+anchor_right = 0.982079
+anchor_bottom = 0.990476
+margin_left = -9.53674e-07
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/ScrollContainer"]
+margin_right = 482.079
+margin_bottom = 1020.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Notes" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 555.0
+margin_right = 558.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts"]
+[node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Notes" type="Tabs" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+custom_styles/panel = SubResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 6.0
-margin_top = 2.0
-margin_right = -6.0
-margin_bottom = -6.0
+anchor_left = 0.0107527
+anchor_top = 0.0114286
+anchor_right = 0.989247
+anchor_bottom = 0.994286
 custom_constants/separation = 10
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
-margin_right = 486.0
+margin_right = 546.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 38.0
-margin_bottom = 17.0
+margin_right = 41.0
+margin_bottom = 19.0
 text = "Notes"
 
 [node name="TextEdit" type="TextEdit" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
 margin_top = 30.0
-margin_right = 486.0
-margin_bottom = 556.0
+margin_right = 546.0
+margin_bottom = 516.0
 size_flags_vertical = 3
+custom_styles/focus = SubResource( 42 )
+custom_styles/normal = SubResource( 43 )
+wrap_enabled = true
 
 [node name="Preview" type="Control" parent="HBoxContainer/Panel/HSplitContainer"]
-margin_left = 312.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 512.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 4 )
@@ -171,35 +636,45 @@ margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer"]
-margin_right = 702.0
+margin_right = 1398.0
 margin_bottom = 20.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.498039 )
-margin_top = 3.0
-margin_right = 678.0
-margin_bottom = 17.0
+margin_right = 1374.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
+custom_fonts/font = SubResource( 38 )
 text = "Untitled"
 align = 1
 
 [node name="Close" type="Button" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer"]
-margin_left = 682.0
-margin_right = 702.0
+margin_left = 1378.0
+margin_right = 1398.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 0 )
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer/Close"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer"]
 margin_top = 40.0
-margin_right = 702.0
-margin_bottom = 580.0
+margin_right = 1398.0
+margin_bottom = 1060.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/mono_font = SubResource( 45 )
+custom_fonts/bold_italics_font = SubResource( 46 )
+custom_fonts/italics_font = SubResource( 47 )
+custom_fonts/bold_font = SubResource( 48 )
+custom_fonts/normal_font = SubResource( 49 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

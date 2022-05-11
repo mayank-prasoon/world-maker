@@ -11,6 +11,7 @@ onready var command_line:LineEdit = $CanvasLayer/CommandSystemInterface/HBoxCont
 export(bool) var command_line_state = false
 
 func _ready():
+	$EffectLayer/Control.visible = false
 	$CanvasLayer/CommandSystemInterface.visible = command_line_state
 
 func _on_CommandInput_text_entered(command:String) -> void:
@@ -26,6 +27,12 @@ func _input(event):
 	if event.is_action_pressed("command line interface"):
 		command_line_state = !command_line_state
 		$CanvasLayer/CommandSystemInterface.visible = command_line_state
+		
+		if command_line_state:
+			$EffectLayer/Control.visible = true
+			$EffectLayer/Control/BackgroundBlur.blurBackground()
+		elif !command_line_state:
+			$EffectLayer/Control/BackgroundBlur.unBlurBackground()
 
 
 func execute_command(command:String) -> void:

@@ -1,0 +1,57 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=1]
+
+[sub_resource type="Resource" id=1]
+
+[resource]
+script = ExtResource( 1 )
+article_name = "Lothric"
+article_id = "9aceb164-d976-4f67-bb0d-919dead48086"
+article_profile = ""
+article_banner = ""
+article_type = 0
+article_template = SubResource( 1 )
+article_notes = "[font=res://test_font.tres]Am I hallucinating or is gaming slowly becoming a rich man's entertainment?[/font]
+
+
+Just trying to gauge the opinion of others here, but want to understand the perspective from a gamer who has given it a thought, thus posting here and not in polls or askreddit.
+
+I keep seeing videos on YouTube and see streamers and gamer tech enthusiasts channels constantly plagued with expensive hardware or gear that is well out of reach from the average earner's range.
+
+I don't think when I was growing I saw this much focus on the elite market of gaming. It was rare and exciting to see channels cover something expensive and brazen that would spark our imagination. But that used to be the special video out of a hundred more regular and palatable videos. Nowadays it has flipped upside down. Most of the big channels and streamer flaunt hardware that is immensely expensive or high maintenance that could only be practical to the rich guys splurging money who will move on to the next big thing after their current toy collects dust for a month.
+
+I am not sure if I am able to properly present my concern here. Like 10 or even 8 years ago I would have thought that the reason I might have to give up gaming in future would be that I get saturated and move on, or the responsibilities of growing old makes it impossible to find time. But not that it becomes an unaffordable hobby.
+
+Edit: thanks for all the replies folks! I'm trying to make sure I'm reading all the responses.
+
+Just wanted to clarify that yes when i was talking about gaming here, i usually meant the AAA/AA space, or at least from the popular front of the media. And hardware wise this is more relevant for PC gaming.
+
+But I kinda miss the mark by cherry picking one niche scenario. My bad!
+
+My whole concern was up until a decade ago, i didn't need to think twice about specs as long as I got a decent recommended spec. Like even half decent knowledge of hardware and a mainstream system was good enough to get through the next 4 years.
+
+But I'll admit, there are ton more options nowadays, especially in form of game subscriptions that take the heat off of overall gaming budget."
+article_raw = "[font=res://test_font.tres]Am I hallucinating or is gaming slowly becoming a rich man's entertainment?[/font]
+
+
+Just trying to gauge the opinion of others here, but want to understand the perspective from a gamer who has given it a thought, thus posting here and not in polls or askreddit.
+
+I keep seeing videos on YouTube and see streamers and gamer tech enthusiasts channels constantly plagued with expensive hardware or gear that is well out of reach from the average earner's range.
+
+I don't think when I was growing I saw this much focus on the elite market of gaming. It was rare and exciting to see channels cover something expensive and brazen that would spark our imagination. But that used to be the special video out of a hundred more regular and palatable videos. Nowadays it has flipped upside down. Most of the big channels and streamer flaunt hardware that is immensely expensive or high maintenance that could only be practical to the rich guys splurging money who will move on to the next big thing after their current toy collects dust for a month.
+
+I am not sure if I am able to properly present my concern here. Like 10 or even 8 years ago I would have thought that the reason I might have to give up gaming in future would be that I get saturated and move on, or the responsibilities of growing old makes it impossible to find time. But not that it becomes an unaffordable hobby.
+
+Edit: thanks for all the replies folks! I'm trying to make sure I'm reading all the responses.
+
+Just wanted to clarify that yes when i was talking about gaming here, i usually meant the AAA/AA space, or at least from the popular front of the media. And hardware wise this is more relevant for PC gaming.
+
+But I kinda miss the mark by cherry picking one niche scenario. My bad!
+
+My whole concern was up until a decade ago, i didn't need to think twice about specs as long as I got a decent recommended spec. Like even half decent knowledge of hardware and a mainstream system was good enough to get through the next 4 years.
+
+But I'll admit, there are ton more options nowadays, especially in form of game subscriptions that take the heat off of overall gaming budget."
+article_description = ""
+tags = [  ]
+article_resources = ""

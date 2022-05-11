@@ -1,233 +1,611 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://systems/map_system/ui_elements/layer_creator/LayerCreator.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/graphics/map/new map/uncheck_button.svg" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/map/new map/check_button.svg" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/map/new map/Rectangle 1(1).png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/map/new map/Rectangle 60(2).png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/map/new map/image.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/map/new map/Rectangle 60.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/map/new map/Rectangle 39.png" type="Texture" id=12]
 
-[node name="LayerCreator" type="Panel"]
+[sub_resource type="GDScript" id=37]
+script/source = "extends Control
+
+func edit_mode(layer_resource:MapLayer, node:Control, index:int)->void:
+	$Layer/LayerCreator.edit_mode(layer_resource, node, index)
+"
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+content_margin_left = 5.0
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_left = 15.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=17]
+content_margin_left = 15.0
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="DynamicFont" id=9]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=1]
+default_font = SubResource( 9 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+CheckBox/constants/hseparation = 20
+CheckBox/icons/checked = ExtResource( 6 )
+CheckBox/icons/unchecked = ExtResource( 5 )
+CheckBox/styles/disabled = SubResource( 10 )
+CheckBox/styles/focus = SubResource( 11 )
+CheckBox/styles/hover = SubResource( 12 )
+CheckBox/styles/hover_pressed = SubResource( 13 )
+CheckBox/styles/normal = SubResource( 14 )
+CheckBox/styles/pressed = SubResource( 15 )
+Label/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Label/styles/normal = SubResource( 20 )
+LineEdit/styles/focus = SubResource( 16 )
+LineEdit/styles/normal = SubResource( 17 )
+Panel/styles/panel = SubResource( 8 )
+VBoxContainer/constants/separation = 25
+
+[sub_resource type="StyleBoxEmpty" id=21]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_left = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=23]
+content_margin_left = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=24]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_left = 15.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id=26]
+content_margin_left = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=32]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=33]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Animation" id=34]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer/LayerCreator:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 403.5, 276.5 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer/LayerCreator:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 403.5, 276.5 ), Vector2( 403.5, 1100 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("EffectLayer/BackgroundBlur")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unBlurBackground"
+} ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer/LayerCreator:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 403.5, 1100 ), Vector2( 403.5, 276.5 ) ]
+}
+
+[node name="LayerCreator" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 37 )
+
+[node name="EffectLayer" type="CanvasLayer" parent="."]
+
+[node name="BackgroundBlur" parent="EffectLayer" instance=ExtResource( 2 )]
+visible = true
+
+[node name="Layer" type="CanvasLayer" parent="."]
+
+[node name="LayerCreator" type="Panel" parent="Layer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.0
-margin_top = -148.0
-margin_right = 280.0
-margin_bottom = 148.0
+margin_left = -556.5
+margin_top = -263.5
+margin_right = 556.5
+margin_bottom = 263.5
+theme = SubResource( 1 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-anchor_left = 0.0328947
-anchor_top = 0.0675676
-anchor_right = 0.967105
-anchor_bottom = 0.932432
-margin_left = -0.421032
-margin_top = -9.53674e-06
-margin_right = -0.578796
-margin_bottom = 0.00012207
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Button" type="Button" parent="Layer/LayerCreator"]
+modulate = Color( 1, 1, 1, 0.627451 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -48.0
+margin_top = 20.0
+margin_right = -18.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 30, 30 )
+mouse_default_cursor_shape = 2
+flat = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
-margin_right = 523.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
 
-[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer"]
-margin_top = 3.0
-margin_right = 499.0
-margin_bottom = 17.0
-size_flags_horizontal = 3
-text = "Basic"
+[node name="OpenTexture" type="FileDialog" parent="Layer/LayerCreator"]
+margin_left = 114.0
+margin_top = 8.0
+margin_right = 450.0
+margin_bottom = 296.0
+window_title = "Open a File or Directory"
+resizable = true
+dialog_hide_on_ok = true
+mode = 3
+access = 2
+filters = PoolStringArray( "*.png", "*.jpg" )
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
-[node name="Button" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 503.0
-margin_right = 523.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
+[node name="OpenCustomShader" type="FileDialog" parent="Layer/LayerCreator"]
+margin_left = 114.0
+margin_top = 8.0
+margin_right = 450.0
+margin_bottom = 296.0
+window_title = "Open a File or Directory"
+resizable = true
+dialog_hide_on_ok = true
+mode = 3
+access = 2
+filters = PoolStringArray( "*.png", "*.jpg" )
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/LayerCreator"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
 margin_top = 40.0
-margin_right = 523.0
-margin_bottom = 82.0
-__meta__ = {
-"_edit_use_anchors_": true
-}
+margin_right = -30.0
+margin_bottom = -30.0
+custom_constants/separation = 0
 
-[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer"]
-margin_right = 523.0
-margin_bottom = 14.0
-text = "Layer Name"
+[node name="CenterContainer" type="CenterContainer" parent="Layer/LayerCreator/HBoxContainer"]
+margin_right = 580.0
+margin_bottom = 457.0
+rect_min_size = Vector2( 580, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/VBoxContainer"]
-margin_top = 18.0
-margin_right = 523.0
-margin_bottom = 42.0
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer"]
+margin_left = 5.0
+margin_top = 39.0
+margin_right = 575.0
+margin_bottom = 417.0
+rect_min_size = Vector2( 570, 378 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2"]
-margin_top = 102.0
-margin_right = 523.0
-margin_bottom = 144.0
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer2"]
-margin_right = 523.0
-margin_bottom = 14.0
-text = "Texture Path"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer2"]
-margin_top = 18.0
-margin_right = 523.0
-margin_bottom = 42.0
-custom_constants/separation = 10
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/VBoxContainer2/HBoxContainer"]
-margin_right = 433.0
-margin_bottom = 24.0
+[node name="CenterContainer2" type="CenterContainer" parent="Layer/LayerCreator/HBoxContainer"]
+margin_left = 580.0
+margin_right = 1033.0
+margin_bottom = 457.0
 size_flags_horizontal = 3
 
-[node name="OpenBrowser" type="Button" parent="VBoxContainer2/VBoxContainer2/HBoxContainer"]
-margin_left = 443.0
-margin_right = 523.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 80, 0 )
-text = "browse"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer2"]
-margin_top = 164.0
-margin_right = 523.0
-margin_bottom = 206.0
+[node name="InputField" type="VBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2"]
+margin_left = 36.0
+margin_top = 38.0
+margin_right = 416.0
+margin_bottom = 418.0
+rect_min_size = Vector2( 380, 380 )
+size_flags_horizontal = 3
+custom_constants/separation = 35
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer4"]
-margin_right = 523.0
-margin_bottom = 14.0
-text = "Custom Shader"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer4"]
-margin_top = 18.0
-margin_right = 523.0
-margin_bottom = 42.0
+[node name="MapName" type="VBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
+margin_right = 380.0
+margin_bottom = 74.0
 custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/VBoxContainer4/HBoxContainer"]
-margin_right = 433.0
-margin_bottom = 24.0
+[node name="Label" type="Label" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
+margin_right = 380.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 21 )
+text = "name"
+
+[node name="Input" type="Control" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
+margin_top = 29.0
+margin_right = 380.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 45 )
+
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 7 )
+
+[node name="LineEdit" type="LineEdit" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/focus = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+placeholder_text = "map name"
+
+[node name="Shader" type="VBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
+margin_top = 109.0
+margin_right = 380.0
+margin_bottom = 183.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader"]
+margin_right = 380.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 24 )
+text = "shader path"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader"]
+margin_top = 29.0
+margin_right = 380.0
+margin_bottom = 74.0
+custom_constants/separation = 20
+
+[node name="Input" type="Control" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer"]
+margin_right = 257.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 257, 45 )
 size_flags_horizontal = 3
 
-[node name="AddCustomShader" type="Button" parent="VBoxContainer2/VBoxContainer4/HBoxContainer"]
-margin_left = 443.0
-margin_right = 523.0
-margin_bottom = 24.0
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 12 )
+
+[node name="LineEdit" type="LineEdit" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+placeholder_text = "path to shader"
+
+[node name="Control" type="Control" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer"]
+margin_left = 277.0
+margin_right = 380.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -20.0
+margin_right = 25.0
+margin_bottom = 30.0
+texture = ExtResource( 11 )
+
+[node name="AddCustomShader" type="Button" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 80, 0 )
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/normal = SubResource( 31 )
 text = "browse"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2"]
+[node name="MapTexture" type="VBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
+margin_top = 218.0
+margin_right = 380.0
+margin_bottom = 292.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
+margin_right = 380.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 24 )
+text = "map texture"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
+margin_top = 29.0
+margin_right = 380.0
+margin_bottom = 74.0
+custom_constants/separation = 20
+
+[node name="Input" type="Control" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
+margin_right = 257.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 257, 45 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 12 )
+
+[node name="LineEdit" type="LineEdit" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+placeholder_text = "image path"
+
+[node name="Control" type="Control" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
+margin_left = 277.0
+margin_right = 380.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -20.0
+margin_right = 25.0
+margin_bottom = 30.0
+texture = ExtResource( 11 )
+
+[node name="OpenBrowser" type="Button" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 80, 0 )
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_styles/hover = SubResource( 27 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/disabled = SubResource( 30 )
+custom_styles/normal = SubResource( 31 )
+text = "browse"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
 visible = false
-margin_top = 164.0
-margin_right = 523.0
-margin_bottom = 206.0
+margin_top = 194.0
+margin_right = 526.0
+margin_bottom = 246.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer3"]
-margin_right = 523.0
-margin_bottom = 14.0
+[node name="Label" type="Label" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
+margin_right = 526.0
+margin_bottom = 19.0
 text = "chunlk size"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer3"]
-margin_top = 18.0
-margin_right = 523.0
-margin_bottom = 42.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
+margin_top = 23.0
+margin_right = 526.0
+margin_bottom = 52.0
 custom_constants/separation = 30
 
-[node name="ChunkX" type="SpinBox" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
-margin_right = 80.0
-margin_bottom = 24.0
+[node name="ChunkX" type="SpinBox" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+margin_right = 84.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 80, 0 )
 max_value = 2000.0
 value = 512.0
 suffix = "px"
 
-[node name="Chunky" type="SpinBox" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
-margin_left = 110.0
-margin_right = 190.0
-margin_bottom = 24.0
+[node name="Chunky" type="SpinBox" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+margin_left = 114.0
+margin_right = 198.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 80, 0 )
 max_value = 2000.0
 value = 288.0
 suffix = "px"
 
-[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
-margin_left = 301.0
+[node name="Label" type="Label" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+margin_left = 295.0
 margin_top = 5.0
-margin_right = 393.0
-margin_bottom = 19.0
+margin_right = 396.0
+margin_bottom = 24.0
 size_flags_horizontal = 10
 text = "chunk number"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit3" type="SpinBox" parent="VBoxContainer2/VBoxContainer3/HBoxContainer"]
-margin_left = 423.0
-margin_right = 523.0
-margin_bottom = 24.0
+[node name="LineEdit3" type="SpinBox" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+margin_left = 426.0
+margin_right = 526.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 8
 max_value = 5000.0
 
-[node name="CreateButton" type="Button" parent="VBoxContainer2"]
-margin_left = 443.0
-margin_top = 236.0
-margin_right = 523.0
-margin_bottom = 256.0
+[node name="CreateButton" type="Control" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
+margin_top = 335.0
+margin_right = 380.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 0, 45 )
+size_flags_horizontal = 3
+size_flags_vertical = 14
+
+[node name="TextureRect" type="TextureRect" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = -20.0
+margin_right = 24.5
+margin_bottom = 75.0
+texture = ExtResource( 8 )
+
+[node name="CreateButton" type="Button" parent="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
+anchor_right = 0.339474
+anchor_bottom = 1.0
 rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 10
 size_flags_vertical = 10
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_constants/hseparation = 10
+custom_styles/hover = SubResource( 32 )
+custom_styles/pressed = SubResource( 32 )
+custom_styles/focus = SubResource( 32 )
+custom_styles/disabled = SubResource( 33 )
+custom_styles/normal = SubResource( 32 )
 text = "create"
+icon = ExtResource( 9 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="OpenTexture" type="FileDialog" parent="."]
-margin_left = 114.0
-margin_top = 8.0
-margin_right = 450.0
-margin_bottom = 296.0
-window_title = "Open a File or Directory"
-resizable = true
-dialog_hide_on_ok = true
-mode = 3
-access = 2
-filters = PoolStringArray( "*.png", "*.jpg" )
-current_dir = "/media/mayank/Assets/Software Dev/world building software"
-current_path = "/media/mayank/Assets/Software Dev/world building software/"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
+anims/RESET = SubResource( 34 )
+anims/close = SubResource( 35 )
+anims/open = SubResource( 36 )
 
-[node name="OpenCustomShader" type="FileDialog" parent="."]
-margin_left = 114.0
-margin_top = 8.0
-margin_right = 450.0
-margin_bottom = 296.0
-window_title = "Open a File or Directory"
-resizable = true
-dialog_hide_on_ok = true
-mode = 3
-access = 2
-filters = PoolStringArray( "*.png", "*.jpg" )
-current_dir = "/media/mayank/Assets/Software Dev/world building software"
-current_path = "/media/mayank/Assets/Software Dev/world building software/"
-
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/Button" to="." method="hide_map_creator"]
-[connection signal="pressed" from="VBoxContainer2/VBoxContainer2/HBoxContainer/OpenBrowser" to="." method="_on_OpenBrowser_pressed"]
-[connection signal="pressed" from="VBoxContainer2/VBoxContainer4/HBoxContainer/AddCustomShader" to="." method="_on_AddCustomShader_pressed"]
-[connection signal="value_changed" from="VBoxContainer2/VBoxContainer3/HBoxContainer/ChunkX" to="." method="_on_ChunkX_value_changed"]
-[connection signal="value_changed" from="VBoxContainer2/VBoxContainer3/HBoxContainer/Chunky" to="." method="_on_Chunky_value_changed"]
-[connection signal="file_selected" from="OpenTexture" to="." method="_on_OpenTexture_file_selected"]
-[connection signal="file_selected" from="OpenCustomShader" to="." method="_on_OpenCustomShader_file_selected"]
+[connection signal="pressed" from="Layer/LayerCreator/Button" to="Layer/LayerCreator" method="hide_map_creator"]
+[connection signal="file_selected" from="Layer/LayerCreator/OpenTexture" to="Layer/LayerCreator" method="_on_OpenTexture_file_selected"]
+[connection signal="file_selected" from="Layer/LayerCreator/OpenCustomShader" to="Layer/LayerCreator" method="_on_OpenCustomShader_file_selected"]
+[connection signal="pressed" from="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Control/AddCustomShader" to="Layer/LayerCreator" method="_on_AddCustomShader_pressed"]
+[connection signal="pressed" from="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control/OpenBrowser" to="Layer/LayerCreator" method="_on_OpenBrowser_pressed"]
+[connection signal="pressed" from="Layer/LayerCreator/HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton" to="Layer/LayerCreator" method="_on_CreateButton_pressed"]

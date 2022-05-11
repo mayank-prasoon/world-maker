@@ -6,10 +6,10 @@ signal data_changed
 
 # === nodes ===
 
-onready var basic_tab        = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/VBoxContainer
-onready var prompt_container = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/VBoxContainer
+onready var basic_tab        = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
+onready var prompt_container = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/ScrollContainer/VBoxContainer
 onready var notes            = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/TextEdit
-onready var basics_tab       = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/VBoxContainer
+onready var basics_tab       = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
 
 # === properties ===
 
@@ -38,7 +38,7 @@ func open_article(resources:Article)->void:
 	UIManager.add_select_file(basics_tab, "Banner", "choose and image for the banner", resources.article_banner)
 	UIManager.add_dropdown_input(basics_tab, "Article Type", "type of article", [Article.get_type_name(resources.article_type)], 0, true)
 	
-	if !(resources.article_template == null):
+	if !(resources.article_template == null or resources.article_template.get('template_name') == null):
 		UIManager.add_dropdown_input(basics_tab, "Article Template", "prompt template for article", [resources.article_template.template_name], 0, true)
 		PresetInputManager.load_prompt(prompt_container, resources.article_template)
 	else:
@@ -129,7 +129,7 @@ func _on_Close_pressed()->void:
 		close()
 
 func close():
-	get_parent().add_child(wiki_dashboard.instance())
+	get_parent().get_owner().contianer.add_child(wiki_dashboard.instance())
 	self.queue_free()
 
 

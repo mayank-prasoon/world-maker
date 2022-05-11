@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+template_name = "engine"
+template_texture = "/home/mayank/Downloads/api-ref-icon.png"
+template_hover_animation = [ "" ]
+template_offset = Vector2( 0, 0 )
+template_color = Color( 0, 0, 0, 1 )
+template_area2D_radius = 40
+template_default_tag = [ "engine" ]
+template_default_article_template = ""

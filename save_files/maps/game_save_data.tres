@@ -1,24 +1,79 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://assets/file templates/save_system_template/map_resources_template.gd" type="Script" id=1]
 [ext_resource path="res://assets/file templates/save_system_template/map_layer_resource_template.gd" type="Script" id=2]
+[ext_resource path="res://save_files/pins/6e7062d6-8f71-4fde-9207-da9cd5bfc857_save_data.tres" type="Resource" id=3]
+[ext_resource path="res://save_files/pins/b0c1b02b-5780-4d03-accd-70a2eccbe94f_save_data.tres" type="Resource" id=4]
+[ext_resource path="res://save_files/pins/b4fad9d8-99dc-4fa7-9e9c-d1047c7b7fea_save_data.tres" type="Resource" id=5]
+[ext_resource path="res://save_files/pins/e8da9d4c-0461-4eab-9ffa-f406f7ddb4ee_save_data.tres" type="Resource" id=6]
+[ext_resource path="res://save_files/pins/a6a9f1c4-2d58-4011-ab64-6d4fd0a5ea58_save_data.tres" type="Resource" id=8]
+[ext_resource path="res://save_files/pins/beb2796f-b8c8-44d7-beae-7251e99d815f_save_data.tres" type="Resource" id=11]
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="VisualShader" id=2]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+
+[sub_resource type="Resource" id=4]
+resource_local_to_scene = true
 script = ExtResource( 2 )
 layer_name = "gagag"
 layer_path = "/home/mayank/Downloads/japan-gb95e247df_1280.jpg"
 layer_description = ""
-layer_visibility = false
+layer_visibility = 0
 layer_shader = 0
+layer_custom_shader = SubResource( 2 )
 layer_opacity = 100.0
 
-[sub_resource type="Resource" id=3]
+[sub_resource type="VisualShader" id=3]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+
+[sub_resource type="Resource" id=5]
 script = ExtResource( 2 )
-layer_name = "cat"
-layer_path = "/home/mayank/Downloads/pexels-pixabay-270557.jpg"
+layer_name = "Game"
+layer_path = "/home/mayank/Downloads/pexels-pixabay-459225.jpg"
 layer_description = ""
-layer_visibility = false
+layer_visibility = 0
 layer_shader = 0
+layer_custom_shader = SubResource( 3 )
 layer_opacity = 100.0
 
 [resource]
@@ -26,6 +81,6 @@ script = ExtResource( 1 )
 map_name = "game"
 image_path = "/home/mayank/Downloads/pexels-imad-clicks-10656139.jpg"
 image_size = Vector2( 0, 0 )
-layers = [ SubResource( 1 ), SubResource( 3 ) ]
-map_pins = [  ]
+layers = [ SubResource( 4 ), SubResource( 5 ) ]
+map_pins = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 3 ) ]
 tags = [  ]

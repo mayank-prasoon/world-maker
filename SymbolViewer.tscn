@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var radius = 48
+
+func _ready():
+	self.rect_pivot_offset = Vector2(get_size().x/2, get_size().y/2)
+
+
+func _on_SymbolTemplateContainer_size_flags_changed()->void:
+	self.rect_pivot_offset = Vector2(get_size().x/2, get_size().y/2)
+
+func load_map_pin(symbol_template:MapSymbolTemplate)->void:
+	if get_child_count() != 0:
+		self.get_child(0).queue_free()
+	
+	radius = symbol_template.template_area2D_radius
+	
+	var map_pin:MapPin   = MapPin.new()
+	map_pin.pin_symbol_template = symbol_template
+	map_pin.pin_name     = \"sample name\"
+	map_pin.pin_location = self.get_pivot_offset() 
+
+	var map_pin_scene:PackedScene = load(\"res://systems/map_system/ui_elements/map_pin/MapPin.tscn\")
+	var map_pin_node:Node2D       = map_pin_scene.instance()
+	map_pin_node.pin_resource     = map_pin
+	self.add_child(map_pin_node)
+	update()
+
+func _draw():
+	draw_circle(self.get_pivot_offset(), radius, Color( 0, 1, 1, 0.3))
+"
+
+[node name="SymbolViewer" type="Control"]
+margin_left = 428.0
+margin_right = 678.0
+margin_bottom = 471.0
+rect_min_size = Vector2( 250, 0 )
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 14.0
+text = "Symbol Viewer"
+align = 1
+valign = 1
+
+[node name="SymbolTemplateContainer" type="Control" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 250.0
+margin_bottom = 453.0
+rect_pivot_offset = Vector2( 125, 179 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 457.0
+margin_right = 250.0
+margin_bottom = 471.0
+size_flags_vertical = 1
+align = 1
+valign = 1
+
+[connection signal="size_flags_changed" from="VBoxContainer/SymbolTemplateContainer" to="VBoxContainer/SymbolTemplateContainer" method="_on_SymbolTemplateContainer_size_flags_changed"]

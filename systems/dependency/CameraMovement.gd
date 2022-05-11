@@ -11,8 +11,11 @@ var desiredZooom:Vector2 = self.zoom
 export(Vector2) var defaultZoom:Vector2 = Vector2(2.0,2.0)
 
 var panning:bool = false
-var disableMouse:bool = false
+var disableMouse:bool = false setget set_disable_camera
 var desiredOffset:Vector2 = self.offset
+
+func set_disable_camera(value)->void:
+	disableMouse = value
 
 
 func _physics_process(_delta:float) -> void:
@@ -20,7 +23,7 @@ func _physics_process(_delta:float) -> void:
 	self.offset = lerp(self.offset, desiredOffset, 0.2)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if !disableMouse:
 		zoomControl(event)
 		cameraMovement(event)
@@ -47,6 +50,7 @@ func cameraMovement(event:InputEvent)->void:
 	if event is InputEventKey:
 		if event.is_pressed() and event.scancode == KEY_SPACE:
 			panning = true
+			EventBus.emit_signal("close_article_panel")
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 		else:
 			panning = false

@@ -74,10 +74,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/file templates/save_system_template/map_pin_resources_template.gd"
 }, {
+"base": "Node2D",
+"class": "MapPinNode",
+"language": "GDScript",
+"path": "res://systems/map_system/ui_elements/map_pin/map_pin.gd"
+}, {
 "base": "Reference",
 "class": "MapPropertyManager",
 "language": "GDScript",
 "path": "res://systems/dependency/map_dep/map_manager.gd"
+}, {
+"base": "Reference",
+"class": "MapResourceSystem",
+"language": "GDScript",
+"path": "res://systems/dependency/map_resource_manager.gd"
 }, {
 "base": "Resource",
 "class": "MapSymbolTemplate",
@@ -168,7 +178,9 @@ _global_script_class_icons={
 "MapGen": "",
 "MapLayer": "",
 "MapPin": "",
+"MapPinNode": "",
 "MapPropertyManager": "",
+"MapResourceSystem": "",
 "MapSymbolTemplate": "",
 "MapSystem": "",
 "PinManager": "",
@@ -201,6 +213,7 @@ ProjectSettingsManager="*res://singletone/ProjectSetting.tscn"
 LoadingSystem="*res://singletone/loading_system.gd"
 Logger="*res://singletone/Logger.tscn"
 GlobalActions="*res://singletone/global_actions.gd"
+EventBus="*res://singletone/event_bus.gd"
 
 [debug]
 
@@ -208,8 +221,9 @@ gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/size/always_on_top=true
-window/vsync/use_vsync=false
 
 [editor_plugins]
 
@@ -246,6 +260,7 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/filters/sharpen_intensity=1.0
 2d/options/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
@@ -254,7 +269,5 @@ threads/thread_model=2
 quality/filters/use_nearest_mipmap_filter=true
 2d/options/use_software_skinning=false
 batching/precision/uv_contract=true
-quality/filters/msaa=4
-quality/filters/use_fxaa=true
 quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"

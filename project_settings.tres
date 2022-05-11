@@ -6,10 +6,16 @@
 
 [resource]
 script = ExtResource( 3 )
-project_name = ""
+project_name = "test_project"
 project_version = ""
-date_of_creation = ""
-project_location = ""
+date_of_creation = {
+"day": 17,
+"dst": false,
+"month": 4,
+"weekday": 0,
+"year": 2022
+}
+project_location = "res://test/test_project"
 shortcuts = {
 "command line interface": ExtResource( 2 ),
 "fullscreen": ExtResource( 1 )

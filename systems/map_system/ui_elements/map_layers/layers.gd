@@ -5,8 +5,9 @@ signal mouse_pointer_exited
 
 # === VARIABLE === 
 
+var texture_node:TextureRect   = TextureRect.new()
+
 var map_layer_resources:MapLayer = MapLayer.new()
-var map_layer_node:TextureRect   = TextureRect.new()
 
 var move:bool        = false
 
@@ -25,16 +26,9 @@ var default_rect_pos
 var rect_size_value:Vector2 = Vector2(272, 30)
 var rect_pos_value:Vector2  = Vector2(0, 0)
 
+# === INNER CLASS(s) ===
 
-func layer_selected()->void:
-	for node in get_tree().get_nodes_in_group('map_layers'):
-		node.get_node("Panel").set("custom_styles/panel", default_style_box)
-		node.selected = false
-
-	selected = true
-	get_tree().call_group('layer_option', 'set_map_layer', self)
-	$Panel.set("custom_styles/panel", selected_style_box)
-
+# ------------------------------------------------------------------------------
 
 func _ready()->void:
 	# assign default value
@@ -47,26 +41,34 @@ func _ready()->void:
 	# add to group
 	add_to_group('map_layers')
 	
+	# assign layer 
+	setup_layer()
+	layer_selected()
+
+func setup_layer()->void:
 	# assign name
 	self.name = map_layer_resources.layer_name
 	$Panel/HBoxContainer/Label.text = self.name
 	
 	# assign texture
-	map_layer_node.modulate = Color(1, 1, 1, float(map_layer_resources.layer_opacity)/100)
-	map_layer_node.material = MapLayer.fetch_shader_material(
+	texture_node.modulate = Color(1, 1, 1, float(map_layer_resources.layer_opacity)/100)
+	texture_node.material = MapLayer.fetch_shader_material(
 		map_layer_resources.layer_shader,
 		map_layer_resources.layer_custom_shader
 	)
 
 	# assign visibility
 	$Panel/HBoxContainer/Visible.pressed = !map_layer_resources.layer_visibility
-	map_layer_node.visible               = map_layer_resources.layer_visibility
-	layer_selected()
+	texture_node.visible = map_layer_resources.layer_visibility
+
+
+# ------------------------------------------------------------------------------
 
 # system loop
 func _physics_process(_delta:float)->void:
 	lerp_animation()
 	check_mouse_enter()
+
 
 # system input loop
 func _input(event):
@@ -74,6 +76,21 @@ func _input(event):
 		if event is InputEventMouseButton:
 			if !event.is_pressed() and event.button_index == BUTTON_LEFT:
 				get_tree().call_group('map_layers', '_on_being_dragged', false)
+
+# ------------------------------------------------------------------------------
+
+func layer_selected()->void:
+	for node in get_tree().get_nodes_in_group('map_layers'):
+		node.get_node("Panel").set("custom_styles/panel", default_style_box)
+		node.get_node("Panel/HBoxContainer/Label").set('modulate', Color('e0e0e0'))
+		node.get_node("Panel/HBoxContainer/Visible").set('modulate', Color('e0e0e0'))
+		node.selected = false
+
+	selected = true
+	get_tree().call_group('layer_option', 'set_map_layer', self)
+	$Panel.set("custom_styles/panel", selected_style_box)
+	$Panel/HBoxContainer/Visible.modulate = Color('252525')
+	$Panel/HBoxContainer/Label.modulate   = Color('252525')
 
 # gui input loop
 func _on_Layers_gui_input(event)->void:
@@ -84,6 +101,7 @@ func _on_Layers_gui_input(event)->void:
 				get_tree().call_group('map_layers', '_on_being_dragged', true)
 				reset_to_default()
 
+# ------------------------------------------------------------------------------
 
 # === UI ANIMATIONS ===
 
@@ -98,12 +116,17 @@ func lerp_animation()->void:
 		lerp($Panel.rect_size.y, rect_size_value.y, 0.35)
 	)
 
+
 func set_position_size_value(pos:Vector2, size:Vector2):
 	rect_pos_value  = pos
 	rect_size_value = size
 
+
 func reset_to_default()->void:
 	set_position_size_value(default_rect_pos, default_rect_size)
+
+
+# ------------------------------------------------------------------------------
 
 
 # === DARG AND DROP SYSTEM ===
@@ -116,7 +139,7 @@ func get_drag_data(_position)->Dictionary:
 	
 	data["node_position"] = self.get_position_in_parent()
 	data["layer"]         = self
-	data["layer_node"]    = self.map_layer_node
+	data["layer_node"]    = self.texture_node
 	
 	# create preview texture
 	var texture              = ColorRect.new()
@@ -143,9 +166,6 @@ func get_drag_data(_position)->Dictionary:
 
 # check if it can drop
 func can_drop_data(_position, _data)->bool:
-#	if data["layer"] == self:
-#		return false
-#	else:
 	return true
 
 # exicute when a dragged control node is dropped
@@ -159,10 +179,7 @@ func drop_data(_position, data)->void:
 
 # moves layer
 func move_layer(data):
-	var map_node:Control = get_parent().get_owner().get_parent().get_owner().get_node("MapOrganise")
-	print_debug(map_node.map.layers)
-	print_debug(data["layer"].map_layer_resources.layer_name)
-	print_debug(self.map_layer_resources.layer_name)
+	var map_node:Control = get_parent().get_owner()
 
 	# move the node which was being dragged and is now dropped 'data["layer"]'
 	get_parent().move_child(data["layer"], self.get_position_in_parent())
@@ -170,24 +187,54 @@ func move_layer(data):
 	
 	
 	# move the node on which the other node is dropped 'self'
-	map_layer_node.get_parent().move_child(map_layer_node, data["node_position"] + 1)
+	texture_node.get_parent().move_child(texture_node, data["node_position"] + 1)
 	get_parent().move_child(self, data["node_position"])
 	
 	var layers:Array = []
-	
 	var layer_nodes:Array = get_parent().get_children()
-	
 	for resource in layer_nodes:
 		layers.append(resource.map_layer_resources.duplicate())
-	
-	map_node.map.layers = layers
-	
-	print_debug(map_node.map.layers)
 
+	map_node.map_resource.layers = layers
+	
+	EventBus.emit_signal("save_map", map_node.map_resource)
+
+#	map_node.MapSaveSystem.save_map(
+#		map_node.map_resource.map_name,
+#		map_node.map_resource.image_path,
+#		map_node.map_resource.layers,
+#		map_node.map_resource.map_pins,
+#		map_node.map_resource.tags
+#	)
 
 # on being_dragged signal reciver 
 func _on_being_dragged(state:bool)->void:
 	move = state
+
+
+# ------------------------------------------------------------------------------
+
+# === LAYER SETTING(s) ===
+
+func set_layer_blend_mode(blend_mode:int)->void:
+	map_layer_resources.layer_shader = blend_mode
+	texture_node.material            = MapLayer.fetch_shader_material(blend_mode, self.map_layer_resources.layer_custom_shader)
+	get_parent().get_owner().save_map_resource(map_layer_resources, get_position_in_parent())
+
+
+func set_layer_opacity(opacity:float)->void:
+	map_layer_resources.layer_opacity = opacity
+	texture_node.modulate             = Color(1.0, 1.0, 1.0, float(map_layer_resources.layer_opacity)/100.00)
+	get_parent().get_owner().save_map_resource(map_layer_resources, get_position_in_parent())
+
+
+func set_layer_visibility(visiblity:bool)->void:
+	map_layer_resources.layer_visibility = visiblity
+	texture_node.visible                 = visiblity
+	EventBus.emit_signal('save_map_layer', map_layer_resources, self.get_position_in_parent())
+
+
+# ------------------------------------------------------------------------------
 
 
 # === INPUT SYSTEM ===
@@ -237,11 +284,14 @@ func _on_Layers_mouse_pointer_entered()->void:
 		)
 		hover = true
 
-# layer hide and show system
-func _on_Visible_toggled(button_pressed)->void:
-	pass
+# ------------------------------------------------------------------------------
 
+# SIGNAL RECIVER(s)
+
+# visible button pressed
 func _on_Visible_pressed()->void:
 	layer_selected()
 	get_tree().call_group("layer_option", 'set_layer_visibility', !$Panel/HBoxContainer/Visible.pressed)
+
+# ------------------------------------------------------------------------------
 

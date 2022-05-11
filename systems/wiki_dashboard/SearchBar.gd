@@ -6,7 +6,8 @@ func _ready()->void:
 
 
 func _on_Button_pressed()->void:
+	$FilterPopup.rect_global_position = $CenterContainer/SearchBar/TextureRect/CenterContainer/Button.rect_global_position + Vector2(-30, 60)
 	$FilterPopup.popup()
 
 func change_in_filter(_state)->void:
-	$"../CardList/CardManager".get_article($CenterContainer/SearchBar/LineEdit.get_text())
+	$"../CardList/CardManager".get_article($CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit.get_text())

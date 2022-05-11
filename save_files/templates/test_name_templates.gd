@@ -8,7 +8,7 @@ export(Array, Dictionary) var template_prompts:Array = [
 		'description' : 'name of the place/region that will help identify it',
 		'type'        :  PresetInputManager.TEXT,
 		'value'       : '',
-		'display'     : 'the name of the land is {value}',
+		'display'     : '[font=res://test_font.tres]Name[/font]\nthe name of the land is {value}',
 		'null_value'  : 'unknown'
 	},
 	
@@ -16,7 +16,7 @@ export(Array, Dictionary) var template_prompts:Array = [
 		'name'        : 'Description',
 		'description' : 'long form description of the place',
 		'type'        :  PresetInputManager.BIG_TEXT,
-		'display'     : '{value}',
+		'display'     : '\n{value}',
 		'null_value'  : ''
 	},
 	
@@ -25,7 +25,7 @@ export(Array, Dictionary) var template_prompts:Array = [
 		'description' : 'click the checkbox if the place is hospitable',
 		'type'        : PresetInputManager.TOGGLE_BUTTON,
 		'value'       : true,
-		'display'     : 'this place is{value} fit for living',
+		'display'     : '[font=res://test_font.tres]Hospitable[/font]\nthis place is{value} fit for living',
 
 		'input_value_if_true'  : '',
 		'input_value_if_false' : ' not'

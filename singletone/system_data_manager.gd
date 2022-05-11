@@ -8,16 +8,18 @@ var root_map_save_path
 var root_pin_save_path
 var root_article_save_path
 var root_temp_save_path
+var root_pin_temp_save_path
 
 # === VERIABLES ===
 func _ready():
 	root_save_file_path    = SystemSettings.current_path + '/save_files'
 	
 	# sub resource path
-	root_map_save_path     = self.root_save_file_path + '/maps/{uuid}_save_data.tres'
-	root_pin_save_path     = self.root_save_file_path + '/pins/{uuid}_save_data.tres' 
-	root_article_save_path = self.root_save_file_path + '/articles/{uuid}_save_data.tres' 
-	root_temp_save_path    = self.root_save_file_path + '/templates/{uuid}_template.tres'
+	root_map_save_path      = self.root_save_file_path + '/maps/{uuid}_save_data.tres'
+	root_pin_save_path      = self.root_save_file_path + '/pins/{uuid}_save_data.tres' 
+	root_article_save_path  = self.root_save_file_path + '/articles/{uuid}_save_data.tres' 
+	root_temp_save_path     = self.root_save_file_path + '/templates/{uuid}_template.tres'
+	root_pin_temp_save_path = self.root_save_file_path + '/map_symbol_templates/{uuid}_template.tres'
  
 # verify paths and check the intrigity of the folder system
 func verify(path:String, resource_type:int, uuid:String) -> void:

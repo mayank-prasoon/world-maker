@@ -4,8 +4,8 @@ extends Node
 onready var grid:GridContainer = $"../ScrollContainer/GridContainer"
 
 # const
-const CARD_SIZE:int           = 180
-const SEPRASTION_CONSTANT:int = 30
+const CARD_SIZE:int           = 370
+const SEPRASTION_CONSTANT:int = -80 # default value - 70
 
 # variables
 var screen_size:Vector2

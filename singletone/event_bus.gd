@@ -21,6 +21,8 @@ signal create_new_map(map_name, map_texture, article)
 
 signal change_map_to(new_map)
 
+signal delete_current_map()
+
 # map layer
 
 signal create_new_layer(map_layer_resource)
@@ -28,6 +30,15 @@ signal create_new_layer(map_layer_resource)
 signal change_layer_index(index)
 
 signal assign_layer(map_resource)
+
+signal save_map_layer(layer_resource, index)
+
+
+# === map element ===
+
+signal mouse_inside_map_element(element)
+
+signal mouse_outside_map_element()
 
 # map pin
 
@@ -38,6 +49,8 @@ signal remove_map_pin(map_pin_resource)
 signal save_map_pin(map_pin_resource)
 
 signal add_pin_to_map(map_pin_resource)
+
+signal move_pin_to_top(map_pin)
 
 # text
 
@@ -82,19 +95,21 @@ signal save_map_symbol_template(resource)
 
 signal toggle_inpector()
 
-signal change_inspector_state(state)
+signal change_inspector_state(new_state)
 
-signal add_pin_inspector(map_pin_resource)
+signal add_pin_inspector(map_pin_resource, node)
 
-signal add_text_inspector(map_text_resource)
+signal add_text_inspector(map_text_resource, node)
 
-signal add_comment_inspector(map_text_resource)
+signal add_comment_inspector(map_text_resource, node)
 
 signal clear_inspector()
 
 # === Article System ===
 
-signal open_article(article_resources)
+signal open_article_panel(article_resources)
+
+signal close_article_panel(article_resources)
 
 # === Map Symbol template ===
 
@@ -121,7 +136,7 @@ signal set_map_layer(layer_node)
 
 signal move_camera_to(positionq)
 
-signal disable_camera()
+signal disable_camera(state)
 
 signal zoom_in()
 

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+article_name = "bingus"
+article_id = "931d9722-6368-48f9-80d5-1a3fe86f49da"
+article_profile = "/home/mayank/Downloads/api-ref-icon.png"
+article_banner = "/home/mayank/Downloads/1c8b4e91677095ee0ea024d1110219bf.jpg"
+article_type = 0
+article_notes = ""
+article_raw = ""
+article_description = ""
+tags = [  ]
+article_resources = ""

@@ -1,9 +1,190 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://systems/wiki_dashboard/scrpits/grid_container_manager.gd" type="Script" id=1]
 [ext_resource path="res://systems/wiki_dashboard/scrpits/card_manager.gd" type="Script" id=2]
+[ext_resource path="res://assets/themes/WikiDashboard.tres" type="Theme" id=3]
 [ext_resource path="res://systems/wiki_dashboard/scrpits/WikiDashboard.gd" type="Script" id=4]
 [ext_resource path="res://systems/wiki_dashboard/SearchBar.gd" type="Script" id=5]
+[ext_resource path="res://assets/graphics/wiki_dashboard/bx_bx-filter-alt.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/dashboard/icons/plus.svg" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/graphics/wiki_dashboard/Vector.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/wiki_dashboard/search bar texture.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/wiki_dashboard/Rectangle 8.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/wiki_dashboard/Ellipse 1.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 1, 1, 1, 0 )
+border_width_bottom = 3
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=15]
+content_margin_left = 15.0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends LineEdit
+
+
+func _on_LineEdit_focus_entered():
+	$AnimationPlayer.play(\"focus\")
+
+
+func _on_LineEdit_focus_exited():
+	$AnimationPlayer.play_backwards(\"focus\")
+"
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit:custom_styles/focus:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "focus"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit:custom_styles/focus:border_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 0 ), Color( 0.219608, 0.564706, 0.886275, 1 ) ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="GDScript" id=26]
+script/source = "extends Button
+
+
+
+func _on_Button_focus_entered():
+	$\"../..\".texture = load(\"res://assets/graphics/wiki_dashboard/filter_pressed.png\")
+
+
+func _on_Button_focus_exited():
+	$\"../..\".texture = load(\"res://assets/graphics/wiki_dashboard/Rectangle 8.png\")
+"
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.196078 )
+shadow_size = 10
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 8 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 11 )
+Button/constants/hseparation = 10
+Button/styles/hover = SubResource( 9 )
+Button/styles/normal = SubResource( 9 )
+Button/styles/pressed = SubResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="GDScript" id=23]
+script/source = "extends Button
+
+
+func _on_Button_mouse_entered()->void:
+	$AnimationPlayer.play(\"hover\")
+
+func _on_Button_mouse_exited():
+	$AnimationPlayer.play_backwards(\"hover\")
+"
+
+[sub_resource type="Animation" id=25]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/CardList/AddNewCardButton/Button/TextureRect:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/CardList/AddNewCardButton/Button/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0980392, 0.235294, 0.392157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "hover"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/CardList/AddNewCardButton/Button/TextureRect:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/CardList/AddNewCardButton/Button/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0980392, 0.235294, 0.392157, 1 ), Color( 0.690196, 0.792157, 0.913725, 1 ) ]
+}
 
 [node name="WikiDashboard" type="Control"]
 anchor_right = 1.0
@@ -11,56 +192,119 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SearchBar" type="Control" parent="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 60 )
+margin_right = 1920.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+theme = ExtResource( 3 )
 script = ExtResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/SearchBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SearchBar" type="HBoxContainer" parent="VBoxContainer/SearchBar/CenterContainer"]
-margin_left = 295.0
-margin_top = 18.0
-margin_right = 729.0
-margin_bottom = 42.0
-custom_constants/separation = 10
+margin_left = 488.0
+margin_top = 2.0
+margin_right = 1431.0
+margin_bottom = 97.0
+custom_constants/separation = -25
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar"]
-margin_right = 400.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 400, 0 )
-focus_neighbour_left = NodePath("../Button")
-focus_neighbour_top = NodePath("../Button")
-focus_neighbour_right = NodePath("../Button")
-focus_neighbour_bottom = NodePath("../Button")
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar"]
+margin_right = 873.0
+margin_bottom = 95.0
+texture = ExtResource( 10 )
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2"]
+anchor_right = 1.0
+anchor_bottom = 0.894737
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer"]
+margin_left = 25.0
+margin_top = 20.0
+margin_right = 848.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 823, 45 )
+focus_neighbour_left = NodePath("../../../TextureRect/CenterContainer/Button")
+focus_neighbour_top = NodePath("../../../TextureRect/CenterContainer/Button")
+focus_neighbour_right = NodePath("../../../TextureRect/CenterContainer/Button")
+focus_neighbour_bottom = NodePath("../../../TextureRect/CenterContainer/Button")
 size_flags_horizontal = 3
+custom_styles/read_only = SubResource( 13 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 15 )
+placeholder_text = "seach name"
+script = SubResource( 3 )
 
-[node name="Button" type="Button" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar"]
-margin_left = 410.0
-margin_right = 434.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-focus_neighbour_left = NodePath("../LineEdit")
-focus_neighbour_top = NodePath("../LineEdit")
-focus_neighbour_right = NodePath("../LineEdit")
-focus_neighbour_bottom = NodePath("../LineEdit")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit"]
+root_node = NodePath("../../../../../../../..")
+anims/RESET = SubResource( 5 )
+anims/focus = SubResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar"]
+margin_left = 848.0
+margin_right = 943.0
+margin_bottom = 95.0
+texture = ExtResource( 11 )
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect"]
+anchor_right = 1.02105
+anchor_bottom = 0.894737
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer"]
+margin_left = 28.0
+margin_top = 22.0
+margin_right = 68.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 40, 40 )
+focus_neighbour_left = NodePath("../../../TextureRect2/CenterContainer/LineEdit")
+focus_neighbour_top = NodePath("../../../TextureRect2/CenterContainer/LineEdit")
+focus_neighbour_right = NodePath("../../../TextureRect2/CenterContainer/LineEdit")
+focus_neighbour_bottom = NodePath("../../../TextureRect2/CenterContainer/LineEdit")
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+script = SubResource( 26 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer/Button"]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+margin_top = 2.0
+margin_bottom = 2.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="FilterPopup" type="Popup" parent="VBoxContainer/SearchBar"]
 anchor_left = 0.5
@@ -77,45 +321,48 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="VBoxContainer/SearchBar/FilterPopup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SearchBar/FilterPopup/Panel"]
 anchor_left = 0.0943396
 anchor_top = 0.0943396
 anchor_right = 0.90566
 anchor_bottom = 0.90566
+theme = SubResource( 8 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Notes" type="CheckBox" parent="VBoxContainer/SearchBar/FilterPopup/Panel/VBoxContainer"]
-margin_top = 2.0
+margin_top = 10.0
 margin_right = 85.0
-margin_bottom = 26.0
+margin_bottom = 29.0
+focus_mode = 0
 pressed = true
 text = "notes"
 
 [node name="Maps" type="CheckBox" parent="VBoxContainer/SearchBar/FilterPopup/Panel/VBoxContainer"]
-margin_top = 30.0
+margin_top = 33.0
 margin_right = 85.0
-margin_bottom = 54.0
+margin_bottom = 52.0
+focus_mode = 0
 pressed = true
 text = "maps"
 
 [node name="Pins" type="CheckBox" parent="VBoxContainer/SearchBar/FilterPopup/Panel/VBoxContainer"]
-margin_top = 58.0
+margin_top = 56.0
 margin_right = 85.0
-margin_bottom = 82.0
+margin_bottom = 75.0
+focus_mode = 0
 pressed = true
 text = "pins"
 
 [node name="CardList" type="Control" parent="VBoxContainer"]
-margin_top = 64.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_top = 104.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="GridContainerManager" type="Node" parent="VBoxContainer/CardList"]
@@ -127,35 +374,68 @@ script = ExtResource( 2 )
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CardList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/CardList/ScrollContainer"]
-margin_left = 512.0
-margin_right = 512.0
-margin_bottom = 536.0
+margin_left = 960.0
+margin_right = 960.0
+margin_bottom = 976.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
-custom_constants/vseparation = 30
-custom_constants/hseparation = 30
+custom_constants/vseparation = -40
+custom_constants/hseparation = -70
 columns = 4
 
-[node name="AddNewCardButton" type="Button" parent="VBoxContainer/CardList"]
+[node name="AddNewCardButton" type="TextureRect" parent="VBoxContainer/CardList"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = -56.0
-margin_right = -34.0
-margin_bottom = -26.0
-rect_min_size = Vector2( 30, 30 )
+margin_left = -146.0
+margin_top = -136.0
+rect_min_size = Vector2( 45, 45 )
+texture = ExtResource( 12 )
+
+[node name="Button" type="Button" parent="VBoxContainer/CardList/AddNewCardButton"]
+anchor_left = 0.410959
+anchor_top = 0.411765
+anchor_right = 0.821918
+anchor_bottom = 0.852941
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+script = SubResource( 23 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[connection signal="text_changed" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/LineEdit" to="VBoxContainer/CardList/CardManager" method="_on_LineEdit_text_changed"]
-[connection signal="pressed" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/Button" to="VBoxContainer/SearchBar" method="_on_Button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/CardList/AddNewCardButton/Button"]
+root_node = NodePath("../../../../..")
+anims/RESET = SubResource( 25 )
+anims/hover = SubResource( 24 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CardList/AddNewCardButton/Button"]
+modulate = Color( 0.0980392, 0.235294, 0.392157, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 20, 20 )
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[connection signal="focus_entered" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" to="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" method="_on_LineEdit_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" to="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" method="_on_LineEdit_focus_exited"]
+[connection signal="text_changed" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" to="VBoxContainer/CardList/CardManager" method="_on_LineEdit_text_changed"]
+[connection signal="focus_entered" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer/Button" to="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer/Button" method="_on_Button_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer/Button" to="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer/Button" method="_on_Button_focus_exited"]
+[connection signal="pressed" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect/CenterContainer/Button" to="VBoxContainer/SearchBar" method="_on_Button_pressed"]
 [connection signal="item_rect_changed" from="VBoxContainer/CardList/ScrollContainer/GridContainer" to="VBoxContainer/CardList/GridContainerManager" method="_on_GridContainer_item_rect_changed"]
-[connection signal="pressed" from="VBoxContainer/CardList/AddNewCardButton" to="." method="_on_AddNewCardButton_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/CardList/AddNewCardButton/Button" to="VBoxContainer/CardList/AddNewCardButton/Button" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/CardList/AddNewCardButton/Button" to="VBoxContainer/CardList/AddNewCardButton/Button" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/CardList/AddNewCardButton/Button" to="." method="_on_Button_pressed"]

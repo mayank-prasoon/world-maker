@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/wiki_dashboard/card/card_profile_texture.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask;
+
+void fragment() {
+	vec2 shifted_uv = UV;
+	shifted_uv.x -= 0.05;
+	shifted_uv.y -= 0.05;
+	vec2 uv_coordinate = (shifted_uv * vec2(1.1, 1.1)); 
+	vec4 mask_texture = texture(mask, uv_coordinate);
+	COLOR = texture(TEXTURE, UV) * mask_texture;
+} "
+
+[resource]
+shader = SubResource( 10 )
+shader_param/mask = ExtResource( 1 )

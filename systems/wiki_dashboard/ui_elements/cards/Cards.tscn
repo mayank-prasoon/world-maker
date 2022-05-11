@@ -1,56 +1,475 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/cards/Cards.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/cards/Background.gd" type="Script" id=4]
+[ext_resource path="res://assets/graphics/wiki_dashboard/card/card texture.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.309804, 0.305882, 0.305882, 1 )
+
+[sub_resource type="DynamicFont" id=1]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+Panel/styles/panel = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+resource_local_to_scene = true
+bg_color = Color( 0.219608, 0.564706, 0.886275, 0 )
+border_color = Color( 0.219608, 0.564706, 0.886275, 0 )
+expand_margin_top = 2.0
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/VBoxContainer/Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer2:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../..:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:mouse_default_cursor_shape")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "flip"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer2:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.15, 0.3 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:mouse_default_cursor_shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 2, 0, 0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/VBoxContainer/Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer2:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../..:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_local_to_scene = true
+resource_name = "focused"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:bg_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 0.219608, 0.564706, 0.886275, 0 ), Color( 0.219608, 0.564706, 0.886275, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.145098, 0.145098, 0.145098, 1 ) ]
+}
 
 [node name="Cards" type="Control"]
-anchor_right = 0.175781
-anchor_bottom = 0.39
-margin_right = -30.0
-margin_bottom = -39.0
-rect_min_size = Vector2( 180, 234 )
+anchor_right = 0.192708
+anchor_bottom = 0.375
+margin_bottom = 5.0
+rect_min_size = Vector2( 370, 410 )
+mouse_filter = 2
+theme = SubResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.2, 0.196078, 0.196078, 1 )
+margin_top = -30.0
+margin_bottom = 5.0
+rect_pivot_offset = Vector2( 185, 222.5 )
+texture = ExtResource( 5 )
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 185, 222.5 )
+mouse_filter = 2
+
+[node name="Background" type="Panel" parent="TextureRect/CenterContainer"]
+margin_left = 70.0
+margin_top = 72.0
+margin_right = 300.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 230, 300 )
+rect_pivot_offset = Vector2( 115, 150 )
+focus_mode = 2
+mouse_default_cursor_shape = 2
+custom_styles/panel = SubResource( 9 )
+script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.0666667
-anchor_top = 0.0512821
-anchor_right = 0.933333
-anchor_bottom = 0.948718
-margin_left = -9.53674e-07
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/Background"]
+anchor_left = 0.0434783
+anchor_top = 0.0333333
+anchor_right = 0.956522
+anchor_bottom = 0.966667
+margin_top = -9.53674e-07
+rect_pivot_offset = Vector2( 105, 140 )
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_left = 27.0
-margin_right = 127.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+[node name="TextureRect" type="TextureRect" parent="TextureRect/CenterContainer/Background/VBoxContainer"]
+margin_left = 45.0
+margin_top = 7.0
+margin_right = 165.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 120, 120 )
 size_flags_horizontal = 6
+size_flags_vertical = 6
+expand = true
+stretch_mode = 4
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 110.0
-margin_right = 155.0
-margin_bottom = 124.0
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/Background/VBoxContainer"]
+margin_top = 145.0
+margin_right = 210.0
+margin_bottom = 280.0
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="TextureRect/CenterContainer/Background/VBoxContainer/VBoxContainer"]
+margin_right = 210.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 4 )
 text = "name"
 align = 1
-
-[node name="Description" type="Label" parent="VBoxContainer"]
-margin_top = 134.0
-margin_right = 155.0
-margin_bottom = 148.0
-text = "sample text"
 autowrap = true
 
-[connection signal="gui_input" from="." to="." method="_on_Cards_gui_input"]
+[node name="Description" type="Label" parent="TextureRect/CenterContainer/Background/VBoxContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 210.0
+margin_bottom = 135.0
+size_flags_vertical = 7
+text = "sample text"
+align = 1
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/CenterContainer/Background"]
+autoplay = "RESET"
+anims/RESET = SubResource( 11 )
+anims/flip = SubResource( 15 )
+
+[node name="FocusAnimation" type="AnimationPlayer" parent="TextureRect/CenterContainer/Background"]
+autoplay = "RESET"
+anims/RESET = SubResource( 13 )
+anims/focused = SubResource( 14 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TextureRect/CenterContainer/Background"]
+visible = false
+anchor_left = 0.0434783
+anchor_top = 0.0333333
+anchor_right = 0.956522
+anchor_bottom = 0.966667
+margin_top = -9.53674e-07
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 105, 140 )
+custom_constants/separation = 15
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Delete" type="Button" parent="TextureRect/CenterContainer/Background/VBoxContainer2"]
+margin_left = 55.0
+margin_top = 107.0
+margin_right = 155.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 100, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+text = "delete"
+
+[node name="Edit" type="Button" parent="TextureRect/CenterContainer/Background/VBoxContainer2"]
+margin_left = 55.0
+margin_top = 147.0
+margin_right = 155.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 100, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+text = "edit"
+
+[connection signal="focus_entered" from="TextureRect/CenterContainer/Background" to="TextureRect/CenterContainer/Background" method="_on_Background_focus_entered"]
+[connection signal="focus_exited" from="TextureRect/CenterContainer/Background" to="TextureRect/CenterContainer/Background" method="_on_Background_focus_exited"]
+[connection signal="gui_input" from="TextureRect/CenterContainer/Background" to="." method="_on_Background_gui_input"]
+[connection signal="mouse_pointer_entered" from="TextureRect/CenterContainer/Background" to="TextureRect/CenterContainer/Background" method="_on_Background_mouse_pointer_entered"]
+[connection signal="mouse_pointer_exited" from="TextureRect/CenterContainer/Background" to="TextureRect/CenterContainer/Background" method="_on_Background_mouse_pointer_exited"]
+[connection signal="pressed" from="TextureRect/CenterContainer/Background/VBoxContainer2/Delete" to="." method="_on_Delete_pressed"]
