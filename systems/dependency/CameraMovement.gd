@@ -5,6 +5,7 @@ export(Vector2) var zoomSpeed:Vector2       = Vector2(0.100001, 0.100001)
 export(Vector2) var minZoom:Vector2         = Vector2(0.500001, 0.500001)
 export(Vector2) var maxZoom:Vector2         = Vector2(2.600001, 2.600001)
 export(Vector2) var defaultPosition:Vector2 = Vector2(0, 0)
+export(float)   var panSpeed:float          = 0.2
 
 var desiredZooom:Vector2 = self.zoom
 

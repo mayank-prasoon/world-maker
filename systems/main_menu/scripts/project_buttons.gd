@@ -11,6 +11,8 @@ func _ready():
 
 	var label   = Label.new()
 	label.text  = path
+	label.clip_text = true
+	label.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 	
 	var p_name   = Label.new()
 	p_name.text  = project_name
@@ -29,6 +31,6 @@ func _ready():
 	open.connect("pressed", self, "open_project")
 
 func open_project():
-	SystemSettings.current_path             = path
+	ProjectSettingsManager.project_location = path
 	ProjectSettingsManager.open_project()
-	var _x = get_tree().change_scene_to(load("res://systems/system_menu/SystemMenu.tscn"))
+	var _x = get_tree().change_scene_to(load("res://systems/Dashboard.tscn"))

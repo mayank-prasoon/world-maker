@@ -10,12 +10,12 @@ onready var create_button:Button     = $HBoxContainer/CenterContainer2/InputFiel
 #onready var map_chunk_size_y:SpinBox = $VBoxContainer2/VBoxContainer3/HBoxContainer/Chunky
 
 
-func _ready():
+func _ready()->void:
 	EventBus.emit_signal("disable_camera", true)
 
 
 # main loop
-func _process(_delta):
+func _process(_delta:float)->void:
 	if (map_name.text != "") and (map_texture.text != ""):
 		create_button.disabled = false
 	else:
@@ -23,7 +23,7 @@ func _process(_delta):
 
 
 # generate confirmation dialog
-func create_confirmation_dialog():
+func create_confirmation_dialog()->void:
 	# ConfirmationDialog
 	var new_pop_up:ConfirmationDialog = ConfirmationDialog.new()
 	new_pop_up.name            = "ConfirmationDialog"
@@ -43,7 +43,7 @@ func create_confirmation_dialog():
 
 
 # emit signal generate map
-func _on_CreateButton_pressed():
+func _on_CreateButton_pressed()->void:
 	EventBus.emit_signal(
 		"create_new_map",
 		map_name.get_text(),
@@ -54,18 +54,18 @@ func _on_CreateButton_pressed():
 	self.close_the_dialog()
 
 
-func _on_Button_pressed():
+func _on_Button_pressed()->void:
 	$FileDialog.popup_centered()
 
 
-func _on_FileDialog_file_selected(path):
+func _on_FileDialog_file_selected(path)->void:
 	map_texture.text = path
 	var file = File.new()
-	if !(path == "" or file.file_exists(path)):
+	if !(path == "") or file.file_exists(path):
 		$HBoxContainer/CenterContainer/TextureRect.texture = ImageHandler.load_image_texture(path)
 
 # hide dialog box
-func hide_map_creator():
+func hide_map_creator()->void:
 	if (map_name.get_text().empty()) and (map_texture.get_text().empty()):
 		# check if the fields are filled
 		EventBus.emit_signal("disable_camera", false)
@@ -78,6 +78,6 @@ func hide_map_creator():
 
 
 # close the dialog box~
-func close_the_dialog():
+func close_the_dialog()->void:
 	EventBus.emit_signal("disable_camera", false)
 	$"../../AnimationPlayer".play("close")

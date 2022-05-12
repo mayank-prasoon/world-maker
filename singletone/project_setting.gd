@@ -31,22 +31,24 @@ export(Array,Dictionary) var addons
 signal load_data
 
 
-func _ready():
+func _ready()->void:
 	Logger.info(name + " - " + "Node loadded")
-	open_project()
 
-func open_project():
+func open_project()->void:
 	Logger.info(name + " - " + "open_project()")
-	var file = File.new()
-	if !file.file_exists(SystemSettings.current_path + save_file_location):
-		shortcuts = default_keybinding.duplicate()
-		save_file()
-	else:
-		open_file()
+#	var file = File.new()
+#	if !file.file_exists(self.project_location + save_file_location):
+#		shortcuts = default_keybinding.duplicate()
+#		save_file()
+#		create_folder()
+#	elif file.file_exists(self.project_location + save_file_location):
+	open_file()
+	SystemDataManager.load_root_folder_paths()
+	folder_integrity()
 	emit_signal("load_data")
 
 
-func save_file():
+func save_file()->void:
 	CommandSystem.API.echo("saved project settings")
 	project_save_template.project_name     = project_name
 	project_save_template.project_version  = project_version
@@ -56,13 +58,33 @@ func save_file():
 	project_save_template.shortcuts        = shortcuts
 	project_save_template.visual_settings  = visual_settings
 
-	var _error = ResourceSaver.save(SystemSettings.current_path + save_file_location, project_save_template)
+	var _error = ResourceSaver.save(self.project_location + save_file_location, project_save_template)
 
+func folder_integrity()->void:
+	var dir = Directory.new()
+	if !dir.dir_exists(SystemDataManager.root_save_file_path):
+		dir.make_dir_recursive(SystemDataManager.root_save_file_path)
 
-func open_file():
-	CommandSystem.API.echo("opened project settings")
-	var resource = ResourceLoader.load(SystemSettings.current_path + save_file_location)
+	if !dir.dir_exists(SystemDataManager.root_pin_save_path.get_base_dir()):
+		dir.make_dir_recursive(SystemDataManager.root_pin_save_path.get_base_dir())
+
+	if !dir.dir_exists(SystemDataManager.root_pin_temp_save_path.get_base_dir()):
+		dir.make_dir_recursive(SystemDataManager.root_pin_temp_save_path.get_base_dir())
+
+	if !dir.dir_exists(SystemDataManager.root_map_save_path.get_base_dir()):
+		dir.make_dir_recursive(SystemDataManager.root_map_save_path.get_base_dir())
+
+	if !dir.dir_exists(SystemDataManager.root_article_save_path.get_base_dir()):
+		dir.make_dir_recursive(SystemDataManager.root_article_save_path.get_base_dir())
 	
+	if !dir.dir_exists(SystemDataManager.root_temp_save_path.get_base_dir()):
+		dir.make_dir_recursive(SystemDataManager.root_temp_save_path.get_base_dir())
+
+
+func open_file()->void:
+	CommandSystem.API.echo("opened project settings")
+	var resource = ResourceLoader.load(self.project_location + save_file_location)
+
 	project_name     = resource.project_name
 	project_version  = resource.project_version
 	date_of_creation = resource.date_of_creation 

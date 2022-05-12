@@ -93,7 +93,7 @@ func close_the_dialog()->void:
 func _on_OpenTexture_file_selected(path)->void:
 	layer_texture.text  = path
 	var file = File.new()
-	if !(path == "" or file.file_exists(path)):
+	if !(path == "") or file.file_exists(path):
 		$HBoxContainer/CenterContainer/TextureRect.texture = ImageHandler.load_image_texture(path)
 
 

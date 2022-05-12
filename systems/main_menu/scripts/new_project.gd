@@ -20,7 +20,9 @@ func _on_LineEdit_text_changed(new_text):
 # select dir
 func _on_FileDialog_dir_selected(dir):
 	Logger.info(name + " _on_FileDialog_dir_selected({0})".format([dir]))
+	$VBoxContainer/VBoxContainer/Label2.text = dir
 	project_location = dir
+	
 
 # create project
 func _on_CreateButton_pressed():
@@ -40,8 +42,9 @@ func _on_CreateButton_pressed():
 	else:
 		# creates the project save file
 		SystemSettings.add_new_project(project_name, project_location)
-		ProjectSettingsManager.project_name     = project_name
-		ProjectSettingsManager.project_location = project_location
-		ProjectSettingsManager.date_of_creation = OS.get_date()
+		ProjectSettingsManager.project_name      = project_name
+		ProjectSettingsManager.project_location  = project_location
+		ProjectSettingsManager.date_of_creation  = OS.get_date()
 		ProjectSettingsManager.save_file()
+		
 		var _x = get_tree().change_scene_to(load("res://systems/Dashboard.tscn"))

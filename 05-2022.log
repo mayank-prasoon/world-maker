@@ -913,3 +913,335 @@
 05/11/2022 13:23:44 INFO     NewProject _on_BrowseButton_pressed()
 05/11/2022 13:23:47 INFO     MainMenu _on_OpenProjectButton_pressed()
 05/11/2022 13:23:47 INFO     SystemSettings - get_projects()
+05/12/2022 06:13:34 INFO     SystemSettings loaded
+05/12/2022 06:13:34 INFO     ShortcutSettings - Node loadded
+05/12/2022 06:13:34 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 06:13:34 INFO     ProjectSettingsManager - open_project()
+05/12/2022 06:13:34 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 06:13:34 INFO     ShortcutSettings - setup_keys()
+05/12/2022 06:13:34 INFO     NewProject - node loaded
+05/12/2022 06:13:34 INFO     MainMenu - node loaded
+05/12/2022 07:26:51 INFO     SystemSettings loaded
+05/12/2022 07:26:51 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:26:51 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:26:51 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:26:51 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:26:51 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:26:51 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:26:51 INFO     ProjectSetting - Node loadded
+05/12/2022 07:26:51 INFO     ProjectSetting - open_project()
+05/12/2022 07:26:51 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:26:51 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:30:52 INFO     SystemSettings loaded
+05/12/2022 07:30:52 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:30:52 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:30:52 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:31:32 INFO     SystemSettings loaded
+05/12/2022 07:31:32 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:31:32 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:31:32 INFO     NewProject - node loaded
+05/12/2022 07:31:32 INFO     MainMenu - node loaded
+05/12/2022 07:31:33 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:31:33 INFO     SystemSettings - get_projects()
+05/12/2022 07:31:37 INFO     NewProject _on_LineEdit_text_changed(g)
+05/12/2022 07:31:37 INFO     NewProject _on_LineEdit_text_changed(ga)
+05/12/2022 07:31:37 INFO     NewProject _on_LineEdit_text_changed(gam)
+05/12/2022 07:31:37 INFO     NewProject _on_LineEdit_text_changed(game)
+05/12/2022 07:31:37 INFO     NewProject _on_LineEdit_text_changed(gamer)
+05/12/2022 07:31:37 INFO     NewProject _on_LineEdit_text_changed(gamer )
+05/12/2022 07:31:38 INFO     NewProject _on_LineEdit_text_changed(gamer g)
+05/12/2022 07:31:38 INFO     NewProject _on_LineEdit_text_changed(gamer ga)
+05/12/2022 07:31:39 INFO     NewProject _on_LineEdit_text_changed(gamer gat)
+05/12/2022 07:31:39 INFO     NewProject _on_LineEdit_text_changed(gamer gate)
+05/12/2022 07:31:39 INFO     NewProject _on_LineEdit_text_changed(gamer )
+05/12/2022 07:31:40 INFO     NewProject _on_LineEdit_text_changed()
+05/12/2022 07:31:42 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:31:42 INFO     SystemSettings - get_projects()
+05/12/2022 07:31:43 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:32:31 INFO     SystemSettings loaded
+05/12/2022 07:32:31 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:32:31 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:32:31 INFO     NewProject - node loaded
+05/12/2022 07:32:31 INFO     MainMenu - node loaded
+05/12/2022 07:32:33 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:32:33 INFO     SystemSettings - get_projects()
+05/12/2022 07:32:34 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:35:27 INFO     SystemSettings loaded
+05/12/2022 07:35:27 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:35:27 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:35:27 INFO     NewProject - node loaded
+05/12/2022 07:35:27 INFO     MainMenu - node loaded
+05/12/2022 07:35:28 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:35:28 INFO     SystemSettings - get_projects()
+05/12/2022 07:35:32 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:37:14 INFO     SystemSettings loaded
+05/12/2022 07:37:14 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:37:14 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:37:14 INFO     NewProject - node loaded
+05/12/2022 07:37:14 INFO     MainMenu - node loaded
+05/12/2022 07:37:15 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:37:15 INFO     SystemSettings - get_projects()
+05/12/2022 07:37:16 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:37:16 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:37:16 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:37:44 INFO     SystemSettings loaded
+05/12/2022 07:37:44 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:37:44 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:37:44 INFO     NewProject - node loaded
+05/12/2022 07:37:44 INFO     MainMenu - node loaded
+05/12/2022 07:37:45 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:37:45 INFO     SystemSettings - get_projects()
+05/12/2022 07:39:46 INFO     SystemSettings loaded
+05/12/2022 07:39:46 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:39:46 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:39:46 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:39:46 INFO     ProjectSetting - Node loadded
+05/12/2022 07:40:02 INFO     SystemSettings loaded
+05/12/2022 07:40:02 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:40:02 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:40:02 INFO     NewProject - node loaded
+05/12/2022 07:40:02 INFO     MainMenu - node loaded
+05/12/2022 07:40:03 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:40:03 INFO     SystemSettings - get_projects()
+05/12/2022 07:40:04 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:43:35 INFO     SystemSettings loaded
+05/12/2022 07:43:35 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:43:35 INFO     NewProject - node loaded
+05/12/2022 07:43:35 INFO     MainMenu - node loaded
+05/12/2022 07:44:59 INFO     SystemSettings loaded
+05/12/2022 07:44:59 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:44:59 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:44:59 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:44:59 INFO     ProjectSetting - Node loadded
+05/12/2022 07:45:05 INFO     SystemSettings loaded
+05/12/2022 07:45:05 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:45:05 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:45:05 INFO     NewProject - node loaded
+05/12/2022 07:45:05 INFO     MainMenu - node loaded
+05/12/2022 07:45:06 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:45:06 INFO     SystemSettings - get_projects()
+05/12/2022 07:45:06 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:46:53 INFO     SystemSettings loaded
+05/12/2022 07:46:53 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:46:53 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:46:53 INFO     NewProject - node loaded
+05/12/2022 07:46:53 INFO     MainMenu - node loaded
+05/12/2022 07:47:06 INFO     SystemSettings loaded
+05/12/2022 07:47:06 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:47:06 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:47:06 INFO     NewProject - node loaded
+05/12/2022 07:47:06 INFO     MainMenu - node loaded
+05/12/2022 07:47:08 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:47:08 INFO     SystemSettings - get_projects()
+05/12/2022 07:47:08 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:47:19 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:47:19 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:52:44 INFO     SystemSettings loaded
+05/12/2022 07:52:44 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:52:44 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:52:44 INFO     NewProject - node loaded
+05/12/2022 07:52:44 INFO     MainMenu - node loaded
+05/12/2022 07:52:45 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:52:45 INFO     SystemSettings - get_projects()
+05/12/2022 07:52:46 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:52:46 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:52:46 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:53:20 INFO     SystemSettings loaded
+05/12/2022 07:53:20 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:53:20 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:53:20 INFO     NewProject - node loaded
+05/12/2022 07:53:20 INFO     MainMenu - node loaded
+05/12/2022 07:53:21 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:53:21 INFO     SystemSettings - get_projects()
+05/12/2022 07:53:23 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:53:23 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:53:23 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:53:56 INFO     SystemSettings loaded
+05/12/2022 07:54:07 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:54:07 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:54:07 INFO     NewProject - node loaded
+05/12/2022 07:54:07 INFO     MainMenu - node loaded
+05/12/2022 07:54:08 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:54:08 INFO     SystemSettings - get_projects()
+05/12/2022 07:54:09 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:54:09 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:54:09 INFO     ShortcutSettings - setup_keys()
+05/12/2022 07:56:56 INFO     SystemSettings loaded
+05/12/2022 07:56:56 INFO     ShortcutSettings - Node loadded
+05/12/2022 07:56:56 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 07:56:56 INFO     NewProject - node loaded
+05/12/2022 07:56:56 INFO     MainMenu - node loaded
+05/12/2022 07:56:58 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 07:56:58 INFO     SystemSettings - get_projects()
+05/12/2022 07:56:59 INFO     ProjectSettingsManager - open_project()
+05/12/2022 07:56:59 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 07:56:59 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:14:59 INFO     SystemSettings loaded
+05/12/2022 09:14:59 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:14:59 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:14:59 INFO     NewProject - node loaded
+05/12/2022 09:14:59 INFO     MainMenu - node loaded
+05/12/2022 09:15:02 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:15:02 INFO     SystemSettings - get_projects()
+05/12/2022 09:15:03 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:15:03 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:15:03 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:15:58 INFO     SystemSettings loaded
+05/12/2022 09:15:58 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:15:58 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:15:58 INFO     NewProject - node loaded
+05/12/2022 09:15:58 INFO     MainMenu - node loaded
+05/12/2022 09:15:59 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:15:59 INFO     SystemSettings - get_projects()
+05/12/2022 09:16:00 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:16:00 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:16:00 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:24:53 INFO     SystemSettings loaded
+05/12/2022 09:24:53 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:24:53 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:24:53 INFO     NewProject - node loaded
+05/12/2022 09:24:53 INFO     MainMenu - node loaded
+05/12/2022 09:24:54 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:24:54 INFO     SystemSettings - get_projects()
+05/12/2022 09:24:56 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:24:56 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:24:56 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:27:58 INFO     SystemSettings loaded
+05/12/2022 09:27:58 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:27:58 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:29:11 INFO     SystemSettings loaded
+05/12/2022 09:29:11 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:29:11 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:29:11 INFO     NewProject - node loaded
+05/12/2022 09:29:11 INFO     MainMenu - node loaded
+05/12/2022 09:29:14 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:29:14 INFO     SystemSettings - get_projects()
+05/12/2022 09:29:17 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:29:17 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:29:17 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:45:50 INFO     SystemSettings loaded
+05/12/2022 09:45:50 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:45:50 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:45:50 INFO     NewProject - node loaded
+05/12/2022 09:45:50 INFO     MainMenu - node loaded
+05/12/2022 09:45:51 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:45:51 INFO     SystemSettings - get_projects()
+05/12/2022 09:45:52 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:45:52 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:45:52 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:49:57 INFO     SystemSettings loaded
+05/12/2022 09:49:57 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:49:57 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:49:57 INFO     NewProject - node loaded
+05/12/2022 09:49:57 INFO     MainMenu - node loaded
+05/12/2022 09:50:01 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:50:01 INFO     SystemSettings - get_projects()
+05/12/2022 09:50:03 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:50:03 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:50:03 INFO     ShortcutSettings - setup_keys()
+05/12/2022 09:51:11 INFO     SystemSettings loaded
+05/12/2022 09:51:11 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:51:11 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:51:17 INFO     SystemSettings loaded
+05/12/2022 09:51:17 INFO     ShortcutSettings - Node loadded
+05/12/2022 09:51:17 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 09:51:17 INFO     NewProject - node loaded
+05/12/2022 09:51:17 INFO     MainMenu - node loaded
+05/12/2022 09:51:19 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 09:51:19 INFO     SystemSettings - get_projects()
+05/12/2022 09:51:20 INFO     ProjectSettingsManager - open_project()
+05/12/2022 09:51:20 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 09:51:20 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:15:34 INFO     SystemSettings loaded
+05/12/2022 10:15:34 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:15:34 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:15:34 INFO     NewProject - node loaded
+05/12/2022 10:15:34 INFO     MainMenu - node loaded
+05/12/2022 10:15:34 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:15:34 INFO     SystemSettings - get_projects()
+05/12/2022 10:15:35 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:15:35 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:15:35 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:17:49 INFO     SystemSettings loaded
+05/12/2022 10:17:49 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:17:49 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:17:57 INFO     SystemSettings loaded
+05/12/2022 10:17:57 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:17:57 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:17:57 INFO     NewProject - node loaded
+05/12/2022 10:17:57 INFO     MainMenu - node loaded
+05/12/2022 10:17:58 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:17:58 INFO     SystemSettings - get_projects()
+05/12/2022 10:17:59 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:17:59 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:17:59 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:18:15 INFO     SystemSettings loaded
+05/12/2022 10:18:15 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:18:15 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:18:15 INFO     NewProject - node loaded
+05/12/2022 10:18:15 INFO     MainMenu - node loaded
+05/12/2022 10:18:17 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:18:17 INFO     SystemSettings - get_projects()
+05/12/2022 10:18:18 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:18:18 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:18:18 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:18:50 INFO     SystemSettings loaded
+05/12/2022 10:18:50 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:18:50 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:18:50 INFO     NewProject - node loaded
+05/12/2022 10:18:50 INFO     MainMenu - node loaded
+05/12/2022 10:18:51 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:18:51 INFO     SystemSettings - get_projects()
+05/12/2022 10:18:52 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:18:52 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:18:52 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:20:55 INFO     SystemSettings loaded
+05/12/2022 10:20:55 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:20:55 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:20:55 INFO     NewProject - node loaded
+05/12/2022 10:20:55 INFO     MainMenu - node loaded
+05/12/2022 10:20:56 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:20:56 INFO     SystemSettings - get_projects()
+05/12/2022 10:20:57 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:20:57 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:20:57 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:25:31 INFO     SystemSettings loaded
+05/12/2022 10:25:31 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:25:31 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:25:31 INFO     NewProject - node loaded
+05/12/2022 10:25:31 INFO     MainMenu - node loaded
+05/12/2022 10:25:33 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:25:33 INFO     SystemSettings - get_projects()
+05/12/2022 10:25:34 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:25:34 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:25:34 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:26:52 INFO     SystemSettings loaded
+05/12/2022 10:26:52 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:26:52 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:26:52 INFO     NewProject - node loaded
+05/12/2022 10:26:52 INFO     MainMenu - node loaded
+05/12/2022 10:26:53 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:26:53 INFO     SystemSettings - get_projects()
+05/12/2022 10:26:55 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:26:55 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:26:55 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:27:19 INFO     SystemSettings loaded
+05/12/2022 10:27:19 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:27:19 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:27:19 INFO     NewProject - node loaded
+05/12/2022 10:27:19 INFO     MainMenu - node loaded
+05/12/2022 10:27:20 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:27:20 INFO     SystemSettings - get_projects()
+05/12/2022 10:27:21 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:27:21 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:27:21 INFO     ShortcutSettings - setup_keys()
+05/12/2022 10:27:45 INFO     SystemSettings loaded
+05/12/2022 10:27:45 INFO     ShortcutSettings - Node loadded
+05/12/2022 10:27:45 INFO     ProjectSettingsManager - Node loadded
+05/12/2022 10:27:45 INFO     NewProject - node loaded
+05/12/2022 10:27:45 INFO     MainMenu - node loaded
+05/12/2022 10:27:46 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/12/2022 10:27:46 INFO     SystemSettings - get_projects()
+05/12/2022 10:27:47 INFO     ProjectSettingsManager - open_project()
+05/12/2022 10:27:47 INFO     ShortcutSettings - delete_old_keys()
+05/12/2022 10:27:47 INFO     ShortcutSettings - setup_keys()

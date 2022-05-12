@@ -9,9 +9,6 @@ shader = ExtResource( 2 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 margin_right = 218.0

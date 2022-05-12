@@ -2,10 +2,10 @@ extends Node
 
 # === VARIABLES ===
 
-var editor_settings_save_location:String   = "res://settings.tres"
+var editor_settings_save_location:String   = "user://settings.tres"
 var settings:EditorSettingsTemplate        = EditorSettingsTemplate.new()
 
-var current_path:String = "res://"
+var current_path:String = "user://"
 
 func _ready()->void:
 	Logger.info(name + " loaded")
@@ -14,7 +14,7 @@ func _ready()->void:
 		var _x = ResourceSaver.save(editor_settings_save_location, settings)
 	else:
 		settings = ResourceLoader.load(editor_settings_save_location)
-	current_path = "res://"
+	current_path = "user://"
 
 # === project ===
 

@@ -353,7 +353,6 @@ __meta__ = {
 }
 
 [node name="NewProject" type="Control" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -383,7 +382,7 @@ icon = ExtResource( 9 )
 [node name="VBoxContainer" type="VBoxContainer" parent="NewProject/VBoxContainer"]
 margin_top = 59.0
 margin_right = 384.0
-margin_bottom = 134.0
+margin_bottom = 168.0
 custom_constants/separation = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NewProject/VBoxContainer/VBoxContainer"]
@@ -444,11 +443,19 @@ custom_styles/pressed = SubResource( 14 )
 custom_styles/normal = SubResource( 1 )
 text = "browse"
 
+[node name="Label2" type="Label" parent="NewProject/VBoxContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 384.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+text = "select path"
+clip_text = true
+
 [node name="CreateButton" type="Button" parent="NewProject/VBoxContainer"]
 margin_left = 142.0
-margin_top = 174.0
+margin_top = 208.0
 margin_right = 242.0
-margin_bottom = 204.0
+margin_bottom = 238.0
 rect_min_size = Vector2( 100, 30 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
@@ -466,7 +473,11 @@ margin_top = -16.0
 margin_right = 328.0
 margin_bottom = 254.0
 window_title = "Open a Directory"
+resizable = true
 mode = 2
+access = 2
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -516,7 +527,11 @@ __meta__ = {
 margin_right = 394.0
 margin_bottom = 330.0
 window_title = "Open a Directory"
+resizable = true
 mode = 2
+access = 2
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -565,7 +580,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="WhatsNew/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 0.000488281
+margin_right = 2429.99
+margin_bottom = 2910.0
 mouse_filter = 2
 custom_constants/separation = 30
 

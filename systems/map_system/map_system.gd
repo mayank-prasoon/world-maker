@@ -300,6 +300,7 @@ func _on_move_pin_to_top(map_pin)->void:
 # when map menu is clicked
 func _on_MenuButton_item_selected(index)->void:
 	if (index != -1):
+#	if !(map_load_system.map_list.values().size() == 0):
 		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("RESET")
 		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("close")
 		var map_resource_path:String = map_load_system.map_list.values()[index]
@@ -316,7 +317,7 @@ func assign_layers(map_resource_path:String)->void:
 func _on_create_new_map(map_name:String, map_texture:String, article:bool)->void:
 	MapResourceSystem.MapResourceManager.create_map_resource(map_name, map_texture, article)
 	map_load_system.assign_map_name()
-	items_node.emit_signal("item_selected", -1)
+	items_node.emit_signal("item_selected", 0)
 	
 
 # when a pin is requested to be added
@@ -335,7 +336,7 @@ func _on_current_delete_map()->void:
 	var dir = Directory.new()
 	dir.remove(map_resource_path)
 	items_node.remove_item(map_load_system.current_selected_map)
-	
+	map_load_system.assign_map_name()
 	items_node.emit_signal("item_selected", 0)
 	
 

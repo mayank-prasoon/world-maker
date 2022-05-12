@@ -439,6 +439,7 @@ editor_draw_drag_margin = true
 script = ExtResource( 2 )
 minZoom = Vector2( 0.5, 0.5 )
 maxZoom = Vector2( 3.5, 3.5 )
+panSpeed = 0.8
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
