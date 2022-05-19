@@ -1,9 +1,11 @@
 extends Control
 
-var wiki_dashboard:PackedScene = load("res://systems/wiki_dashboard/WikiDashboard.tscn")
-var map_dashboard:PackedScene  = load("res://systems/map_system/MapDashboard.tscn")
+var wiki_dashboard:PackedScene = preload("res://systems/wiki_dashboard/WikiDashboard.tscn")
+var map_dashboard:PackedScene  = preload("res://systems/map_system/MapDashboard.tscn")
 
 onready var add_card_button:Button = get_parent().get_node("WikiDashboard/VBoxContainer/CardList/AddNewCardButton/Button")
+
+var thread = Thread.new()
 
 func _on_HomeButton_pressed():
 	get_parent().get_child(1).queue_free()

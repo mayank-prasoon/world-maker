@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=2]
@@ -20,11 +20,25 @@ func _ready()->void:
 	$CenterContainer/VBoxContainer/DateOfCreation/LineEdit.text  = str(ProjectSettingsManager.date_of_creation.day) + \"/\" + str(ProjectSettingsManager.date_of_creation.month) + \"/\" + str(ProjectSettingsManager.date_of_creation.year)
 	$CenterContainer/VBoxContainer/ProjectLocation/LineEdit.text = ProjectSettingsManager.project_location
 
-func _input(event):
+
+func _on_RemoveProject_pressed():
+	SystemSettings.remove_project(ProjectSettingsManager.project_name,  ProjectSettingsManager.project_location)
+	get_tree().change_scene_to(load(\"res://systems/main_menu/MainMenu.tscn\"))
+
+
+func _on_Control_gui_input(event):
 	if event is InputEventMouse:
 		if event.is_pressed():
 			$\"../../AnimationPlayer\".play(\"close\")
 "
+
+[sub_resource type="DynamicFont" id=5]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.909804, 0.25098, 0.25098, 1 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "close"
@@ -82,6 +96,7 @@ script = SubResource( 3 )
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer"]
 margin_left = 660.0
@@ -99,12 +114,14 @@ margin_bottom = 19.0
 margin_right = 200.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 200, 0 )
+mouse_filter = 1
 text = "name "
 
 [node name="LineEdit" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/ProjectName"]
 margin_left = 204.0
 margin_right = 600.0
 margin_bottom = 19.0
+mouse_filter = 1
 size_flags_horizontal = 3
 
 [node name="ProjectVersion" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
@@ -116,12 +133,14 @@ margin_bottom = 58.0
 margin_right = 200.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 200, 0 )
-text = "project name"
+mouse_filter = 1
+text = "version"
 
 [node name="LineEdit" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/ProjectVersion"]
 margin_left = 204.0
 margin_right = 600.0
 margin_bottom = 19.0
+mouse_filter = 1
 size_flags_horizontal = 3
 
 [node name="DateOfCreation" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
@@ -133,12 +152,14 @@ margin_bottom = 97.0
 margin_right = 200.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 200, 0 )
+mouse_filter = 1
 text = "date of creation"
 
 [node name="LineEdit" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/DateOfCreation"]
 margin_left = 204.0
 margin_right = 600.0
 margin_bottom = 19.0
+mouse_filter = 1
 size_flags_horizontal = 3
 
 [node name="ProjectLocation" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/VBoxContainer"]
@@ -150,13 +171,34 @@ margin_bottom = 136.0
 margin_right = 200.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 200, 0 )
+mouse_filter = 1
 text = "project location"
 
 [node name="LineEdit" type="Label" parent="CanvasLayer/Control/CenterContainer/VBoxContainer/ProjectLocation"]
 margin_left = 204.0
 margin_right = 600.0
 margin_bottom = 19.0
+mouse_filter = 1
 size_flags_horizontal = 3
+
+[node name="RemoveProject" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -15.0
+margin_right = 92.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 30 )
+hint_tooltip = "remove the project form the system"
+custom_colors/font_color_hover = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+text = "remove project"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/close = SubResource( 4 )
+
+[connection signal="gui_input" from="CanvasLayer/Control" to="CanvasLayer/Control" method="_on_Control_gui_input"]
+[connection signal="pressed" from="CanvasLayer/Control/RemoveProject" to="CanvasLayer/Control" method="_on_RemoveProject_pressed"]

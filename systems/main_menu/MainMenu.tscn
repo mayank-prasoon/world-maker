@@ -5,7 +5,7 @@
 [ext_resource path="res://systems/main_menu/scripts/new_project.gd" type="Script" id=3]
 [ext_resource path="res://systems/main_menu/scripts/open_project.gd" type="Script" id=4]
 [ext_resource path="res://assets/graphics/main_menu/flower-6328348.jpg" type="Texture" id=5]
-[ext_resource path="res://assets/graphics/main_menu/World Designer.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/main_menu/World Maker.png" type="Texture" id=6]
 [ext_resource path="res://assets/graphics/main_menu/icon/akar-icons_twitter-fill.png" type="Texture" id=7]
 [ext_resource path="res://assets/graphics/main_menu/icon/akar-icons_github-fill.png" type="Texture" id=8]
 [ext_resource path="res://assets/graphics/main_menu/icon/Vector.png" type="Texture" id=9]
@@ -151,11 +151,19 @@ tracks/0/keys = {
 [sub_resource type="GDScript" id=10]
 script/source = "extends Control
 
-func _on_WhatsNew_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			$AnimationPlayer.play_backwards(\"load (copy)\")
+var pressed:bool = false
 
+# WhatsNew gui input
+func _on_WhatsNew_gui_input(event):
+	if pressed:
+		if event is InputEventMouseButton:
+			if event.is_pressed():
+				$AnimationPlayer.play_backwards(\"load (copy)\")
+
+
+
+func _on_WhatsNewButton_pressed():
+	pressed = true
 "
 
 [sub_resource type="Animation" id=9]
@@ -183,6 +191,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/VBoxContainer:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 485.999, 582 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -262,9 +282,10 @@ script/source = "extends Control
 func _on_SocialMediaButton_pressed():
 	OS.shell_open('https://www.youtube.com/')
 
+
 func _on_HelpButton_pressed():
 	OS.shell_open('https://www.youtube.com/')
-	
+
 "
 
 [sub_resource type="DynamicFont" id=21]
@@ -353,6 +374,7 @@ __meta__ = {
 }
 
 [node name="NewProject" type="Control" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -558,7 +580,6 @@ anims/RESET = SubResource( 6 )
 anims/load = SubResource( 7 )
 
 [node name="WhatsNew" type="Control" parent="."]
-visible = false
 anchor_left = 0.0078125
 anchor_top = 0.0138889
 anchor_right = 0.992188
@@ -580,13 +601,13 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="WhatsNew/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 2429.99
-margin_bottom = 2910.0
+margin_right = 0.000396729
+margin_bottom = -0.00012207
 mouse_filter = 2
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="WhatsNew/Control/VBoxContainer"]
-margin_right = 485.0
+margin_right = 971.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "whats new"
@@ -594,21 +615,49 @@ align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="WhatsNew/Control/VBoxContainer"]
 margin_top = 49.0
-margin_right = 485.0
-margin_bottom = 533.0
+margin_right = 971.0
+margin_bottom = 1115.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
-margin_right = 485.0
+margin_right = 971.0
 margin_bottom = 19.0
-text = "+ added book"
+text = "+ wiki system"
+align = 1
+
+[node name="Label2" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
+margin_top = 23.0
+margin_right = 971.0
+margin_bottom = 42.0
+text = "+ map system"
+align = 1
+
+[node name="Label3" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
+margin_top = 46.0
+margin_right = 971.0
+margin_bottom = 65.0
+text = "+ project manager"
+align = 1
+
+[node name="Label4" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
+margin_top = 69.0
+margin_right = 971.0
+margin_bottom = 88.0
+text = "+ command line system"
+align = 1
+
+[node name="Label5" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
+margin_top = 92.0
+margin_right = 971.0
+margin_bottom = 111.0
+text = "+ asset based system"
 align = 1
 
 [node name="Label2" type="Label" parent="WhatsNew/Control/VBoxContainer"]
-margin_top = 563.0
-margin_right = 485.0
-margin_bottom = 582.0
+margin_top = 1145.0
+margin_right = 971.0
+margin_bottom = 1164.0
 text = "16/04/22"
 align = 1
 
@@ -633,9 +682,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -84.5
-margin_top = -64.0
+margin_top = 26.0
 margin_right = 84.5
-margin_bottom = 64.0
+margin_bottom = 154.0
 custom_constants/separation = 20
 
 [node name="NewProjectButton" type="Button" parent="UIElement/VBoxContainer"]
@@ -719,7 +768,7 @@ anims/load = SubResource( 13 )
 [connection signal="pressed" from="NewProject/VBoxContainer/VBoxContainer/HBoxContainer2/BrowseButton" to="NewProject" method="_on_BrowseButton_pressed"]
 [connection signal="pressed" from="NewProject/VBoxContainer/CreateButton" to="NewProject" method="_on_CreateButton_pressed"]
 [connection signal="dir_selected" from="NewProject/FileDialog" to="NewProject" method="_on_FileDialog_dir_selected"]
-[connection signal="dir_selected" from="OpenProject/FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="dir_selected" from="OpenProject/FileDialog" to="OpenProject" method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="OpenProject/BackButton" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="OpenProject/Browse" to="OpenProject" method="_on_Browse_pressed"]
 [connection signal="gui_input" from="WhatsNew" to="WhatsNew" method="_on_WhatsNew_gui_input"]
@@ -729,3 +778,4 @@ anims/load = SubResource( 13 )
 [connection signal="pressed" from="UIElement/HBoxContainer/SocialMediaButton" to="UIElement" method="_on_SocialMediaButton_pressed"]
 [connection signal="pressed" from="UIElement/HBoxContainer/HelpButton" to="UIElement" method="_on_HelpButton_pressed"]
 [connection signal="pressed" from="UIElement/WhatsNewButton" to="." method="_on_WhatsNewButton_pressed"]
+[connection signal="pressed" from="UIElement/WhatsNewButton" to="WhatsNew" method="_on_WhatsNewButton_pressed"]

@@ -59,9 +59,9 @@ func fetch_raw_data()->String:
 
 	for prompts in nodes:
 		if group.has(prompts):
-			if !(prompts.display() == ''):
+			if !(prompts.display() == '' or prompts.display() == ' ' or prompts.display() == '\n' or prompts.display() == ' \n'):
 				raw_data += prompts.display()
-				raw_data += '\n'
+				raw_data += ' '
 
 	raw_data += notes.get_text()
 	return raw_data

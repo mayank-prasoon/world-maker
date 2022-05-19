@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.gd" type="Script" id=1]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/text_editor.gd" type="Script" id=2]
@@ -13,6 +13,12 @@
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Italic.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/fonts/Roboto/Roboto-BoldItalic.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://assets/fonts/Roboto/NovaMono-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/Notes.gd" type="Script" id=14]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://assets/fonts/Patrick_Hand/PatrickHand-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-center.svg" type="Texture" id=17]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-justify.svg" type="Texture" id=18]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-right.svg" type="Texture" id=19]
 
 [sub_resource type="StyleBoxFlat" id=44]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
@@ -237,6 +243,7 @@ func _physics_process(delta:float)->void:
 		$ColorRect.color = Color('252525')
 		notes_tab.visible = false
 	
+
 "
 
 [sub_resource type="StyleBoxFlat" id=13]
@@ -256,6 +263,61 @@ bg_color = Color( 0.219608, 0.356863, 0.886275, 1 )
 
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="DynamicFont" id=54]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=50]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=51]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=52]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+
+[sub_resource type="Theme" id=53]
+Button/fonts/font = SubResource( 54 )
+Button/styles/hover = SubResource( 50 )
+Button/styles/normal = SubResource( 51 )
+Button/styles/pressed = SubResource( 52 )
+
+[sub_resource type="DynamicFont" id=55]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=56]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=58]
+size = 22
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=59]
+resource_local_to_scene = true
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=60]
+resource_local_to_scene = true
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 16 )
 
 [sub_resource type="StyleBoxFlat" id=42]
 content_margin_left = 10.0
@@ -504,7 +566,7 @@ text = "Notes"
 visible = false
 margin_top = 30.0
 margin_right = 500.0
-margin_bottom = 555.0
+margin_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -524,7 +586,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer"]
 margin_right = 480.0
-margin_bottom = 485.0
+margin_bottom = 323.333
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
@@ -556,9 +618,10 @@ custom_styles/normal = SubResource( 22 )
 text = "save"
 
 [node name="Prompts" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
+visible = false
 margin_top = 30.0
 margin_right = 500.0
-margin_bottom = 1080.0
+margin_bottom = 555.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts"]
@@ -575,17 +638,17 @@ margin_left = -9.53674e-07
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/ScrollContainer"]
 margin_right = 482.079
-margin_bottom = 1020.0
+margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
 
 [node name="Notes" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
-visible = false
-margin_top = 555.0
-margin_right = 558.0
+margin_top = 30.0
+margin_right = 500.0
 margin_bottom = 1080.0
 size_flags_vertical = 3
+script = ExtResource( 14 )
 
 [node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes"]
 anchor_right = 1.0
@@ -603,7 +666,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
-margin_right = 546.0
+margin_right = 489.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 
@@ -612,10 +675,155 @@ margin_right = 41.0
 margin_bottom = 19.0
 text = "Notes"
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
+[node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
 margin_top = 30.0
-margin_right = 546.0
-margin_bottom = 516.0
+margin_right = 489.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_constants/separation = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer"]
+margin_right = 483.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+theme = SubResource( 53 )
+custom_constants/separation = 5
+
+[node name="Bold" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+custom_fonts/font = SubResource( 55 )
+enabled_focus_mode = 0
+text = "B"
+
+[node name="Italic" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 35.0
+margin_right = 65.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+custom_fonts/font = SubResource( 56 )
+enabled_focus_mode = 0
+text = "I"
+
+[node name="Underline" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 70.0
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Underline"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 58 )
+bbcode_enabled = true
+bbcode_text = "[center][u]u[/u][/center]"
+text = "u"
+
+[node name="strikethrough" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 105.0
+margin_right = 135.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/strikethrough"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 58 )
+bbcode_enabled = true
+bbcode_text = "[center][s]s[/s][/center]"
+text = "s"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 140.0
+margin_right = 148.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="Heading" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 153.0
+margin_right = 193.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "H1"
+
+[node name="Code" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 198.0
+margin_right = 254.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+focus_mode = 0
+custom_fonts/font = SubResource( 59 )
+enabled_focus_mode = 0
+text = "Code"
+
+[node name="Quote" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 259.0
+margin_right = 318.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+hint_tooltip = "Quote"
+focus_mode = 0
+custom_fonts/font = SubResource( 60 )
+enabled_focus_mode = 0
+text = "Quote"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 323.0
+margin_right = 331.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="Fill" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 336.0
+margin_right = 380.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+icon = ExtResource( 18 )
+
+[node name="Center" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 385.0
+margin_right = 429.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+icon = ExtResource( 17 )
+
+[node name="Right" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 434.0
+margin_right = 478.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+icon = ExtResource( 19 )
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+margin_left = 483.0
+margin_right = 483.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
+margin_top = 80.0
+margin_right = 489.0
+margin_bottom = 1032.0
 size_flags_vertical = 3
 custom_styles/focus = SubResource( 42 )
 custom_styles/normal = SubResource( 43 )
@@ -681,5 +889,15 @@ __meta__ = {
 
 [connection signal="data_changed" from="." to="HBoxContainer/Panel/HSplitContainer/Preview" method="_on_WikiEditor_data_changed"]
 [connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Bold" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Bold_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Italic" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Italic_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Underline" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Underline_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/strikethrough" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_strikethrough_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Heading" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Heading_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Code" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Code_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Quote" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Quote_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Fill" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Fill_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Center" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Center_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Right" to="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes" method="_on_Right_pressed"]
 [connection signal="text_changed" from="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
 [connection signal="pressed" from="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer/Close" to="." method="_on_Close_pressed"]

@@ -9,15 +9,13 @@ func _ready()->void:
 	$VBoxContainer/Image.texture               = load(input_value)
 
 func display()->String:
-	var image:Image = Image.new()
-	var _error      = image.load(input_value)
+	var image_resource = ImageHandler.load_image_texture(input_value)
+
 	if !(input_value == ""):
 		return input_display.format(
 			{
-				'value' : "[img={width}x{height}]{path}[/img]".format(
+				'value' : "[img]{path}[/img]".format(
 					{
-						"width" : image.get_width(),
-						"height": image.get_height(),
 						"path"  : input_value
 					}
 				)
@@ -25,19 +23,26 @@ func display()->String:
 		)
 	else:
 		return input_display.format({'value' : input_null_display_value})
-		
 
 
-func _on_FileDialog_file_selected(path):
-	set_input_value(path)
-	$VBoxContainer/Image.texture               = load(input_value)
+func _on_FileDialog_file_selected(path:String)->void:
+	create_cache(path)
+	$VBoxContainer/Image.texture               = ResourceLoader.load(input_value)
 	$VBoxContainer/HBoxContainer/LineEdit.text = input_value
 
 
-func _on_LineEdit_text_changed(new_text):
-	set_input_value(new_text)
-	$VBoxContainer/Image.texture = load(input_value)
+func _on_LineEdit_text_changed(new_text:String)->void:
+	create_cache(new_text)
+	$VBoxContainer/Image.texture = ResourceLoader.load(input_value)
 
+func create_cache(path:String)->void:
+	var file = File.new()
+	if file.file_exists(path):
+		var cache_location = ProjectSettingsManager.project_location + '/assets/' + path.get_file().get_basename() + ".tres"
+		set_input_value(cache_location)
+		if !file.file_exists(cache_location):
+			var image_resource = ImageHandler.load_image_texture(path)
+			var _error = ResourceSaver.save(cache_location, image_resource)
 
-func _on_Browse_pressed():
+func _on_Browse_pressed()->void:
 	$FileDialog.popup_centered()

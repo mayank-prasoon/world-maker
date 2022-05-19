@@ -439,7 +439,7 @@ editor_draw_drag_margin = true
 script = ExtResource( 2 )
 minZoom = Vector2( 0.5, 0.5 )
 maxZoom = Vector2( 3.5, 3.5 )
-panSpeed = 0.8
+panSpeed = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
@@ -901,9 +901,9 @@ anchor_left = -0.052
 anchor_top = 0.53
 anchor_right = -0.052
 anchor_bottom = 0.53
-margin_left = -14.9199
+margin_left = -14.4
 margin_top = -15.0
-margin_right = 15.08
+margin_right = 15.6
 margin_bottom = 15.0
 rect_min_size = Vector2( 30, 30 )
 focus_mode = 0

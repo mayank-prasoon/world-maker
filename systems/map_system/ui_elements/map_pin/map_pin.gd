@@ -49,14 +49,14 @@ func add_animation_and_texture()->void:
 			animation_frame_added  = true
 
 	if !animation_frame_added and pin_resource.pin_symbol_template.template_texture == "":
-		animation_resource.add_frame("hover", load("res://icon.png"))
+		animation_resource.add_frame("hover", load("res://assets/graphics/map_pin.svg"))
 	elif !animation_frame_added and pin_resource.pin_symbol_template.template_texture != "":
 		animation_resource.add_frame("hover", ImageHandler.load_map_pin_texture(pin_resource.pin_symbol_template.template_texture))
 
 	if pin_resource.pin_symbol_template.template_texture != "":
 		animation_resource.add_frame("default", ImageHandler.load_map_pin_texture(pin_resource.pin_symbol_template.template_texture))
 	else:
-		animation_resource.add_frame("default", load("res://icon.png"))
+		animation_resource.add_frame("default", load("res://assets/graphics/map_pin.svg"))
 
 # ------------------------------------------------------------------------------
 

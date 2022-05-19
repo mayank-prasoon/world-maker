@@ -23,7 +23,7 @@ static func load_prompt(node, template:Resource)->void:
 				item = load("res://systems/dependency/ui_elements/input_large_text/InputLargeText.tscn").instance()
 
 			IMAGE:
-				item = load("res://systems/dependency/ui_elements/input_large_text/InputLargeText.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_image/InputImage.tscn").instance()
 
 			DROPDOWN:
 				item = load("res://systems/dependency/ui_elements/input_dropdown/InputDropDown.tscn").instance()
@@ -52,7 +52,7 @@ static func load_prompt(node, template:Resource)->void:
 
 
 			DATABASE:
-				item = load("res://systems/dependency/ui_elements/input_relatabe_database/InputRelatableDatabase.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_database/InputDatabase.tscn").instance()
 
 		
 		item.input_name               = x["name"]

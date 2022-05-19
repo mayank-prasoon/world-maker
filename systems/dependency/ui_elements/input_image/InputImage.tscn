@@ -26,21 +26,21 @@ margin_bottom = 75.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 927.0
+margin_right = 916.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 placeholder_text = "image path"
 
 [node name="Browse" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 931.0
-margin_right = 989.0
+margin_left = 920.0
+margin_right = 1000.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 24, 0 )
+rect_min_size = Vector2( 80, 0 )
 size_flags_horizontal = 0
 text = "browse"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 993.0
+margin_left = 1004.0
 margin_right = 1920.0
 margin_bottom = 30.0
 size_flags_horizontal = 3

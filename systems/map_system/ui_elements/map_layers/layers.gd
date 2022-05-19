@@ -219,14 +219,12 @@ func _on_being_dragged(state:bool)->void:
 func set_layer_blend_mode(blend_mode:int)->void:
 	map_layer_resources.layer_shader = blend_mode
 	texture_node.material            = MapLayer.fetch_shader_material(blend_mode, self.map_layer_resources.layer_custom_shader)
-	get_parent().get_owner().save_map_resource(map_layer_resources, get_position_in_parent())
-
+	EventBus.emit_signal('save_map_layer', map_layer_resources, self.get_position_in_parent())
 
 func set_layer_opacity(opacity:float)->void:
 	map_layer_resources.layer_opacity = opacity
 	texture_node.modulate             = Color(1.0, 1.0, 1.0, float(map_layer_resources.layer_opacity)/100.00)
-	get_parent().get_owner().save_map_resource(map_layer_resources, get_position_in_parent())
-
+	EventBus.emit_signal('save_map_layer', map_layer_resources, self.get_position_in_parent())
 
 func set_layer_visibility(visiblity:bool)->void:
 	map_layer_resources.layer_visibility = visiblity

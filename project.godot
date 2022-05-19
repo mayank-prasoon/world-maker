@@ -200,9 +200,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="World Building Software"
-run/main_scene="res://systems/main_menu/MainMenu.tscn"
+config/name="World Maker"
+config/description="A tool for world building and writting"
+run/main_scene="res://systems/Opening.tscn"
+boot_splash/image="res://transparent image.png"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 0 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -264,10 +268,8 @@ quality/filters/sharpen_intensity=1.0
 2d/options/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2
 quality/filters/use_nearest_mipmap_filter=true
-2d/options/use_software_skinning=false
 batching/precision/uv_contract=true
 quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"
