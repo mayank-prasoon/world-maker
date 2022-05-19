@@ -32,7 +32,7 @@ func _input(event):
 			$EffectLayer/Control.visible = true
 			$EffectLayer/Control/BackgroundBlur.blurBackground()
 		elif !command_line_state:
-			$EffectLayer/Control/BackgroundBlur.unBlurBackground()
+			$AnimationPlayer.play("unblur")
 
 
 func execute_command(command:String) -> void:

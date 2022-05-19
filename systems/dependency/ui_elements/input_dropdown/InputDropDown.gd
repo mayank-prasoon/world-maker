@@ -16,7 +16,7 @@ func _ready()->void:
 
 	drop_down_menu.selected = input_value
 
-func dispaly()->String:
+func display()->String:
 	var value:String = drop_down_menu.get_item_text(input_value)
 	return input_display.format({'value': value})
 

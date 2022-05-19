@@ -91,3 +91,6 @@ func assign_prompts(id:int):
 
 	else:
 		get_owner().article_template = Resource.new()
+
+
+

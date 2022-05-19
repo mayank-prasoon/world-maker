@@ -21,7 +21,7 @@ func set_disable_camera(value)->void:
 
 func _physics_process(_delta:float) -> void:
 	self.zoom = lerp(self.zoom, desiredZooom, 0.2)
-	self.offset = lerp(self.offset, desiredOffset, 0.2)
+	self.offset = lerp(self.offset, desiredOffset, panSpeed)
 
 
 func _unhandled_input(event: InputEvent) -> void:

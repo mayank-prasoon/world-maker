@@ -43,12 +43,12 @@ func _on_MapToolBar_visiblity_map_pin_manager(state):
 
 func load_map_pin()->void:
 	var map_pins = get_tree().get_nodes_in_group('map_pin')
-	
+
 	var packed_button_scene:PackedScene = load(\"res://systems/map_system/ui_elements/article_reader/Sub-UI element/MapPinButton.tscn\")
-	
+
 	for x in map_pin_container.get_children():
 		x.queue_free()
-	
+
 	for map_pin in map_pins:
 		var node = packed_button_scene.instance()
 

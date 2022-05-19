@@ -73,19 +73,15 @@ func _on_CreateButton_pressed()->void:
 		layer_node.queue_free()
 	
 	# emit signal to create layer
-	emit_signal(
-			"create_layer",
-			layer_resources,
-			layer_index
-		)
 
+	EventBus.emit_signal("create_new_layer", layer_resources, layer_index)
 	self.close_the_dialog()
 
 
 # close the dialog box~
 func close_the_dialog()->void:
 	EventBus.emit_signal("disable_camera", false)
-	$"../../AnimationPlayer".play("close")
+	$AnimationPlayer.play("close")
 
 # --------------------------------------------------------------------------------------
 

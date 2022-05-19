@@ -5,7 +5,7 @@ var log_file = null
 export var persist_debug = true
 var logy = null
 
-export var file_dir = "res://"
+export var file_dir = "user://"
 export var file_name = "{dt}.log"
 export var file_name_time_format = "{month}-{year}"
 export var formatting = "{dt} {level} {msg}"

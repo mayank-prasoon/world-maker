@@ -80,4 +80,4 @@ func hide_map_creator()->void:
 # close the dialog box~
 func close_the_dialog()->void:
 	EventBus.emit_signal("disable_camera", false)
-	$"../../AnimationPlayer".play("close")
+	$AnimationPlayer.play("close")

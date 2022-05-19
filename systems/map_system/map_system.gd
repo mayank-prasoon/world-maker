@@ -172,9 +172,10 @@ class MapLayerSystem extends Object:
 
 
 	func save_layer(map_layer_resource:MapLayer, index:int)->void:
-		map_resource.layers[index] = map_layer_resource
-		
-		MapResourceSystem.MapResourceManager.save_map_resource(map_resource)
+		if map_resource.layers.size() > index:
+			map_resource.layers[index] = map_layer_resource
+			
+			MapResourceSystem.MapResourceManager.save_map_resource(map_resource)
 
 	# assign layer
 	func assign_layers()->void:
@@ -235,7 +236,7 @@ class MapPinSystem extends Object:
 	func create_new_pin(map_resource, map_pin, uuid)->void:
 		map_resource.map_pins.append(map_pin)
 		ResourceManager.SaveData.new(SystemDataManager.root_pin_save_path.format({"uuid":uuid}), map_pin)
-		
+
 		map_pin.set_path(SystemDataManager.root_pin_save_path.format({"uuid":uuid}))
 
 		EventBus.emit_signal("save_map", map_resource)
@@ -255,6 +256,7 @@ func _ready()->void:
 	var _s = EventBus.connect("delete_current_map", self, '_on_current_delete_map')
 	
 	var _t = items_node.connect("item_selected", self, '_on_MenuButton_item_selected')
+	var _u = EventBus.connect("create_new_layer", map_layer_system, 'create_layer')
 	
 	map_load_system.assign_map_name()
 
@@ -300,7 +302,6 @@ func _on_move_pin_to_top(map_pin)->void:
 # when map menu is clicked
 func _on_MenuButton_item_selected(index)->void:
 	if (index != -1):
-#	if !(map_load_system.map_list.values().size() == 0):
 		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("RESET")
 		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("close")
 		var map_resource_path:String = map_load_system.map_list.values()[index]
@@ -316,9 +317,7 @@ func assign_layers(map_resource_path:String)->void:
 # when a map creater requests to genrate a map 
 func _on_create_new_map(map_name:String, map_texture:String, article:bool)->void:
 	MapResourceSystem.MapResourceManager.create_map_resource(map_name, map_texture, article)
-	map_load_system.assign_map_name()
-	items_node.emit_signal("item_selected", 0)
-	
+	reload_system()
 
 # when a pin is requested to be added
 func _on_add_pin_to_map(position):
@@ -336,9 +335,12 @@ func _on_current_delete_map()->void:
 	var dir = Directory.new()
 	dir.remove(map_resource_path)
 	items_node.remove_item(map_load_system.current_selected_map)
-	map_load_system.assign_map_name()
-	items_node.emit_signal("item_selected", 0)
+	reload_system()
 	
+
+func reload_system()->void:
+	get_parent().add_child(load("res://systems/map_system/MapSystem.tscn").instance())
+	self.queue_free()
 
 # run on exiting the node tree
 func _exit_tree()->void:

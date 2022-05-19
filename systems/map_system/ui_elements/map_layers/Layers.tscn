@@ -55,6 +55,7 @@ modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
 margin_right = 20.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 0 )
+focus_mode = 0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource( 3 )

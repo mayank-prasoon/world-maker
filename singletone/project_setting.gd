@@ -36,12 +36,6 @@ func _ready()->void:
 
 func open_project()->void:
 	Logger.info(name + " - " + "open_project()")
-#	var file = File.new()
-#	if !file.file_exists(self.project_location + save_file_location):
-#		shortcuts = default_keybinding.duplicate()
-#		save_file()
-#		create_folder()
-#	elif file.file_exists(self.project_location + save_file_location):
 	open_file()
 	SystemDataManager.load_root_folder_paths()
 	folder_integrity()
@@ -64,6 +58,9 @@ func folder_integrity()->void:
 	var dir = Directory.new()
 	if !dir.dir_exists(SystemDataManager.root_save_file_path):
 		dir.make_dir_recursive(SystemDataManager.root_save_file_path)
+
+	if !dir.dir_exists(ProjectSettingsManager.project_location + '/assets'):
+		dir.make_dir_recursive(ProjectSettingsManager.project_location + '/assets')
 
 	if !dir.dir_exists(SystemDataManager.root_pin_save_path.get_base_dir()):
 		dir.make_dir_recursive(SystemDataManager.root_pin_save_path.get_base_dir())

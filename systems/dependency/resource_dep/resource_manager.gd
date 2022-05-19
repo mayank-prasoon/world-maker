@@ -1,10 +1,12 @@
 class_name ResourceManager
 extends Reference
 
-const MAP:int = 0
-const PIN:int = 1
-const SYMBOL_TEMP:int = 2
-const ARTICLE:int = 3
+enum {
+		MAP,
+		PIN,
+		SYMBOL_TEMP,
+		ARTICLE
+	}
 
 class SaveData extends Object:
 	var thread = Thread.new()

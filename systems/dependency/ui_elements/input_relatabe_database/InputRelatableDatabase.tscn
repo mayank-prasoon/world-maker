@@ -18,14 +18,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 14.0
 text = "Name"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_left = 467.0
+margin_left = 915.0
 margin_top = 29.0
-margin_right = 557.0
+margin_right = 1005.0
 margin_bottom = 49.0
 rect_min_size = Vector2( 90, 0 )
 size_flags_horizontal = 6
@@ -33,7 +33,7 @@ text = "edit item"
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer"]
 margin_top = 64.0
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 214.0
 rect_min_size = Vector2( 0, 150 )
 

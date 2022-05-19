@@ -396,7 +396,7 @@ rect_min_size = Vector2( 120, 120 )
 size_flags_horizontal = 6
 size_flags_vertical = 6
 expand = true
-stretch_mode = 4
+stretch_mode = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/Background/VBoxContainer"]
 margin_top = 145.0

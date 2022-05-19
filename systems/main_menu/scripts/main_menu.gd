@@ -58,10 +58,6 @@ func _on_OpenProjectButton_pressed()->void:
 	open_project()
 
 
-func _on_FileDialog_dir_selected(dir:String)->void:
-	Logger.info(name + " _on_FileDialog_dir_selected({0})".format([dir]))
-
-
 func _on_WhatsNewButton_pressed():
 	$NewProject.visible    = false
 	$OpenProject.visible   = false
@@ -76,3 +72,4 @@ func _on_WhatsNewButton_pressed():
 
 func _on_DonateButton_pressed():
 	OS.shell_open('https://www.patreon.com/chunkydev')
+

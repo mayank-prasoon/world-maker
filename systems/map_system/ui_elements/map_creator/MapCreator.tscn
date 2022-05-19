@@ -76,6 +76,81 @@ LineEdit/styles/focus = SubResource( 6 )
 LineEdit/styles/normal = SubResource( 7 )
 Panel/styles/panel = SubResource( 8 )
 
+[sub_resource type="Animation" id=41]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer/Control/PlaceHolder/MapCreator:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -557, -264 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("EffectLayer/BackgroundBlur")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unBlurBackground"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Layer/Control/PlaceHolder/MapCreator:rect_position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( -557, -264 ), Vector2( -557, 600 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer/Control/PlaceHolder/MapCreator:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( -557, 600 ), Vector2( -557, -264 ) ]
+}
+
 [sub_resource type="StyleBoxEmpty" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=17]
@@ -139,81 +214,6 @@ expand_margin_right = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="Animation" id=41]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Layer/MapCreator:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 402.5, 275 ) ]
-}
-
-[sub_resource type="Animation" id=39]
-resource_name = "close"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Layer/MapCreator:rect_position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
-"update": 0,
-"values": [ Vector2( 402.5, 275 ), Vector2( 402.5, 1100 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("EffectLayer/BackgroundBlur")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "unBlurBackground"
-} ]
-}
-
-[sub_resource type="Animation" id=40]
-resource_name = "open"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Layer/MapCreator:rect_position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
-"update": 0,
-"values": [ Vector2( 402.5, 1100 ), Vector2( 402.5, 275 ) ]
-}
-
 [node name="MapCreator" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -225,19 +225,34 @@ visible = true
 
 [node name="Layer" type="CanvasLayer" parent="."]
 
-[node name="MapCreator" type="Panel" parent="Layer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 402.5
-margin_top = 275.0
-margin_right = 1517.5
-margin_bottom = 805.0
+[node name="Control" type="CenterContainer" parent="Layer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PlaceHolder" type="Control" parent="Layer/Control"]
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="MapCreator" type="Panel" parent="Layer/Control/PlaceHolder"]
+margin_left = -557.0
+margin_top = -264.0
+margin_right = 556.0
+margin_bottom = 263.0
+rect_min_size = Vector2( 1113, 527 )
+rect_pivot_offset = Vector2( 556, 263 )
 theme = SubResource( 1 )
 script = ExtResource( 1 )
 
-[node name="Button" type="Button" parent="Layer/MapCreator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer/Control/PlaceHolder/MapCreator"]
+root_node = NodePath("../../../../..")
+autoplay = "open"
+anims/RESET = SubResource( 41 )
+anims/close = SubResource( 39 )
+anims/open = SubResource( 40 )
+
+[node name="Button" type="Button" parent="Layer/Control/PlaceHolder/MapCreator"]
 modulate = Color( 1, 1, 1, 0.627451 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -256,7 +271,7 @@ custom_styles/normal = SubResource( 19 )
 icon = ExtResource( 3 )
 expand_icon = true
 
-[node name="FileDialog" type="FileDialog" parent="Layer/MapCreator"]
+[node name="FileDialog" type="FileDialog" parent="Layer/Control/PlaceHolder/MapCreator"]
 margin_left = 114.0
 margin_top = 8.0
 margin_right = 450.0
@@ -270,7 +285,7 @@ filters = PoolStringArray( "*.png", "*.jpg" )
 current_dir = "/media/mayank/Assets1/Software Dev/world building software"
 current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Layer/MapCreator"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 50.0
@@ -279,34 +294,34 @@ margin_right = -30.0
 margin_bottom = -30.0
 custom_constants/separation = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="Layer/MapCreator/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer"]
 margin_right = 580.0
-margin_bottom = 460.0
+margin_bottom = 457.0
 rect_min_size = Vector2( 580, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="Layer/MapCreator/HBoxContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer"]
 margin_left = 5.0
-margin_top = 41.0
+margin_top = 39.0
 margin_right = 575.0
-margin_bottom = 419.0
+margin_bottom = 417.0
 rect_min_size = Vector2( 570, 378 )
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
-[node name="CenterContainer2" type="CenterContainer" parent="Layer/MapCreator/HBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer"]
 margin_left = 580.0
-margin_right = 1035.0
-margin_bottom = 460.0
+margin_right = 1033.0
+margin_bottom = 457.0
 size_flags_horizontal = 3
 
-[node name="InputField" type="VBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2"]
-margin_left = 37.0
-margin_top = 40.0
-margin_right = 417.0
-margin_bottom = 420.0
+[node name="InputField" type="VBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2"]
+margin_left = 36.0
+margin_top = 38.0
+margin_right = 416.0
+margin_bottom = 418.0
 rect_min_size = Vector2( 380, 380 )
 size_flags_horizontal = 3
 custom_constants/separation = 40
@@ -314,7 +329,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="MapName" type="VBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField"]
+[node name="MapName" type="VBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField"]
 margin_right = 380.0
 margin_bottom = 74.0
 custom_constants/separation = 10
@@ -322,39 +337,39 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
+[node name="Label" type="Label" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
 margin_right = 380.0
 margin_bottom = 19.0
 custom_styles/normal = SubResource( 22 )
 text = "name"
 
-[node name="Input" type="Control" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
+[node name="Input" type="Control" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
 margin_top = 29.0
 margin_right = 380.0
 margin_bottom = 74.0
 rect_min_size = Vector2( 0, 45 )
 
-[node name="TextureRect" type="TextureRect" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
+[node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
 margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
 texture = ExtResource( 7 )
 
-[node name="LineEdit" type="LineEdit" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
+[node name="LineEdit" type="LineEdit" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/focus = SubResource( 35 )
 custom_styles/normal = SubResource( 21 )
 placeholder_text = "map name"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField"]
 margin_top = 114.0
 margin_right = 380.0
 margin_bottom = 154.0
 rect_min_size = Vector2( 0, 40 )
 
-[node name="CheckBox" type="CheckBox" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/HBoxContainer2"]
+[node name="CheckBox" type="CheckBox" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/HBoxContainer2"]
 margin_right = 150.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 150, 0 )
@@ -363,7 +378,7 @@ custom_constants/hseparation = 10
 text = "create article"
 align = 1
 
-[node name="MapTexture" type="VBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField"]
+[node name="MapTexture" type="VBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField"]
 margin_top = 194.0
 margin_right = 380.0
 margin_bottom = 268.0
@@ -372,32 +387,32 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
+[node name="Label" type="Label" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
 margin_right = 380.0
 margin_bottom = 19.0
 custom_styles/normal = SubResource( 37 )
 text = "map texture"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
 margin_top = 29.0
 margin_right = 380.0
 margin_bottom = 74.0
 custom_constants/separation = 20
 
-[node name="Input" type="Control" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
+[node name="Input" type="Control" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
 margin_right = 257.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 257, 45 )
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
+[node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
 margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
 texture = ExtResource( 8 )
 
-[node name="LineEdit" type="LineEdit" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
+[node name="LineEdit" type="LineEdit" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -405,13 +420,13 @@ custom_styles/focus = SubResource( 36 )
 custom_styles/normal = SubResource( 24 )
 placeholder_text = "image path"
 
-[node name="Control" type="Control" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
+[node name="Control" type="Control" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
 margin_left = 277.0
 margin_right = 380.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -25.0
@@ -420,7 +435,7 @@ margin_right = 25.0
 margin_bottom = 30.0
 texture = ExtResource( 9 )
 
-[node name="Button" type="Button" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
+[node name="Button" type="Button" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 80, 0 )
@@ -432,7 +447,7 @@ custom_styles/disabled = SubResource( 28 )
 custom_styles/normal = SubResource( 29 )
 text = "browse"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField"]
 visible = false
 margin_top = 194.0
 margin_right = 526.0
@@ -441,18 +456,18 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
+[node name="Label" type="Label" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
 margin_right = 526.0
 margin_bottom = 19.0
 text = "chunlk size"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
 margin_top = 23.0
 margin_right = 526.0
 margin_bottom = 52.0
 custom_constants/separation = 30
 
-[node name="ChunkX" type="SpinBox" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+[node name="ChunkX" type="SpinBox" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
 margin_right = 84.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 80, 0 )
@@ -460,7 +475,7 @@ max_value = 2000.0
 value = 512.0
 suffix = "px"
 
-[node name="Chunky" type="SpinBox" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+[node name="Chunky" type="SpinBox" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
 margin_left = 114.0
 margin_right = 198.0
 margin_bottom = 29.0
@@ -469,7 +484,7 @@ max_value = 2000.0
 value = 288.0
 suffix = "px"
 
-[node name="Label" type="Label" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+[node name="Label" type="Label" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
 margin_left = 295.0
 margin_top = 5.0
 margin_right = 396.0
@@ -480,7 +495,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit3" type="SpinBox" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
+[node name="LineEdit3" type="SpinBox" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
 margin_left = 426.0
 margin_right = 526.0
 margin_bottom = 29.0
@@ -488,7 +503,7 @@ rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 8
 max_value = 5000.0
 
-[node name="CreateButton" type="Control" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField"]
+[node name="CreateButton" type="Control" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField"]
 margin_top = 335.0
 margin_right = 380.0
 margin_bottom = 380.0
@@ -496,7 +511,7 @@ rect_min_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 size_flags_vertical = 14
 
-[node name="TextureRect" type="TextureRect" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
+[node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -25.5
@@ -505,7 +520,7 @@ margin_right = 24.5
 margin_bottom = 75.0
 texture = ExtResource( 10 )
 
-[node name="CreateButton" type="Button" parent="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
+[node name="CreateButton" type="Button" parent="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
 anchor_right = 0.339474
 anchor_bottom = 1.0
 rect_min_size = Vector2( 80, 0 )
@@ -525,15 +540,9 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "open"
-anims/RESET = SubResource( 41 )
-anims/close = SubResource( 39 )
-anims/open = SubResource( 40 )
-
-[connection signal="pressed" from="Layer/MapCreator/Button" to="Layer/MapCreator" method="hide_map_creator"]
-[connection signal="file_selected" from="Layer/MapCreator/FileDialog" to="Layer/MapCreator" method="_on_FileDialog_file_selected"]
-[connection signal="pressed" from="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control/Button" to="Layer/MapCreator" method="_on_Button_pressed"]
-[connection signal="value_changed" from="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer/ChunkX" to="Layer/MapCreator" method="_on_ChunkX_value_changed"]
-[connection signal="value_changed" from="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer/Chunky" to="Layer/MapCreator" method="_on_Chunky_value_changed"]
-[connection signal="pressed" from="Layer/MapCreator/HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton" to="Layer/MapCreator" method="_on_CreateButton_pressed"]
+[connection signal="pressed" from="Layer/Control/PlaceHolder/MapCreator/Button" to="Layer/Control/PlaceHolder/MapCreator" method="hide_map_creator"]
+[connection signal="file_selected" from="Layer/Control/PlaceHolder/MapCreator/FileDialog" to="Layer/Control/PlaceHolder/MapCreator" method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control/Button" to="Layer/Control/PlaceHolder/MapCreator" method="_on_Button_pressed"]
+[connection signal="value_changed" from="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer/ChunkX" to="Layer/Control/PlaceHolder/MapCreator" method="_on_ChunkX_value_changed"]
+[connection signal="value_changed" from="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer/Chunky" to="Layer/Control/PlaceHolder/MapCreator" method="_on_Chunky_value_changed"]
+[connection signal="pressed" from="Layer/Control/PlaceHolder/MapCreator/HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton" to="Layer/Control/PlaceHolder/MapCreator" method="_on_CreateButton_pressed"]

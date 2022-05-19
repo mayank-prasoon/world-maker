@@ -58,6 +58,11 @@ func add_last_project(project_index:int):
 	settings.last_project = settings.project_list[project_index]
 	var _x = ResourceSaver.save(editor_settings_save_location, settings)
 
+func add_last_project_by_name(project_name:String, project_location:String)->void:
+	var dic = {project_name : project_location}
+	settings.last_project = dic
+	var _x = ResourceSaver.save(editor_settings_save_location, settings)
+
 # === pinned project ===
 
 func get_pinned_project() -> Array:
