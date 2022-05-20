@@ -473,3 +473,4 @@ text = "edit"
 [connection signal="mouse_pointer_entered" from="TextureRect/CenterContainer/Background" to="TextureRect/CenterContainer/Background" method="_on_Background_mouse_pointer_entered"]
 [connection signal="mouse_pointer_exited" from="TextureRect/CenterContainer/Background" to="TextureRect/CenterContainer/Background" method="_on_Background_mouse_pointer_exited"]
 [connection signal="pressed" from="TextureRect/CenterContainer/Background/VBoxContainer2/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/Background/VBoxContainer2/Edit" to="." method="_on_Edit_pressed"]
