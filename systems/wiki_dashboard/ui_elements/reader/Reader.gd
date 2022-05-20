@@ -18,7 +18,6 @@ func _ready():
 	if !(article.article_profile == ""):
 		article_profile.texture = ImageHandler.load_image_texture(article.article_profile)
 	asign_banner()
-	var _x = self.connect("open_wiki_editor", self.get_parent(), 'edit_article')
 
 
 func load_preview():
@@ -50,7 +49,7 @@ func _on_CloseButton_pressed():
 
 
 func _on_Button_pressed():
-	emit_signal("open_wiki_editor", article)
+	EventBus.emit_signal("edit_article", article)
 
 
 func _on_TextureRect_resized():

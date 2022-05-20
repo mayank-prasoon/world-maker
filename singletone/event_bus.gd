@@ -147,3 +147,13 @@ signal reset_zoom()
 signal reset_position()
 
 signal complete_reset() # combination of both reset zoom and position
+
+
+# ============================================================= #
+#                         WIKI SYSTEM                           #
+# ============================================================= #
+
+# these signals are realated to Wiki system inside other systems. 
+
+# wiki editor
+signal edit_article(article) # pop open wiki Editor

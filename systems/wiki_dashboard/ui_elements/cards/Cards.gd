@@ -67,3 +67,7 @@ func _on_Delete_pressed():
 	var dir:Directory = Directory.new()
 	dir.remove(article.get_path())
 	self.queue_free()
+
+
+func _on_Edit_pressed():
+	EventBus.emit_signal("edit_article", article)

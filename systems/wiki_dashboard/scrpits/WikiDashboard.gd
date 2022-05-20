@@ -16,6 +16,8 @@ func _ready():
 		cards.article = article
 		cards_grid.add_child(cards)
 
+	# connect signals
+	var _x = EventBus.connect("edit_article", self, 'edit_article')
 
 func edit_article(article):
 	var node = wiki_editor.instance()
