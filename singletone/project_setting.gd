@@ -30,18 +30,13 @@ export(Array,Dictionary) var addons
 # === SIGNALS ===
 signal load_data
 
-
-func _ready()->void:
-	Logger.info(name + " - " + "Node loadded")
-
 func open_project()->void:
-	Logger.info(name + " - " + "open_project()")
 	open_file()
 	SystemDataManager.load_root_folder_paths()
 	folder_integrity()
 	emit_signal("load_data")
 
-
+# saves project settings file
 func save_file()->void:
 	CommandSystem.API.echo("saved project settings")
 	project_save_template.project_name     = project_name
@@ -52,8 +47,9 @@ func save_file()->void:
 	project_save_template.shortcuts        = shortcuts
 	project_save_template.visual_settings  = visual_settings
 
-	var _error = ResourceSaver.save(self.project_location + save_file_location, project_save_template)
+	var _error = ResourceSaver.save(SystemSettings.current_path + save_file_location, project_save_template)
 
+# check for folder integrity
 func folder_integrity()->void:
 	var dir = Directory.new()
 	if !dir.dir_exists(SystemDataManager.root_save_file_path):
@@ -80,7 +76,7 @@ func folder_integrity()->void:
 
 func open_file()->void:
 	CommandSystem.API.echo("opened project settings")
-	var resource = ResourceLoader.load(self.project_location + save_file_location)
+	var resource = ResourceLoader.load(SystemSettings.current_path + save_file_location)
 
 	project_name     = resource.project_name
 	project_version  = resource.project_version

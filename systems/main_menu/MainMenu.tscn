@@ -601,8 +601,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="WhatsNew/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 0.000396729
-margin_bottom = -0.00012207
+margin_right = 485.999
+margin_bottom = 582.0
 mouse_filter = 2
 custom_constants/separation = 30
 

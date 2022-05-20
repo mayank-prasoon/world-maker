@@ -10,9 +10,13 @@ var root_article_save_path
 var root_temp_save_path
 var root_pin_temp_save_path
 
+# load all the folader path
+func _ready():
+	load_root_folder_paths()
+
 # === VERIABLES ===
 func load_root_folder_paths()->void:
-	root_save_file_path    = ProjectSettingsManager.project_location + '/save_files'
+	root_save_file_path    = SystemSettings.current_path + '/save_files'
 	
 	# sub resource path
 	root_map_save_path      = self.root_save_file_path + '/maps/{uuid}_save_data.tres'

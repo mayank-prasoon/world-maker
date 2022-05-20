@@ -45,6 +45,7 @@ func _on_CreateButton_pressed():
 		SystemSettings.add_new_project(project_name, project_location)
 		ProjectSettingsManager.project_name      = project_name
 		ProjectSettingsManager.project_location  = project_location
+		SystemSettings.current_path              = project_location
 		ProjectSettingsManager.date_of_creation  = OS.get_date()
 		ProjectSettingsManager.save_file()
 

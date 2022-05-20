@@ -5,7 +5,7 @@ script/source = "extends Control
 
 func _ready():
 	if SystemSettings.last_project() != null and !SystemSettings.last_project().empty():
-		ProjectSettingsManager.project_location = SystemSettings.last_project().values()[0]
+		SystemSettings.current_path = SystemSettings.last_project().values()[0]
 		ProjectSettingsManager.open_project()
 		var _x = get_tree().change_scene_to(load(\"res://systems/Dashboard.tscn\"))
 	else:
