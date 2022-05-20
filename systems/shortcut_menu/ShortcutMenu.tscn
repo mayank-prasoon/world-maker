@@ -24,37 +24,37 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" groups=["button"]]
-margin_right = 963.0
+margin_right = 1807.0
 margin_bottom = 20.0
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_top = 3.0
-margin_right = 859.0
+margin_right = 1703.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 863.0
-margin_right = 963.0
+margin_left = 1707.0
+margin_right = 1807.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" groups=["button"]]
 margin_top = 40.0
-margin_right = 963.0
+margin_right = 1807.0
 margin_bottom = 60.0
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
 margin_top = 3.0
-margin_right = 859.0
+margin_right = 1703.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 863.0
-margin_right = 963.0
+margin_left = 1707.0
+margin_right = 1807.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 100, 0 )
 

@@ -31,7 +31,7 @@ func _ready():
 	open.connect("pressed", self, "open_project")
 
 func open_project():
-	ProjectSettingsManager.project_location = path
+	SystemSettings.current_path = path
 	ProjectSettingsManager.open_project()
 	SystemSettings.add_last_project(self.get_position_in_parent())
 	var _x = get_tree().change_scene_to(load("res://systems/Dashboard.tscn"))

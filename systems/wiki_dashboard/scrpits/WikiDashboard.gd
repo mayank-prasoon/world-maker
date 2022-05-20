@@ -12,9 +12,10 @@ func _ready():
 	var path:String = SystemDataManager.root_article_save_path
 
 	for article in FolderManager.fetch_files_from(path.get_base_dir()):
-		var cards = CARDS_TEMP.instance()
-		cards.article = article
-		cards_grid.add_child(cards)
+		if !article == null:
+			var cards = CARDS_TEMP.instance()
+			cards.article = article
+			cards_grid.add_child(cards)
 
 	# connect signals
 	var _x = EventBus.connect("edit_article", self, 'edit_article')
