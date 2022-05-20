@@ -241,7 +241,7 @@ size_flags_horizontal = 3
 custom_styles/read_only = SubResource( 13 )
 custom_styles/focus = SubResource( 16 )
 custom_styles/normal = SubResource( 15 )
-placeholder_text = "seach name"
+placeholder_text = "search name"
 script = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit"]
