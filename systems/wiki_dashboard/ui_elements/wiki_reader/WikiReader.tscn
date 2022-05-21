@@ -40,7 +40,7 @@ func load_content()->void:
 
 
 func _on_CloseButton_pressed():
-	$CanvasLayer/MarginContainer/HBoxContainer/Control/AnimationPlayer.play(\"close\")
+	$AnimationHandler/AnimationPlayer.play(\"close\")
 
 
 func _on_EditButton_pressed():
@@ -85,10 +85,51 @@ scancode = 16777217
 [sub_resource type="ShortCut" id=26]
 shortcut = SubResource( 19 )
 
-[sub_resource type="Animation" id=29]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_size")
+[sub_resource type="GDScript" id=28]
+script/source = "extends Tween
+
+onready var panel = $\"../../CanvasLayer/MarginContainer/HBoxContainer/Control/Panel\"
+
+# slide in
+func slide_in()->void:
+	var initial_position:Vector2 = panel.get_position()
+	var hide_position:Vector2    = Vector2(panel.get_position().x, OS.get_window_size().y)
+	
+	self.interpolate_property(
+		panel,
+		\"rect_position\",
+		hide_position,
+		initial_position,
+		0.3, 
+		Tween.TRANS_CUBIC,
+		Tween.EASE_IN_OUT
+	)
+	
+	self.start()
+
+# slide out
+func slide_out()->void:
+	var initial_position:Vector2 = panel.get_position()
+	var hide_position:Vector2    = Vector2(panel.get_position().x, OS.get_window_size().y)
+
+	self.interpolate_property(
+		panel,
+		\"rect_position\",
+		initial_position,
+		hide_position,
+		0.3, 
+		Tween.TRANS_CUBIC,
+		Tween.EASE_IN_OUT
+	)
+
+	self.start()
+"
+
+[sub_resource type="Animation" id=30]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath("Tween")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -96,39 +137,13 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 800, 1040 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=28]
-resource_name = "close"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1080 ) ]
+"values": [ {
+"args": [  ],
+"method": "slide_out"
+} ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("EffectLayer/BackgroundBlur")
+tracks/1/path = NodePath("../EffectLayer/BackgroundBlur")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -142,7 +157,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath(".")
+tracks/2/path = NodePath("..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -155,45 +170,23 @@ tracks/2/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 800, 1040 ) ]
-}
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=29]
 resource_name = "open"
 length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_position")
-tracks/0/interp = 2
+tracks/0/type = "method"
+tracks/0/path = NodePath("Tween")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
-"update": 0,
-"values": [ Vector2( 0, 1080 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 800, 1040 ) ]
+"values": [ {
+"args": [  ],
+"method": "slide_in"
+} ]
 }
 
 [node name="WikiReader" type="Control"]
@@ -376,12 +369,17 @@ anchor_bottom = 1.0
 texture = ExtResource( 6 )
 expand = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control"]
-root_node = NodePath("../../../../..")
+[node name="AnimationHandler" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Tween" type="Tween" parent="AnimationHandler"]
+script = SubResource( 28 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationHandler"]
 autoplay = "open"
-anims/RESET = SubResource( 29 )
-anims/close = SubResource( 28 )
-anims/open = SubResource( 30 )
+anims/close = SubResource( 30 )
+anims/open = SubResource( 29 )
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer/EditButton" to="." method="_on_EditButton_pressed"]
