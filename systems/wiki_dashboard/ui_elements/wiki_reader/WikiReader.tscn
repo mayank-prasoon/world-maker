@@ -1,0 +1,387 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Italic.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/graphics/wiki_dashboard/edit-3.svg" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-BlackItalic.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="GDScript" id=27]
+script/source = "extends Control
+
+onready var article_banner  = $CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/TextureRect
+onready var article_profile = $CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureRect
+onready var article_title   = $CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title
+onready var article_content = $CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/RichTextLabel
+
+
+var article:Article         = Article.new()
+var texture:ImageTexture    = null
+
+
+func _ready()->void:
+	article_content.bbcode_enabled = true
+	load_content()
+	load_images()
+
+# load banner and profile
+func load_images()->void:
+	article_banner.texture = ImageHandler.load_image_texture(article.article_banner)
+	if !(article.article_profile == \"\" or article.article_profile == null):
+		article_profile.texture = ImageHandler.load_image_texture(article.article_profile)
+
+
+# load preview
+func load_content()->void:
+	article_content.bbcode_text = article.article_raw
+	article_title.text          = article.article_name
+
+
+func _on_CloseButton_pressed():
+	$CanvasLayer/MarginContainer/HBoxContainer/Control/AnimationPlayer.play(\"close\")
+
+
+func _on_EditButton_pressed():
+	EventBus.emit_signal(\"edit_article\", article)
+"
+
+[sub_resource type="DynamicFont" id=20]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=21]
+use_mipmaps = true
+use_filter = true
+
+[sub_resource type="DynamicFont" id=22]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=23]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=24]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=25]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventKey" id=19]
+pressed = true
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=26]
+shortcut = SubResource( 19 )
+
+[sub_resource type="Animation" id=29]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 800, 1040 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1080 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("EffectLayer/BackgroundBlur")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unBlurBackground"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 800, 1040 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 1080 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/MarginContainer/HBoxContainer/Control/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 800, 1040 ) ]
+}
+
+[node name="WikiReader" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 27 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1323.0 ]
+}
+
+[node name="EffectLayer" type="CanvasLayer" parent="."]
+
+[node name="BackgroundBlur" parent="EffectLayer" instance=ExtResource( 4 )]
+visible = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="Control" parent="CanvasLayer"]
+anchor_left = 0.0104167
+anchor_top = 0.0185185
+anchor_right = 0.989583
+anchor_bottom = 0.981481
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+margin_left = 539.0
+margin_right = 1339.0
+margin_bottom = 1039.0
+rect_min_size = Vector2( 800, 0 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer"]
+margin_right = 800.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 466.0
+rect_min_size = Vector2( 0, 466 )
+expand = true
+stretch_mode = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 486.0
+margin_right = 800.0
+margin_bottom = 1040.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 554.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 54.0
+margin_right = 746.0
+margin_bottom = 554.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 692.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 70.0
+margin_top = 7.0
+margin_right = 131.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 0, 24 )
+custom_fonts/font = SubResource( 20 )
+text = "Title"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 692.0
+margin_bottom = 494.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/mono_font = SubResource( 21 )
+custom_fonts/bold_italics_font = SubResource( 22 )
+custom_fonts/italics_font = SubResource( 23 )
+custom_fonts/bold_font = SubResource( 24 )
+custom_fonts/normal_font = SubResource( 25 )
+bbcode_enabled = true
+bbcode_text = "sample code"
+text = "sample code"
+fit_content_height = true
+scroll_active = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 524.0
+margin_right = 692.0
+margin_bottom = 554.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 750.0
+margin_right = 800.0
+margin_bottom = 554.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="MargineContainer" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_bottom = 20.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 26 )
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer/CloseButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="EditButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -20.0
+hint_tooltip = "edit the article"
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer/EditButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control"]
+root_node = NodePath("../../../../..")
+autoplay = "open"
+anims/RESET = SubResource( 29 )
+anims/close = SubResource( 28 )
+anims/open = SubResource( 30 )
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel/MargineContainer/EditButton" to="." method="_on_EditButton_pressed"]

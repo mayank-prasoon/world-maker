@@ -52,7 +52,7 @@ func filter_card(card:Control)->bool:
 
 # NOTE: currently under developemnt
 func open_card_reader(card_article:Resource):
-	var reader:PackedScene = load("res://systems/wiki_dashboard/ui_elements/reader/Reader.tscn")
+	var reader:PackedScene = load("res://systems/wiki_dashboard/ui_elements/wiki_reader/WikiReader.tscn")
 	var x = reader.instance()
 	x.article = card_article
 	get_owner().add_child(x)
