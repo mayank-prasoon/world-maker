@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rectangle 60(2).png-31e5d808e82d313e50ecced9570fc43d.stex"
+path="res://.import/Rectangle 39-2.png-c659c1f454a639dc7324be351986089e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/map/new map/Rectangle 60(2).png"
-dest_files=[ "res://.import/Rectangle 60(2).png-31e5d808e82d313e50ecced9570fc43d.stex" ]
+source_file="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png"
+dest_files=[ "res://.import/Rectangle 39-2.png-c659c1f454a639dc7324be351986089e.stex" ]
 
 [params]
 

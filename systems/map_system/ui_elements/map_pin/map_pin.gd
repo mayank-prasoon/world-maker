@@ -11,8 +11,10 @@ var disabled:bool                   = false
 var desired_scale:Vector2           = self.scale
 
 func _ready()->void:
+	self.scale = Vector2(0, 0) # to add a pop out animation
+	
 	add_to_group("map_element") # part of map element 
-	add_to_group("map_pin") # part of the map pin groups
+	add_to_group("map_pin")     # part of the map pin groups
 
 	load_resource()
 	add_animation_and_texture()

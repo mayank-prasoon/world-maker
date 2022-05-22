@@ -202,7 +202,7 @@ _global_script_class_icons={
 
 config/name="World Maker"
 config/description="A tool for world building and writting"
-run/main_scene="res://systems/Opening.tscn"
+run/main_scene="res://systems/OpenLastProject.tscn"
 boot_splash/image="res://transparent image.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 0 )
 config/icon="res://icon.png"

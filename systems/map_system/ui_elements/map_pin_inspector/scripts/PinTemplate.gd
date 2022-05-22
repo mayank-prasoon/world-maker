@@ -15,7 +15,7 @@ func assign_texture(index)->void:
 
 
 func _on_Button_pressed():
-	var symbol_template_scene:PackedScene = load("res://systems/map_system/ui_elements/map_pin_symbol_creator/MapPinSymbolCreator.tscn")
+	var symbol_template_scene:PackedScene = load("res://systems/map_system/ui_elements/map_pin_symbol_creator/MapPinTemplateCreator.tscn")
 	var symbol_template_node = symbol_template_scene.instance()
 	get_owner().get_parent().get_owner().get_node("Camera2D/CanvasLayer/Menu").add_child(symbol_template_node)
 	EventBus.emit_signal("change_inspector_state", false)
