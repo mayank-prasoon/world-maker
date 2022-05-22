@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rectangle 1(1).png-4cacc16e6fec14dbed6a3a8eb7ccaaa6.stex"
+path="res://.import/text.png-67b4dcd5569840ca33bbf9ba52da9b64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/map/new map/Rectangle 1(1).png"
-dest_files=[ "res://.import/Rectangle 1(1).png-4cacc16e6fec14dbed6a3a8eb7ccaaa6.stex" ]
+source_file="res://assets/graphics/map/new map/text.png"
+dest_files=[ "res://.import/text.png-67b4dcd5569840ca33bbf9ba52da9b64.stex" ]
 
 [params]
 

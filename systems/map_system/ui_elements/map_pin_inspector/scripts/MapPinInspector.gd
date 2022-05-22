@@ -91,6 +91,7 @@ func reload_pin()->void:
 #	map_pin_node              = load_pin.instance()
 #
 #	get_parent().get_owner().get_node("PinCollectionNode").add_child(map_pin_node) 
+
 	save_pin()
 
 
