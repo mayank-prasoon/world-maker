@@ -13,7 +13,7 @@ script/source = "extends Control
 
 # ------------------------------------------------------------------------------x
 
-onready var panel:Panel = $CanvasLayer/Control/CenterContainer/Panel
+onready var panel:Panel = $CanvasLayer/Control/CenterContainer/PlaceHolder/Panel
 
 # generate confirmation dialog
 func create_confirmation_dialog():
@@ -242,7 +242,7 @@ func _draw():
 [sub_resource type="Animation" id=22]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/Panel:rect_position")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolder/Panel:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -251,14 +251,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 604, 305 ) ]
+"values": [ Vector2( -356, -300 ) ]
 }
 
 [sub_resource type="Animation" id=20]
 resource_name = "close"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/Panel:rect_position")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolder/Panel:rect_position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -267,7 +267,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 604, 200 ), Vector2( 604, 1100 ) ]
+"values": [ Vector2( -356, -300 ), Vector2( -356, 600 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -302,7 +302,7 @@ tracks/2/keys = {
 resource_name = "open"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/Panel:rect_position")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolder/Panel:rect_position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -311,7 +311,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 604, 1100 ), Vector2( 604, 200 ) ]
+"values": [ Vector2( -356, 600 ), Vector2( -356, -300 ) ]
 }
 
 [node name="MapPinSymbolCreator" type="Control"]
@@ -334,16 +334,27 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/CenterContainer"]
-margin_left = 604.0
-margin_top = 305.0
-margin_right = 1316.0
-margin_bottom = 905.0
+[node name="PlaceHolder" type="Control" parent="CanvasLayer/Control/CenterContainer"]
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/CenterContainer/PlaceHolder"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -356.0
+margin_top = -300.0
+margin_right = 356.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 712, 600 )
+rect_pivot_offset = Vector2( 356, 300 )
 mouse_filter = 2
 theme = SubResource( 9 )
 
-[node name="MarginContainer" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel"]
+[node name="MarginContainer" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel"]
 anchor_left = 0.00976562
 anchor_top = 0.0166667
 anchor_right = 0.990234
@@ -354,19 +365,19 @@ margin_right = -10.0
 margin_bottom = -10.0
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 custom_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer"]
 margin_right = 678.0
 margin_bottom = 20.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 654.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -374,7 +385,7 @@ size_flags_vertical = 7
 text = "Map Pin Template Creator"
 valign = 1
 
-[node name="Close" type="Button" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Close" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 658.0
 margin_right = 678.0
 margin_bottom = 20.0
@@ -382,7 +393,7 @@ rect_min_size = Vector2( 20, 20 )
 flat = true
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Close"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/HBoxContainer/Close"]
 modulate = Color( 1, 1, 1, 0.627451 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -390,33 +401,33 @@ mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Dashboard" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Dashboard" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer"]
 margin_top = 40.0
 margin_right = 678.0
-margin_bottom = 559.0
+margin_bottom = 560.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="MapSymbolCreator" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer"]
+[node name="MapSymbolCreator" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer"]
 margin_right = 424.0
-margin_bottom = 519.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 250, 0 )
 mouse_filter = 2
 size_flags_horizontal = 3
 script = SubResource( 6 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 20
 
-[node name="PinName" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="PinName" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 0, 52 )
@@ -428,23 +439,23 @@ input_name = "Pin Template Name"
 input_description = "Name of the pin.
 Tip: try to pick a unique name."
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 42 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer"]
 margin_top = 23.0
 margin_right = 424.0
 margin_bottom = 52.0
 placeholder_text = "sample text"
 
-[node name="PinTexture" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="PinTexture" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_top = 72.0
 margin_right = 424.0
 margin_bottom = 124.0
@@ -456,34 +467,34 @@ __meta__ = {
 input_name = "Pin Texture"
 input_description = "choose a primary Pin texture"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer"]
 margin_top = 23.0
 margin_right = 424.0
 margin_bottom = 52.0
 custom_constants/separation = 20
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
 margin_right = 329.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
 margin_left = 349.0
 margin_right = 424.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 75, 0 )
 text = "browse "
 
-[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture"]
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture"]
 margin_left = 344.0
 margin_top = 160.0
 margin_right = 683.0
@@ -499,7 +510,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PinHoverAnimation" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="PinHoverAnimation" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_top = 144.0
 margin_right = 424.0
 margin_bottom = 196.0
@@ -511,34 +522,34 @@ __meta__ = {
 input_name = "Pin Hover Animation"
 input_description = "choose a primary Pin textures for animation"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer"]
 margin_top = 23.0
 margin_right = 424.0
 margin_bottom = 52.0
 custom_constants/separation = 20
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer"]
 margin_right = 329.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer"]
 margin_left = 349.0
 margin_right = 424.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 75, 0 )
 text = "browse "
 
-[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation"]
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation"]
 margin_left = 344.0
 margin_top = 160.0
 margin_right = 683.0
@@ -554,12 +565,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_top = 216.0
 margin_right = 424.0
 margin_bottom = 268.0
 
-[node name="PinXOffset" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer"]
+[node name="PinXOffset" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer"]
 margin_right = 210.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 0, 52 )
@@ -571,20 +582,20 @@ __meta__ = {
 input_name = "X Offset"
 input_description = "Set the offset of the PIn Symbol"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset"]
 anchor_right = 1.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer"]
 margin_right = 210.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer"]
 margin_top = 23.0
 margin_right = 210.0
 margin_bottom = 52.0
 
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer"]
 margin_right = 103.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
@@ -592,13 +603,13 @@ min_value = -10000.0
 max_value = 10000.0
 align = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer"]
 margin_left = 107.0
 margin_right = 210.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="PinYOffset" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer"]
+[node name="PinYOffset" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer"]
 margin_left = 214.0
 margin_right = 424.0
 margin_bottom = 52.0
@@ -611,23 +622,23 @@ __meta__ = {
 input_name = "Y Offset"
 input_description = "Set the offset of the PIn Symbol"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset"]
 anchor_right = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer"]
 margin_right = 210.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer"]
 margin_top = 23.0
 margin_right = 210.0
 margin_bottom = 52.0
 
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer"]
 margin_right = 103.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
@@ -635,13 +646,13 @@ min_value = -10000.0
 max_value = 10000.0
 align = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer"]
 margin_left = 107.0
 margin_right = 210.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="PinArea2DRadius" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="PinArea2DRadius" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_top = 288.0
 margin_right = 424.0
 margin_bottom = 340.0
@@ -656,20 +667,20 @@ input_description = "Set the offset of the PIn Symbol.
 
 Tip: try having slightly bigger radius"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius"]
 anchor_right = 1.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer"]
 margin_top = 23.0
 margin_right = 424.0
 margin_bottom = 52.0
 
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
 margin_right = 103.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
@@ -679,25 +690,25 @@ value = 48.0
 align = 2
 suffix = "px"
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
 margin_left = 107.0
 margin_right = 210.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
 margin_left = 214.0
 margin_right = 317.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer"]
 margin_left = 321.0
 margin_right = 424.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 
-[node name="PinTags" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="PinTags" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_top = 360.0
 margin_right = 424.0
 margin_bottom = 412.0
@@ -711,23 +722,23 @@ input_description = "deafult tags for the symbol.
 
 note: seprate the tags with comma (,)"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 42 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 19.0
 text = "Name"
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer"]
 margin_top = 23.0
 margin_right = 424.0
 margin_bottom = 52.0
 placeholder_text = "eg: cat, house, rural"
 
-[node name="InputDropDown" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="InputDropDown" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_top = 432.0
 margin_right = 424.0
 margin_bottom = 497.0
@@ -739,42 +750,42 @@ __meta__ = {
 input_name = "Defalut template"
 input_description = "select a default template for the article associated with a map pin"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown"]
 anchor_right = 1.0
 custom_constants/separation = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer"]
 margin_right = 424.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 0, 19 )
 text = "Name"
 valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer"]
 margin_top = 24.0
 margin_right = 424.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
 margin_right = 210.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
 margin_left = 214.0
 margin_right = 424.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer"]
 visible = false
 margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="save" type="Button" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
+[node name="save" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer"]
 margin_left = 349.0
 margin_top = 517.0
 margin_right = 424.0
@@ -790,39 +801,39 @@ custom_styles/focus = SubResource( 19 )
 custom_styles/normal = SubResource( 19 )
 text = "save"
 
-[node name="SymbolViewer" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer"]
+[node name="SymbolViewer" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer"]
 margin_left = 428.0
 margin_right = 678.0
-margin_bottom = 519.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 250, 0 )
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
 margin_right = 250.0
 margin_bottom = 19.0
 text = "Symbol Viewer"
 align = 1
 valign = 1
 
-[node name="SymbolTemplateContainer" type="Control" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
+[node name="SymbolTemplateContainer" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
 margin_top = 23.0
 margin_right = 250.0
-margin_bottom = 496.0
+margin_bottom = 497.0
 rect_pivot_offset = Vector2( 125, 179 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource( 1 )
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
-margin_top = 500.0
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer"]
+margin_top = 501.0
 margin_right = 250.0
-margin_bottom = 519.0
+margin_bottom = 520.0
 size_flags_vertical = 1
 align = 1
 valign = 1
@@ -833,21 +844,21 @@ anims/RESET = SubResource( 22 )
 anims/close = SubResource( 20 )
 anims/open = SubResource( 21 )
 
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="close_map_creator"]
-[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName" method="_on_LineEdit_text_changed"]
-[connection signal="input_value_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_InputOpenFile_input_value_changed"]
-[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_LineEdit_text_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_Button_pressed"]
-[connection signal="file_selected" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/FileDialog" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_FileDialog_file_selected"]
-[connection signal="input_value_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_InputOpenFile_input_value_changed"]
-[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_LineEdit_text_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_Button_pressed"]
-[connection signal="file_selected" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/FileDialog" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_FileDialog_file_selected"]
-[connection signal="files_selected" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/FileDialog" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_FileDialog_files_selected"]
-[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset" method="_on_SpinBox_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset" method="_on_SpinBox_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius" method="_on_SpinBox_value_changed"]
-[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags" method="_on_LineEdit_text_changed"]
-[connection signal="item_selected" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer/OptionButton" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown" method="_on_OptionButton_item_selected"]
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/save" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator" method="_on_save_pressed"]
-[connection signal="size_flags_changed" from="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer/SymbolTemplateContainer" to="CanvasLayer/Control/CenterContainer/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer/SymbolTemplateContainer" method="_on_SymbolTemplateContainer_size_flags_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="close_map_creator"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName/VBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinName" method="_on_LineEdit_text_changed"]
+[connection signal="input_value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_InputOpenFile_input_value_changed"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_Button_pressed"]
+[connection signal="file_selected" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTexture" method="_on_FileDialog_file_selected"]
+[connection signal="input_value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_InputOpenFile_input_value_changed"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_Button_pressed"]
+[connection signal="file_selected" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_FileDialog_file_selected"]
+[connection signal="files_selected" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinHoverAnimation" method="_on_FileDialog_files_selected"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinXOffset" method="_on_SpinBox_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/HBoxContainer/PinYOffset" method="_on_SpinBox_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius/VBoxContainer/HBoxContainer/SpinBox" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinArea2DRadius" method="_on_SpinBox_value_changed"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags/VBoxContainer/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/PinTags" method="_on_LineEdit_text_changed"]
+[connection signal="item_selected" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown/VBoxContainer/HBoxContainer/OptionButton" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/InputDropDown" method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator/VBoxContainer/save" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/MapSymbolCreator" method="_on_save_pressed"]
+[connection signal="size_flags_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer/SymbolTemplateContainer" to="CanvasLayer/Control/CenterContainer/PlaceHolder/Panel/MarginContainer/VBoxContainer/Dashboard/HBoxContainer/SymbolViewer/VBoxContainer/SymbolTemplateContainer" method="_on_SymbolTemplateContainer_size_flags_changed"]
