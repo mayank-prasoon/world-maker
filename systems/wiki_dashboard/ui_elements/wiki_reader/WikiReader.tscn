@@ -272,7 +272,6 @@ anchor_bottom = 1.0
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_default_cursor_shape = 2
 scroll_horizontal_enabled = false
 script = SubResource( 31 )
 
