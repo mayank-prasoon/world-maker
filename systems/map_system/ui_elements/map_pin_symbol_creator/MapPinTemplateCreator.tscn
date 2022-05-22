@@ -280,7 +280,7 @@ func change_in_input()->void:
 
 	if symbol_template.template_texture != \"\":
 		var image_size = ImageHandler.load_image(symbol_template.template_texture).get_size()
-		image_info.text = \"image_size : \" + String(image_size.x) + \" X \" + String(image_size.y) + \" px\"
+		image_info.text = \"image size : \" + String(image_size.x) + \" X \" + String(image_size.y) + \" px\"
 	else:
 		image_info.text = \"select an Image\"
 
