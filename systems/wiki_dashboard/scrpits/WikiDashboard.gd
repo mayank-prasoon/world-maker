@@ -1,7 +1,5 @@
 extends Control
 
-var wiki_editor:PackedScene    = load("res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.tscn")
-
 # node
 onready var cards_grid:GridContainer = $VBoxContainer/CardList/ScrollContainer/GridContainer
 
@@ -17,18 +15,6 @@ func _ready():
 			cards.article = article
 			cards_grid.add_child(cards)
 
-	# connect signals
-	var _x = EventBus.connect("edit_article", self, 'edit_article')
-
-func edit_article(article):
-	var node = wiki_editor.instance()
-	get_parent().get_owner().editor_layer.add_child(node)
-	node.open_article(article)
-	self.queue_free()
-
 
 func _on_Button_pressed():
-	var node = wiki_editor.instance()
-	get_parent().get_owner().editor_layer.add_child(node)
-	self.queue_free()
-
+	EventBus.emit_signal("create_article")

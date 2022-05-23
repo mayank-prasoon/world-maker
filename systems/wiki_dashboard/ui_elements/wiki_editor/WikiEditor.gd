@@ -129,7 +129,7 @@ func _on_Close_pressed()->void:
 		close()
 
 func close():
-	get_parent().get_owner().contianer.add_child(wiki_dashboard.instance())
+	EventBus.emit_signal("load_wiki_dashboard")
 	self.queue_free()
 
 
