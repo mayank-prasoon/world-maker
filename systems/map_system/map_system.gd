@@ -54,7 +54,7 @@ class MapLoadSystem extends Object:
 
 		# add map name to the drop down list
 		for maps_resource_path in maps_paths:
-			var map:Resource = load(maps_resource_path)
+			var map:MapData = load(maps_resource_path)
 			if !(map == null):
 				map_list[map.map_name] = maps_resource_path
 				option_node.add_item(map.map_name)
