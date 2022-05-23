@@ -41,6 +41,11 @@ func open_add_menu():
 	menu.append("delete map")
 	pop_up_menu.add_item("delete map")
 	
+	
+	if !check_if_map_exists(): # if map doesn't exists
+		pop_up_menu.set_item_disabled(0, true)
+		pop_up_menu.set_item_disabled(2, true)
+	
 	open_menu()
 
 # opens the menu
@@ -127,3 +132,13 @@ func _on_mouse_inside_element(element)->void:
 
 func _on_mouse_outside_element()->void:
 	mouse_inside_element = false
+
+
+# check if any map exists
+func check_if_map_exists()->bool:
+	if get_owner().map_collection_node.get_children().empty():
+		print_debug("there are no maps")
+		return false
+	else:
+		print_debug("there are maps")
+		return true
