@@ -97,6 +97,7 @@ func _on_PopupMenu_id_pressed(id):
 	match menu[id]:
 		"delete pin":
 			EventBus.emit_signal("remove_map_pin", map_element.pin_resource)
+			EventBus.emit_signal("clear_inspector")
 			map_element.queue_free()
 
 		"edit pin":
