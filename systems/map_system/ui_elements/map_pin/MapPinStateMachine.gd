@@ -154,14 +154,16 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx)->void:
 	if event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == BUTTON_LEFT:
 			clicked = true
-			get_tree().set_input_as_handled()
 
 		elif !event.is_pressed() and event.button_index == BUTTON_LEFT:
 			reset_drag()
-
+		
+		if event.is_doubleclick() and event.button_index == BUTTON_LEFT:
+			EventBus.emit_signal("open_article_panel", get_parent().pin_resource.pin_article)
+		
 	if event is InputEventMouseMotion:
 		sprite.play("hover")
-
+	
 
 func _on_Timer_timeout():
 	dragged      = true

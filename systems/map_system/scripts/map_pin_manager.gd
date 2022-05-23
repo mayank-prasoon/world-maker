@@ -85,6 +85,8 @@ func _unhandled_input(event):
 			if mouse_inside_element and map_element is MapPinNode:
 				open_pin_menu()
 
+
+
 	# run when left mouse button is clicked
 		if event.is_doubleclick() && event.button_index == BUTTON_MASK_LEFT:
 			if mouse_inside_element and map_element is MapPinNode:
@@ -128,10 +130,12 @@ func _on_AddMenu_id_pressed(id):
 func _on_mouse_inside_element(element)->void:
 	map_element = element
 	mouse_inside_element = true
+	print_debug("mouse inside")
 
 
 func _on_mouse_outside_element()->void:
 	mouse_inside_element = false
+	print_debug("mouse outside")
 
 
 # check if any map exists

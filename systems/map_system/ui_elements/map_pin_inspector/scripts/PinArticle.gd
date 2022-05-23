@@ -7,3 +7,4 @@ func _on_OptionButton_text_changed(new_text):
 	var dir = Directory.new()
 	if dir.file_exists(new_text):
 		set_input_value(load(new_text))
+	emit_signal("input_value_changed")
