@@ -15,7 +15,48 @@
 script/source = "extends Control
 
 onready var editor_layer:CanvasLayer = $EditorLayer
-onready var contianer:HBoxContainer  = $HBoxContainer
+onready var contianer:Control        = $HBoxContainer/DashboardContainer
+
+
+var wiki_editor:PackedScene    = load(\"res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.tscn\")
+
+var wiki_dashboard:PackedScene = preload(\"res://systems/wiki_dashboard/WikiDashboard.tscn\")
+var map_dashboard:PackedScene  = preload(\"res://systems/map_system/MapDashboard.tscn\")
+
+
+func _ready():
+	var _x = EventBus.connect('edit_article', self, 'edit_article')
+	var _y = EventBus.connect('create_article', self, 'create_article')
+	
+	var _p = EventBus.connect(\"load_wiki_dashboard\", self, 'load_wiki_dashboard')
+	var _q = EventBus.connect(\"load_map_dashboard\", self, 'load_map_dashboard')
+	
+
+func edit_article(article)->void:
+	var node = wiki_editor.instance()
+	$EditorLayer.add_child(node)
+	node.open_article(article)
+	clean_dashboard_container()
+
+ 
+func create_article()->void:
+	var node = wiki_editor.instance()
+	$EditorLayer.add_child(node)
+	clean_dashboard_container()
+
+# clean the dashboard container
+func clean_dashboard_container()->void:
+	var nodes = contianer.get_children()
+	for x in nodes:
+		x.queue_free()
+
+func load_wiki_dashboard()->void:
+	clean_dashboard_container()
+	contianer.add_child(wiki_dashboard.instance())
+	
+func load_map_dashboard()->void:
+	clean_dashboard_container()
+	contianer.add_child(map_dashboard.instance())
 "
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -210,12 +251,15 @@ icon = ExtResource( 7 )
 expand_icon = true
 script = SubResource( 7 )
 
-[node name="WikiDashboard" parent="HBoxContainer" instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="DashboardContainer" type="Control" parent="HBoxContainer"]
 margin_left = 50.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WikiDashboard" parent="HBoxContainer/DashboardContainer" instance=ExtResource( 2 )]
 mouse_filter = 2
 
 [connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/HomeTab/CenterContainer/HomeButton" to="HBoxContainer/RibbonMenu" method="_on_HomeButton_pressed"]

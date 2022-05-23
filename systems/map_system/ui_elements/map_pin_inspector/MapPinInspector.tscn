@@ -459,8 +459,8 @@ theme = SubResource( 19 )
 window_title = "Open a File"
 mode = 0
 access = 1
-current_dir = "user://media/mayank/Assets1/Software Dev/world building software"
-current_path = "user://media/mayank/Assets1/Software Dev/world building software/"
+current_dir = "user://home/mayank/world-building-software"
+current_path = "user://home/mayank/world-building-software/"
 
 [connection signal="text_changed" from="MapPinInspector/VBoxContainer/PinName/HBoxContainer/LineEdit" to="MapPinInspector/VBoxContainer/PinName" method="_on_LineEdit_text_changed"]
 [connection signal="value_changed" from="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer/SpinBox" to="MapPinInspector/VBoxContainer/PinPosition" method="value_changed"]

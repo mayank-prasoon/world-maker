@@ -122,27 +122,31 @@ func _on_DeletePinButton_pressed():
 # create new map article
 func _on_NewArticle_pressed():
 	var uuid = UUID.generate()
-	
-	Resource.new()
-	
+
+	resource_file.pin_article = create_map_pin_article(uuid)
+	pin_article_node.text     = Article.fetch_save_path().format({"uuid" : uuid})
+	reload_pin()
+
+func create_map_pin_article(uuid:String)->Article:
+	var article_resource = Article.new()
+
 	var resource_template = load(resource_file.pin_symbol_template.template_default_article_template)
 	if !(resource_template == null):
 		resource_template = resource_template.new()
-	
-	ResourceManager.save_file(
-		{
+
+	var data = {
 			'article_name'     : resource_file.pin_name,
 			'article_id'       : uuid,
 			'tags'             : resource_file.tags,
 			'article_profile'  : resource_file.pin_symbol_template.template_texture,
 			'article_type'     : Article.PIN,
 			'article_template' : resource_template
-		},
-		
-		ResourceManager.ARTICLE
-	)
-	
+		}
+
+	for property in data.keys():
+		article_resource.set(property, data[property])
+
+	ResourceSaver.save(Article.fetch_save_path().format({"uuid" : uuid}), article_resource)
 	var pin_article = load(Article.fetch_save_path().format({"uuid" : uuid}))
-	pin_article_node.text     = Article.fetch_save_path().format({"uuid" : uuid})
-	resource_file.pin_article = pin_article
-	save_pin()
+	
+	return pin_article

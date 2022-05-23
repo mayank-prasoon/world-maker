@@ -156,4 +156,15 @@ signal complete_reset() # combination of both reset zoom and position
 # these signals are realated to Wiki system inside other systems. 
 
 # wiki editor
-signal edit_article(article) # pop open wiki Editor
+signal edit_article(article) # pop open Wiki Editor for editing article
+
+signal create_article() # pop open Wiki Editor for creating new article
+
+
+# ============================================================= #
+#                       DASHBOARD MANAGER                       #
+# ============================================================= #
+
+signal load_wiki_dashboard()
+
+signal load_map_dashboard()

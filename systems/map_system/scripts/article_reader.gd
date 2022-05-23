@@ -10,7 +10,8 @@ enum TOGGLE_STATE {
 	CLOSE
 }
 
-var state = TOGGLE_STATE.CLOSE
+var state   = TOGGLE_STATE.CLOSE
+var resource = null
 
 func _ready()->void:
 	self.hide()
@@ -36,6 +37,8 @@ func _on_open_panel(article:Article)->void:
 
 # load article signal method
 func load_article(article:Article)->void:
+	resource = article
+
 	var file = File.new()
 	if !(article.article_banner == "") or file.file_exists(article.article_banner):
 		banner_node.visible = true
@@ -58,6 +61,4 @@ func _on_Button_pressed():
 
 # implement feature
 func _on_expand_pressed():
-	pass
-#	var wiki_editor:PackedScene    = load("res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.tscn")
-#	var node = wiki_editor.instance()
+	EventBus.emit_signal("edit_article", resource)
