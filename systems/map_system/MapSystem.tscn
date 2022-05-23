@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://systems/map_system/map_system.gd" type="Script" id=1]
 [ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
@@ -305,6 +305,17 @@ content_margin_left = 25.0
 content_margin_right = 25.0
 content_margin_top = 25.0
 content_margin_bottom = 25.0
+
+[sub_resource type="GDScript" id=55]
+script/source = "extends ConfirmationDialog
+
+func _ready()->void:
+	get_child(1).align  = Label.ALIGN_CENTER
+	get_child(1).valign = Label.VALIGN_CENTER
+
+func _on_ConfirmationDialog_confirmed()->void:
+	EventBus.emit_signal(\"delete_current_map\")
+"
 
 [sub_resource type="DynamicFont" id=52]
 size = 30
@@ -1156,6 +1167,19 @@ text = "sample text"
 fit_content_height = true
 scroll_active = false
 
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Camera2D/CanvasLayer/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -75.0
+margin_right = 100.0
+margin_bottom = 75.0
+dialog_text = "Delete this map. This is irreversible"
+dialog_autowrap = true
+script = SubResource( 55 )
+
 [node name="LoadingLayer" type="CanvasLayer" parent="Camera2D"]
 layer = 2
 
@@ -1225,3 +1249,4 @@ anims/close = SubResource( 54 )
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer/Rest" to="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools" method="_on_Rest_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer/HBoxContainer/expand" to="Camera2D/CanvasLayer/Menu/ArticleReader" method="_on_expand_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer/HBoxContainer/close" to="Camera2D/CanvasLayer/Menu/ArticleReader" method="_on_Button_pressed"]
+[connection signal="confirmed" from="Camera2D/CanvasLayer/Menu/ConfirmationDialog" to="Camera2D/CanvasLayer/Menu/ConfirmationDialog" method="_on_ConfirmationDialog_confirmed"]
