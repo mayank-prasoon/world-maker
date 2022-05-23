@@ -111,7 +111,7 @@ func _on_PopupMenu_id_pressed(id):
 			EventBus.emit_signal("move_camera_to", map_element.get_global_position())
 
 		"delete map":
-			$"../Camera2D/CanvasLayer/Menu/ConfirmationDialog".popup_centered()
+			$"../Camera2D/CanvasLayer/CanvasLayer/ConfirmationDialog".popup_centered()
 
 # right click pop up sub menu logic
 # NOTE : work in progress...
