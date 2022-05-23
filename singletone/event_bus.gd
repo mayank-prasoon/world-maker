@@ -93,17 +93,17 @@ signal save_map_symbol_template(resource)
 
 # === Inspector System ===
 
-signal toggle_inpector()
+signal toggle_inpector()                              # if open close, if close open
 
-signal change_inspector_state(new_state)
+signal change_inspector_state(new_state)              # set the open close state of the inspector
 
-signal add_pin_inspector(map_pin_resource, node)
+signal add_pin_inspector(map_pin_resource, node)      # add pin to the inspector
 
-signal add_text_inspector(map_text_resource, node)
+signal add_text_inspector(map_text_resource, node)    # add text to the inspector
 
-signal add_comment_inspector(map_text_resource, node)
+signal add_comment_inspector(map_text_resource, node) # add comment to the inspector
 
-signal clear_inspector()
+signal clear_inspector()                              # clear the inspector
 
 # === Article System ===
 
