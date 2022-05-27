@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_comment_resources_template.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+comment_name = "mouse"
+comment_id = "8cfdb03a-b776-49eb-b60c-3f1f381cf41f"
+comment_location = Vector2( 2368, 1643 )
+comment_text = ""
