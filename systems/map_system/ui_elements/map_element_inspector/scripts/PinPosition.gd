@@ -1,4 +1,4 @@
-extends "res://systems/map_system/ui_elements/map_pin_inspector/inspector_input.gd"
+extends "res://systems/map_system/ui_elements/map_element_inspector/inspector_input.gd"
 
 onready var x_axis = $HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
 onready var y_axis = $HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2

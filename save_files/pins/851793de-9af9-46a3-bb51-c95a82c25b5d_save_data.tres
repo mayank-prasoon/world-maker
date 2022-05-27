@@ -26,6 +26,7 @@ template_offset = Vector2( 0, 0 )
 template_color = Color( 0, 0, 0, 1 )
 template_area2D_radius = 48
 template_default_tag = [  ]
+template_default_article_template = ""
 
 [resource]
 script = ExtResource( 1 )

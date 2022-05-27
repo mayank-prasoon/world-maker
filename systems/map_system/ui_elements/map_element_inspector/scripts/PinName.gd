@@ -1,4 +1,4 @@
-extends "res://systems/map_system/ui_elements/map_pin_inspector/inspector_input.gd"
+extends "res://systems/map_system/ui_elements/map_element_inspector/inspector_input.gd"
 
 func _ready():
 	input_value = get_owner().resource_file.pin_name

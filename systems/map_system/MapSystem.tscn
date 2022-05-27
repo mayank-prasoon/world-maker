@@ -441,6 +441,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="CommentCollectionNode" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_smoothed = true
@@ -481,7 +486,7 @@ margin_left = 29.0
 margin_top = 9.0
 margin_right = 133.0
 margin_bottom = 79.0
-items = [ "pin", null, 0, false, false, 0, 0, null, "", false, "text", null, 0, false, false, 1, 0, null, "", false, "notes", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "pin", null, 0, false, false, 0, 0, null, "", false, "comment", null, 0, false, false, 1, 0, null, "", false ]
 allow_search = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu"]
@@ -1020,6 +1025,7 @@ texture = ExtResource( 23 )
 stretch_mode = 4
 
 [node name="ArticleReader" type="Control" parent="Camera2D/CanvasLayer/Menu"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 450, 0 )
@@ -1187,6 +1193,7 @@ script = SubResource( 55 )
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/LoadingLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.203922, 0.203922, 0.203922, 1 )

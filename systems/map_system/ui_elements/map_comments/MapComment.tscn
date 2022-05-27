@@ -1,0 +1,411 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/graphics/map/chevron-down.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/wiki_dashboard/edit-3.svg" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+var selected:bool                   = false
+var disabled:bool                   = false
+
+var comment_resource:MapComment     = MapComment.new() # map comment resource
+
+
+# ------------------------------------------------------------------------------
+
+func _ready():
+#	pass
+	load_comment()
+
+# load comment
+func load_comment()->void:
+	self.position                                         = comment_resource.comment_location
+	$Comment/HBoxContainer/Label.text                     = comment_resource.comment_name
+	$CommentWindow/VBoxContainer/HBoxContainer/Label.text = comment_resource.comment_name
+	$CommentWindow/VBoxContainer/RichTextLabel.text       = comment_resource.comment_text
+
+# ------------------------------------------------------------------------------
+
+func _on_TextureRect_pressed():
+	$CommentWindow.show()
+	$Comment.hide()
+
+
+func _on_Button_pressed():
+	$CommentWindow.hide()
+	$Comment.show()
+
+# ------------------------------------------------------------------------------
+
+# save map comment
+func save_comment()->void:
+	ResourceManager.save_file(
+		{
+			\"comment_name\"            : comment_resource.comment_name,
+			\"comment_id\"              : comment_resource.comment_id,
+			\"comment_location\"        : get_global_position(),
+			\"comment_text\"            : comment_resource.comment_text
+		},
+
+		ResourceManager.COMMENT
+	)
+
+# ------------------------------------------------------------------------------
+
+func _process(_delta:float)->void:
+	self.comment_resource.comment_location = self.position
+
+# ------------------------------------------------------------------------------
+
+
+func _on_Button2_pressed():
+	EventBus.emit_signal(\"add_comment_inspector\", comment_resource, self)
+	EventBus.emit_signal(\"change_inspector_state\", true)
+# ------------------------------------------------------------------------------
+
+"
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 0.705882 )
+border_width_left = 5
+border_width_top = 35
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id=10]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="DynamicFont" id=6]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 0.694118 )
+border_width_left = 5
+border_width_top = 45
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+expand_margin_top = 45.0
+
+[sub_resource type="DynamicFont" id=8]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 8 )
+Panel/styles/panel = SubResource( 20 )
+RichTextLabel/styles/normal = SubResource( 10 )
+WindowDialog/colors/title_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+WindowDialog/constants/close_h_ofs = 35
+WindowDialog/constants/close_v_ofs = 33
+WindowDialog/constants/title_height = 45
+WindowDialog/fonts/title_font = SubResource( 6 )
+WindowDialog/icons/close = ExtResource( 3 )
+WindowDialog/icons/close_highlight = ExtResource( 3 )
+WindowDialog/styles/panel = SubResource( 7 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends Panel
+
+# === SIGNAL(s) ===
+
+signal change_postion
+
+# === VAR(s) ===
+
+
+var resize:bool = false
+var drag:bool   = false
+var center:Vector2 = Vector2(0,0)
+
+# ------------------------------------------------------------------------------
+
+func _process(delta:float)->void:
+	if self.visible:
+		self.center = self.rect_size/2
+
+# ------------------------------------------------------------------------------
+
+
+func _input(event):
+	if event is InputEventMouseMotion: 
+		if resize:
+			self.rect_size = (get_global_mouse_position() - get_global_position())
+
+		if drag:
+			self.get_parent().set_global_position(get_parent().get_global_position() + event.relative)
+			self.set_global_position(get_global_position())
+
+
+func _on_Control_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			resize = true
+		if !event.pressed:
+			resize = false
+			self.set_global_position(get_parent().get_global_position() - center)
+
+
+func _on_HBoxContainer_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			drag = true
+			self.modulate = Color(1.0, 1.0, 1.0, 0.5)
+		if !event.pressed:
+			drag = false
+			self.modulate = Color(1.0, 1.0, 1.0, 1.0)
+			emit_signal(\"change_postion\")
+
+
+"
+
+[sub_resource type="DynamicFont" id=25]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=24]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="GDScript" id=19]
+script/source = "tool
+extends Button
+
+var desired_scale:Vector2 = Vector2(0,0)
+
+func _process(delta:float)->void:
+	self.rect_size = get_child(0).rect_size
+	self.text      = \"\"
+
+	self.set_pivot_offset(self.get_size()/2)
+
+	self.rect_scale = lerp(self.rect_scale, self.desired_scale, 0.5)
+	var camera_array = get_tree().get_nodes_in_group('camera_movement')
+	if camera_array.size() != 0:
+		desired_scale = camera_array[0].desiredZooom
+"
+
+[sub_resource type="DynamicFont" id=26]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="MapComment" type="Node2D"]
+script = SubResource( 2 )
+
+[node name="CommentWindow" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -175.0
+margin_right = 250.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 400, 250 )
+rect_pivot_offset = Vector2( 250, 175 )
+theme = SubResource( 9 )
+script = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CommentWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CommentWindow/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 25.0
+mouse_filter = 0
+mouse_default_cursor_shape = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CommentWindow/VBoxContainer/HBoxContainer"]
+margin_right = 25.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 0 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CommentWindow/VBoxContainer/HBoxContainer"]
+margin_left = 29.0
+margin_top = 3.0
+margin_right = 471.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 25 )
+text = "Title"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="CommentWindow/VBoxContainer/HBoxContainer"]
+margin_left = 475.0
+margin_right = 500.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 0 )
+mouse_default_cursor_shape = 2
+flat = true
+align = 0
+
+[node name="TextureRect" type="TextureRect" parent="CommentWindow/VBoxContainer/HBoxContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CommentWindow/VBoxContainer"]
+margin_top = 29.0
+margin_right = 500.0
+margin_bottom = 350.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="CommentWindow"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = -22.0
+mouse_default_cursor_shape = 12
+
+[node name="Control" type="Control" parent="CommentWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+
+[node name="Button2" type="Button" parent="CommentWindow/Control"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -25.0
+margin_right = 20.0
+rect_min_size = Vector2( 25, 25 )
+mouse_default_cursor_shape = 2
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="CommentWindow/Control/Button2"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Comment" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -15.0
+margin_right = 48.0
+margin_bottom = 9.0
+rect_scale = Vector2( 1.4013e-45, 1.4013e-45 )
+rect_pivot_offset = Vector2( 40, 12 )
+custom_fonts/font = SubResource( 24 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+script = SubResource( 19 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Comment"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="Comment/HBoxContainer"]
+margin_right = 5.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="Label" type="Label" parent="Comment/HBoxContainer"]
+margin_left = 15.0
+margin_right = 46.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 26 )
+text = "title"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Comment/HBoxContainer"]
+margin_left = 56.0
+margin_right = 80.0
+margin_bottom = 24.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="change_postion" from="CommentWindow" to="." method="save_comment"]
+[connection signal="gui_input" from="CommentWindow/VBoxContainer/HBoxContainer" to="CommentWindow" method="_on_HBoxContainer_gui_input"]
+[connection signal="pressed" from="CommentWindow/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="gui_input" from="CommentWindow/Control2" to="CommentWindow" method="_on_Control_gui_input"]
+[connection signal="pressed" from="CommentWindow/Control/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Comment" to="." method="_on_TextureRect_pressed"]

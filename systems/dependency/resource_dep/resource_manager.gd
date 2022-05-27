@@ -2,9 +2,13 @@ class_name ResourceManager
 extends Reference
 
 enum {
+	#  == map related == 
 		MAP,
 		PIN,
+		COMMENT,
 		SYMBOL_TEMP,
+
+	# == article related ==
 		ARTICLE
 	}
 
@@ -50,8 +54,12 @@ static func resource_path(resource_type:int) -> String:
 		MAP:  # map resouces
 			save_location = SystemDataManager.root_save_file_path + \
 				"/maps/{uuid}_save_data.tres"
-		
+
 		PIN:  # pin resources
+			save_location = SystemDataManager.root_save_file_path + \
+				"/pins/{uuid}_save_data.tres"
+		
+		COMMENT:  # pin resources
 			save_location = SystemDataManager.root_save_file_path + \
 				"/pins/{uuid}_save_data.tres"
 
@@ -83,6 +91,9 @@ static func save_file(data:Dictionary, resource_type:int)->void:
 		PIN:
 			resource = MapPin.new()
 			uuid     = data.pin_id
+		COMMENT:
+			resource = MapComment.new()
+			uuid     = data.comment_id
 		SYMBOL_TEMP:
 			resource = MapSymbolTemplate.new()
 			uuid     = data.template_name

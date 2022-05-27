@@ -82,18 +82,12 @@ func input_value_changed()->void:
 # ------------------------------------------------------------------------------
 
 func reload_pin()->void:
-#	map_pin_node.queue_free()
 	map_pin_node.pin_resource = resource_file
 	map_pin_node.add_animation_and_texture()
 	map_pin_node.load_resource()
-	
-#	var load_pin:PackedScene  = load("res://systems/map_system/ui_elements/map_pin/MapPin.tscn")
-#	map_pin_node              = load_pin.instance()
-#
-#	get_parent().get_owner().get_node("PinCollectionNode").add_child(map_pin_node) 
-
 	save_pin()
 
+# ------------------------------------------------------------------------------
 
 func save_pin()->void:
 	ResourceManager.save_file(
@@ -118,6 +112,7 @@ func _on_DeletePinButton_pressed():
 	EventBus.emit_signal("clear_inspector")
 	map_pin_node.queue_free()
 
+# ------------------------------------------------------------------------------
 
 # create new map article
 func _on_NewArticle_pressed():
@@ -126,6 +121,8 @@ func _on_NewArticle_pressed():
 	resource_file.pin_article = create_map_pin_article(uuid)
 	pin_article_node.text     = Article.fetch_save_path().format({"uuid" : uuid})
 	reload_pin()
+
+# ------------------------------------------------------------------------------
 
 func create_map_pin_article(uuid:String)->Article:
 	var article_resource = Article.new()

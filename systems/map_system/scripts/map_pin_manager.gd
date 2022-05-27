@@ -9,8 +9,7 @@ var menu = []
 
 enum ADD {
 	PIN,
-	TEXT,
-	NOTES
+	COMMENT
 }
 
 # === nodes ===
@@ -121,11 +120,8 @@ func _on_AddMenu_id_pressed(id):
 	match id:
 		ADD.PIN:
 			EventBus.emit_signal("add_pin_to_map", mouse_position)
-		ADD.TEXT:
-			print("text")
-		ADD.NOTES:
-			print("notes")
-
+		ADD.COMMENT:
+			EventBus.emit_signal("add_comment_to_map", mouse_position)
 
 func _on_mouse_inside_element(element)->void:
 	map_element = element

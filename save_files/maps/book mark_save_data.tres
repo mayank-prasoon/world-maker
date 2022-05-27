@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_resources_template.gd" type="Script" id=1]
+[ext_resource path="res:///save_files/pins/8cfdb03a-b776-49eb-b60c-3f1f381cf41f_save_data.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+map_name = "book mark"
+image_path = "/media/mayank/Assets1/Software Dev/final build/assets for project/daniel-leone-g30P1zcOzXo-unsplash.jpg"
+image_size = Vector2( 0, 0 )
+layers = [  ]
+map_pins = [ ExtResource( 2 ) ]
+tags = [  ]

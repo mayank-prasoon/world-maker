@@ -1,3 +1,13 @@
+# =============================================== #
+#               MAP RESOURCE SYSTEM               # 
+# =============================================== #
+
+# this deals with map resources 
+#
+#
+#
+#
+
 class_name MapResourceSystem
 extends Reference
 
