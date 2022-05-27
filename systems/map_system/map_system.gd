@@ -1,15 +1,16 @@
 extends Control
 
 # === NODES ===
-onready var items_node:OptionButton      = $Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton
-onready var canvas_layer:CanvasLayer     = $Camera2D/CanvasLayer
+onready var items_node:OptionButton           = $Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton
+onready var canvas_layer:CanvasLayer          = $Camera2D/CanvasLayer
 
-onready var map_collection_node:Control  = $MapCollectionNode
-onready var layer_container_node:Control = $Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayersContainer/VBoxContainer
-onready var pin_collection_node:Control  = $PinCollectionNode
+onready var map_collection_node:Control       = $MapCollectionNode
+onready var layer_container_node:Control      = $Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayersContainer/VBoxContainer
+onready var pin_collection_node:Control       = $PinCollectionNode
+onready var comment_collection_node:Control   = $CommentCollectionNode
 
-onready var inspector_node:Control       = $Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector
-onready var camera_node:Camera2D         = $Camera2D
+onready var inspector_node:Control            = $Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector
+onready var camera_node:Camera2D              = $Camera2D
 # === EXPORTS ===
 
 
@@ -25,13 +26,15 @@ var map_resource:MapData = MapData.new()
 onready var map_load_system:MapLoadSystem   = MapLoadSystem.new(items_node)
 
 # load and remove map texture node  
-onready var map_manager:MapManager          = MapManager.new(self, pin_collection_node, map_collection_node, camera_node)
+onready var map_manager:MapManager          = MapManager.new(self, pin_collection_node, comment_collection_node, map_collection_node, camera_node)
 
 # add and remove map layer node
 onready var map_layer_system:MapLayerSystem = MapLayerSystem.new(map_collection_node, layer_container_node, map_resource)
 
 # add map pins to the map
 onready var map_pin_system:MapPinSystem     = MapPinSystem.new(pin_collection_node, inspector_node)
+
+onready var map_comment_system:MapCommentSystem = MapCommentSystem.new(comment_collection_node, inspector_node)
 
 # === INTERNAL CLASS(s) ===
 
@@ -68,6 +71,7 @@ class MapManager extends Object:
 	
 	var add_map_thread:Thread
 	var add_pin_thread:Thread
+	var add_comment_thread:Thread
 	
 	# === VAR(s) ===
 	var map_resource:MapData     = MapData.new()
@@ -76,12 +80,14 @@ class MapManager extends Object:
 	var map_node:Control         = Control.new()
 	var pin_node:Control         = Control.new()
 	var node:Control             = Control.new()
+	var comment_node:Control     = Container.new()
 
 	# initialize node
-	func _init(node:Control, pin_node:Control, map_node:Control, camera_node:Camera2D):
+	func _init(node:Control, pin_node:Control, comment_node:Control, map_node:Control, camera_node:Camera2D):
 		self.node         = node
 		self.map_node     = map_node
 		self.pin_node     = pin_node
+		self.comment_node = comment_node
 		self.camera_node  = camera_node
 		
 		var x = self.connect("create_layers", node, 'assign_layers')
@@ -92,11 +98,14 @@ class MapManager extends Object:
 		map_resource = load(resource_path)
 
 		# display map
-		add_map_thread = Thread.new()
-		add_pin_thread = Thread.new()
-
+		add_map_thread     = Thread.new()
+		add_pin_thread     = Thread.new()
+		add_comment_thread = Thread.new()
+		
 		var _x = add_map_thread.start(self, 'create_map_texture_node')
 		var _y = add_pin_thread.start(self, 'add_map_pins')
+		add_map_comments()
+#		var _z = add_comment_thread.start(self, 'add_map_comments')
 	#	create_map_texture_node()
 
 	# join thread
@@ -124,11 +133,23 @@ class MapManager extends Object:
 
 		var map_pin_scene:PackedScene = load("res://systems/map_system/ui_elements/map_pin/MapPin.tscn")
 
-		for pin_resource in self.map_resource.map_pins:
-			var map_pin_node = map_pin_scene.instance()
-			map_pin_node.pin_resource = pin_resource
-			pin_node.call_deferred("add_child", map_pin_node)
+		for resource in self.map_resource.map_pins:
+			if resource is MapPin: 
+				var map_pin_node = map_pin_scene.instance()
+				map_pin_node.pin_resource = resource
+				pin_node.call_deferred("add_child", map_pin_node)
 
+	func add_map_comments(_x = null) ->void:
+		for x in self.comment_node.get_children():
+			x.queue_free()
+
+		var map_comment_scene:PackedScene = load("res://systems/map_system/ui_elements/map_comments/MapComment.tscn")
+
+		for resource in self.map_resource.map_pins:
+			if resource is MapComment:
+				var map_comment_node = map_comment_scene.instance()
+				map_comment_node.comment_resource = resource
+				comment_node.call_deferred("add_child", map_comment_node)
 
 	func assign_texture() -> void:
 		var texture = TextureRect.new()
@@ -204,8 +225,48 @@ class MapLayerSystem extends Object:
 		layer_container_node.add_child(layer_node)
 		layer_node.rect_size      = Vector2(272, 30)
 
+# comment
+class MapCommentSystem extends Object:
+	var comment_collection_node:Control = Control.new()
+	var inspector_node:Control      = Control.new()
+
+
+	# load the nodes where the comments will be stored
+	func _init(comment_node:Control, inspector:Control):
+		self.comment_collection_node = comment_node
+		self.inspector_node          = inspector
+
+
+	func add_comment(position, map_resource:MapData)->void:
+		var uuid = UUID.generate()
+		
+		var map_comment = MapComment.new()
+		var comment_scene:PackedScene = load("res://systems/map_system/ui_elements/map_comments/MapComment.tscn")
+		var comment_node:Node2D       = comment_scene.instance()
+
+		map_comment.comment_location   = position
+		map_comment.comment_id         = uuid
+		comment_node.comment_resource  = map_comment
+
+		self.comment_collection_node.add_child(comment_node)
+		
+		create_new_comment(map_resource, map_comment, uuid)
+		EventBus.emit_signal("change_inspector_state", true)
+		inspector_node.add_map_comment_inspector(map_comment, comment_node)
+
+
+	func create_new_comment(map_resource, map_comment, uuid)->void:
+		map_resource.map_pins.append(map_comment)
+		ResourceManager.SaveData.new(SystemDataManager.root_pin_save_path.format({"uuid":uuid}), map_comment)
+
+		map_comment.set_path(SystemDataManager.root_pin_save_path.format({"uuid":uuid}))
+
+		EventBus.emit_signal("save_map", map_resource)
+
+
+
+
 # manage pin
-	
 class MapPinSystem extends Object:
 	var pin_collection_node:Control = Control.new()
 	var inspector_node:Control      = Control.new()
@@ -258,6 +319,8 @@ func _ready()->void:
 	
 	var _t = items_node.connect("item_selected", self, '_on_MenuButton_item_selected')
 	var _u = EventBus.connect("create_new_layer", map_layer_system, 'create_layer')
+	var _v = EventBus.connect("add_comment_to_map", self, 'add_comment')
+	var _w = EventBus.connect("remove_map_comment", self, '_on_remove_map_comment')
 	
 	map_load_system.assign_map_name()
 
@@ -271,6 +334,7 @@ func _on_save_map(map_resource)->void:
 # create map layer
 func create_layer(resource, index)->void:
 	map_layer_system.create_layer(resource, index)
+
 
 # save map layer
 func _on_save_map_layer(layers:MapLayer, index)->void:
@@ -290,6 +354,20 @@ func _on_remove_map_pin(resource_file:MapPin)->void:
 	var dir = Directory.new()
 	dir.remove(resource_path)
 
+
+# ------------------------------------------------------------------------------
+
+# remove map pin
+func _on_remove_map_comment(resource_file:MapComment)->void:
+	var position = map_resource.map_pins.find(resource_file)
+	map_resource.map_pins.remove(position)
+
+	EventBus.emit_signal("save_map", map_resource)
+	var resource_path = resource_file.get_path()
+
+	# remove the resource file
+	var dir = Directory.new()
+	dir.remove(resource_path)
 
 # ------------------------------------------------------------------------------
 
@@ -321,8 +399,13 @@ func _on_create_new_map(map_name:String, map_texture:String, article:bool)->void
 	reload_system()
 
 # when a pin is requested to be added
-func _on_add_pin_to_map(position):
+func _on_add_pin_to_map(position)->void:
 	map_pin_system.add_pin(position, map_resource)
+	EventBus.emit_signal("save_map", map_resource)
+
+
+func add_comment(position)->void:
+	map_comment_system.add_comment(position, map_resource)
 	EventBus.emit_signal("save_map", map_resource)
 
 # ------------------------------------------------------------------------------
