@@ -1,14 +1,14 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/MapPinInspector.gd" type="Script" id=1]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/PinArticle.gd" type="Script" id=2]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/PinName.gd" type="Script" id=3]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/PinPosition.gd" type="Script" id=4]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/PinTemplate.gd" type="Script" id=5]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/PinTags.gd" type="Script" id=6]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/LinkMap.gd" type="Script" id=7]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin_inspector/scripts/DeletePin.gd" type="Script" id=8]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinTags.gd" type="Script" id=2]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinPosition.gd" type="Script" id=3]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinArticle.gd" type="Script" id=4]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/MapPinInspector.gd" type="Script" id=5]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinTemplate.gd" type="Script" id=6]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinName.gd" type="Script" id=7]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/DeletePin.gd" type="Script" id=8]
+[ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/LinkMap.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -103,7 +103,7 @@ bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 [sub_resource type="DynamicFont" id=1]
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 9 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
@@ -130,7 +130,7 @@ bg_color = Color( 0.980392, 0.317647, 0.317647, 1 )
 [node name="ScrollContainer" type="ScrollContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="MapPinInspector" type="Control" parent="."]
 margin_right = 1920.0
@@ -169,7 +169,7 @@ margin_top = 50.0
 margin_right = 1878.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 0, 25 )
-script = ExtResource( 3 )
+script = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinName"]
 anchor_right = 1.0
@@ -193,7 +193,7 @@ margin_top = 100.0
 margin_right = 1878.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 0, 70 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinPosition"]
 anchor_right = 1.0
@@ -261,7 +261,7 @@ margin_right = 1878.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 0, 25 )
 rect_pivot_offset = Vector2( -373.999, 55 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinTemplate"]
 anchor_right = 1.0
@@ -329,7 +329,7 @@ margin_right = 1878.0
 margin_bottom = 495.0
 rect_min_size = Vector2( 0, 25 )
 rect_pivot_offset = Vector2( -373.999, 55 )
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinArticle"]
 anchor_right = 1.0
@@ -373,7 +373,7 @@ margin_right = 1878.0
 margin_bottom = 595.0
 rect_min_size = Vector2( 0, 25 )
 rect_pivot_offset = Vector2( -373.999, 55 )
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/LinkMap"]
 anchor_right = 1.0
@@ -397,7 +397,7 @@ margin_top = 620.0
 margin_right = 1878.0
 margin_bottom = 645.0
 rect_min_size = Vector2( 0, 25 )
-script = ExtResource( 6 )
+script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinTags"]
 anchor_right = 1.0
@@ -459,8 +459,8 @@ theme = SubResource( 19 )
 window_title = "Open a File"
 mode = 0
 access = 1
-current_dir = "user://home/mayank/world-building-software"
-current_path = "user://home/mayank/world-building-software/"
+current_dir = "user://media/mayank/Assets1/Software Dev/world building software"
+current_path = "user://media/mayank/Assets1/Software Dev/world building software/"
 
 [connection signal="text_changed" from="MapPinInspector/VBoxContainer/PinName/HBoxContainer/LineEdit" to="MapPinInspector/VBoxContainer/PinName" method="_on_LineEdit_text_changed"]
 [connection signal="value_changed" from="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer/SpinBox" to="MapPinInspector/VBoxContainer/PinPosition" method="value_changed"]
