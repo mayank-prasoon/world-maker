@@ -24,7 +24,7 @@ func _physics_process(_delta:float) -> void:
 	self.offset = lerp(self.offset, desiredOffset, panSpeed)
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event:InputEvent) -> void:
 	if !disableMouse:
 		zoomControl(event)
 		cameraMovement(event)

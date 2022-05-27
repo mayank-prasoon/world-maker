@@ -36,7 +36,7 @@ func _ready():
 	var _x = EventBus.connect("change_inspector_state", self, 'change_inspector_state')
 	var _y = EventBus.connect("clear_inspector", self, 'clear_inspector')
 	var _z = EventBus.connect("add_pin_inspector", self, 'add_map_pin_inspector')
-	
+	var _p = EventBus.connect("add_comment_inspector", self, 'add_map_comment_inspector')
 # ------------------------------------------------------------------------------
 
 # toggle the display
@@ -88,23 +88,38 @@ func inspector_slide_animation(init_pos, final_pos)->void:
 
 # ------------------------------------------------------------------------------
 
-# add map pin
-func add_map_pin_inspector(map_pin_resource:MapPin, map_pin_node) -> void:
+# add map pin inspector
+func add_map_pin_inspector(map_pin_resource:MapPin, map_pin_node:Node2D) -> void:
 	for x in container_node.get_children():
 		x.queue_free()
 
-	var scene:PackedScene = load("res://systems/map_system/ui_elements/map_pin_inspector/MapPinInspector.tscn")
+	var scene:PackedScene = load("res://systems/map_system/ui_elements/map_element_inspector/MapPinInspector.tscn")
 	var map_pin_inspector_node:Control = scene.instance()
 
 	map_pin_inspector_node.resource_file = map_pin_resource
 	map_pin_inspector_node.map_pin_node  = map_pin_node
 	container_node.add_child(map_pin_inspector_node)
 
+# ------------------------------------------------------------------------------
+
+# add map comment inspector
+func add_map_comment_inspector(map_comment_resource:MapComment, map_comment_node:Node2D)->void:
+	for x in container_node.get_children():
+		x.queue_free()
+	
+	var scene:PackedScene = load("res://systems/map_system/ui_elements/map_element_inspector/MapCommentInspector.tscn")
+	var map_comment_inspector_node:Control = scene.instance()
+
+	map_comment_inspector_node.resource_file    = map_comment_resource
+	map_comment_inspector_node.map_comment_node = map_comment_node
+	container_node.add_child(map_comment_inspector_node)
+
+# ------------------------------------------------------------------------------
 
 func clear_inspector() -> void:
 	for x in container_node.get_children():
 		x.queue_free()
-	
+
 	var label  = Label.new()
 	label.text = "select an element on the map"
 

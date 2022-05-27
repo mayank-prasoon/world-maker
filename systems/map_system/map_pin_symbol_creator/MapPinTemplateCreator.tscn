@@ -1,0 +1,1094 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-1.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/button_round.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/chevron-right.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/map/new map/spin_box.png" type="Texture" id=9]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png" type="Texture" id=11]
+[ext_resource path="res://systems/map_system/ui_elements/map_pin/MapPin.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture" id=14]
+
+[sub_resource type="GDScript" id=24]
+script/source = "extends Control
+
+# ------------------------------------------------------------------------------x
+
+onready var panel:Panel = $CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel
+
+
+# generate confirmation dialog
+func create_confirmation_dialog():
+	# ConfirmationDialog
+	var new_pop_up:ConfirmationDialog = ConfirmationDialog.new()
+	new_pop_up.name            = \"ConfirmationDialog\"
+	new_pop_up.window_title    = \"Please Confirm...\"
+	new_pop_up.dialog_text     = \"you are closing the map creation dialog box,\\n\\nnote: all filled info will be lost\"
+	new_pop_up.dialog_autowrap = true
+	new_pop_up.rect_size       = Vector2(300, 150)
+
+	# Label
+	var lable:Label            = new_pop_up.get_child(1)
+	lable.align                = Label.ALIGN_CENTER
+	lable.valign               = Label.VALIGN_CENTER
+
+
+	var _x = new_pop_up.connect(\"confirmed\", self, 'close_the_dialog')
+	$PopUp.add_child(new_pop_up)
+
+# ------------------------------------------------------------------------------
+
+
+# close the dialog box
+func close_the_dialog():
+	$AnimationPlayer.play(\"close\")
+	
+
+# ------------------------------------------------------------------------------
+
+func _on_Close_pressed():
+	if panel.template_name.text == \"\" and panel.template_texture.text == \"\" and panel.template_hover_animation.text == \"\" and panel.default_tags.text == \"\":
+		close_the_dialog()
+	else:
+		# display the dialog box if the fields are empty
+		create_confirmation_dialog()
+		var confirm:ConfirmationDialog  = $PopUp.get_node(\"ConfirmationDialog\")
+		confirm.popup_centered()
+"
+
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 850 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("EffectLayer/BackgroundBlur")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unBlurBackground"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 900 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=37]
+
+[sub_resource type="StyleBoxEmpty" id=38]
+
+[sub_resource type="StyleBoxEmpty" id=39]
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="StyleBoxEmpty" id=41]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=19]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=32]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=33]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=34]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=35]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id=36]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="DynamicFont" id=21]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 21 )
+Button/styles/disabled = SubResource( 37 )
+Button/styles/focus = SubResource( 38 )
+Button/styles/hover = SubResource( 39 )
+Button/styles/normal = SubResource( 40 )
+Button/styles/pressed = SubResource( 41 )
+LineEdit/styles/focus = SubResource( 18 )
+LineEdit/styles/normal = SubResource( 19 )
+OptionButton/styles/disabled = SubResource( 32 )
+OptionButton/styles/focus = SubResource( 33 )
+OptionButton/styles/hover = SubResource( 34 )
+OptionButton/styles/normal = SubResource( 35 )
+OptionButton/styles/pressed = SubResource( 36 )
+Panel/styles/panel = SubResource( 20 )
+
+[sub_resource type="GDScript" id=29]
+script/source = "extends Control
+
+
+# input related
+onready var map_pin_template_container = $MarginContainer/HBoxContainer/VBoxContainer/PinContainer
+onready var template_name              = $MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input/LineEdit
+onready var template_texture           = $MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input/LineEdit
+onready var template_hover_animation   = $MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit
+onready var offset_x                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input/LineEdit
+onready var offset_y                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input/LineEdit
+onready var default_tags               = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input/LineEdit
+onready var default_template           = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input/LineEdit
+
+# map pin related
+onready var image_info                 = $MarginContainer/HBoxContainer/VBoxContainer/ImageInfo
+
+# create button
+onready var create_button              = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton
+
+# --------------------------------------------------------------------------------------------------
+
+var article_template_list:Array = [\"\"]
+
+# --------------------------------------------------------------------------------------------------
+
+
+func _ready()->void:
+	for nodes in get_tree().get_nodes_in_group('input_field'):
+		nodes.connect('input_value_changed', self, 'change_in_input')
+	image_info.text = \"select an Image\"
+
+	load_article_template()
+
+
+# --------------------------------------------------------------------------------------------------
+
+func _process(delta:float)->void:
+	if !(template_name.text.empty() and template_texture.text.empty()):
+		create_button.get_node(\"TextureRect\").modulate = Color(1.0, 1.0, 1.0, 1.0)
+		create_button.get_node(\"CreateButton\").disabled = false
+	else:
+		create_button.get_node(\"TextureRect\").modulate = Color(1.0, 1.0, 1.0, 0.5)
+		create_button.get_node(\"CreateButton\").disabled = true
+
+# --------------------------------------------------------------------------------------------------
+
+# load article template
+func load_article_template()->void:
+	var templates:Array = FolderManager.fetch_files_from(SystemDataManager.root_temp_save_path.get_base_dir(), true)
+	
+	article_template_list.clear()
+	default_template.items = []
+	
+	# add no template option
+	default_template.add_item(\"no template\")
+	article_template_list.append(\"\")
+
+	# load article into the drop down
+	for article_template_path in templates:
+		var article_template:Resource = load(article_template_path).new()
+		if article_template.template_type == Article.PIN:
+			default_template.add_item(article_template.template_name)
+			article_template_list.append(article_template_path)
+	
+	default_template.selected = 0
+
+# --------------------------------------------------------------------------------------------------
+
+# change in input
+func change_in_input()->void:
+	var symbol_template = MapSymbolTemplate.new()
+
+	symbol_template.template_name            = template_name.text
+	symbol_template.template_texture         = template_texture.text
+	symbol_template.template_hover_animation = template_hover_animation.text.split(\", \")
+	symbol_template.template_offset          = Vector2(offset_x.value, offset_y.value)
+	symbol_template.template_default_tag     = default_tags.text.split(\", \")
+	symbol_template.template_default_article_template = article_template_list[default_template.selected]
+	
+	map_pin_template_container.load_map_pin(symbol_template)
+
+	if symbol_template.template_texture != \"\":
+		var image_size = ImageHandler.load_image(symbol_template.template_texture).get_size()
+		image_info.text = \"image size : \" + String(image_size.x) + \" X \" + String(image_size.y) + \" px\"
+	else:
+		image_info.text = \"select an Image\"
+
+# --------------------------------------------------------------------------------------------------
+
+# load symbol template
+func load_map_symbol_template(symbol_template:MapSymbolTemplate)->void:
+	template_name.text                  = symbol_template.template_name 
+	template_texture.text               = symbol_template.template_texture
+	template_hover_animation.text       = PoolStringArray(symbol_template.template_hover_animation).join(\", \")
+	offset_x.value                      = symbol_template.template_offset.x
+	offset_y.value                      = symbol_template.template_offset.y
+	default_tags.text                   = PoolStringArray(symbol_template.template_default_tag)
+
+# --------------------------------------------------------------------------------------------------
+
+# save symbol template
+func _on_save_pressed()->void:
+	var tag = null
+
+	if !(default_tags.text.split(\", \") == PoolStringArray([\"\"])):
+		tag = default_tags.text.split(\", \")
+
+	ResourceManager.save_file(
+		{
+		\"template_name\"            : template_name.text ,
+		\"template_texture\"         : template_texture.text,
+		\"template_hover_animation\" : template_hover_animation.text.split(\", \"),
+		\"template_offset\"          : Vector2(offset_x.value, offset_y.value),
+		\"template_default_tag\"     : tag
+		},
+
+		ResourceManager.SYMBOL_TEMP
+	)
+	
+	get_tree().call_group(\"map_pin_inspector\", 'load_pin_template')
+	get_owner().close_the_dialog()
+"
+
+[sub_resource type="GDScript" id=23]
+script/source = "tool
+extends Container
+
+var radius:int = 48
+
+# ------------------------------------------------------------------------------
+
+func _process(_delta:float)->void:
+	get_child(0).position = self.rect_pivot_offset
+
+# ------------------------------------------------------------------------------
+
+# reload map pin
+func load_map_pin(symbol_template:MapSymbolTemplate)->void:
+
+	# map pin node
+	var map_pin_node = $MapPin
+
+	# create and assign value to map pin resource
+	var map_pin:MapPin            = MapPin.new()
+	map_pin.pin_symbol_template   = symbol_template
+	map_pin.pin_name              = \"sample name\"
+	map_pin.pin_location          = self.rect_pivot_offset
+
+	# assign map pin resource to 
+	map_pin_node.pin_resource     = map_pin
+
+	map_pin_node.add_animation_and_texture()
+	map_pin_node.load_resource()
+"
+
+[sub_resource type="GDScript" id=28]
+script/source = "extends CenterContainer
+
+
+func _ready():
+	$Tab1.show()
+	$Tab2.hide()
+
+# show Tab 2
+func _on_NextButton_pressed():
+	$Tab1.hide()
+	$Tab2.show()
+
+# show Tab 1
+func _on_BackButton_pressed():
+	$Tab1.show()
+	$Tab2.hide()
+"
+
+[sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 15.0
+
+[sub_resource type="GDScript" id=30]
+script/source = "extends VBoxContainer
+
+signal value_changed
+
+func _on_Open_pressed()->void:
+	$\"../../../../../../../../../../PopUp/FileDialog\".popup_centered()
+
+
+func _on_FileDialog_file_selected(path:String)->void:
+	$HBoxContainer/Input/LineEdit.text = path
+
+
+func _on_LineEdit_text_changed(_new_text:String)->void:
+	emit_signal(\"value_changed\")
+"
+
+[sub_resource type="StyleBoxEmpty" id=4]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 15.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_bottom = 2
+border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id=6]
+content_margin_left = 15.0
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="GDScript" id=31]
+script/source = "extends VBoxContainer
+
+signal value_changed
+
+func _on_FileDialog2_files_selected(paths:PoolStringArray)->void:
+	$HBoxContainer/Input/LineEdit.text = PoolStringArray(paths).join(' ,')
+	emit_signal(\"value_changed\")
+
+
+
+func _on_Open_pressed()->void:
+	$\"../../../../../../../../../../PopUp/FileDialog2\".popup_centered()
+
+
+func _on_LineEdit_text_changed(new_text:String):
+	emit_signal(\"value_changed\")
+"
+
+[sub_resource type="StyleBoxEmpty" id=12]
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 10.0
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[node name="MapPinTemplateCreator" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
+anims/RESET = SubResource( 26 )
+anims/close = SubResource( 27 )
+anims/open = SubResource( 25 )
+
+[node name="EffectLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="BackgroundBlur" parent="EffectLayer" instance=ExtResource( 1 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = SubResource( 9 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PlaceHolderContainer" type="Control" parent="CanvasLayer/Control/CenterContainer"]
+margin_left = 403.0
+margin_top = 276.0
+margin_right = 1516.0
+margin_bottom = 803.0
+rect_min_size = Vector2( 1113, 527 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -556.5
+margin_top = -263.5
+margin_right = 556.5
+margin_bottom = 263.501
+rect_min_size = Vector2( 1113, 527 )
+script = SubResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Margin" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="Close" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/Margin"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+icon = ExtResource( 14 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel"]
+anchor_left = 0.0333333
+anchor_top = 0.056926
+anchor_right = 0.966667
+anchor_bottom = 0.943074
+margin_left = -1.90735e-06
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer"]
+margin_right = 1038.0
+margin_bottom = 467.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer"]
+margin_right = 500.0
+margin_bottom = 467.0
+rect_min_size = Vector2( 500, 0 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 19.0
+text = "map pin"
+align = 1
+
+[node name="PinContainer" type="Container" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 500.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 250, 210 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 23 )
+
+[node name="MapPin" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/PinContainer" instance=ExtResource( 12 )]
+position = Vector2( 250, 210 )
+
+[node name="ImageInfo" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
+margin_top = 448.0
+margin_right = 500.0
+margin_bottom = 467.0
+text = "select Image"
+align = 1
+
+[node name="TabContainer" type="CenterContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer"]
+margin_left = 504.0
+margin_right = 1038.0
+margin_bottom = 467.0
+size_flags_horizontal = 3
+script = SubResource( 28 )
+
+[node name="Tab1" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer"]
+visible = false
+margin_left = 12.0
+margin_top = 33.0
+margin_right = 522.0
+margin_bottom = 433.0
+rect_min_size = Vector2( 510, 400 )
+size_flags_horizontal = 3
+custom_constants/separation = 35
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
+margin_right = 510.0
+margin_bottom = 74.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name"]
+margin_right = 510.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 1 )
+text = "name"
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name"]
+margin_top = 29.0
+margin_right = 510.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 45 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 4 )
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+placeholder_text = "map name"
+
+[node name="Texture" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
+margin_top = 109.0
+margin_right = 510.0
+margin_bottom = 183.0
+custom_constants/separation = 10
+script = SubResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture"]
+margin_right = 510.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 4 )
+text = "texture"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture"]
+margin_top = 29.0
+margin_right = 510.0
+margin_bottom = 74.0
+custom_constants/separation = 20
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer"]
+margin_right = 389.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 389, 45 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 2 )
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+placeholder_text = "path to texture"
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer"]
+margin_left = 409.0
+margin_right = 510.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -20.0
+margin_right = 25.0
+margin_bottom = 30.0
+texture = ExtResource( 5 )
+
+[node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 80, 0 )
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "browse"
+
+[node name="AnimationFrames" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
+margin_top = 218.0
+margin_right = 510.0
+margin_bottom = 292.0
+custom_constants/separation = 10
+script = SubResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames"]
+margin_right = 510.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 4 )
+text = "animation frames"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames"]
+margin_top = 29.0
+margin_right = 510.0
+margin_bottom = 74.0
+custom_constants/separation = 20
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer"]
+margin_right = 389.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 389, 45 )
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 2 )
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+placeholder_text = "animation frames"
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer"]
+margin_left = 409.0
+margin_right = 510.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -20.0
+margin_right = 25.0
+margin_bottom = 30.0
+texture = ExtResource( 5 )
+
+[node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 80, 0 )
+custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "browse"
+
+[node name="NextTab" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
+margin_left = 465.0
+margin_top = 355.0
+margin_right = 510.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 45, 45 )
+size_flags_horizontal = 10
+size_flags_vertical = 14
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = -20.0
+margin_right = 24.5
+margin_bottom = 75.0
+texture = ExtResource( 7 )
+
+[node name="NextButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab"]
+modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
+anchor_right = 0.118421
+anchor_bottom = 1.0
+rect_min_size = Vector2( 45, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_constants/hseparation = 10
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 12 )
+icon = ExtResource( 13 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Tab2" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer"]
+margin_left = 12.0
+margin_top = 33.0
+margin_right = 522.0
+margin_bottom = 433.0
+rect_min_size = Vector2( 380, 400 )
+size_flags_horizontal = 3
+custom_constants/separation = 35
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
+margin_right = 510.0
+margin_bottom = 74.0
+custom_constants/separation = 60
+
+[node name="Offsetx" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer"]
+margin_right = 225.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 225, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx"]
+margin_right = 225.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 1 )
+text = "Offset x"
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx"]
+margin_top = 29.0
+margin_right = 225.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 45 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 9 )
+
+[node name="LineEdit" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -5.0
+
+[node name="Offsety" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer"]
+margin_left = 285.0
+margin_right = 510.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 225, 0 )
+size_flags_horizontal = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety"]
+margin_right = 225.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 1 )
+text = "Offset y"
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety"]
+margin_top = 29.0
+margin_right = 225.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 45 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 9 )
+
+[node name="LineEdit" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -5.0
+
+[node name="DefaultTags" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
+margin_top = 109.0
+margin_right = 510.0
+margin_bottom = 183.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags"]
+margin_right = 510.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 1 )
+text = "default tags"
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags"]
+margin_top = 29.0
+margin_right = 510.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 45 )
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 4 )
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+placeholder_text = "map tags, eg: cat, dog"
+
+[node name="DefaultTemplate" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
+margin_top = 218.0
+margin_right = 510.0
+margin_bottom = 292.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate"]
+margin_right = 510.0
+margin_bottom = 19.0
+custom_styles/normal = SubResource( 1 )
+text = "default template"
+
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate"]
+margin_top = 29.0
+margin_right = 275.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 275, 45 )
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input"]
+margin_left = -24.5
+margin_top = -20.0
+margin_right = 404.5
+margin_bottom = 75.0
+texture = ExtResource( 11 )
+
+[node name="LineEdit" type="OptionButton" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "template name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
+margin_top = 327.0
+margin_right = 510.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreateButton" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2"]
+margin_top = 28.0
+margin_right = 461.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 0, 45 )
+size_flags_horizontal = 3
+size_flags_vertical = 14
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = -20.0
+margin_right = 24.5
+margin_bottom = 75.0
+texture = ExtResource( 3 )
+
+[node name="CreateButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton"]
+anchor_right = 0.339474
+anchor_bottom = 1.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_constants/hseparation = 10
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 12 )
+text = "create"
+icon = ExtResource( 6 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BackButton" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2"]
+margin_left = 465.0
+margin_top = 28.0
+margin_right = 510.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 45, 45 )
+size_flags_horizontal = 8
+size_flags_vertical = 14
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = -20.0
+margin_right = 24.5
+margin_bottom = 75.0
+texture = ExtResource( 7 )
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton"]
+anchor_right = 0.339474
+anchor_bottom = 1.0
+margin_right = 29.7237
+size_flags_horizontal = 10
+size_flags_vertical = 10
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_constants/hseparation = 10
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 12 )
+icon = ExtResource( 8 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PopUp" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="FileDialog" type="FileDialog" parent="PopUp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -422.0
+margin_top = -253.0
+margin_right = 422.0
+margin_bottom = 253.0
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
+
+[node name="FileDialog2" type="FileDialog" parent="PopUp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -422.0
+margin_top = -253.0
+margin_right = 422.0
+margin_bottom = 253.0
+window_title = "Open File(s)"
+resizable = true
+mode = 1
+access = 2
+current_dir = "/media/mayank/Assets1/Software Dev/world building software"
+current_path = "/media/mayank/Assets1/Software Dev/world building software/"
+
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/Margin/Close" to="." method="_on_Close_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_Open_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_Open_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab/NextButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer" method="_on_NextButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton/CreateButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton/BackButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer" method="_on_BackButton_pressed"]
+[connection signal="file_selected" from="PopUp/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_FileDialog_file_selected"]
+[connection signal="files_selected" from="PopUp/FileDialog2" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_FileDialog2_files_selected"]
