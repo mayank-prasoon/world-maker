@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/graphics/map/chevron-down.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/wiki_dashboard/edit-3.svg" type="Texture" id=5]
-[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=6]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
@@ -70,7 +69,7 @@ func _on_Button2_pressed():
 "
 
 [sub_resource type="StyleBoxFlat" id=20]
-bg_color = Color( 0.145098, 0.145098, 0.145098, 0.705882 )
+bg_color = Color( 0.145098, 0.145098, 0.145098, 0.627451 )
 border_width_left = 5
 border_width_top = 35
 border_width_right = 5
@@ -306,7 +305,7 @@ align = 0
 [node name="TextureRect" type="TextureRect" parent="CommentWindow/VBoxContainer/HBoxContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
