@@ -316,6 +316,7 @@ func _ready()->void:
 	var _q = EventBus.connect("remove_map_pin", self, '_on_remove_map_pin')
 	var _r = EventBus.connect("move_pin_to_top", self, '_on_move_pin_to_top')
 	var _s = EventBus.connect("delete_current_map", self, '_on_current_delete_map')
+	var _a = EventBus.connect("change_map_to", self, '_on_change_map_to')
 	
 	var _t = items_node.connect("item_selected", self, '_on_MenuButton_item_selected')
 	var _u = EventBus.connect("create_new_layer", map_layer_system, 'create_layer')
@@ -386,6 +387,13 @@ func _on_MenuButton_item_selected(index)->void:
 		var map_resource_path:String = map_load_system.map_list.values()[index]
 		map_manager.load_map_texture(map_resource_path)
 		map_load_system.current_selected_map = index
+
+func _on_change_map_to(map_data:MapData)->void:
+	var map_index = map_load_system.map_list.values().find(map_data.get_path())
+	_on_MenuButton_item_selected(map_index)
+	
+	$Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton.selected = map_index
+
 
 # when layer are requested to assigned
 func assign_layers(map_resource_path:String)->void:

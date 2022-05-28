@@ -148,14 +148,14 @@ func _input(event):
 			self.rect_size = (get_global_mouse_position() - get_global_position())
 
 		if drag:
-			self.get_parent().set_global_position(get_parent().get_global_position() + event.relative)
-			self.set_global_position(get_global_position())
-
+			self.get_parent().set_global_position(get_global_mouse_position() + Vector2(0, center.y))
+ 
 
 func _on_Control_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			resize = true
+
 		if !event.pressed:
 			resize = false
 			self.set_global_position(get_parent().get_global_position() - center)

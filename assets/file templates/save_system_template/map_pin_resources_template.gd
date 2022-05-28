@@ -8,8 +8,7 @@ export(String)        var pin_id:String                                         
 export(Resource)      var pin_symbol_template:Resource = MapSymbolTemplate.new()   # symbol template used for the pin
 export(Vector2)       var pin_location:Vector2                                     # location of the pin in the map
 export(Resource)      var pin_article:Resource         = Article.new()             # article attached to the pin
-export(bool)          var linked_map:bool                                          # state of the link
-export(Vector2)       var linked_map_location:Vector2                              # chunk which is linked to the pin
+export(Resource)      var linked_map:Resource          = MapData.new()             # state of the link
 export(Array, String) var tags:Array
 
 # === methods ===
