@@ -7,6 +7,7 @@ onready var pin_x_location_node:SpinBox       = $MapPinInspector/VBoxContainer/P
 onready var pin_y_location_node:SpinBox       = $MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
 onready var pin_article_node:LineEdit         = $MapPinInspector/VBoxContainer/PinArticle/HBoxContainer/OptionButton
 onready var create_pin_article_node:Button    = $MapPinInspector/VBoxContainer/CreateArticle/HBoxContainer/NewArticle
+onready var select_link_map_node:OptionButton = $MapPinInspector/VBoxContainer/LinkMap/HBoxContainer/OptionButton
 
 # === RESOURCE FILE ===
 var resource_file:MapPin = MapPin.new()
@@ -16,6 +17,7 @@ var pin_texture_location = ""
 
 var pin_templates:Array
 
+var map_list:Dictionary
 
 # ------------------------------------------------------------------------------
 
@@ -25,14 +27,22 @@ func _ready() -> void:
 	pin_name_node.text = resource_file.pin_name
 
 	load_pin_template()
-	
+	load_map()
+
 	pin_x_location_node.value = resource_file.pin_location.x
 	pin_y_location_node.value = resource_file.pin_location.y
 
 	pin_article_node.text     = resource_file.pin_article.get_path()
+	if !(resource_file.linked_map == null):
+		var map_index:int         = map_list.values().find(resource_file.linked_map.get_path())
+		select_link_map_node.selected = map_index
+	else:
+		select_link_map_node.selected = 0
+		
 
 	for node in get_tree().get_nodes_in_group('map_inspector_input_field'):
 		node.connect('input_value_changed', self, 'input_value_changed')
+	
 
 # ------------------------------------------------------------------------------
 
@@ -63,6 +73,22 @@ func load_pin_template()->void:
 		
 		template_select_node.selected = index
 
+func load_map()->void:
+	select_link_map_node.items = []
+	 
+	var template_save_path:String = SystemDataManager.root_map_save_path
+	
+	map_list["null"] = ["null"]
+
+	select_link_map_node.add_item("select a map")
+
+	var temp_array = FolderManager.fetch_files_from(template_save_path.get_base_dir())
+	for map in temp_array:
+		map_list[map.map_name] = map.get_path()
+		select_link_map_node.add_item(map.map_name)
+	
+
+
 # ------------------------------------------------------------------------------
 
 func input_value_changed()->void:
@@ -76,7 +102,9 @@ func input_value_changed()->void:
 		resource_file.pin_symbol_template = pin_templates[$MapPinInspector/VBoxContainer/PinTemplate.input_value]
 	else:
 		resource_file.pin_symbol_template = pin_templates[0]
-
+	
+	resource_file.linked_map          = $MapPinInspector/VBoxContainer/LinkMap.input_value
+	
 	reload_pin()
 
 # ------------------------------------------------------------------------------
@@ -98,7 +126,6 @@ func save_pin()->void:
 			"pin_symbol_template" : resource_file.pin_symbol_template,
 			"pin_article"         : resource_file.pin_article,
 			"linked_map"          : resource_file.linked_map,
-			"linked_map_location" : resource_file.linked_map_location,
 			"tags"                : resource_file.tags
 		},
 

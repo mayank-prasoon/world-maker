@@ -62,6 +62,9 @@ func open_pin_menu() ->void:
 	menu.append("go to map")
 	pop_up_menu.add_item("go to map")
 	
+	if map_element.pin_resource.linked_map == null:
+		pop_up_menu.set_item_disabled(0, true)
+	
 	menu.append("edit pin")
 	pop_up_menu.add_item("edit pin")
 	
@@ -110,7 +113,10 @@ func _on_PopupMenu_id_pressed(id):
 			EventBus.emit_signal("change_inspector_state", true)
 			EventBus.emit_signal("add_pin_inspector", map_element.pin_resource, map_element)
 			EventBus.emit_signal("move_camera_to", map_element.get_global_position())
-
+		
+		"go to map":
+			EventBus.emit_signal("change_map_to", map_element.pin_resource.linked_map)
+		
 		"delete map":
 			$"../Camera2D/CanvasLayer/CanvasLayer/ConfirmationDialog".popup_centered()
 
