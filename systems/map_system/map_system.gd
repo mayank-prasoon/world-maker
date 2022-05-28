@@ -388,12 +388,14 @@ func _on_MenuButton_item_selected(index)->void:
 		map_manager.load_map_texture(map_resource_path)
 		map_load_system.current_selected_map = index
 
-func _on_change_map_to(map_data:MapData)->void:
-	var map_index = map_load_system.map_list.values().find(map_data.get_path())
-	_on_MenuButton_item_selected(map_index)
-	
-	$Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton.selected = map_index
 
+func _on_change_map_to(map_data:MapData)->void:
+	if !(map_data == null):
+		var map_index = map_load_system.map_list.values().find(map_data.get_path())
+		_on_MenuButton_item_selected(map_index)
+		$Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton.selected = map_index
+	else:
+		pass
 
 # when layer are requested to assigned
 func assign_layers(map_resource_path:String)->void:

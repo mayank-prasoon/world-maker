@@ -62,6 +62,9 @@ func open_pin_menu() ->void:
 	menu.append("go to map")
 	pop_up_menu.add_item("go to map")
 	
+	if map_element.pin_resource.linked_map == null:
+		pop_up_menu.set_item_disabled(0, true)
+	
 	menu.append("edit pin")
 	pop_up_menu.add_item("edit pin")
 	

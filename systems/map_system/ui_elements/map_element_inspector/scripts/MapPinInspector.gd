@@ -34,7 +34,7 @@ func _ready() -> void:
 
 	pin_article_node.text     = resource_file.pin_article.get_path()
 	if !(resource_file.linked_map == null):
-		var map_index:int         = map_list.values().find(resource_file.linked_map.get_path()) - 1
+		var map_index:int         = map_list.values().find(resource_file.linked_map.get_path())
 		select_link_map_node.selected = map_index
 	else:
 		select_link_map_node.selected = 0
@@ -81,7 +81,6 @@ func load_map()->void:
 	map_list["null"] = ["null"]
 
 	select_link_map_node.add_item("select a map")
-	select_link_map_node.set_item_disabled(0, true)
 
 	var temp_array = FolderManager.fetch_files_from(template_save_path.get_base_dir())
 	for map in temp_array:
