@@ -7,7 +7,7 @@
 [ext_resource path="res://systems/map_system/scripts/map_pin_manager.gd" type="Script" id=6]
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://systems/map_system/scripts/Map Layers.gd" type="Script" id=8]
-[ext_resource path="res://systems/map_system/ViewTools.gd" type="Script" id=9]
+[ext_resource path="res://systems/map_system/scripts/ViewTools.gd" type="Script" id=9]
 [ext_resource path="res://assets/graphics/map/Polygon 7.png" type="Texture" id=10]
 [ext_resource path="res://assets/graphics/dashboard/icons/plus.svg" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/map/new Symbol/icon/menu.svg" type="Texture" id=12]
@@ -1294,7 +1294,6 @@ script = SubResource( 55 )
 layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/LoadingLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.203922, 0.203922, 0.203922, 1 )
@@ -1311,7 +1310,6 @@ margin_top = -88.0434
 margin_right = 70.0
 margin_bottom = 36.9565
 rect_rotation = 1.0
-rect_scale = Vector2( 0.768522, 1.23148 )
 rect_pivot_offset = Vector2( 70, 125 )
 mouse_filter = 2
 texture = ExtResource( 24 )
