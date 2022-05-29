@@ -1,0 +1,49 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://assets/file templates/save_system_template/map_resources_template.gd" type="Script" id=1]
+[ext_resource path="res://assets/file templates/save_system_template/map_pin_resources_template.gd" type="Script" id=2]
+[ext_resource path="res://assets/file templates/save_system_template/map_symbol_template_resources_template.gd" type="Script" id=3]
+[ext_resource path="res://assets/file templates/save_system_template/root_article_resources_template.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+map_name = ""
+image_path = ""
+image_size = Vector2( 0, 0 )
+layers = [  ]
+map_pins = [  ]
+tags = [  ]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 4 )
+article_name = ""
+article_id = ""
+article_profile = ""
+article_banner = ""
+article_type = 0
+article_notes = ""
+article_raw = ""
+article_description = ""
+tags = [  ]
+article_resources = ""
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 3 )
+template_name = ""
+template_texture = ""
+template_hover_animation = [  ]
+template_offset = Vector2( 0, 0 )
+template_color = Color( 0, 0, 0, 1 )
+template_area2D_radius = 48
+template_default_tag = [  ]
+template_default_article_template = ""
+
+[resource]
+script = ExtResource( 2 )
+pin_name = ""
+pin_id = "52866b53-7974-4573-b698-4f6bce8498ce"
+pin_symbol_template = SubResource( 3 )
+pin_location = Vector2( 2762.33, 1663.89 )
+pin_article = SubResource( 2 )
+linked_map = SubResource( 1 )
+tags = [  ]

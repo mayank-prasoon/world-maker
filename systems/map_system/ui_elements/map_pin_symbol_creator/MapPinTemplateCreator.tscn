@@ -1,19 +1,19 @@
 [gd_scene load_steps=52 format=2]
 
-[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39.png" type="Texture" id=2]
-[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture" id=3]
+[ext_resource path="res://systems/map_system/ui_elements/map_pin/MapPin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/button_round.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/button_round.png" type="Texture" id=7]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/chevron-right.png" type="Texture" id=8]
-[ext_resource path="res://assets/graphics/map/new map/spin_box.png" type="Texture" id=9]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png" type="Texture" id=11]
-[ext_resource path="res://systems/map_system/ui_elements/map_pin/MapPin.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture" id=13]
-[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/chevron-right.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/map/new map/spin_box.png" type="Texture" id=14]
 
 [sub_resource type="GDScript" id=24]
 script/source = "extends Control
@@ -174,7 +174,7 @@ bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 [sub_resource type="DynamicFont" id=21]
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 10 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=9]
 default_font = SubResource( 21 )
@@ -472,7 +472,7 @@ anims/open = SubResource( 25 )
 [node name="EffectLayer" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="BackgroundBlur" parent="EffectLayer" instance=ExtResource( 1 )]
+[node name="BackgroundBlur" parent="EffectLayer" instance=ExtResource( 8 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
@@ -500,10 +500,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -556.5
-margin_top = -263.5
-margin_right = 556.5
-margin_bottom = 263.501
+margin_right = 1113.0
+margin_bottom = 527.001
 rect_min_size = Vector2( 1113, 527 )
 script = SubResource( 29 )
 __meta__ = {
@@ -525,7 +523,7 @@ anchor_right = 1.0
 margin_left = -24.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 20, 20 )
-icon = ExtResource( 14 )
+icon = ExtResource( 9 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel"]
 anchor_left = 0.0333333
@@ -564,7 +562,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource( 23 )
 
-[node name="MapPin" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/PinContainer" instance=ExtResource( 12 )]
+[node name="MapPin" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/PinContainer" instance=ExtResource( 1 )]
 position = Vector2( 250, 210 )
 
 [node name="ImageInfo" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -662,7 +660,7 @@ margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input"]
 anchor_right = 1.0
@@ -685,7 +683,7 @@ margin_left = -25.0
 margin_top = -20.0
 margin_right = 25.0
 margin_bottom = 30.0
-texture = ExtResource( 5 )
+texture = ExtResource( 10 )
 
 [node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control"]
 anchor_right = 1.0
@@ -732,7 +730,7 @@ margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input"]
 anchor_right = 1.0
@@ -755,7 +753,7 @@ margin_left = -25.0
 margin_top = -20.0
 margin_right = 25.0
 margin_bottom = 30.0
-texture = ExtResource( 5 )
+texture = ExtResource( 10 )
 
 [node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control"]
 anchor_right = 1.0
@@ -785,7 +783,7 @@ margin_left = -25.5
 margin_top = -20.0
 margin_right = 24.5
 margin_bottom = 75.0
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 
 [node name="NextButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab"]
 modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
@@ -801,7 +799,7 @@ custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
 custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 12 )
-icon = ExtResource( 13 )
+icon = ExtResource( 11 )
 align = 0
 __meta__ = {
 "_edit_use_anchors_": true
@@ -851,7 +849,7 @@ margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="LineEdit" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input"]
 anchor_right = 1.0
@@ -886,7 +884,7 @@ margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 [node name="LineEdit" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input"]
 anchor_right = 1.0
@@ -955,7 +953,7 @@ margin_left = -24.5
 margin_top = -20.0
 margin_right = 404.5
 margin_bottom = 75.0
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="LineEdit" type="OptionButton" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input"]
 anchor_right = 1.0
@@ -986,7 +984,7 @@ margin_left = -25.5
 margin_top = -20.0
 margin_right = 24.5
 margin_bottom = 75.0
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 
 [node name="CreateButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton"]
 anchor_right = 0.339474
@@ -1024,7 +1022,7 @@ margin_left = -25.5
 margin_top = -20.0
 margin_right = 24.5
 margin_bottom = 75.0
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 
 [node name="BackButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton"]
 anchor_right = 0.339474
@@ -1039,7 +1037,7 @@ custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
 custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 12 )
-icon = ExtResource( 8 )
+icon = ExtResource( 13 )
 align = 0
 __meta__ = {
 "_edit_use_anchors_": true

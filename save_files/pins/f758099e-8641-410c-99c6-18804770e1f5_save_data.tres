@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-comment_name = "mouse"
-comment_id = "8cfdb03a-b776-49eb-b60c-3f1f381cf41f"
-comment_location = Vector2( 1392.98, 1372.22 )
+comment_name = ""
+comment_id = "f758099e-8641-410c-99c6-18804770e1f5"
+comment_location = Vector2( 2408.06, 1564.78 )
 comment_text = ""
