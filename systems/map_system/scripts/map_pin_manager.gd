@@ -113,10 +113,10 @@ func _on_PopupMenu_id_pressed(id):
 			EventBus.emit_signal("change_inspector_state", true)
 			EventBus.emit_signal("add_pin_inspector", map_element.pin_resource, map_element)
 			EventBus.emit_signal("move_camera_to", map_element.get_global_position())
-		
+
 		"go to map":
 			EventBus.emit_signal("change_map_to", map_element.pin_resource.linked_map)
-		
+
 		"delete map":
 			$"../Camera2D/CanvasLayer/CanvasLayer/ConfirmationDialog".popup_centered()
 
@@ -125,9 +125,9 @@ func _on_PopupMenu_id_pressed(id):
 func _on_AddMenu_id_pressed(id):
 	match id:
 		ADD.PIN:
-			EventBus.emit_signal("add_pin_to_map", mouse_position)
+			EventBus.emit_signal("create_new_pin", mouse_position)
 		ADD.COMMENT:
-			EventBus.emit_signal("add_comment_to_map", mouse_position)
+			EventBus.emit_signal("create_new_comment", mouse_position)
 
 func _on_mouse_inside_element(element)->void:
 	map_element = element
@@ -142,7 +142,7 @@ func _on_mouse_outside_element()->void:
 
 # check if any map exists
 func check_if_map_exists()->bool:
-	if get_owner().map_collection_node.get_children().empty():
+	if get_owner().map_texture_collection_node.get_children().empty():
 		print_debug("there are no maps")
 		return false
 	else:

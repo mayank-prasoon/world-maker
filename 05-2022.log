@@ -12,3 +12,49 @@
 05/28/2022 21:56:13 INFO     SystemSettings - last_project()
 05/28/2022 21:56:13 INFO     ShortcutSettings - delete_old_keys()
 05/28/2022 21:56:13 INFO     ShortcutSettings - setup_keys()
+05/28/2022 23:00:34 INFO     ShortcutSettings - Node loadded
+05/29/2022 10:08:45 INFO     ShortcutSettings - Node loadded
+05/29/2022 10:08:45 INFO     SystemSettings - last_project()
+05/29/2022 10:08:45 INFO     SystemSettings - last_project()
+05/29/2022 10:08:45 INFO     SystemSettings - last_project()
+05/29/2022 10:08:45 INFO     SystemSettings - last_project()
+05/29/2022 10:08:45 INFO     ShortcutSettings - delete_old_keys()
+05/29/2022 10:08:45 INFO     ShortcutSettings - setup_keys()
+05/29/2022 10:09:02 INFO     NewProject - node loaded
+05/29/2022 10:09:02 INFO     MainMenu - node loaded
+05/29/2022 10:09:03 INFO     MainMenu _on_OpenProjectButton_pressed()
+05/29/2022 10:09:03 INFO     SystemSettings - get_projects()
+05/29/2022 10:09:05 INFO     ShortcutSettings - delete_old_keys()
+05/29/2022 10:09:05 INFO     ShortcutSettings - setup_keys()
+05/29/2022 10:09:05 INFO     SystemSettings - add_last_project(1)
+05/29/2022 11:41:09 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:41:10 INFO     SystemSettings - last_project()
+05/29/2022 11:41:10 INFO     SystemSettings - last_project()
+05/29/2022 11:41:10 INFO     SystemSettings - last_project()
+05/29/2022 11:41:10 INFO     SystemSettings - last_project()
+05/29/2022 11:41:10 INFO     ShortcutSettings - delete_old_keys()
+05/29/2022 11:41:10 INFO     ShortcutSettings - setup_keys()
+05/29/2022 11:44:45 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:45:02 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:45:37 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:46:02 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:46:42 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:48:15 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:50:32 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:52:20 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:52:47 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:54:09 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:54:29 INFO     ShortcutSettings - Node loadded
+05/29/2022 11:55:15 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:02:46 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:05:29 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:06:05 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:06:11 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:06:26 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:33:49 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:36:56 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:37:08 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:40:02 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:43:31 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:43:50 INFO     ShortcutSettings - Node loadded
+05/29/2022 12:44:24 INFO     ShortcutSettings - Node loadded

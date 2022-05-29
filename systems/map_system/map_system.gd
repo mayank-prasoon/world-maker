@@ -309,114 +309,114 @@ class MapPinSystem extends Object:
 # ------------------------------------------------------------------------------
 
 func _ready()->void:
-	var _x = EventBus.connect("save_map", self, '_on_save_map')
-	var _y = EventBus.connect("create_new_map", self, '_on_create_new_map')
-	var _z = EventBus.connect("add_pin_to_map", self, '_on_add_pin_to_map')
-	var _p = EventBus.connect("save_map_layer", self, '_on_save_map_layer')
-	var _q = EventBus.connect("remove_map_pin", self, '_on_remove_map_pin')
-	var _r = EventBus.connect("move_pin_to_top", self, '_on_move_pin_to_top')
-	var _s = EventBus.connect("delete_current_map", self, '_on_current_delete_map')
-	var _a = EventBus.connect("change_map_to", self, '_on_change_map_to')
-	
-	var _t = items_node.connect("item_selected", self, '_on_MenuButton_item_selected')
-	var _u = EventBus.connect("create_new_layer", map_layer_system, 'create_layer')
-	var _v = EventBus.connect("add_comment_to_map", self, 'add_comment')
-	var _w = EventBus.connect("remove_map_comment", self, '_on_remove_map_comment')
+#	var _x = EventBus.connect("save_map", self, '_on_save_map')
+#	var _y = EventBus.connect("create_new_map", self, '_on_create_new_map')
+#	var _z = EventBus.connect("add_pin_to_map", self, '_on_add_pin_to_map')
+#	var _p = EventBus.connect("save_map_layer", self, '_on_save_map_layer')
+#	var _q = EventBus.connect("remove_map_pin", self, '_on_remove_map_pin')
+#	var _r = EventBus.connect("move_pin_to_top", self, '_on_move_pin_to_top')
+#	var _s = EventBus.connect("delete_current_map", self, '_on_current_delete_map')
+#	var _a = EventBus.connect("change_map_to", self, '_on_change_map_to')
+
+#	var _t = items_node.connect("item_selected", self, '_on_MenuButton_item_selected')
+#	var _u = EventBus.connect("create_new_layer", map_layer_system, 'create_layer')
+#	var _v = EventBus.connect("add_comment_to_map", self, 'add_comment')
+#	var _w = EventBus.connect("remove_map_comment", self, '_on_remove_map_comment')
 	
 	map_load_system.assign_map_name()
 
-
-# save map
-func _on_save_map(map_resource)->void:
-	MapResourceSystem.MapResourceManager.save_map_resource(map_resource)
-
-# ------------------------------------------------------------------------------
-
-# create map layer
-func create_layer(resource, index)->void:
-	map_layer_system.create_layer(resource, index)
-
-
-# save map layer
-func _on_save_map_layer(layers:MapLayer, index)->void:
-	map_layer_system.save_layer(layers, index)
+#
+## save map
+#func _on_save_map(map_resource)->void:
+#	MapResourceSystem.MapResourceManager.save_map_resource(map_resource)
 
 # ------------------------------------------------------------------------------
 
-# remove map pin
-func _on_remove_map_pin(resource_file:MapPin)->void:
-	var position = map_resource.map_pins.find(resource_file)
-	map_resource.map_pins.remove(position)
+## create map layer
+#func create_layer(resource, index)->void:
+#	map_layer_system.create_layer(resource, index)
 
-	EventBus.emit_signal("save_map", map_resource)
-	var resource_path = resource_file.get_path()
-
-	# remove the resource file
-	var dir = Directory.new()
-	dir.remove(resource_path)
-
+#
+## save map layer
+#func _on_save_map_layer(layers:MapLayer, index)->void:
+#	map_layer_system.save_layer(layers, index)
 
 # ------------------------------------------------------------------------------
-
-# remove map pin
-func _on_remove_map_comment(resource_file:MapComment)->void:
-	var position = map_resource.map_pins.find(resource_file)
-	map_resource.map_pins.remove(position)
-
-	EventBus.emit_signal("save_map", map_resource)
-	var resource_path = resource_file.get_path()
-
-	# remove the resource file
-	var dir = Directory.new()
-	dir.remove(resource_path)
+#
+## remove map pin
+#func _on_remove_map_pin(resource_file:MapPin)->void:
+#	var position = map_resource.map_pins.find(resource_file)
+#	map_resource.map_pins.remove(position)
+#
+#	EventBus.emit_signal("save_map", map_resource)
+#	var resource_path = resource_file.get_path()
+#
+#	# remove the resource file
+#	var dir = Directory.new()
+#	dir.remove(resource_path)
+#
 
 # ------------------------------------------------------------------------------
-
-func _on_move_pin_to_top(map_pin)->void:
-	 $PinCollectionNode.move_child(map_pin, $PinCollectionNode.get_child_count())
+#
+## remove map pin
+#func _on_remove_map_comment(resource_file:MapComment)->void:
+#	var position = map_resource.map_pins.find(resource_file)
+#	map_resource.map_pins.remove(position)
+#
+#	EventBus.emit_signal("save_map", map_resource)
+#	var resource_path = resource_file.get_path()
+#
+#	# remove the resource file
+#	var dir = Directory.new()
+#	dir.remove(resource_path)
+#
+# ------------------------------------------------------------------------------
+#
+#func _on_move_pin_to_top(map_pin)->void:
+#	 $PinCollectionNode.move_child(map_pin, $PinCollectionNode.get_child_count())
 
 
 #                               === SIGNALS ===
 # ------------------------------------------------------------------------------
+#
+## when map menu is clicked
+#func _on_MenuButton_item_selected(index)->void:
+#	if (index != -1):
+#		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("RESET")
+#		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("close")
+#		var map_resource_path:String = map_load_system.map_list.values()[index]
+#		map_manager.load_map_texture(map_resource_path)
+#		map_load_system.current_selected_map = index
+#
+#
+#func _on_change_map_to(map_data:MapData)->void:
+#	if !(map_data == null):
+#		var map_index = map_load_system.map_list.values().find(map_data.get_path())
+#		_on_MenuButton_item_selected(map_index)
+#		$Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton.selected = map_index
+#	else:
+#		pass
 
-# when map menu is clicked
-func _on_MenuButton_item_selected(index)->void:
-	if (index != -1):
-		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("RESET")
-		$Camera2D/LoadingLayer/ColorRect/AnimationPlayer.play("close")
-		var map_resource_path:String = map_load_system.map_list.values()[index]
-		map_manager.load_map_texture(map_resource_path)
-		map_load_system.current_selected_map = index
+## when layer are requested to assigned
+#func assign_layers(map_resource_path:String)->void:
+#	map_resource = load(map_resource_path)
+#	map_layer_system.map_resource = map_resource
+#	map_layer_system.assign_layers()
 
-
-func _on_change_map_to(map_data:MapData)->void:
-	if !(map_data == null):
-		var map_index = map_load_system.map_list.values().find(map_data.get_path())
-		_on_MenuButton_item_selected(map_index)
-		$Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton.selected = map_index
-	else:
-		pass
-
-# when layer are requested to assigned
-func assign_layers(map_resource_path:String)->void:
-	map_resource = load(map_resource_path)
-	map_layer_system.map_resource = map_resource
-	map_layer_system.assign_layers()
-
-# when a map creater requests to genrate a map 
-func _on_create_new_map(map_name:String, map_texture:String, article:bool)->void:
-	MapResourceSystem.MapResourceManager.create_map_resource(map_name, map_texture, article)
-	reload_system()
+## when a map creater requests to genrate a map 
+#func _on_create_new_map(map_name:String, map_texture:String, article:bool)->void:
+#	MapResourceSystem.MapResourceManager.create_map_resource(map_name, map_texture, article)
+#	reload_system()
 
 # when a pin is requested to be added
-func _on_add_pin_to_map(position)->void:
-	map_pin_system.add_pin(position, map_resource)
-	EventBus.emit_signal("save_map", map_resource)
+#func _on_add_pin_to_map(position)->void:
+#	map_pin_system.add_pin(position, map_resource)
+#	EventBus.emit_signal("save_map", map_resource)
 
-
-func add_comment(position)->void:
-	map_comment_system.add_comment(position, map_resource)
-	EventBus.emit_signal("save_map", map_resource)
+#
+#func add_comment(position)->void:
+#	map_comment_system.add_comment(position, map_resource)
+#	EventBus.emit_signal("save_map", map_resource)
 
 # ------------------------------------------------------------------------------
 
@@ -443,5 +443,4 @@ func _exit_tree()->void:
 	map_layer_system.free()
 
 
-func _on_Button_toggled(button_pressed):
-	emit_signal("toggle_map_pin_manger", button_pressed)
+

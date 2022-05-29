@@ -13,7 +13,10 @@ extends Node
 # - map layer resource is MapLayer.
 # - map pin resources is MapPin.
 
+
 # === MapSystem Resource ===
+
+signal reload_system()
 
 signal save_map(map_resource)
 

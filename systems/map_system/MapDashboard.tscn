@@ -41,6 +41,7 @@ func _on_MapToolBar_visiblity_map_pin_manager(state):
 
 # --------------------------------------------------------------------------------------------------
 
+# load map pin
 func load_map_pin()->void:
 	var map_pins = get_tree().get_nodes_in_group('map_pin')
 
@@ -277,4 +278,3 @@ physics_object_picking = true
 [node name="MapSystem" parent="HBoxContainer/VBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
 [connection signal="text_changed" from="HBoxContainer/MapPinManager/Panel/VBoxContainer/SearchBar/LineEdit" to="HBoxContainer/MapPinManager/Panel/VBoxContainer/SearchBar" method="_on_LineEdit_text_changed"]
-[connection signal="toggle_map_pin_manger" from="HBoxContainer/VBoxContainer/ViewportContainer/Viewport/MapSystem" to="HBoxContainer/MapPinManager" method="_on_MapToolBar_visiblity_map_pin_manager"]
