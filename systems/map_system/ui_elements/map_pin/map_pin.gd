@@ -12,6 +12,7 @@ var desired_scale:Vector2           = self.scale
 
 func _ready()->void:
 	self.scale = Vector2(0, 0) # to add a pop out animation
+	self.desired_scale = Vector2(0.6, 0.6) # to add a pop out animation
 	
 	add_to_group("map_element") # part of map element 
 	add_to_group("map_pin")     # part of the map pin groups
@@ -31,7 +32,7 @@ func load_resource()->void:
 
 	$Control/ColorRect/Label.text  = pin_resource.pin_name
 
-	$Control.rect_position = Vector2(0, pin_resource.pin_symbol_template.template_area2D_radius + 5)
+	$Control.rect_position = Vector2(0, pin_resource.pin_symbol_template.template_area2D_radius - 5)
 
 	$Sprite.offset         = pin_resource.pin_symbol_template.template_offset
 
@@ -71,7 +72,6 @@ func save_pin()->void:
 			"pin_symbol_template" : pin_resource.pin_symbol_template,
 			"pin_article"         : pin_resource.pin_article,
 			"linked_map"          : pin_resource.linked_map,
-			"linked_map_location" : pin_resource.linked_map_location,
 			"tags"                : pin_resource.tags
 		},
 		ResourceManager.PIN

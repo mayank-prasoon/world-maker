@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=2]
@@ -13,30 +13,48 @@ var disabled:bool                   = false
 
 var comment_resource:MapComment     = MapComment.new() # map comment resource
 
+var state_of_comment:int             = MapComment.EXPAND
+
 
 # ------------------------------------------------------------------------------
 
 func _ready():
-#	pass
 	load_comment()
 
 # load comment
 func load_comment()->void:
-	self.position                                         = comment_resource.comment_location
-	$Comment/HBoxContainer/Label.text                     = comment_resource.comment_name
-	$CommentWindow/VBoxContainer/HBoxContainer/Label.text = comment_resource.comment_name
-	$CommentWindow/VBoxContainer/RichTextLabel.text       = comment_resource.comment_text
-
+	self.position                                          = comment_resource.comment_location
+	$Comment/HBoxContainer/Label.text                      = comment_resource.comment_name
+	$CommentWindow/VBoxContainer/HBoxContainer/Label.text  = comment_resource.comment_name
+	$CommentWindow/VBoxContainer/RichTextLabel.bbcode_text = comment_resource.comment_text
+	
+	match comment_resource.comment_state:
+		MapComment.COLLAPSE:
+			$CommentWindow.hide()
+			$Comment.show()
+		MapComment.EXPAND:
+			$CommentWindow.show()
+			$Comment.hide()
+			
+		
+	
 # ------------------------------------------------------------------------------
 
-func _on_TextureRect_pressed():
+func _on_TextureRect_pressed()->void:
 	$CommentWindow.show()
 	$Comment.hide()
+	state_of_comment = MapComment.EXPAND
+	save_comment()
+
+func _on_Button_pressed() ->void:
+	$CommentWindow/AnimationPlayer.play_backwards(\"close_pop_up_animation\")
 
 
-func _on_Button_pressed():
+func hide_window()->void:
 	$CommentWindow.hide()
 	$Comment.show()
+	state_of_comment = MapComment.COLLAPSE
+	save_comment()
 
 # ------------------------------------------------------------------------------
 
@@ -47,7 +65,8 @@ func save_comment()->void:
 			\"comment_name\"            : comment_resource.comment_name,
 			\"comment_id\"              : comment_resource.comment_id,
 			\"comment_location\"        : get_global_position(),
-			\"comment_text\"            : comment_resource.comment_text
+			\"comment_text\"            : comment_resource.comment_text,
+			\"comment_state\"           : state_of_comment
 		},
 
 		ResourceManager.COMMENT
@@ -172,12 +191,104 @@ func _on_HBoxContainer_gui_input(event):
 			emit_signal(\"change_postion\")
 
 
+func _on_CommentWindow_visibility_changed():
+	if self.visible:
+		$AnimationPlayer.play(\"pop_up_animation\")
+	elif !self.visible:
+		$AnimationPlayer.play_backwards(\"pop_up_animation\")
 "
 
 [sub_resource type="DynamicFont" id=25]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=28]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "close_pop_up_animation"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.3 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide_window"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "pop_up_animation"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.3 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=24]
 use_mipmaps = true
@@ -191,6 +302,17 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -200,16 +322,8 @@ expand_margin_right = 5.0
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id=22]
-bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
@@ -226,18 +340,10 @@ expand_margin_bottom = 5.0
 script/source = "tool
 extends Button
 
-var desired_scale:Vector2 = Vector2(0,0)
-
 func _process(delta:float)->void:
-	self.rect_size = get_child(0).rect_size
-	self.text      = \"\"
-
-	self.set_pivot_offset(self.get_size()/2)
-
-	self.rect_scale = lerp(self.rect_scale, self.desired_scale, 0.5)
-	var camera_array = get_tree().get_nodes_in_group('camera_movement')
-	if camera_array.size() != 0:
-		desired_scale = camera_array[0].desiredZooom
+	self.rect_size  = get_child(0).rect_size
+	self.text       = \"\"
+	self.rect_scale = Vector2(1, 1) 
 "
 
 [sub_resource type="DynamicFont" id=26]
@@ -246,9 +352,11 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [node name="MapComment" type="Node2D"]
+position = Vector2( 1, 0 )
 script = SubResource( 2 )
 
 [node name="CommentWindow" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -316,6 +424,7 @@ margin_bottom = 350.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+bbcode_enabled = true
 
 [node name="Control2" type="Control" parent="CommentWindow"]
 anchor_left = 1.0
@@ -354,21 +463,25 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CommentWindow"]
+anims/RESET = SubResource( 28 )
+anims/close_pop_up_animation = SubResource( 29 )
+anims/pop_up_animation = SubResource( 27 )
+
 [node name="Comment" type="Button" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -15.0
-margin_right = 48.0
-margin_bottom = 9.0
-rect_scale = Vector2( 1.4013e-45, 1.4013e-45 )
+margin_left = -40.0
+margin_top = -12.0
+margin_right = 40.0
+margin_bottom = 12.0
 rect_pivot_offset = Vector2( 40, 12 )
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = SubResource( 21 )
 custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 30 )
 custom_styles/normal = SubResource( 23 )
 script = SubResource( 19 )
 
@@ -403,6 +516,7 @@ stretch_mode = 4
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="change_postion" from="CommentWindow" to="." method="save_comment"]
+[connection signal="visibility_changed" from="CommentWindow" to="CommentWindow" method="_on_CommentWindow_visibility_changed"]
 [connection signal="gui_input" from="CommentWindow/VBoxContainer/HBoxContainer" to="CommentWindow" method="_on_HBoxContainer_gui_input"]
 [connection signal="pressed" from="CommentWindow/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="gui_input" from="CommentWindow/Control2" to="CommentWindow" method="_on_Control_gui_input"]

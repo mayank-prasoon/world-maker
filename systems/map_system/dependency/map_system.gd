@@ -76,6 +76,7 @@ class MapManager extends Object:
 	func join_thread()->void:
 		add_map_thread.wait_to_finish()
 		add_pin_thread.wait_to_finish()
+		add_comment_thread.wait_to_finish()
 
 
 	# create map texture map_name
