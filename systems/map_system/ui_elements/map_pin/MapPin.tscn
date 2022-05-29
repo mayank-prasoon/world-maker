@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.6, 0.6 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Control:rect_scale")
@@ -72,7 +72,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Control:rect_scale")
@@ -81,10 +81,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PoolRealArray( 0, 0.15, 0.25 ),
+"transitions": PoolRealArray( 0.5, 0.5, -2 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 0.6, 0.6 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Control:rect_scale")
@@ -242,6 +242,7 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
