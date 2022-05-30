@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_round.png-c665d1b1ab7ac798d08978af3c17d4e4.stex"
+path="res://.import/Rectangle 20.png-f6b3c2922b047b54d112b354384f90e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/map/map_pin_creator/button_round.png"
-dest_files=[ "res://.import/button_round.png-c665d1b1ab7ac798d08978af3c17d4e4.stex" ]
+source_file="res://assets/graphics/wiki_dashboard/wiki_reader/Rectangle 20.png"
+dest_files=[ "res://.import/Rectangle 20.png-f6b3c2922b047b54d112b354384f90e0.stex" ]
 
 [params]
 
@@ -21,10 +21,10 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false

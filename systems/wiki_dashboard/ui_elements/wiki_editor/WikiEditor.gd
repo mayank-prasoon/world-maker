@@ -20,6 +20,7 @@ var uuid:String                = UUID.generate()
 var changes                    = false
 var article_resource_file:Resource
 
+
 func _ready():
 	connect_nodes()
 
@@ -44,6 +45,7 @@ func open_article(resources:Article)->void:
 	else:
 		UIManager.add_dropdown_input(basics_tab, "Article Template", "prompt template for article", ["empty"], 0, true)
 
+	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',') no space", PoolStringArray(resources.tags).join(','))
 	notes.text = resources.article_notes
 	UIManager.add_description_input(basics_tab, "Description", "short description of the article.\nwill show up in the card", resources.article_description)
 
@@ -91,6 +93,8 @@ func _on_Button_pressed()->void:
 	for x in prompt_container.get_children():
 		value.template_prompts[index]['value'] = x.input_value
 		index += 1
+	
+	var tags = basic_tab.get_node("Article Tag").input_value.split(',')
 
 	ResourceManager.save_file(
 		{
@@ -103,7 +107,7 @@ func _on_Button_pressed()->void:
 			'article_notes'       : notes.text,
 			'article_raw'         : fetch_raw_data(),
 			'article_description' : basic_tab.get_node("Description").input_value,
-			'tags'                : []
+			'tags'                : tags
 		},
 
 		ResourceManager.ARTICLE
@@ -127,6 +131,7 @@ func _on_Close_pressed()->void:
 		pop_up.popup_centered()
 	else:     # close the window
 		close()
+
 
 func close():
 	EventBus.emit_signal("load_wiki_dashboard")

@@ -18,12 +18,12 @@ func _ready():
 	UIManager.add_select_file(basics_tab, "Banner", "choose and image for the banner")
 	UIManager.add_dropdown_input(basics_tab, "Article Type", "type of article", ["basic", "map", "pin" ])
 	UIManager.add_dropdown_input(basics_tab, "Article Template", "prompt template for article")
-	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',')")
+	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',') and no space")
 	UIManager.add_description_input(basics_tab, "Description", "short description of the article.\nwill show up in the card")
-	
+
 	var _x = basics_tab.get_node("Article Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_template")
 	basics_tab.get_node("Article Type/VBoxContainer/HBoxContainer/OptionButton").emit_signal("item_selected", 0)
-	
+
 	var _y = basics_tab.get_node("Article Template/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_prompts")
 	basics_tab.get_node("Article Template/VBoxContainer/HBoxContainer/OptionButton").emit_signal("item_selected", 0)
 
