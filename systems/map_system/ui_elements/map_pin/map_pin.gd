@@ -11,14 +11,14 @@ var disabled:bool                   = false
 var desired_scale:Vector2           = self.scale
 
 func _ready()->void:
-	self.scale = Vector2(0, 0) # to add a pop out animation
-	self.desired_scale = Vector2(0.6, 0.6) # to add a pop out animation
-	
 	add_to_group("map_element") # part of map element 
 	add_to_group("map_pin")     # part of the map pin groups
 
 	load_resource()
 	add_animation_and_texture()
+
+	self.scale = Vector2(0, 0) # to add a pop out animation
+	self.desired_scale = Vector2(0.6, 0.6) # to add a pop out animation
 
 # ------------------------------------------------------------------------------
 
@@ -79,7 +79,7 @@ func save_pin()->void:
 
 
 func _process(delta):
-	self.scale = lerp(self.scale, self.desired_scale, 0.5)
+	self.scale = lerp(self.scale, self.desired_scale, 0.05)
 	
 	var camera_array = get_tree().get_nodes_in_group('camera_movement')
 
