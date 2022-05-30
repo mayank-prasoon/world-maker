@@ -7,4 +7,5 @@ script = ExtResource( 1 )
 comment_name = "Gamer"
 comment_id = "e43fcdb4-160e-42d1-91b6-70d876ecb56a"
 comment_location = Vector2( 2432, 1577 )
-comment_text = ""
+comment_text = "book"
+comment_state = 1
