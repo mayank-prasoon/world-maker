@@ -143,4 +143,4 @@ func _on_save_map(map_resource:MapData)->void:
 # create new map
 func _on_create_new_map(map_name:String, map_texture:String, article:bool)->void:
 	MapResourceSystem.MapResourceManager.create_map_resource(map_name, map_texture, article)
-
+	EventBus.emit_signal("reload_system")
