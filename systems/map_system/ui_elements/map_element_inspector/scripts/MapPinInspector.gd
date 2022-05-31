@@ -12,6 +12,7 @@ onready var select_link_map_node:OptionButton = $MapPinInspector/VBoxContainer/L
 # === RESOURCE FILE ===
 var resource_file:MapPin = MapPin.new()
 var map_pin_node         = Node2D.new()
+var current_map          = MapData.new()
 
 var pin_texture_location = ""
 
@@ -55,7 +56,7 @@ func load_pin_template()->void:
 	
 	var temp_array = FolderManager.fetch_files_from(template_save_path.get_base_dir())
 	pin_templates.append_array(temp_array)
-	
+
 	var index = pin_templates.find(resource_file.pin_symbol_template)
 	
 	template_select_node.add_item("template")
@@ -77,15 +78,15 @@ func load_map()->void:
 	select_link_map_node.items = []
 	 
 	var template_save_path:String = SystemDataManager.root_map_save_path
-	
-	map_list["null"] = ["null"]
 
+	map_list["null"] = "null"
 	select_link_map_node.add_item("select a map")
 
 	var temp_array = FolderManager.fetch_files_from(template_save_path.get_base_dir())
 	for map in temp_array:
-		map_list[map.map_name] = map.get_path()
-		select_link_map_node.add_item(map.map_name)
+		if !(map == null) and !(map == current_map):
+			map_list[map.map_name] = map.get_path()
+			select_link_map_node.add_item(map.map_name)
 	
 
 
@@ -97,14 +98,14 @@ func input_value_changed()->void:
 	resource_file.pin_location        = $MapPinInspector/VBoxContainer/PinPosition.input_value
 	resource_file.pin_article         = $MapPinInspector/VBoxContainer/PinArticle.input_value
 	resource_file.tags                = $MapPinInspector/VBoxContainer/PinTags.input_value
-	
+
 	if $MapPinInspector/VBoxContainer/PinTemplate.input_value is int:
 		resource_file.pin_symbol_template = pin_templates[$MapPinInspector/VBoxContainer/PinTemplate.input_value]
 	else:
 		resource_file.pin_symbol_template = pin_templates[0]
-	
+
 	resource_file.linked_map          = $MapPinInspector/VBoxContainer/LinkMap.input_value
-	
+
 	reload_pin()
 
 # ------------------------------------------------------------------------------
@@ -134,7 +135,7 @@ func save_pin()->void:
 
 # ------------------------------------------------------------------------------
 
-func _on_DeletePinButton_pressed():
+func _on_DeletePinButton_pressed()->void:
 	EventBus.emit_signal("remove_map_pin", resource_file)
 	EventBus.emit_signal("clear_inspector")
 	map_pin_node.queue_free()
@@ -142,7 +143,7 @@ func _on_DeletePinButton_pressed():
 # ------------------------------------------------------------------------------
 
 # create new map article
-func _on_NewArticle_pressed():
+func _on_NewArticle_pressed()->void:
 	var uuid = UUID.generate()
 
 	resource_file.pin_article = create_map_pin_article(uuid)

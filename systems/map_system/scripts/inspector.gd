@@ -98,6 +98,7 @@ func add_map_pin_inspector(map_pin_resource:MapPin, map_pin_node:Node2D) -> void
 
 	map_pin_inspector_node.resource_file = map_pin_resource
 	map_pin_inspector_node.map_pin_node  = map_pin_node
+	map_pin_inspector_node.current_map   = get_owner().map_manager.map_resource
 	container_node.add_child(map_pin_inspector_node)
 
 # ------------------------------------------------------------------------------

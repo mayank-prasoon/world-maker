@@ -5,4 +5,6 @@ func _ready()->void:
 
 func _on_OptionButton_item_selected(index:int):
 	var map_resource = load(get_owner().map_list.values()[index])
-	set_input_value(map_resource)
+	print_debug(get_owner().map_list.values()[index])
+	if !(map_resource == null):
+		set_input_value(map_resource)
