@@ -100,7 +100,8 @@ func _on_MenuButton_item_selected(index)->void:
 # change map to different map
 func _on_change_map_to(map_data:MapData)->void:
 	if !(map_data == null):
-		var map_index = map_loader.map_list.values().find(map_data.get_path())
+		var get_path  = map_data.get_path()
+		var map_index = map_loader.map_list.values().find(get_path)
 		_on_MenuButton_item_selected(map_index)
 		$Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer/MenuButton.selected = map_index
 	else:

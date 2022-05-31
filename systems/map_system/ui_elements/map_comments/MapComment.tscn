@@ -88,7 +88,7 @@ func _on_Button2_pressed():
 "
 
 [sub_resource type="StyleBoxFlat" id=20]
-bg_color = Color( 0.145098, 0.145098, 0.145098, 0.627451 )
+bg_color = Color( 0.145098, 0.145098, 0.145098, 0.784314 )
 border_width_left = 5
 border_width_top = 35
 border_width_right = 5
