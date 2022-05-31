@@ -8,10 +8,10 @@ class MapLoadSystem extends Object:
 	var map_list:Dictionary      = {}
 	var option_node:OptionButton = OptionButton.new()
 	var current_selected_map     = 0
-	
+
 	func _init(node:OptionButton):
 		option_node = node
-	
+
 	# load maps
 	func assign_map_name() -> void:
 		
@@ -26,7 +26,7 @@ class MapLoadSystem extends Object:
 			if !(map == null):
 				map_list[map.map_name] = maps_resource_path
 				option_node.add_item(map.map_name)
-		
+
 		# emit the item selected signal
 		option_node.emit_signal("item_selected", option_node.selected)
 

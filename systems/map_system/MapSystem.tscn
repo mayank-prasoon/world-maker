@@ -94,6 +94,7 @@ func _on_MenuButton_item_selected(index)->void:
 		map_manager.map_resource = load(map_resource_path)
 		map_manager.load_map_texture(map_resource_path)
 		map_loader.current_selected_map = index
+		EventBus.emit_signal(\"clear_inspector\")
 
 # ------------------------------------------------------------------------------
 
