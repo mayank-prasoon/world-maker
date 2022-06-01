@@ -9,7 +9,7 @@ export(Resource)      var pin_symbol_template:Resource = MapSymbolTemplate.new()
 export(Vector2)       var pin_location:Vector2                                     # location of the pin in the map
 export(Resource)      var pin_article:Resource         = Article.new()             # article attached to the pin
 export(Resource)      var linked_map:Resource          = MapData.new()             # state of the link
-export(Array, String) var tags:Array
+export(Array, String) var tags:Array                   = []
 
 # === methods ===
 
