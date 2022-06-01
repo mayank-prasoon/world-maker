@@ -27,6 +27,8 @@
 [sub_resource type="GDScript" id=56]
 script/source = "extends Control
 
+signal toggle_map_pin_manger(button_state)
+
 # === NODE(s) ===
 onready var map_texture_collection_node  = $MapCollectionNode
 onready var comment_collection_node      = $CommentCollectionNode
