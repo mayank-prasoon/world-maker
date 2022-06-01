@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://assets/file templates/save_system_template/map_pin_resources_template.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-pin_name = "book_1"
-pin_location = Vector2( 500, 200 )
-map_link_state = false
