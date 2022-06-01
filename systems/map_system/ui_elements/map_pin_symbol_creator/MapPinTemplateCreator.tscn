@@ -1,6 +1,5 @@
 [gd_scene load_steps=52 format=2]
 
-[ext_resource path="res://systems/map_system/ui_elements/map_pin/MapPin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39.png" type="Texture" id=3]
 [ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-1.png" type="Texture" id=4]
@@ -14,6 +13,7 @@
 [ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png" type="Texture" id=12]
 [ext_resource path="res://assets/graphics/map/map_pin_creator/chevron-right.png" type="Texture" id=13]
 [ext_resource path="res://assets/graphics/map/new map/spin_box.png" type="Texture" id=14]
+[ext_resource path="res://systems/map_system/ui_elements/map_pin_symbol_creator/Name.gd" type="Script" id=15]
 
 [sub_resource type="GDScript" id=24]
 script/source = "extends Control
@@ -201,8 +201,8 @@ onready var map_pin_template_container = $MarginContainer/HBoxContainer/VBoxCont
 onready var template_name              = $MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input/LineEdit
 onready var template_texture           = $MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input/LineEdit
 onready var template_hover_animation   = $MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit
-onready var offset_x                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input/LineEdit
-onready var offset_y                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input/LineEdit
+onready var offset_x                   = $\"MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input/LineEdit\"
+onready var offset_y                   = $\"MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input/LineEdit\"
 onready var default_tags               = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input/LineEdit
 onready var default_template           = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input/LineEdit
 
@@ -220,8 +220,6 @@ var article_template_list:Array = [\"\"]
 
 
 func _ready()->void:
-	for nodes in get_tree().get_nodes_in_group('input_field'):
-		nodes.connect('input_value_changed', self, 'change_in_input')
 	image_info.text = \"select an Image\"
 
 	load_article_template()
@@ -259,26 +257,6 @@ func load_article_template()->void:
 	
 	default_template.selected = 0
 
-# --------------------------------------------------------------------------------------------------
-
-# change in input
-func change_in_input()->void:
-	var symbol_template = MapSymbolTemplate.new()
-
-	symbol_template.template_name            = template_name.text
-	symbol_template.template_texture         = template_texture.text
-	symbol_template.template_hover_animation = template_hover_animation.text.split(\", \")
-	symbol_template.template_offset          = Vector2(offset_x.value, offset_y.value)
-	symbol_template.template_default_tag     = default_tags.text.split(\", \")
-	symbol_template.template_default_article_template = article_template_list[default_template.selected]
-	
-	map_pin_template_container.load_map_pin(symbol_template)
-
-	if symbol_template.template_texture != \"\":
-		var image_size = ImageHandler.load_image(symbol_template.template_texture).get_size()
-		image_info.text = \"image size : \" + String(image_size.x) + \" X \" + String(image_size.y) + \" px\"
-	else:
-		image_info.text = \"select an Image\"
 
 # --------------------------------------------------------------------------------------------------
 
@@ -314,6 +292,15 @@ func _on_save_pressed()->void:
 	
 	get_tree().call_group(\"map_pin_inspector\", 'load_pin_template')
 	get_owner().close_the_dialog()
+
+
+func _on_AnimationFrames_value_changed():
+		var image_size = ImageHandler.load_image(symbol_template.template_texture).get_size()
+		image_info.text = \"image size : \" + String(image_size.x) + \" X \" + String(image_size.y) + \" px\"
+		
+		
+	else:
+		image_info.text = \"select an Image\"
 "
 
 [sub_resource type="GDScript" id=23]
@@ -325,27 +312,9 @@ var radius:int = 48
 # ------------------------------------------------------------------------------
 
 func _process(_delta:float)->void:
-	get_child(0).position = self.rect_pivot_offset
+	get_child(0).rect_size = self.rect_size
 
 # ------------------------------------------------------------------------------
-
-# reload map pin
-func load_map_pin(symbol_template:MapSymbolTemplate)->void:
-
-	# map pin node
-	var map_pin_node = $MapPin
-
-	# create and assign value to map pin resource
-	var map_pin:MapPin            = MapPin.new()
-	map_pin.pin_symbol_template   = symbol_template
-	map_pin.pin_name              = \"sample name\"
-	map_pin.pin_location          = self.rect_pivot_offset
-
-	# assign map pin resource to 
-	map_pin_node.pin_resource     = map_pin
-
-	map_pin_node.add_animation_and_texture()
-	map_pin_node.load_resource()
 "
 
 [sub_resource type="GDScript" id=28]
@@ -500,8 +469,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_right = 1113.0
-margin_bottom = 527.001
+margin_left = -556.5
+margin_top = -263.5
+margin_right = 556.5
+margin_bottom = 263.501
 rect_min_size = Vector2( 1113, 527 )
 script = SubResource( 29 )
 __meta__ = {
@@ -562,8 +533,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource( 23 )
 
-[node name="MapPin" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/PinContainer" instance=ExtResource( 1 )]
-position = Vector2( 250, 210 )
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/PinContainer"]
+margin_right = 500.0
+margin_bottom = 421.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ImageInfo" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
@@ -597,6 +571,7 @@ __meta__ = {
 margin_right = 510.0
 margin_bottom = 74.0
 custom_constants/separation = 10
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -1059,6 +1034,7 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
+show_hidden_files = true
 current_dir = "/media/mayank/Assets1/Software Dev/world building software"
 current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
@@ -1075,17 +1051,22 @@ window_title = "Open File(s)"
 resizable = true
 mode = 1
 access = 2
+show_hidden_files = true
 current_dir = "/media/mayank/Assets1/Software Dev/world building software"
 current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/Margin/Close" to="." method="_on_Close_pressed"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name" method="_on_LineEdit_text_changed"]
 [connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
 [connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_Open_pressed"]
-[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="_on_AnimationFrames_value_changed"]
 [connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_Open_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab/NextButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer" method="_on_NextButton_pressed"]
+[connection signal="changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx" method="_on_LineEdit_changed"]
+[connection signal="changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety" method="_on_LineEdit_changed"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags" method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton/CreateButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="_on_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton/BackButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer" method="_on_BackButton_pressed"]
 [connection signal="file_selected" from="PopUp/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_FileDialog_file_selected"]
