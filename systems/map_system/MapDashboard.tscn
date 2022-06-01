@@ -30,14 +30,6 @@ script/source = "extends Control
 
 onready var map_pin_container = $Panel/VBoxContainer/ScrollContainer/Panel/VBoxContainer2/VBoxContainer
 
-# --------------------------------------------------------------------------------------------------
-
-func _on_MapToolBar_visiblity_map_pin_manager(state):
-	if state:
-		$AnimationPlayer.play(\"show\")
-		load_map_pin()
-	if !state:
-		$AnimationPlayer.play_backwards(\"show\")
 
 # --------------------------------------------------------------------------------------------------
 
@@ -57,6 +49,15 @@ func load_map_pin()->void:
 		node.map_pin_node     = map_pin
 
 		map_pin_container.add_child(node)
+
+
+func _on_MapSystem_toggle_map_pin_manger(button_state):
+	if button_state:
+		$AnimationPlayer.play(\"show\")
+		load_map_pin()
+	if !button_state:
+		$AnimationPlayer.play_backwards(\"show\")
+
 "
 
 [sub_resource type="Animation" id=10]
@@ -278,3 +279,4 @@ physics_object_picking = true
 [node name="MapSystem" parent="HBoxContainer/VBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
 [connection signal="text_changed" from="HBoxContainer/MapPinManager/Panel/VBoxContainer/SearchBar/LineEdit" to="HBoxContainer/MapPinManager/Panel/VBoxContainer/SearchBar" method="_on_LineEdit_text_changed"]
+[connection signal="toggle_map_pin_manger" from="HBoxContainer/VBoxContainer/ViewportContainer/Viewport/MapSystem" to="HBoxContainer/MapPinManager" method="_on_MapSystem_toggle_map_pin_manger"]
