@@ -18,6 +18,6 @@ func _ready()->void:
 	add_to_group('input_field')
 
 # set function
-func set_input_value(new_value):
+func set_input_value(new_value)->void:
 	input_value = new_value
 	emit_signal("input_value_changed")

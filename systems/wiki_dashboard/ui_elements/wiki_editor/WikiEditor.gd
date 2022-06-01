@@ -95,7 +95,10 @@ func _on_Button_pressed()->void:
 		index += 1
 	
 	var tags = basic_tab.get_node("Article Tag").input_value.split(',')
-
+	
+	
+	var article_description = basic_tab.get_node("Description").input_value
+	
 	ResourceManager.save_file(
 		{
 			'article_name'        : basic_tab.get_node("Article Name").input_value,
@@ -106,7 +109,7 @@ func _on_Button_pressed()->void:
 			'article_template'    : value,
 			'article_notes'       : notes.text,
 			'article_raw'         : fetch_raw_data(),
-			'article_description' : basic_tab.get_node("Description").input_value,
+			'article_description' : article_description,
 			'tags'                : tags
 		},
 

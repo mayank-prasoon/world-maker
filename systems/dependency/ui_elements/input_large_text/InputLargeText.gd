@@ -12,5 +12,5 @@ func display()->String:
 	else:
 		return input_display.format({"value" : input_null_display_value})
 
-func _on_LineEdit_text_changed(new_text):
-	set_input_value(new_text)
+func _on_TextEdit_text_changed()->void:
+	set_input_value($VBoxContainer/TextEdit.get_text())
