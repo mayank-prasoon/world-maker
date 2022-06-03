@@ -17,11 +17,11 @@ World Maker comes with a bunch of powerful tools to help writers and developers 
 
 ## Download
 
-[click here](https://chunkydev.itch.io/world-maker) to go the download page
+[Click here](https://chunkydev.itch.io/world-maker) to go the download page.
 
 ## Install
 
-run the exicutable
+Run the executable file.
 
 ## Screenshots
 
@@ -33,4 +33,4 @@ run the exicutable
 
 ## About
 
-This project is a result of many days and sleepless night. This project aims to bring the joy of creating your own world
+This project is a result of many days and sleepless night. This project aims to bring the joy of creating your own world.
