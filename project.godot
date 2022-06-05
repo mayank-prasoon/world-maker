@@ -129,20 +129,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://systems/dependency/resource_dep/resource_manager.gd"
 }, {
-"base": "RootSystemTest",
-"class": "RootCommandTest",
-"language": "GDScript",
-"path": "res://test/dependency/root_command_system_test.gd"
-}, {
 "base": "Control",
 "class": "RootFieldInput",
 "language": "GDScript",
 "path": "res://systems/dependency/ui_elements/root_input_class.gd"
-}, {
-"base": "Node",
-"class": "RootSystemTest",
-"language": "GDScript",
-"path": "res://test/dependency/root_system_test_script.gd"
 }, {
 "base": "Reference",
 "class": "SaveSystem",
@@ -194,9 +184,7 @@ _global_script_class_icons={
 "PresetInputManager": "",
 "ProjectButton": "",
 "ResourceManager": "",
-"RootCommandTest": "",
 "RootFieldInput": "",
-"RootSystemTest": "",
 "SaveSystem": "",
 "StateMachine": "",
 "ThreadPool": "",
@@ -237,7 +225,7 @@ window/vsync/use_vsync=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot-logging/plugin.cfg", "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
 [input]
 
