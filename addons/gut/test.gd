@@ -1,3 +1,4 @@
+class_name GutTest
 # ##############################################################################
 #(G)odot (U)nit (T)est class
 #
@@ -41,7 +42,7 @@ extends Node
 # Helper class to hold info for objects to double.  This extracts info and has
 # some convenience methods.  This is key in being able to make the "smart double"
 # method which makes doubling much easier for the user.
-# ------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 class DoubleInfo:
 	var path
 	var subpath
@@ -145,6 +146,8 @@ var _strutils = _utils.Strutils.new()
 # syntax sugar
 var ParameterFactory = _utils.ParameterFactory
 var CompareResult = _utils.CompareResult
+var InputFactory = _utils.InputFactory
+var InputSender = _utils.InputSender
 
 func _init():
 	DOUBLE_STRATEGY = _utils.DOUBLE_STRATEGY # yes, this is right
@@ -261,14 +264,6 @@ func _create_obj_from_type(type):
 	return obj
 
 
-func _get_type_from_obj(obj):
-	var type = null
-	if obj.has_method(get_filename()):
-			type = load(obj.get_filename())
-	else:
-			type = obj.get_script()
-	return type
-
 # #######################
 # Virtual Methods
 # #######################
@@ -347,6 +342,7 @@ func assert_ne(got, not_expected, text=""):
 			_fail(disp)
 		else:
 			_pass(disp)
+
 
 # ------------------------------------------------------------------------------
 # Asserts that the expected value almost equals the value got.
@@ -535,8 +531,11 @@ func assert_file_not_empty(file_path):
 # ------------------------------------------------------------------------------
 # Asserts the object has the specified method
 # ------------------------------------------------------------------------------
-func assert_has_method(obj, method):
-	assert_true(obj.has_method(method), _str(obj) + ' should have method: ' + method)
+func assert_has_method(obj, method, text=''):
+	var disp = _str(obj) + ' should have method: ' + method
+	if(text != ''):
+		disp = _str(obj) + ' ' + text
+	assert_true(obj.has_method(method), disp)
 
 # Old deprecated method name
 func assert_get_set_methods(obj, property, default, set_to):
@@ -552,16 +551,20 @@ func assert_get_set_methods(obj, property, default, set_to):
 # ------------------------------------------------------------------------------
 func assert_accessors(obj, property, default, set_to):
 	var fail_count = _summary.failed
-	var get = 'get_' + property
-	var set = 'set_' + property
-	assert_has_method(obj, get)
-	assert_has_method(obj, set)
+	var get_func = 'get_' + property
+	var set_func = 'set_' + property
+
+	if(obj.has_method('is_' + property)):
+		get_func = 'is_' + property
+
+	assert_has_method(obj, get_func, 'should have getter starting with get_ or is_')
+	assert_has_method(obj, set_func)
 	# SHORT CIRCUIT
 	if(_summary.failed > fail_count):
 		return
-	assert_eq(obj.call(get), default, 'It should have the expected default value.')
-	obj.call(set, set_to)
-	assert_eq(obj.call(get), set_to, 'The set value should have been returned.')
+	assert_eq(obj.call(get_func), default, 'It should have the expected default value.')
+	obj.call(set_func, set_to)
+	assert_eq(obj.call(get_func), set_to, 'The set value should have been returned.')
 
 
 # ---------------------------------------------------------------------------
@@ -637,7 +640,6 @@ func watch_signals(object):
 # to the specified signal on the source object.
 # ------------------------------------------------------------------------------
 func assert_connected(signaler_obj, connect_to_obj, signal_name, method_name=""):
-	pass
 	var method_disp = ''
 	if (method_name != ""):
 		method_disp = str(' using method: [', method_name, '] ')
@@ -808,10 +810,10 @@ func assert_is(object, a_class, text=''):
 	elif(typeof(a_class) != TYPE_OBJECT):
 		_fail(str(bad_param_2, _str(a_class)))
 	else:
-		var a = _str(a_class)
-		disp = str('Expected [', _str(object), '] to extend [', _str(a_class), ']: ', text)
+		var a_str = _str(a_class)
+		disp = str('Expected [', _str(object), '] to extend [', a_str, ']: ', text)
 		if(a_class.get_class() != NATIVE_CLASS and a_class.get_class() != GDSCRIPT_CLASS):
-			_fail(str(bad_param_2, _str(a_class)))
+			_fail(str(bad_param_2, a_str))
 		else:
 			if(object is a_class):
 				_pass(disp)
@@ -1006,7 +1008,7 @@ func assert_not_null(got, text=''):
 # Asserts object has been freed from memory
 # We pass in a title (since if it is freed, we lost all identity data)
 # -----------------------------------------------------------------------------
-func assert_freed(obj, title):
+func assert_freed(obj, title='something'):
 	var disp = title
 	if(is_instance_valid(obj)):
 		disp = _strutils.type2str(obj) + title
@@ -1051,7 +1053,7 @@ func _validate_assert_setget_called_input(type, name_property
 
 	if null == type or typeof(type) != TYPE_OBJECT or not type.is_class("Resource"):
 		result.is_valid = false
-		result.msg = str("The type parameter should be a ressource, input is ", _str(type))
+		result.msg = str("The type parameter should be a ressource, ", _str(type), ' was passed.')
 		return result
 
 	if null == double(type):
@@ -1077,6 +1079,26 @@ func _validate_assert_setget_called_input(type, name_property
 
 	obj.free()
 	return result
+
+# ------------------------------------------------------------------------------
+# Validates the singleton_name is a string and exists.  Errors when conditions
+# are not met.  Returns true/false if singleton_name is valid or not.
+# ------------------------------------------------------------------------------
+func _validate_singleton_name(singleton_name):
+	var is_valid = true
+	if(typeof(singleton_name) != TYPE_STRING):
+		_lgr.error("double_singleton requires a Godot singleton name, you passed " + _str(singleton_name))
+		is_valid = false
+	# Sometimes they have underscores in front of them, sometimes they do not.
+	# The doubler is smart enought of ind the right thing, so this has to be
+	# that smart as well.
+	elif(!ClassDB.class_exists(singleton_name) and !ClassDB.class_exists('_' + singleton_name)):
+		var txt = str("The singleton [", singleton_name, "] could not be found.  ",
+					"Check the GlobalScope page for a list of singletons.")
+		_lgr.error(txt)
+		is_valid = false
+	return is_valid
+
 
 # ------------------------------------------------------------------------------
 # Asserts the given setter and getter methods are called when the given property
@@ -1107,7 +1129,7 @@ func _assert_setget_called(type, name_property, setter = "", getter  = ""):
 	if name_getter != '':
 		expected_calls_getter = 1
 		stub(obj, name_getter).to_do_nothing()
-		var new_property = obj.get(name_property)
+		var __new_property = obj.get(name_property)
 		amount_calls_getter = gut.get_spy().call_count(obj, str(name_getter))
 
 	obj.free()
@@ -1153,7 +1175,7 @@ func assert_setget(
 	if instance.is_class("Resource"):
 		resource = instance
 	else:
-		resource = _get_type_from_obj(instance)
+		resource = instance.get_script()
 
 	_assert_setget_called(resource, str(name_property), setter_name, getter_name)
 
@@ -1171,7 +1193,7 @@ func assert_property(instance, name_property, default_value, new_value) -> void:
 		obj = _create_obj_from_type(resource)
 		free_me.append(obj)
 	else:
-		resource = _get_type_from_obj(instance)
+		resource = instance.get_script()
 		obj = instance
 
 	var name_setter = "set_" + str(name_property)
@@ -1200,6 +1222,10 @@ func pending(text=""):
 		_lgr.pending(text)
 		gut._pending(text)
 
+# ------------------------------------------------------------------------------
+# Returns the number of times a signal was emitted.  -1 returned if the object
+# is not being watched.
+# ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
 # Yield for the time sent in.  The optional message will be printed when
@@ -1341,6 +1367,25 @@ func partial_double(thing, p2=null, p3=null):
 
 	return _smart_double(double_info)
 
+# ------------------------------------------------------------------------------
+# Doubles a Godot singleton
+# ------------------------------------------------------------------------------
+func double_singleton(singleton_name):
+	return null
+	# var to_return = null
+	# if(_validate_singleton_name(singleton_name)):
+	# 	to_return = gut.get_doubler().double_singleton(singleton_name)
+	# return to_return
+
+# ------------------------------------------------------------------------------
+# Partial Doubles a Godot singleton
+# ------------------------------------------------------------------------------
+func partial_double_singleton(singleton_name):
+	return null
+	# var to_return = null
+	# if(_validate_singleton_name(singleton_name)):
+	# 	to_return = gut.get_doubler().partial_double_singleton(singleton_name)
+	# return to_return
 
 # ------------------------------------------------------------------------------
 # Specifically double a scene
@@ -1363,6 +1408,7 @@ func double_inner(path, subpath, strategy=null):
 	var override_strat = _utils.nvl(strategy, gut.get_doubler().get_strategy())
 	return gut.get_doubler().double_inner(path, subpath, override_strat)
 
+
 # ------------------------------------------------------------------------------
 # Add a method that the doubler will ignore.  You can pass this the path to a
 # script or scene or a loaded script or scene.  When running tests, these
@@ -1378,7 +1424,6 @@ func ignore_method_when_doubling(thing, method_name):
 			path = inst.get_script().get_path()
 
 	gut.get_doubler().add_ignored_method(path, method_name)
-
 
 # ------------------------------------------------------------------------------
 # Stub something.

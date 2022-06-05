@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="/media/mayank/Assets1/Software Dev/final build/sample project/save_files/pins/964b36a9-e5a7-436a-9735-d5cd47a0d3c7_save_data.tres" type="Resource" id=1]
+[ext_resource path="res://assets/file templates/save_system_template/map_resources_template.gd" type="Script" id=2]
+[ext_resource path="res://assets/file templates/save_system_template/map_comment_resources_template.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+comment_name = "green book"
+comment_id = "964b36a9-e5a7-436a-9735-d5cd47a0d3c6"
+comment_location = Vector2( 0, 0 )
+comment_text = "fafafaf"
+comment_state = 0
+
+[resource]
+script = ExtResource( 2 )
+map_name = "map"
+image_path = "/media/mayank/Assets1/Software Dev/final build/assets for project/nelegolas_lake/nelegolas_lake(2).png"
+image_size = Vector2( 0, 0 )
+layers = [  ]
+map_pins = [ ExtResource( 1 ), SubResource( 1 ) ]
+tags = [  ]

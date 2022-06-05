@@ -41,6 +41,7 @@ extends SceneTree
 
 var Optparse = load('res://addons/gut/optparse.gd')
 var Gut = load('res://addons/gut/gut.gd')
+var GutRunner = load('res://addons/gut/gui/GutRunner.tscn')
 
 # ------------------------------------------------------------------------------
 # Helper class to resolve the various different places where an option can
@@ -135,6 +136,7 @@ func setup_options(options, font_names):
 	opts.add('-gsuffix', options.suffix, 'Suffix used to find tests when specifying -gdir.  Default "[default]".')
 	opts.add('-ghide_orphans', false, 'Display orphan counts for tests and scripts.  Default "[default]".')
 	opts.add('-gmaximize', false, 'Maximizes test runner window to fit the viewport.')
+	opts.add('-gcompact_mode', false, 'The runner will be in compact mode.  This overrides -gmaximize.')
 	opts.add('-gexit', false, 'Exit after running tests.  If not specified you have to manually close the window.')
 	opts.add('-gexit_on_success', false, 'Only exit if all tests pass.')
 	opts.add('-glog', options.log_level, 'Log level.  Default [default]')
@@ -186,6 +188,7 @@ func extract_command_line_options(from, to):
 	to.should_exit = from.get_value('-gexit')
 	to.should_exit_on_success = from.get_value('-gexit_on_success')
 	to.should_maximize = from.get_value('-gmaximize')
+	to.compact_mode = from.get_value('-gcompact_mode')
 	to.hide_orphans = from.get_value('-ghide_orphans')
 	to.suffix = from.get_value('-gsuffix')
 	to.tests = from.get_value('-gtest')
@@ -260,14 +263,16 @@ func _run_gut():
 			_final_opts = opt_resolver.get_resolved_values();
 			_gut_config.options = _final_opts
 
-			_tester = Gut.new()
-			get_root().add_child(_tester)
+			var runner = GutRunner.instance()
+			runner.set_cmdln_mode(true)
+			runner.set_gut_config(_gut_config)
+
+			_tester = runner.get_gut()
 			_tester.connect('tests_finished', self, '_on_tests_finished',
 				[_final_opts.should_exit, _final_opts.should_exit_on_success])
-			_gut_config.apply_options(_tester)
 
-			var run_others = _final_opts.selected == null
-			_tester.test_scripts(run_others)
+			get_root().add_child(runner)
+			runner.run_tests()
 
 
 # exit if option is set.

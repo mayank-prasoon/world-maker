@@ -16,7 +16,6 @@ var _gut_config_gui = null
 var _gut_plugin = null
 var _light_color = Color(0, 0, 0, .5)
 var _panel_button = null
-var _open_editors = null
 var _last_selected_path = null
 
 
@@ -26,36 +25,27 @@ onready var _ctrls = {
 	settings = $layout/RSplit/sc/Settings,
 	shortcut_dialog = $BottomPanelShortcuts,
 	light = $layout/RSplit/CResults/ControlBar/Light,
-	run_like = {
-		button = $layout/ControlBar/RunLike,
-		txt_script = $layout/ControlBar/CScript/txtScript,
-		txt_inner = $layout/ControlBar/CInner/txtInner,
-		txt_test = $layout/ControlBar/CTest/txtTest,
-		focust_button = $layout/ControlBar/FocusButton,
-	},
-	run_current = {
-		button = $layout/ControlBar/CRunCurrent/RunCurrent,
-	},
-	rerun = {
-		button = $layout/ControlBar/CRerun/Rerun,
-	},
 	results = {
-		passing = $layout/RSplit/CResults/ControlBar/lblPassingValue,
-		failing = $layout/RSplit/CResults/ControlBar/lblFailingValue,
-		pending = $layout/RSplit/CResults/ControlBar/lblPendingValue
-	}
+		passing = $layout/RSplit/CResults/ControlBar/Passing/value,
+		failing = $layout/RSplit/CResults/ControlBar/Failing/value,
+		pending = $layout/RSplit/CResults/ControlBar/Pending/value,
+		errors = $layout/RSplit/CResults/ControlBar/Errors/value,
+		warnings = $layout/RSplit/CResults/ControlBar/Warnings/value,
+		orphans = $layout/RSplit/CResults/ControlBar/Orphans/value
+	},
+	run_at_cursor = $layout/ControlBar/RunAtCursor
 }
 
 
 func _init():
-	_gut_config.load_options(RUNNER_JSON_PATH)
+	_gut_config.load_panel_options(RUNNER_JSON_PATH)
 
 
 func _ready():
 	_gut_config_gui = GutConfigGui.new(_ctrls.settings)
 	_gut_config_gui.set_options(_gut_config.options)
-	_set_all_fonts_in_ftl(_ctrls.output, _gut_config.options.font_name)
-	_set_font_size_for_rtl(_ctrls.output, _gut_config.options.font_size)
+	_set_all_fonts_in_ftl(_ctrls.output, _gut_config.options.panel_options.font_name)
+	_set_font_size_for_rtl(_ctrls.output, _gut_config.options.panel_options.font_size)
 
 
 func _process(delta):
@@ -130,7 +120,6 @@ func _update_last_run_label():
 		text += nvl(_gut_config.options.inner_class, '') + ' '
 		text += nvl(_gut_config.options.unit_test_name, '')
 
-	_ctrls.rerun.button.text = str(text.strip_edges())
 
 
 func _show_errors(errs):
@@ -148,11 +137,10 @@ func _run_tests():
 		_show_errors(issues)
 		return
 
-	_ctrls.rerun.button.disabled = false
 	write_file(RESULT_FILE, 'Run in progress')
 	_gut_config.options = _gut_config_gui.get_options(_gut_config.options)
-	_set_all_fonts_in_ftl(_ctrls.output, _gut_config.options.font_name)
-	_set_font_size_for_rtl(_ctrls.output, _gut_config.options.font_size)
+	_set_all_fonts_in_ftl(_ctrls.output, _gut_config.options.panel_options.font_name)
+	_set_font_size_for_rtl(_ctrls.output, _gut_config.options.panel_options.font_size)
 
 	var w_result = _gut_config.write_options(RUNNER_JSON_PATH)
 	if(w_result != OK):
@@ -170,19 +158,15 @@ func _run_tests():
 
 func _apply_shortcuts():
 	_ctrls.run_button.shortcut = _ctrls.shortcut_dialog.get_run_all()
-	_ctrls.rerun.button.shortcut = _ctrls.shortcut_dialog.get_rerun()
-	_ctrls.run_current.button.shortcut = _ctrls.shortcut_dialog.get_run_current()
-	_ctrls.run_like.button.shortcut = _ctrls.shortcut_dialog.get_run_like()
-	_ctrls.run_like.focust_button.shortcut = _ctrls.shortcut_dialog.get_focus_button()
+
+	_ctrls.run_at_cursor.get_script_button().shortcut = \
+		_ctrls.shortcut_dialog.get_run_current_script()
+	_ctrls.run_at_cursor.get_inner_button().shortcut = \
+		_ctrls.shortcut_dialog.get_run_current_inner()
+	_ctrls.run_at_cursor.get_test_button().shortcut = \
+		_ctrls.shortcut_dialog.get_run_current_test()
+
 	_panel_button.shortcut = _ctrls.shortcut_dialog.get_panel_button()
-
-
-func _run_like():
-	_gut_config.options.selected = _ctrls.run_like.txt_script.text
-	_gut_config.options.inner_class = _ctrls.run_like.txt_inner.text
-	_gut_config.options.unit_test_name = _ctrls.run_like.txt_test.text
-
-	_run_tests()
 
 
 func _run_all():
@@ -193,13 +177,6 @@ func _run_all():
 	_run_tests()
 
 
-func _run_last_selected():
-	if(_last_selected_path != null):
-		_gut_config.options.inner_class = null
-		_gut_config.options.unit_test_name = null
-		_gut_config.options.selected = _last_selected_path.get_file()
-		_run_tests()
-
 # ---------------
 # Events
 # ---------------
@@ -207,9 +184,6 @@ func _on_editor_script_changed(script):
 	if(script):
 		set_current_script(script)
 
-func _on_editor_changed():
-	pass
-	# _open_editors.print_editors()
 
 func _on_RunAll_pressed():
 	_on_RunTests_pressed()
@@ -218,19 +192,6 @@ func _on_RunAll_pressed():
 func _on_RunTests_pressed():
 	_run_all()
 
-func _on_RunCurrent_pressed():
-	_run_last_selected()
-
-func _on_Rerun_pressed():
-	_run_tests()
-
-
-func _on_RunLike_pressed():
-	_on_RunLikeButton_pressed()
-
-
-func _on_RunLikeButton_pressed():
-	_run_like()
 
 func _on_CopyButton_pressed():
 	OS.clipboard = _ctrls.output.text
@@ -254,32 +215,13 @@ func _on_Light_draw():
 	l.draw_circle(Vector2(l.rect_size.x / 2, l.rect_size.y / 2), l.rect_size.x / 2, _light_color)
 
 
-func _on_run_like_field_enter_pressed(new_text):
-	_run_like()
+func _on_RunAtCursor_run_tests(what):
+	_gut_config.options.selected = what.script
+	_gut_config.options.inner_class = what.inner_class
+	_gut_config.options.unit_test_name = what.test_method
 
+	_run_tests()
 
-func _on_txtScript_focus_entered():
-	_ctrls.run_like.txt_script.select_all()
-
-
-func _on_txtInner_focus_entered():
-	_ctrls.run_like.txt_inner.select_all()
-
-
-func _on_txtTest_focus_entered():
-	_ctrls.run_like.txt_test.select_all()
-
-
-func _on_txtScript_focus_exited():
-	_ctrls.run_like.txt_script.select(0, 0)
-
-
-func _on_txtInner_focus_exited():
-	_ctrls.run_like.txt_inner.select(0, 0)
-
-
-func _on_txtTest_focus_exited():
-	_ctrls.run_like.txt_test.select(0, 0)
 
 # ---------------
 # Public
@@ -296,8 +238,22 @@ func load_result_output():
 		return
 	var summary_json = results.result['test_scripts']['props']
 	_ctrls.results.passing.text = str(summary_json.passing)
+	_ctrls.results.passing.get_parent().visible = true
+
 	_ctrls.results.failing.text = str(summary_json.failures)
+	_ctrls.results.failing.get_parent().visible = true
+
 	_ctrls.results.pending.text = str(summary_json.pending)
+	_ctrls.results.pending.get_parent().visible = _ctrls.results.pending.text != '0'
+
+	_ctrls.results.errors.text = str(summary_json.errors)
+	_ctrls.results.errors.get_parent().visible = _ctrls.results.errors.text != '0'
+
+	_ctrls.results.warnings.text = str(summary_json.warnings)
+	_ctrls.results.warnings.get_parent().visible = _ctrls.results.warnings.text != '0'
+
+	_ctrls.results.orphans.text = str(summary_json.orphans)
+	_ctrls.results.orphans.get_parent().visible = _ctrls.results.orphans.text != '0' and !_gut_config.options.hide_orphans
 
 	if(summary_json.tests == 0):
 		_light_color = Color(1, 0, 0, .75)
@@ -316,19 +272,14 @@ func set_current_script(script):
 		if(_is_test_script(script)):
 			var file = script.resource_path.get_file()
 			_last_selected_path = script.resource_path.get_file()
-			_ctrls.run_current.button.text = str('Run:  ', file)
-			_ctrls.run_current.button.disabled = false
+			_ctrls.run_at_cursor.activate_for_script(script.resource_path)
 
 
 func set_interface(value):
 	_interface = value
 	_interface.get_script_editor().connect("editor_script_changed", self, '_on_editor_script_changed')
+	_ctrls.run_at_cursor.set_script_editor(_interface.get_script_editor())
 	set_current_script(_interface.get_script_editor().get_current_script())
-	# TODO start using the open editors to do some sweet sweet run-at-cursor
-	# action in the editor.  If I didn't stop before implementing this then
-	# I may have never stopped working on this feature.
-	# _open_editors = load('res://addons/gut/gui/open_editors.gd').new(_interface.get_script_editor())
-	# _open_editors.connect('editor_changed', self, '_on_editor_changed')
 
 
 func set_plugin(value):
@@ -373,5 +324,3 @@ func nvl(value, if_null):
 		return value
 
 
-func _on_FocusButton_pressed():
-	_ctrls.run_like.txt_script.grab_focus()

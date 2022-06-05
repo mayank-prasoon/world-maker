@@ -12,7 +12,7 @@
  "hide_orphans": false,
  "ignore_pause": true,
  "include_subdirs": true,
- "inner_class": null,
+ "inner_class": "TestMapManagerSystem",
  "junit_xml_file": "",
  "junit_xml_timestamp": false,
  "log_level": 3,
@@ -20,14 +20,20 @@
  "post_run_script": "",
  "pre_run_script": "",
  "prefix": "test_",
- "selected": null,
+ "selected": "test_map_system.gd",
  "should_exit": false,
  "should_exit_on_success": true,
  "should_maximize": true,
+ "compact_mode": false,
  "show_help": false,
  "suffix": ".gd",
  "tests": [
 
  ],
- "unit_test_name": null
+ "unit_test_name": null,
+ "gut_on_top": true,
+ "panel_options": {
+  "font_name": "CourierPrime",
+  "font_size": 15
+ }
 }

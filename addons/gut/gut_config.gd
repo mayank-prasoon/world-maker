@@ -34,10 +34,18 @@ var default_options = {
 	should_exit = false,
 	should_exit_on_success = false,
 	should_maximize = false,
+	compact_mode = false,
 	show_help = false,
 	suffix = '.gd',
 	tests = [],
 	unit_test_name = '',
+
+	gut_on_top = true,
+}
+
+var default_panel_options = {
+	font_name = 'CourierPrime',
+	font_size = 30
 }
 
 var options = default_options.duplicate()
@@ -109,6 +117,9 @@ func _apply_options(opts, _tester):
 	if(opts.should_maximize):
 		_tester.maximize()
 
+	if(opts.compact_mode):
+		_tester.get_gui().compact_mode(true)
+
 	if(opts.inner_class != ''):
 		_tester.set_inner_class_name(opts.inner_class)
 	_tester.set_log_level(opts.log_level)
@@ -147,7 +158,6 @@ func _apply_options(opts, _tester):
 	return _tester
 
 
-
 func config_gut(gut):
 	return _apply_options(options, gut)
 
@@ -155,6 +165,9 @@ func config_gut(gut):
 func load_options(path):
 	return _load_options_from_config_file(path, options)
 
+func load_panel_options(path):
+	options['panel_options'] = default_panel_options.duplicate()
+	return _load_options_from_config_file(path, options)
 
 func load_options_no_defaults(path):
 	options = _null_copy(default_options)

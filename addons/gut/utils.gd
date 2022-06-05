@@ -78,6 +78,8 @@ var DiffTool = load('res://addons/gut/diff_tool.gd')
 var Doubler = load('res://addons/gut/doubler.gd')
 var Gut = load('res://addons/gut/gut.gd')
 var HookScript = load('res://addons/gut/hook_script.gd')
+var InputFactory = load("res://addons/gut/input_factory.gd")
+var InputSender = load("res://addons/gut/input_sender.gd")
 var JunitXmlExport = load('res://addons/gut/junit_xml_export.gd')
 var MethodMaker = load('res://addons/gut/method_maker.gd')
 var OneToMany = load('res://addons/gut/one_to_many.gd')
@@ -96,7 +98,7 @@ var TestCollector = load('res://addons/gut/test_collector.gd')
 var ThingCounter = load('res://addons/gut/thing_counter.gd')
 
 # Source of truth for the GUT version
-var version = '7.2.0'
+var version = '7.3.0'
 # The required Godot version as an array.
 var req_godot = [3, 2, 0]
 # Used for doing file manipulation stuff so as to not keep making File instances.
@@ -105,6 +107,22 @@ var _file_checker = File.new()
 # Online fetch of the latest version available on github
 var latest_version = null
 var should_display_latest_version = false
+
+
+# These methods all call super implicitly.  Stubbing them to call super causes
+# super to be called twice.
+var non_super_methods = [
+	"_init",
+	"_ready",
+	"_notification",
+	"_enter_world",
+	"_exit_world",
+	"_process",
+	"_physics_process",
+	"_exit_tree",
+	"_gui_input	",
+]
+
 
 func _ready() -> void:
 	_http_request_latest_version()
@@ -277,8 +295,8 @@ func write_file(path, content):
 	if(result == OK):
 		f.store_string(content)
 		f.close()
-	return result
 
+	return result
 
 # ------------------------------------------------------------------------------
 # true if what is passed in is null or an empty string.
@@ -296,7 +314,7 @@ func get_native_class_name(thing):
 	if(is_native_class(thing)):
 		var newone = thing.new()
 		to_return = newone.get_class()
-		if !newone is Reference:
+		if(!newone is Reference):
 			newone.free()
 	return to_return
 
@@ -361,3 +379,11 @@ func pretty_print(dict):
 
 func get_script_text(obj):
 	return obj.get_script().get_source_code()
+
+
+func get_singleton_by_name(name):
+	var source = str("var singleton = ", name)
+	var script = GDScript.new()
+	script.set_source_code(source)
+	script.reload()
+	return script.new().singleton

@@ -35,9 +35,9 @@ class MapLoadSystem extends Object:
 # add or remove map texture node
 class MapManager extends Object:
 	# === THREAD(s) ===
-	var add_map_thread:Thread
-	var add_pin_thread:Thread
-	var add_comment_thread:Thread
+	var add_map_thread:Thread       = Thread.new()
+	var add_pin_thread:Thread       = Thread.new()
+	var add_comment_thread:Thread   = Thread.new()
 	
 	# === VAR(s) ===
 	var map_resource:MapData           = MapData.new()
@@ -74,10 +74,14 @@ class MapManager extends Object:
 
 	# join thread
 	func join_thread()->void:
-		add_map_thread.wait_to_finish()
-		add_pin_thread.wait_to_finish()
-		add_comment_thread.wait_to_finish()
+		if add_map_thread.is_alive():
+			add_map_thread.wait_to_finish()
 
+		if add_pin_thread.is_alive():
+			add_pin_thread.wait_to_finish()
+
+		if add_comment_thread.is_alive():
+			add_comment_thread.wait_to_finish()
 
 	# create map texture map_name
 	func create_map_texture_node(_x: = null)->void:
@@ -118,17 +122,20 @@ class MapManager extends Object:
 				map_comment_node.comment_resource = resource
 				comment_container_node.call_deferred("add_child", map_comment_node)
 
-	# assign texture
+	# create texture
 	func assign_texture() -> void:
-		var texture = TextureRect.new()
+		var texture:TextureRect = TextureRect.new()
 		texture.texture = ImageHandler.load_image_texture(map_resource.image_path)
 		texture.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		camera_node.setup_camera_for_map(texture.texture.get_size()/2, texture.texture.get_size())
-
-		map_container_node.call_deferred("add_child", texture)
+		
+		self.call_deferred('add_texture_node', texture)
 		self.call_deferred('join_thread')
 		EventBus.emit_signal("assign_layer", self.map_resource)
 
+	# add texture to node
+	func add_texture_node(texture:TextureRect)->void:
+		map_container_node.add_child(texture)
 
 # == initialize ==
 func _init():

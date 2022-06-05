@@ -51,6 +51,7 @@ var _post_run_script = '' setget set_post_run_script, get_post_run_script
 var _color_output = false setget set_color_output, get_color_output
 var _junit_xml_file = '' setget set_junit_xml_file, get_junit_xml_file
 var _junit_xml_timestamp = false setget set_junit_xml_timestamp, get_junit_xml_timestamp
+var _add_children_to = self setget set_add_children_to, get_add_children_to
 # -- End Settings --
 
 
@@ -172,7 +173,7 @@ func _init():
 	_gui = load('res://addons/gut/GutScene.tscn').instance()
 
 
-func _process(delta):
+func _physics_process(delta):
 	if(_yield_frames > 0):
 		_yield_frames -= 1
 
@@ -396,7 +397,7 @@ func _print_summary():
 
 	if(_new_summary.get_totals().tests > 0):
 		var fmt = _lgr.fmts.green
-		var msg = str(_new_summary.get_totals().passing) + ' passed ' + str(_new_summary.get_totals().failing) + ' failed.  ' + \
+		var msg = str(_new_summary.get_totals().passing_tests) + ' passed ' + str(_new_summary.get_totals().failing_tests) + ' failed.  ' + \
 			str("Tests finished in ", _gui.elapsed_time_as_str())
 		if(_new_summary.get_totals().failing > 0):
 			fmt = _lgr.fmts.red
@@ -426,7 +427,7 @@ func _validate_hook_script(path):
 			result.valid = true
 		else:
 			result.valid = false
-			_lgr.error('The hook script [' + path + '] does not extend res://addons/gut/hook_script.gd')
+			_lgr.error('The hook script [' + path + '] does not extend GutHookScript')
 	else:
 		result.valid = false
 		_lgr.error('The hook script [' + path + '] does not exist.')
@@ -515,6 +516,7 @@ func _end_run():
 		p(str("GUT version ",_utils.latest_version," is now available."))
 
 	_gui.set_title("Finished.")
+	_gui.compact_mode(false)
 
 
 # ------------------------------------------------------------------------------
@@ -590,7 +592,7 @@ func _does_class_name_match(the_class_name, script_class_name):
 func _setup_script(test_script):
 	test_script.gut = self
 	test_script.set_logger(_lgr)
-	add_child(test_script)
+	_add_children_to.add_child(test_script)
 	_test_script_objects.append(test_script)
 
 
@@ -671,6 +673,9 @@ func _get_indexes_matching_path(path):
 # ------------------------------------------------------------------------------
 func _run_parameterized_test(test_script, test_name):
 	var script_result = _run_test(test_script, test_name)
+	if(_current_test.assert_count == 0 and !_current_test.pending):
+		_lgr.warn('Test did not assert')
+
 	if(_is_function_state(script_result)):
 		# _run_tests does _wait_for_done so just wait on it to  complete
 		yield(script_result, COMPLETED)
@@ -680,10 +685,15 @@ func _run_parameterized_test(test_script, test_name):
 		_fail(str('Parameterized test ', _current_test.name, ' did not call use_parameters for the default value of the parameter.'))
 	else:
 		while(!_parameter_handler.is_done()):
+			var cur_assert_count = _current_test.assert_count
 			script_result = _run_test(test_script, test_name)
 			if(_is_function_state(script_result)):
 				# _run_tests does _wait_for_done so just wait on it to  complete
 				yield(script_result, COMPLETED)
+
+			if(_current_test.assert_count == cur_assert_count and !_current_test.pending):
+				_lgr.warn('Test did not assert')
+
 
 	_parameter_handler = null
 
@@ -828,7 +838,7 @@ func _test_the_scripts(indexes=[]):
 		_orphan_counter.add_counter('script')
 
 		if(the_script.tests.size() > 0):
-			_gui.set_title(the_script.get_full_name())
+			_gui.set_script_path(the_script.get_full_name())
 			_lgr.set_indent_level(0)
 			_print_script_heading(the_script)
 		_new_summary.add_script(the_script.get_full_name())
@@ -908,7 +918,7 @@ func _test_the_scripts(indexes=[]):
 		# don't clean up after themselves.  Might have to consolidate output
 		# into some other structure and kill the script objects with
 		# test_script.free() instead of remove child.
-		remove_child(test_script)
+		_add_children_to.remove_child(test_script)
 
 		_lgr.set_indent_level(0)
 		if(test_script.get_assert_count() > 0):
@@ -985,6 +995,9 @@ func _pending(text=''):
 func _get_files(path, prefix, suffix):
 	var files = []
 	var directories = []
+	# ignore addons/gut per issue 294
+	if(path == 'res://addons/gut'):
+		return [];
 
 	var d = Directory.new()
 	d.open(path)
@@ -1651,3 +1664,13 @@ func get_junit_xml_timestamp():
 # ------------------------------------------------------------------------------
 func set_junit_xml_timestamp(junit_xml_timestamp):
 	_junit_xml_timestamp = junit_xml_timestamp
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+func get_add_children_to():
+	return _add_children_to
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+func set_add_children_to(add_children_to):
+	_add_children_to = add_children_to
