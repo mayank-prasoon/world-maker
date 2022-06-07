@@ -135,6 +135,11 @@ _global_script_classes=[ {
 "path": "res://systems/main_menu/scripts/project_buttons.gd"
 }, {
 "base": "Reference",
+"class": "ResourceLoadSystem",
+"language": "GDScript",
+"path": "res://systems/resource_system/dependency/ResourceLoadSystem.gd"
+}, {
+"base": "Reference",
 "class": "ResourceManager",
 "language": "GDScript",
 "path": "res://systems/dependency/resource_dep/resource_manager.gd"
@@ -205,6 +210,7 @@ _global_script_class_icons={
 "PinSystem": "",
 "PresetInputManager": "",
 "ProjectButton": "",
+"ResourceLoadSystem": "",
 "ResourceManager": "",
 "RootCommandTest": "",
 "RootFieldInput": "",
