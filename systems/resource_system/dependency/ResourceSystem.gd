@@ -21,7 +21,7 @@ class CacheSystem:
 
 
 class MoveSystem:
-	static func move(path, new_path)->void:
+	static func move(path:String, new_path:String)->void:
 		if ResourceLoadSystem.FileChecker.check_file_exists(path) == OK:
 			var dir:Directory = Directory.new()
 			ResourceSaveSystem.CheckFolderIntregety.check(new_path) # check if the path exists

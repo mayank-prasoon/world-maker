@@ -68,7 +68,6 @@ class LoadResource extends Reference:
 		var resource:Resource = ResourceLoader.load(path)
 		return resource
 
-
 #                                 === METHODS ===
 
 # load resources
