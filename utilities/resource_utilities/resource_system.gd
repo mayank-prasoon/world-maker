@@ -19,6 +19,7 @@ class CacheSystem:
 			if ResourceUtilies.NullCheck.check_for_null(texture) == OK:
 				ResourceSaveSystem.save_resource(new_path, texture)
 
+# ------------------------------------------------------------------------------
 
 class MoveSystem:
 	static func move(path:String, new_path:String)->void:
