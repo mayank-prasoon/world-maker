@@ -3,7 +3,10 @@
 #                             RESOURCE SAVE SYSTEM                             # 
 # ============================================================================ #
 
-# this class deals with loading resources
+#
+# This deals with saving resources
+#
+
 class_name ResourceSaveSystem
 extends Reference
 
@@ -41,6 +44,7 @@ class SaveThead extends Object:
 		thread.wait_to_finish()                                                 # join the thread and wait for it to finish
 		self.call_deferred("free")                                              # free the object in the ideal frame
 
+# ------------------------------------------------------------------------------
 
 # this sub class check for folder intregety
 class CheckFolderIntregety extends Object:
@@ -55,6 +59,8 @@ class CheckFolderIntregety extends Object:
 	static func create(path)->void:
 		var dir:Directory = Directory.new()
 		dir.make_dir_recursive(path)
+
+# ------------------------------------------------------------------------------
 
 # save resources
 static func save_resource(path:String, resource:Resource)->void:
