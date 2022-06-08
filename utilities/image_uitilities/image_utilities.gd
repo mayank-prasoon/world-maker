@@ -117,6 +117,9 @@ static func load_image(image_path:String)->ImageTexture:
 		image_texture = ImageLoader.load_image_texture(image_path)
 	return image_texture
 
+# ------------------------------------------------------------------------------
+
+
 # load image on thread
 static func load_image_on_thread(object, method:String, image_path:String)->void:
 	if ResourceLoadSystem.FileChecker.check_file_exists(image_path) == OK:

@@ -21,7 +21,7 @@ class NullCheck extends Reference:
 
 
 	# check if file is null
-	static func check_for_null(resource:Resource)->int:
+	static func check_for_null(resource)->int:
 		if !(resource == null): # file is not null
 			return OK
 		else:                   # file is null

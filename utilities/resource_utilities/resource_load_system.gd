@@ -36,8 +36,8 @@ class ThreadLoad extends Object:
 	# free self and join the thread with the 
 	func join_thread()->void:
 		var resource = thread.wait_to_finish()
-		self.emit_signal("resource_loaded", resource) # recived by main class
-		self.free()
+		call_deferred('emit_signal', "resource_loaded", resource) # recived by main class
+		call_deferred('free')
 
 # ------------------------------------------------------------------------------
 
@@ -46,8 +46,7 @@ class FileChecker extends Reference:
 	
 	enum {
 		OK,
-		NOT_FOUND,
-		NOT_VALID
+		NOT_FOUND
 	}
 	
 	# check if a File the file exists
