@@ -4,7 +4,7 @@ class TestFileChecker extends GutTest:
 	
 	func test_check_file_exists()->void:
 		# this file exists
-		var path = '/home/mayank/Downloads/pexels-tetyana-kovyrina-1692984.jpg'
+		var path = "res://assets/graphics/main_menu/water-lily-1592793.png"
 		var test_value = ResourceLoadSystem.FileChecker.check_file_exists(path)
 		
 		# test
@@ -71,6 +71,8 @@ class TestCheckFolderIntregety extends GutTest:
 		var dir = Directory.new()
 		dir.remove(PATH.get_base_dir())
 
+# ------------------------------------------------------------------------------
+
 class TestSaveThead extends GutTest:
 	const PATH:String     = "res://test/test_resources/test_folder/mouse.tres"
 	
@@ -84,7 +86,9 @@ class TestSaveThead extends GutTest:
 		var save_on_thread = ResourceSaveSystem.SaveThead.new(PATH, resource)
 		yield(get_tree().create_timer(2.0), "timeout")
 		assert_file_exists(PATH)
-		
+
+# ------------------------------------------------------------------------------
+
 class TestResourceSystem extends GutTest:
 	const NEW_PATH:String = "res://test/test_resources/test_folder/map_save_data.tres"
 	const PATH:String     = "res://test/test_resources/map_save_data.tres"
