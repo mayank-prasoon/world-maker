@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/themes/DashboardTheme.tres" type="Theme" id=1]
 [ext_resource path="res://systems/wiki_dashboard/WikiDashboard.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/graphics/dashboard/icons/folder.svg" type="Texture" id=8]
 [ext_resource path="res://assets/graphics/dashboard/side bar.png" type="Texture" id=9]
 [ext_resource path="res://systems/dashboard UI elements/TabButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://systems/resource_system/ResourceDashboard.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends Control
@@ -259,7 +260,11 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="WikiDashboard2" parent="HBoxContainer/DashboardContainer" instance=ExtResource( 11 )]
+visible = false
+
 [node name="WikiDashboard" parent="HBoxContainer/DashboardContainer" instance=ExtResource( 2 )]
+visible = false
 mouse_filter = 2
 
 [connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/HomeTab/CenterContainer/HomeButton" to="HBoxContainer/RibbonMenu" method="_on_HomeButton_pressed"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=42 format=2]
 
+[ext_resource path="res://systems/resource_system/ui_elements/FileButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/themes/WikiDashboard.tres" type="Theme" id=3]
 [ext_resource path="res://assets/graphics/wiki_dashboard/bx_bx-filter-alt.png" type="Texture" id=6]
 [ext_resource path="res://assets/graphics/dashboard/icons/plus.svg" type="Texture" id=7]
@@ -8,6 +9,9 @@
 [ext_resource path="res://assets/graphics/wiki_dashboard/search bar texture.png" type="Texture" id=10]
 [ext_resource path="res://assets/graphics/wiki_dashboard/Rectangle 8.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/wiki_dashboard/Ellipse 1.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0.160784, 0.160784, 0.160784, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=13]
 
@@ -182,11 +186,57 @@ tracks/1/keys = {
 "values": [ Color( 0.0980392, 0.235294, 0.392157, 1 ), Color( 0.690196, 0.792157, 0.913725, 1 ) ]
 }
 
-[node name="WikiDashboard" type="Control"]
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=33]
+
+[sub_resource type="StyleBoxEmpty" id=34]
+
+[sub_resource type="StyleBoxEmpty" id=35]
+
+[sub_resource type="StyleBoxEmpty" id=36]
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="DynamicFont" id=31]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="Theme" id=30]
+default_font = SubResource( 31 )
+Button/styles/disabled = SubResource( 32 )
+Button/styles/focus = SubResource( 33 )
+Button/styles/hover = SubResource( 34 )
+Button/styles/normal = SubResource( 35 )
+Button/styles/pressed = SubResource( 36 )
+Panel/styles/panel = SubResource( 27 )
+Tree/styles/bg = SubResource( 28 )
+Tree/styles/bg_focus = SubResource( 29 )
+
+[node name="ResourceDashboard" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HBoxContainer"]
+margin_right = 360.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 360, 0 )
+custom_styles/panel = SubResource( 37 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -406,6 +456,10 @@ stretch_mode = 6
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Container/VBoxContainer"]
 margin_right = 1920.0
@@ -419,62 +473,63 @@ margin_bottom = 976.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
-margin_bottom = 892.0
-
-[node name="Panel" type="Panel" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
-margin_left = 30.0
-margin_right = 390.0
+[node name="Control" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
+margin_right = 360.0
 margin_bottom = 892.0
 rect_min_size = Vector2( 360, 0 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Control"]
+anchor_left = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -20.0
 custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-margin_right = 360.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+margin_right = 319.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_right = 304.0
+[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Control/VBoxContainer/HBoxContainer"]
+margin_right = 263.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Folder Structure"
 valign = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 308.0
-margin_right = 332.0
+[node name="Button" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 267.0
+margin_right = 291.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 
-[node name="Button2" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 336.0
-margin_right = 360.0
+[node name="Button2" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 295.0
+margin_right = 319.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+[node name="Tree" type="Tree" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
 margin_top = 54.0
-margin_right = 360.0
+margin_right = 319.0
 margin_bottom = 892.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
-margin_left = 420.0
-margin_right = 1360.0
+margin_left = 390.0
+margin_right = 1310.0
 margin_bottom = 892.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 940.0
+margin_right = 920.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 text = "file path"
@@ -482,74 +537,32 @@ valign = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 54.0
-margin_right = 940.0
+margin_right = 920.0
 margin_bottom = 892.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="FileButton" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
-margin_right = 940.0
+[node name="FileButton" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 920.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
-
-[node name="Panel" type="Panel" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 3.0
-margin_top = 3.0
-margin_right = -3.0
-margin_bottom = -3.0
-custom_constants/separation = 20
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer"]
-margin_right = 60.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 60, 0 )
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer"]
-margin_left = 80.0
-margin_top = 10.0
-margin_right = 842.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "file name"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer"]
-margin_left = 862.0
-margin_right = 934.0
-margin_bottom = 34.0
-
-[node name="Button" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer/HBoxContainer"]
-margin_right = 34.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 34, 0 )
-
-[node name="Button2" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer/HBoxContainer"]
-margin_left = 38.0
-margin_right = 72.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 34, 0 )
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
-margin_left = 1390.0
+margin_left = 1340.0
 margin_right = 1890.0
 margin_bottom = 892.0
-rect_min_size = Vector2( 500, 0 )
+rect_min_size = Vector2( 550, 0 )
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3"]
-margin_right = 500.0
+margin_right = 550.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer"]
-margin_left = 40.0
-margin_right = 460.0
+margin_left = 65.0
+margin_right = 485.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 420, 720 )
 
@@ -558,6 +571,7 @@ margin_right = 420.0
 margin_bottom = 420.0
 rect_min_size = Vector2( 420, 420 )
 size_flags_horizontal = 3
+color = Color( 0.211765, 0.211765, 0.211765, 1 )
 
 [node name="Control" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer"]
 margin_top = 424.0
@@ -577,26 +591,26 @@ custom_constants/separation = 15
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control/VBoxContainer"]
-margin_top = 60.0
+margin_top = 52.0
 margin_right = 320.0
-margin_bottom = 74.0
+margin_bottom = 71.0
 text = "name: Name of the resource"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control/VBoxContainer"]
-margin_top = 89.0
+margin_top = 86.0
 margin_right = 320.0
-margin_bottom = 103.0
+margin_bottom = 105.0
 text = "path: resource path"
 
 [node name="Label3" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control/VBoxContainer"]
-margin_top = 118.0
+margin_top = 120.0
 margin_right = 320.0
-margin_bottom = 132.0
+margin_bottom = 139.0
 text = "size: 1920 X1080"
 
 [node name="Control" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 724.0
-margin_right = 500.0
+margin_right = 550.0
 margin_bottom = 892.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
