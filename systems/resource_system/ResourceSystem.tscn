@@ -403,9 +403,208 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Container/VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer"]
+margin_top = 84.0
+margin_right = 1920.0
+margin_bottom = 976.0
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
+margin_bottom = 892.0
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 390.0
+margin_bottom = 892.0
+rect_min_size = Vector2( 360, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+margin_right = 304.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Folder Structure"
+valign = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 308.0
+margin_right = 332.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="Button2" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 336.0
+margin_right = 360.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+margin_top = 54.0
+margin_right = 360.0
+margin_bottom = 892.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
+margin_left = 420.0
+margin_right = 1360.0
+margin_bottom = 892.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 940.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+text = "file path"
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 54.0
+margin_right = 940.0
+margin_bottom = 892.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FileButton" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+margin_right = 940.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+custom_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer"]
+margin_left = 80.0
+margin_top = 10.0
+margin_right = 842.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "file name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer"]
+margin_left = 862.0
+margin_right = 934.0
+margin_bottom = 34.0
+
+[node name="Button" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer/HBoxContainer"]
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 0 )
+
+[node name="Button2" type="Button" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/FileButton/Panel/HBoxContainer/HBoxContainer"]
+margin_left = 38.0
+margin_right = 72.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 0 )
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
+margin_left = 1390.0
+margin_right = 1890.0
+margin_bottom = 892.0
+rect_min_size = Vector2( 500, 0 )
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 500.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer"]
+margin_left = 40.0
+margin_right = 460.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 420, 720 )
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer"]
+margin_right = 420.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 420, 420 )
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer"]
+margin_top = 424.0
+margin_right = 420.0
+margin_bottom = 716.0
+rect_min_size = Vector2( 420, 292 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.0
+margin_right = 160.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control/VBoxContainer"]
+margin_top = 60.0
+margin_right = 320.0
+margin_bottom = 74.0
+text = "name: Name of the resource"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control/VBoxContainer"]
+margin_top = 89.0
+margin_right = 320.0
+margin_bottom = 103.0
+text = "path: resource path"
+
+[node name="Label3" type="Label" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3/CenterContainer/VBoxContainer/Control/VBoxContainer"]
+margin_top = 118.0
+margin_right = 320.0
+margin_bottom = 132.0
+text = "size: 1920 X1080"
+
+[node name="Control" type="Control" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 724.0
+margin_right = 500.0
+margin_bottom = 892.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/Container/VBoxContainer/HBoxContainer"]
+margin_left = 1920.0
+margin_right = 1920.0
+margin_bottom = 892.0
 
 [connection signal="focus_entered" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" to="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" method="_on_LineEdit_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" to="VBoxContainer/SearchBar/CenterContainer/SearchBar/TextureRect2/CenterContainer/LineEdit" method="_on_LineEdit_focus_exited"]
