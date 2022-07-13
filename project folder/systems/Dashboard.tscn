@@ -106,11 +106,14 @@ mouse_filter = 2
 theme = ExtResource( 1 )
 script = SubResource( 5 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 49.0, 70.0, 22.0 ],
+"_edit_horizontal_guides_": [ 49.0, 70.0, 20.0 ],
 "_edit_vertical_guides_": [ 50.0 ]
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Panel" type="Panel" parent="BackgroundLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -260,12 +263,11 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="WikiDashboard2" parent="HBoxContainer/DashboardContainer" instance=ExtResource( 11 )]
-visible = false
-
 [node name="WikiDashboard" parent="HBoxContainer/DashboardContainer" instance=ExtResource( 2 )]
 visible = false
 mouse_filter = 2
+
+[node name="ResourceDashboard" parent="HBoxContainer/DashboardContainer" instance=ExtResource( 11 )]
 
 [connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/HomeTab/CenterContainer/HomeButton" to="HBoxContainer/RibbonMenu" method="_on_HomeButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/RibbonMenu/MenuList/MapTab/CenterContainer/MapTabButton" to="HBoxContainer/RibbonMenu" method="_on_MapTabButton_pressed"]

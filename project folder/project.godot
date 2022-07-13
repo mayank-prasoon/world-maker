@@ -44,11 +44,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://utilities/folder_handler/resourece_handler.gd"
 }, {
-"base": "Node",
-"class": "GutTest",
-"language": "GDScript",
-"path": "res://addons/gut/test.gd"
-}, {
 "base": "Reference",
 "class": "ImageHandler",
 "language": "GDScript",
@@ -197,7 +192,6 @@ _global_script_class_icons={
 "CameraMovement": "",
 "EditorSettingsTemplate": "",
 "FolderManager": "",
-"GutTest": "",
 "ImageHandler": "",
 "ImageUtilities": "",
 "MapComment": "",
@@ -298,8 +292,13 @@ quality/filters/sharpen_intensity=1.0
 2d/options/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
+2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2
+quality/shadows/filter_mode=0
 quality/filters/use_nearest_mipmap_filter=true
 batching/precision/uv_contract=true
+quality/filters/msaa=4
+quality/filters/use_fxaa=true
 quality/filters/use_debanding=true
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

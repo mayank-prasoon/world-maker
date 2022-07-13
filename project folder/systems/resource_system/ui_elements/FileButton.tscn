@@ -28,11 +28,12 @@ Button/styles/normal = SubResource( 6 )
 Button/styles/pressed = SubResource( 7 )
 
 [sub_resource type="GDScript" id=8]
+resource_local_to_scene = true
 script/source = "extends Control
 
 
 func _on_Panel_focus_exited():
-	$AnimationPlayer.play_backwards(\"selected\")
+	$AnimationPlayer.play(\"RESET\")
 
 
 func _on_Panel_focus_entered():
@@ -40,6 +41,7 @@ func _on_Panel_focus_entered():
 "
 
 [sub_resource type="Animation" id=9]
+resource_local_to_scene = true
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Panel:custom_styles/panel:bg_color")
@@ -115,6 +117,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=10]
+resource_local_to_scene = true
 resource_name = "selected"
 length = 0.3
 tracks/0/type = "value"
@@ -148,8 +151,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.109804, 0.109804, 0.109804, 1 ) ]
 }
@@ -161,7 +164,7 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -173,7 +176,7 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -185,12 +188,13 @@ tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ 0, 50 ]
 }
 
 [sub_resource type="StyleBoxFlat" id=11]
+resource_local_to_scene = true
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 shadow_color = Color( 0, 0, 0, 0.0980392 )
 
@@ -213,6 +217,7 @@ anims/selected = SubResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 2
+mouse_default_cursor_shape = 2
 custom_styles/panel = SubResource( 11 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
@@ -233,14 +238,14 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="Panel/HBoxContainer"]
 margin_left = 80.0
 margin_top = 7.0
-margin_right = 894.0
+margin_right = 893.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 text = "file name"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer"]
-margin_left = 914.0
-margin_right = 914.0
+margin_left = 913.0
+margin_right = 913.0
 margin_bottom = 34.0
 
 [node name="Trash" type="Button" parent="Panel/HBoxContainer/HBoxContainer"]
@@ -273,8 +278,8 @@ texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer"]
-margin_left = 934.0
-margin_right = 934.0
+margin_left = 933.0
+margin_right = 933.0
 margin_bottom = 34.0
 
 [connection signal="focus_entered" from="Panel" to="." method="_on_Panel_focus_entered"]
