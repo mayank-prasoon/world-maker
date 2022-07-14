@@ -12,3 +12,8 @@ project_folder/project_settings.tres
 
 # gut settings and useless for the developement
 project_folder/.gut_editor_shortcuts.cfg
+
+
+# binary
+build/bin/linux/
+build/bin/windows/
