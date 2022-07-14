@@ -1,5 +1,14 @@
+# VS code settings and .log files
 *.log
 .vscode/
+
+# import files and .import folder
 project_folder/.import/
 *.import
+
+# save files for testing
 project_folder/save_files/
+project_folder/project_settings.tres
+
+# gut settings and useless for the developement
+project_folder/.gut_editor_shortcuts.cfg

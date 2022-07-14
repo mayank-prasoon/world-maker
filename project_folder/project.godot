@@ -184,7 +184,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/UIManager.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "UUID",
 "language": "GDScript",
 "path": "res://dependency/utilities/godot-uuid-master/uuid.gd"
@@ -261,7 +261,7 @@ window/vsync/use_vsync=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [input]
 
