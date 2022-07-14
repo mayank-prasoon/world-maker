@@ -1,0 +1,5 @@
+*.log
+.vscode/
+project_folder/.import/
+*.import
+project_folder/save_files/
