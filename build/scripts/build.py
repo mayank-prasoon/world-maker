@@ -10,16 +10,23 @@ class GodotExport:
 
     # check if the folder exits
     def check_if_folder_exists(self, destination):
-        if (os.path.isdir(destination) and os.path.exists(destination)):
+        if os.path.exists(destination):
             return True
         else:
             return False
-    
+
+    # create the folder if it doesn't exits
+    def create_folder(self, destination):
+        if (self.check_if_folder_exists(destination) == False):
+            os.makedirs(destination)
+
     # creates a linux build
     def create_linux_build(self):
         destination = os.path.abspath('../bin/linux')
         project_path = os.path.abspath('../../project folder')
         export_path  = '{path}/World Maker_{version}.x86_64'.format(path = destination, version = self.version)
+
+        self.create_folder(destination)
 
         try:
             sp.call(['godot', '--no-window', '--path', project_path, '--export-debug', "Linux/X11", export_path])
@@ -34,6 +41,8 @@ class GodotExport:
         destination = os.path.abspath('../bin/windows')
         project_path = os.path.abspath('../../project folder')
         export_path  = '{path}/World Maker_{version}.exe'.format(path = destination, version = self.version)
+
+        self.create_folder(destination)
 
         try:
             sp.call(['godot', '--no-window', '--path', project_path, '--export-debug', "Linux/X11", export_path])
@@ -62,4 +71,4 @@ def create_export():
 
 
 if __name__ == "__main__":
-    ask_version()
+    create_export()
