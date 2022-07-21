@@ -12,11 +12,15 @@ enum ADD {
 	COMMENT
 }
 
-# === nodes ===
+# === NODE(s) ===
 
 onready var pop_up_menu:PopupMenu = $"../Camera2D/CanvasLayer/Menu/PopupMenu"
 
 var mouse_position:Vector2 = Vector2(0,0)
+
+# === METHODS === 
+
+# ------------------------------------------------------------------------------
 
 
 func _ready()->void:
@@ -24,8 +28,9 @@ func _ready()->void:
 	var _z = EventBus.connect("mouse_inside_map_element", self, '_on_mouse_inside_element')
 	
 
+# ------------------------------------------------------------------------------
 
-func open_add_menu():
+func open_add_menu()->void:
 	pop_up_menu.items = []
 	pop_up_menu.rect_size.y = 0
 
@@ -47,11 +52,15 @@ func open_add_menu():
 	
 	open_menu()
 
+# ------------------------------------------------------------------------------
+
 # opens the menu
 func open_menu()->void:
 	pop_up_menu.popup()
 	pop_up_menu.rect_global_position = get_viewport().get_mouse_position()
 	mouse_position                   = get_owner().get_global_mouse_position()
+
+# ------------------------------------------------------------------------------
 
 func open_pin_menu() ->void:
 	pop_up_menu.items = []
@@ -77,6 +86,8 @@ func open_pin_menu() ->void:
 	open_menu()
 	
 
+# ------------------------------------------------------------------------------
+
 # event loop
 func _unhandled_input(event):
 	# run when right mouse button is clicked
@@ -87,7 +98,7 @@ func _unhandled_input(event):
 			if mouse_inside_element and map_element is MapPinNode:
 				open_pin_menu()
 
-
+# ------------------------------------------------------------------------------
 
 	# run when left mouse button is clicked
 		if event.is_doubleclick() && event.button_index == BUTTON_MASK_LEFT:
@@ -99,6 +110,7 @@ func _unhandled_input(event):
 			EventBus.emit_signal('clear_inspector')
 			EventBus.emit_signal("close_article_panel")
 
+# ------------------------------------------------------------------------------
 
 # right click pop up menu logic
 # NOTE : work in progress...
@@ -120,6 +132,8 @@ func _on_PopupMenu_id_pressed(id):
 		"delete map":
 			$"../Camera2D/CanvasLayer/CanvasLayer/ConfirmationDialog".popup_centered()
 
+# ------------------------------------------------------------------------------
+
 # right click pop up sub menu logic
 # NOTE : work in progress...
 func _on_AddMenu_id_pressed(id):
@@ -129,16 +143,20 @@ func _on_AddMenu_id_pressed(id):
 		ADD.COMMENT:
 			EventBus.emit_signal("create_new_comment", mouse_position)
 
+# ------------------------------------------------------------------------------
+
 func _on_mouse_inside_element(element)->void:
 	map_element = element
 	mouse_inside_element = true
 	print_debug("mouse inside")
 
+# ------------------------------------------------------------------------------
 
 func _on_mouse_outside_element()->void:
 	mouse_inside_element = false
 	print_debug("mouse outside")
 
+# ------------------------------------------------------------------------------
 
 # check if any map exists
 func check_if_map_exists()->bool:

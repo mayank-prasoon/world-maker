@@ -639,7 +639,7 @@ expand = true
 stretch_mode = 6
 
 [node name="MapSelectionMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer"]
-margin_left = 44.0
+margin_left = 48.0
 margin_right = 1890.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 184, 0 )
@@ -659,8 +659,8 @@ __meta__ = {
 }
 
 [node name="MenuButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer"]
-margin_left = 1546.0
-margin_right = 1796.0
+margin_left = 1542.0
+margin_right = 1792.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 250, 40 )
 focus_mode = 0
@@ -669,8 +669,8 @@ size_flags_horizontal = 10
 align = 1
 
 [node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer"]
-margin_left = 1806.0
-margin_right = 1846.0
+margin_left = 1802.0
+margin_right = 1842.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -899,7 +899,7 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer"]
-margin_right = 280.0
+margin_right = 298.0
 margin_bottom = 29.0
 custom_constants/separation = 10
 __meta__ = {
@@ -907,7 +907,7 @@ __meta__ = {
 }
 
 [node name="OptionButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_right = 134.0
+margin_right = 88.0
 margin_bottom = 29.0
 size_flags_horizontal = 7
 custom_styles/hover = SubResource( 31 )
@@ -919,9 +919,9 @@ items = [ "Normal", null, false, 0, null, "Multiply", null, false, 1, null, "Div
 selected = 0
 
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_left = 144.0
+margin_left = 98.0
 margin_top = 5.0
-margin_right = 196.0
+margin_right = 150.0
 margin_bottom = 24.0
 text = "opacity"
 align = 1
@@ -931,8 +931,8 @@ __meta__ = {
 }
 
 [node name="SpinBox" type="SpinBox" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_left = 206.0
-margin_right = 280.0
+margin_left = 160.0
+margin_right = 298.0
 margin_bottom = 29.0
 theme = SubResource( 30 )
 value = 100.0
@@ -1073,8 +1073,7 @@ size_flags_horizontal = 0
 alignment = 1
 
 [node name="ZoomIn" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 3.0
-margin_right = 43.0
+margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -1092,8 +1091,8 @@ texture = ExtResource( 21 )
 stretch_mode = 4
 
 [node name="ZoomOut" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 47.0
-margin_right = 87.0
+margin_left = 48.0
+margin_right = 88.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -1111,8 +1110,8 @@ texture = ExtResource( 22 )
 stretch_mode = 4
 
 [node name="Rest" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 91.0
-margin_right = 131.0
+margin_left = 96.0
+margin_right = 136.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0

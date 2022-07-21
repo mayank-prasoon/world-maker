@@ -2,6 +2,9 @@ extends CameraMovement
 
 var current_image_size = Vector2(1000, 1000)
 
+# ------------------------------------------------------------------------------
+
+# read the camera 
 func _ready() -> void:
 	add_to_group('camera_movement')
 	var _a = EventBus.connect("disable_camera", self, 'set_disable_camera')
@@ -13,12 +16,17 @@ func _ready() -> void:
 	
 	get_tree().call_group('map_element', 'change_scale', desiredZooom)
 
+# ------------------------------------------------------------------------------
 
+# setup camera
 func setup_camera_for_map(camera_position:Vector2, image_size:Vector2)->void:
 	self.defaultPosition = camera_position
 	current_image_size   = image_size
 	self.cameraReset()
 
+# ------------------------------------------------------------------------------
+
+# main loop
 func _physics_process(_delta:float)->void:
 	var new_zoom_value = current_image_size/OS.get_window_size()
 	if new_zoom_value.x == new_zoom_value.y:
@@ -31,17 +39,26 @@ func _physics_process(_delta:float)->void:
 	
 	self.maxZoom = self.defaultZoom * Vector2(1.5, 1.5)
 
+# ------------------------------------------------------------------------------
+
+# move camera to the vector
 func _on_move_camera_to(vector:Vector2)->void:
 	self.desiredOffset = vector
 
+# ------------------------------------------------------------------------------
 
+# zoom in the camera
 func _on_ZoomIn_pressed()->void:
 	cameraZoomIn()
-	
 
+# ------------------------------------------------------------------------------
+
+# zoom out the camera
 func _on_ZoomOut_pressed()->void:
 	cameraZoomOut()
 
+# ------------------------------------------------------------------------------
 
+# reset the camera
 func _on_Rest_pressed()->void:
 	cameraReset()

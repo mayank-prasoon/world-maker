@@ -601,13 +601,13 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="WhatsNew/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 0.000396729
-margin_bottom = -0.00012207
+margin_right = 485.999
+margin_bottom = 582.0
 mouse_filter = 2
 custom_constants/separation = 30
 
 [node name="Label" type="Label" parent="WhatsNew/Control/VBoxContainer"]
-margin_right = 1457.0
+margin_right = 971.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "whats new"
@@ -615,49 +615,49 @@ align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="WhatsNew/Control/VBoxContainer"]
 margin_top = 49.0
-margin_right = 1457.0
-margin_bottom = 1697.0
+margin_right = 971.0
+margin_bottom = 1115.0
 mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
-margin_right = 1457.0
+margin_right = 971.0
 margin_bottom = 19.0
 text = "+ wiki system"
 align = 1
 
 [node name="Label2" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
-margin_top = 23.0
-margin_right = 1457.0
-margin_bottom = 42.0
+margin_top = 27.0
+margin_right = 971.0
+margin_bottom = 46.0
 text = "+ map system"
 align = 1
 
 [node name="Label3" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
-margin_top = 46.0
-margin_right = 1457.0
-margin_bottom = 65.0
+margin_top = 54.0
+margin_right = 971.0
+margin_bottom = 73.0
 text = "+ project manager"
 align = 1
 
 [node name="Label4" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
-margin_top = 69.0
-margin_right = 1457.0
-margin_bottom = 88.0
+margin_top = 81.0
+margin_right = 971.0
+margin_bottom = 100.0
 text = "+ command line system"
 align = 1
 
 [node name="Label5" type="Label" parent="WhatsNew/Control/VBoxContainer/VBoxContainer2"]
-margin_top = 92.0
-margin_right = 1457.0
-margin_bottom = 111.0
+margin_top = 108.0
+margin_right = 971.0
+margin_bottom = 127.0
 text = "+ asset based system"
 align = 1
 
 [node name="Label2" type="Label" parent="WhatsNew/Control/VBoxContainer"]
-margin_top = 1727.0
-margin_right = 1457.0
-margin_bottom = 1746.0
+margin_top = 1145.0
+margin_right = 971.0
+margin_bottom = 1164.0
 text = "16/04/22"
 align = 1
 

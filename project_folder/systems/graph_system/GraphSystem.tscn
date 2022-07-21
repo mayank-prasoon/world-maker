@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
 [ext_resource path="res://systems/map_system/scripts/LayerOptions.gd" type="Script" id=3]
@@ -23,12 +23,84 @@
 [ext_resource path="res://assets/graphics/map/view tool/carbon_subtract.png" type="Texture" id=22]
 [ext_resource path="res://assets/graphics/map/view tool/ant-design_expand-outlined.png" type="Texture" id=23]
 [ext_resource path="res://assets/graphics/map/external-content.duckduckgo.com.png" type="Texture" id=24]
+[ext_resource path="res://save_files/graph_map/bingus_relation.tres" type="Resource" id=25]
 
 [sub_resource type="GDScript" id=56]
 script/source = "extends Control
 
-# === NODE(s) ===
-onready var graph_nodes_container = $GraphNodeContainer
+export(Resource) var graph_map:Resource = GraphMap.new()
+
+# create the graph node
+class CreateGraphNode extends Object:
+	var graphNodeContainer:Node2D = Node2D.new()
+	var graphMap:GraphMap         = GraphMap.new()
+
+
+	func _init(graph_node_container:Node2D, resource:GraphMap) -> void:
+		self.graphMap = resource
+		self.graphNodeContainer = graph_node_container
+		self.create_graph_nodes()
+
+	# creates the graph node
+	func create_graph_nodes()->void:
+		var graph_node_scene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
+
+		var node_list = {}
+		var postion = Vector2(0, 0)
+		var x_value = 300
+
+
+		# this algorithum needs to optimized
+		for graph_node in graphMap.graph_map.keys():
+			var x = graph_node_scene.instance()
+			x.resource = graph_node
+			x.position = postion
+			node_list[graph_node] = x
+			graphNodeContainer.add_child(x)
+			postion   += Vector2(x_value, 300)
+			x_value    = x_value * -1
+
+		self.assign_nodes(node_list)
+
+
+	# assign child node
+	func assign_nodes(node_list:Dictionary)->void:
+		# a loop assigns graph value
+		for graph_node_ress in graphMap.graph_map.keys():
+			for child_node_ress in graphMap.graph_map[graph_node_ress]:
+
+				# assign child node
+				node_list[graph_node_ress].ChildNodes.append(node_list[child_node_ress])
+
+				# assign parent node
+				node_list[child_node_ress].ParentNodes.append(node_list[graph_node_ress])
+
+
+#class AssignGraphNode extends Object:
+#	func _init(graph_node_container, res) -> void:
+		
+
+func _ready() -> void:
+
+	# generate graph node
+	var create_graph_node = CreateGraphNode.new($GraphNodeContainer, load('res://save_files/graph_map/bingus_relation.tres'))
+	
+"
+
+[sub_resource type="GDScript" id=61]
+script/source = "extends Node2D
+
+func _physics_process(_delta: float) -> void:
+	update()
+
+func _draw() -> void:
+	for node in self.get_children():
+		for child_node in node.ChildNodes:
+			self.draw_line(
+				node.get_child(1).global_position,
+				child_node.get_child(0).global_position,
+				Color('B6B6B6'), 3.0, true
+			)
 "
 
 [sub_resource type="StyleBoxFlat" id=12]
@@ -93,9 +165,9 @@ OptionButton/styles/hover = null
 OptionButton/styles/pressed = null
 Panel/styles/panel = SubResource( 19 )
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="Theme" id=58]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=59]
 script/source = "extends Control
 
 signal visiblity_map_pin_manager(state)
@@ -304,7 +376,7 @@ content_margin_right = 5.0
 content_margin_top = 5.0
 content_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=60]
 
 [sub_resource type="StyleBoxEmpty" id=43]
 content_margin_left = 25.0
@@ -432,15 +504,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = SubResource( 56 )
+graph_map = ExtResource( 25 )
 
 [node name="MouseInputManager" type="Node" parent="."]
 script = ExtResource( 6 )
 
-[node name="GraphNodeContainer" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-focus_mode = 2
-mouse_filter = 2
+[node name="GraphNodeContainer" type="Node2D" parent="."]
+script = SubResource( 61 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -452,6 +522,22 @@ script = ExtResource( 2 )
 minZoom = Vector2( 0.5, 0.5 )
 maxZoom = Vector2( 3.5, 3.5 )
 panSpeed = 0.5
+
+[node name="Background" type="CanvasLayer" parent="Camera2D"]
+layer = -1
+
+[node name="Background" type="Control" parent="Camera2D/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Background/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.109804, 0.109804, 0.109804, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
@@ -471,7 +557,7 @@ anchor_right = 0.491211
 anchor_bottom = 0.485
 margin_right = 80.0
 rect_min_size = Vector2( 100, 0 )
-theme = SubResource( 1 )
+theme = SubResource( 58 )
 allow_search = true
 __meta__ = {
 "_edit_use_anchors_": true
@@ -501,7 +587,7 @@ margin_right = 1890.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 mouse_filter = 2
-script = SubResource( 3 )
+script = SubResource( 59 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar"]
 anchor_right = 1.0
@@ -530,7 +616,7 @@ expand = true
 stretch_mode = 6
 
 [node name="MapSelectionMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer"]
-margin_left = 44.0
+margin_left = 48.0
 margin_right = 1890.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 184, 0 )
@@ -550,8 +636,8 @@ __meta__ = {
 }
 
 [node name="MenuButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer"]
-margin_left = 1546.0
-margin_right = 1796.0
+margin_left = 1542.0
+margin_right = 1792.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 250, 40 )
 focus_mode = 0
@@ -560,8 +646,8 @@ size_flags_horizontal = 10
 align = 1
 
 [node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer"]
-margin_left = 1806.0
-margin_right = 1846.0
+margin_left = 1802.0
+margin_right = 1842.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -790,7 +876,7 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer"]
-margin_right = 280.0
+margin_right = 298.0
 margin_bottom = 29.0
 custom_constants/separation = 10
 __meta__ = {
@@ -798,7 +884,7 @@ __meta__ = {
 }
 
 [node name="OptionButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_right = 134.0
+margin_right = 88.0
 margin_bottom = 29.0
 size_flags_horizontal = 7
 custom_styles/hover = SubResource( 31 )
@@ -810,9 +896,9 @@ items = [ "Normal", null, false, 0, null, "Multiply", null, false, 1, null, "Div
 selected = 0
 
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_left = 144.0
+margin_left = 98.0
 margin_top = 5.0
-margin_right = 196.0
+margin_right = 150.0
 margin_bottom = 24.0
 text = "opacity"
 align = 1
@@ -822,8 +908,8 @@ __meta__ = {
 }
 
 [node name="SpinBox" type="SpinBox" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_left = 206.0
-margin_right = 280.0
+margin_left = 160.0
+margin_right = 298.0
 margin_bottom = 29.0
 theme = SubResource( 30 )
 value = 100.0
@@ -964,8 +1050,7 @@ size_flags_horizontal = 0
 alignment = 1
 
 [node name="ZoomIn" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 3.0
-margin_right = 43.0
+margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -983,8 +1068,8 @@ texture = ExtResource( 21 )
 stretch_mode = 4
 
 [node name="ZoomOut" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 47.0
-margin_right = 87.0
+margin_left = 48.0
+margin_right = 88.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -1002,8 +1087,8 @@ texture = ExtResource( 22 )
 stretch_mode = 4
 
 [node name="Rest" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 91.0
-margin_right = 131.0
+margin_left = 96.0
+margin_right = 136.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 focus_mode = 0
@@ -1161,7 +1246,7 @@ margin_top = 420.0
 margin_right = 550.0
 margin_bottom = 580.0
 size_flags_vertical = 3
-custom_styles/focus = SubResource( 4 )
+custom_styles/focus = SubResource( 60 )
 custom_styles/normal = SubResource( 43 )
 bbcode_enabled = true
 bbcode_text = "sample text"

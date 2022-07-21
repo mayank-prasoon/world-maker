@@ -44,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://dependency/utilities/folder_handler/resourece_handler.gd"
 }, {
+"base": "Resource",
+"class": "GraphMap",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/graph_map_resource_template.gd"
+}, {
+"base": "Resource",
+"class": "GraphMapNode",
+"language": "GDScript",
+"path": "res://assets/file templates/save_system_template/graph_map_node_resource_template.gd"
+}, {
 "base": "Reference",
 "class": "GutHookScript",
 "language": "GDScript",
@@ -197,6 +207,8 @@ _global_script_class_icons={
 "CameraMovement": "",
 "EditorSettingsTemplate": "",
 "FolderManager": "",
+"GraphMap": "",
+"GraphMapNode": "",
 "GutHookScript": "",
 "GutTest": "",
 "ImageHandler": "",
@@ -262,6 +274,10 @@ window/vsync/use_vsync=false
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[gui]
+
+theme/use_hidpi=true
 
 [input]
 
