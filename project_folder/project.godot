@@ -264,6 +264,7 @@ EventBus="*res://singletone/event_bus.gd"
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
+gdscript/warnings/unused_signal=false
 
 [display]
 
@@ -322,5 +323,4 @@ batching/precision/uv_contract=true
 quality/filters/msaa=4
 quality/filters/use_fxaa=true
 quality/filters/use_debanding=true
-quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

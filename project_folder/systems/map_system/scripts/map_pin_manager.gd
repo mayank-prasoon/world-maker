@@ -45,11 +45,11 @@ func open_add_menu()->void:
 	menu.append("delete map")
 	pop_up_menu.add_item("delete map")
 	
-	
+
 	if !check_if_map_exists(): # if map doesn't exists
 		pop_up_menu.set_item_disabled(0, true)
 		pop_up_menu.set_item_disabled(2, true)
-	
+
 	open_menu()
 
 # ------------------------------------------------------------------------------

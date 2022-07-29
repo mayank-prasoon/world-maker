@@ -1,10 +1,9 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
 [ext_resource path="res://systems/map_system/scripts/LayerOptions.gd" type="Script" id=3]
 [ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture" id=4]
 [ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=5]
-[ext_resource path="res://systems/map_system/scripts/map_pin_manager.gd" type="Script" id=6]
 [ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://systems/map_system/scripts/Map Layers.gd" type="Script" id=8]
 [ext_resource path="res://systems/map_system/scripts/ViewTools.gd" type="Script" id=9]
@@ -23,7 +22,6 @@
 [ext_resource path="res://assets/graphics/map/view tool/carbon_subtract.png" type="Texture" id=22]
 [ext_resource path="res://assets/graphics/map/view tool/ant-design_expand-outlined.png" type="Texture" id=23]
 [ext_resource path="res://assets/graphics/map/external-content.duckduckgo.com.png" type="Texture" id=24]
-[ext_resource path="res://save_files/graph_map/bingus_relation.tres" type="Resource" id=25]
 
 [sub_resource type="GDScript" id=56]
 script/source = "extends Control
@@ -31,43 +29,44 @@ script/source = "extends Control
 export(Resource) var graph_map:Resource = GraphMap.new()
 
 # create the graph node
-class CreateGraphNode extends Object:
-	var graphNodeContainer:Node2D = Node2D.new()
-	var graphMap:GraphMap         = GraphMap.new()
+class CreateGraphNode extends Reference:
+	const GRAPH_NODE_SCENE:PackedScene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
 
+	var graph_node_container:Node2D   = Node2D.new()
+	var graph_map_resource:GraphMap = GraphMap.new()
+
+# ------------------------------------------------------------------------------
 
 	func _init(graph_node_container:Node2D, resource:GraphMap) -> void:
-		self.graphMap = resource
-		self.graphNodeContainer = graph_node_container
+		self.graph_map_resource = resource
+		self.graph_node_container = graph_node_container
 		self.create_graph_nodes()
+
+# ------------------------------------------------------------------------------
 
 	# creates the graph node
 	func create_graph_nodes()->void:
-		var graph_node_scene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
 
 		var node_list = {}
-		var postion = Vector2(0, 0)
-		var x_value = 300
-
 
 		# this algorithum needs to optimized
-		for graph_node in graphMap.graph_map.keys():
-			var x = graph_node_scene.instance()
-			x.resource = graph_node
-			x.position = postion
-			node_list[graph_node] = x
-			graphNodeContainer.add_child(x)
-			postion   += Vector2(x_value, 300)
-			x_value    = x_value * -1
+		for graph_node in graph_map_resource.graph_map.keys():
+			var graph_node_instance = GRAPH_NODE_SCENE.instance()
+			graph_node_instance.resource = graph_node
+			node_list[graph_node] = graph_node_instance
+			graph_node_container.add_child(graph_node_instance)
 
 		self.assign_nodes(node_list)
 
+# ------------------------------------------------------------------------------
 
 	# assign child node
 	func assign_nodes(node_list:Dictionary)->void:
+
 		# a loop assigns graph value
-		for graph_node_ress in graphMap.graph_map.keys():
-			for child_node_ress in graphMap.graph_map[graph_node_ress]:
+
+		for graph_node_ress in graph_map_resource.graph_map.keys():
+			for child_node_ress in graph_map_resource.graph_map[graph_node_ress]:
 
 				# assign child node
 				node_list[graph_node_ress].ChildNodes.append(node_list[child_node_ress])
@@ -75,16 +74,385 @@ class CreateGraphNode extends Object:
 				# assign parent node
 				node_list[child_node_ress].ParentNodes.append(node_list[graph_node_ress])
 
+# ------------------------------------------------------------------------------
 
-#class AssignGraphNode extends Object:
-#	func _init(graph_node_container, res) -> void:
+# add a Graph node
+class AddNode extends Reference:
+	const GRAPH_NODE_SCENE:PackedScene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
+	
+	var graph_node_container:Node2D = Node2D.new()
+	var graph_map_res:GraphMap      = GraphMap.new()
+	
+	var child_node                  = Node2D.new()
+	var child_resource              = GraphMapNode.new()
+
+# ------------------------------------------------------------------------------
+
+	func _init(c_node:Node2D, res:GraphMap, node_name:String=\"\", node_image:String=\"\", node_article:String=\"\") -> void:
+		self.graph_node_container = c_node
+		self.graph_map_res        = res
+
+		child_resource.graph_node_name  = node_name
+		child_resource.graph_image_path = node_image
+		child_resource.graph_article    = node_article
 		
+		self.create_new_graph_node()
+
+# ------------------------------------------------------------------------------
+	
+	# creates new graph node
+	func create_new_graph_node()->void:
+		graph_map_res.graph_map[child_resource] = []
+		child_node = GRAPH_NODE_SCENE.instance()
+		child_node.resource = child_resource
+		graph_node_container.add_child(child_node)
+
+# ------------------------------------------------------------------------------
+
+# add child to the graph node
+class AddChildNode extends Reference:
+	const GRAPH_NODE_SCENE:PackedScene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
+	
+	var graph_node_container:Node2D = Node2D.new()
+	var graph_node:Node2D           = Node2D.new()
+	var graph_map_res:GraphMap      = GraphMap.new()
+	
+	var child_node                  = Node2D.new()
+	var child_resource              = GraphMapNode.new()
+
+# ------------------------------------------------------------------------------
+
+	func _init(c_node:Node2D, node:Node2D, res:GraphMap, node_name:String=\"\", node_image:String=\"\", node_article:String=\"\") -> void:
+		self.graph_node_container = c_node
+		self.graph_node           = node
+		self.graph_map_res        = res
+
+		child_resource.graph_node_name  = node_name
+		child_resource.graph_image_path = node_image
+		child_resource.graph_article    = node_article
+
+		add_child_res()
+		add_child_node()
+
+# ------------------------------------------------------------------------------
+
+	# add child resource
+	func add_child_res()->void:
+		graph_map_res.graph_map[child_resource] = []
+		graph_map_res.graph_map[graph_node.resource].append(child_resource)
+
+# ------------------------------------------------------------------------------
+
+	# add child node
+	func add_child_node()->void:
+		child_node = GRAPH_NODE_SCENE.instance()
+		child_node.resource = child_resource
+		graph_node_container.add_child(child_node)
+		graph_node.ChildNodes.append(child_node)
+		child_node.ParentNodes.append(graph_node)
+
+# ------------------------------------------------------------------------------
+
+# add establish connection between nodes
+class EstablishConnection extends Reference:
+
+	var graph_map_res:GraphMap = GraphMap.new()
+	
+	var graph_node:Node2D      = Node2D.new() 
+	var child_node:Node2D      = Node2D.new() 
+
+# ------------------------------------------------------------------------------
+
+	func _init(graph_node:Node2D, child_node:Node2D, res:GraphMap) -> void:
+		self.graph_node    = graph_node
+		self.child_node    = child_node
+		self.graph_map_res = res
+		connect_graph_node()
+
+# ------------------------------------------------------------------------------
+
+	# connects graph nodes
+	func connect_graph_node()->void:
+		graph_map_res.graph_map[graph_node.resource].append(child_node.resource)
+		graph_node.ChildNodes.append(child_node)
+		child_node.ParentNodes.append(graph_node)
+
+# ------------------------------------------------------------------------------
+
+# remove the connection of the given nodes
+class RemoveConnection extends Reference:
+
+	var graph_map_res:GraphMap = GraphMap.new()
+	var graph_node:Node2D      = Node2D.new() 
+
+# ------------------------------------------------------------------------------
+
+	func _init(graph_node:Node2D, res:GraphMap) -> void:
+		self.graph_node    = graph_node
+		self.graph_map_res = res
+		self.remove_graph_node()
+
+# ------------------------------------------------------------------------------
+
+	func remove_graph_node_from_parent_nodes()->void:
+		for parent_node in graph_node.ParentNodes:
+			parent_node.ChildNodes.erase(graph_node)
+			graph_map_res.graph_map[parent_node.resource].erase(graph_node.resource)
+
+# ------------------------------------------------------------------------------
+
+	func remove_graph_node_from_children()->void:
+		for child_node in graph_node.ChildNodes:
+			child_node.ParentNodes.erase(graph_node)
+
+# ------------------------------------------------------------------------------
+
+	func remove_graph_node()->void:
+		remove_graph_node_from_parent_nodes()
+		remove_graph_node_from_children()
+
+		# clean parent nodes and child nodes
+		graph_node.ParentNodes = []
+		graph_node.ChildNodes  = []
+
+# ------------------------------------------------------------------------------
+
+# remove the graph node
+class RemoveGraphNode extends Reference:
+
+	var graph_map_res:GraphMap = GraphMap.new()
+	var graph_node:Node2D      = Node2D.new() 
+
+# ------------------------------------------------------------------------------
+
+
+	func _init(graph_node:Node2D, res:GraphMap) -> void:
+		self.graph_node    = graph_node
+		self.graph_map_res = res
+		self.remove_graph_node()
+
+# ------------------------------------------------------------------------------
+
+	func disconnect_node_from_resource()->void:
+		graph_map_res.graph_map.erase(graph_node.resource)
+
+# ------------------------------------------------------------------------------
+
+	func remove_graph_node_from_parent_nodes()->void:
+		for parent_node in graph_node.ParentNodes:
+			parent_node.ChildNodes.erase(graph_node)
+			graph_map_res.graph_map[parent_node.resource].erase(graph_node.resource)
+
+# ------------------------------------------------------------------------------
+
+	func remove_graph_node_from_children()->void:
+		for child_node in graph_node.ChildNodes:
+			child_node.ParentNodes.erase(graph_node)
+
+# ------------------------------------------------------------------------------
+
+	func remove_graph_node()->void:
+		disconnect_node_from_resource()
+		remove_graph_node_from_parent_nodes()
+		remove_graph_node_from_children()
+		graph_node.queue_free()
+
 
 func _ready() -> void:
+	# these are for testing purposes and ment to be removed
+	var graph_node_container = $GraphNodeContainer
+	graph_map                = load('res://save_files/graph_map/new_resource.tres')
 
 	# generate graph node
-	var create_graph_node = CreateGraphNode.new($GraphNodeContainer, load('res://save_files/graph_map/bingus_relation.tres'))
+	CreateGraphNode.new(graph_node_container, graph_map)
 	
+	# Add child graph node
+	AddChildNode.new(graph_node_container, graph_node_container.get_child(0), graph_map, \"fllopa\")
+	AddChildNode.new(graph_node_container, graph_node_container.get_child(0), graph_map, \"bingus\")
+	AddChildNode.new(graph_node_container, graph_node_container.get_child(1), graph_map, \"walter\")
+	
+	# Establish connection
+	EstablishConnection.new(graph_node_container.get_child(2), graph_node_container.get_child(3), graph_map)
+
+	AddNode.new(graph_node_container, graph_map, \"cattle\")
+
+	RemoveGraphNode.new(graph_node_container.get_child(4), graph_map)
+	RemoveConnection.new(graph_node_container.get_child(3), graph_map)
+"
+
+[sub_resource type="GDScript" id=62]
+script/source = "#
+# === HANDELS MOUSE INPUTS ===
+# 
+
+extends Node
+
+var mouse_inside_element:bool = false
+var map_element               = null
+# === enums ===
+
+var menu = []
+
+
+enum ADD {
+	PIN,
+	COMMENT
+}
+
+# === NODE(s) ===
+
+onready var pop_up_menu:PopupMenu = $\"../Camera2D/CanvasLayer/Menu/PopupMenu\"
+
+var mouse_position:Vector2 = Vector2(0,0)
+
+# === METHODS === 
+
+# ------------------------------------------------------------------------------
+
+
+func _ready()->void:
+	var _y = EventBus.connect(\"mouse_outside_map_element\", self, '_on_mouse_outside_element')
+	var _z = EventBus.connect(\"mouse_inside_map_element\", self, '_on_mouse_inside_element')
+	
+
+# ------------------------------------------------------------------------------
+
+func open_add_menu()->void:
+	pop_up_menu.items = []
+	pop_up_menu.rect_size.y = 0
+
+	menu = []
+	
+	menu.append(\"add\")
+	pop_up_menu.add_submenu_item(\"add\", \"AddMenu\")
+	
+	menu.append(0)
+	pop_up_menu.add_separator()
+	
+	menu.append(\"delete map\")
+	pop_up_menu.add_item(\"delete map\")
+#
+#
+#	if !check_if_map_exists(): # if map doesn't exists
+#		pop_up_menu.set_item_disabled(0, true)
+#		pop_up_menu.set_item_disabled(2, true)
+
+	open_menu()
+
+# ------------------------------------------------------------------------------
+
+# opens the menu
+func open_menu()->void:
+	pop_up_menu.popup()
+	pop_up_menu.rect_global_position = get_viewport().get_mouse_position()
+	mouse_position                   = get_owner().get_global_mouse_position()
+
+# ------------------------------------------------------------------------------
+
+func open_pin_menu() ->void:
+	pop_up_menu.items = []
+	pop_up_menu.rect_size.y = 0
+	
+	menu = []
+	
+	menu.append(\"go to map\")
+	pop_up_menu.add_item(\"go to map\")
+	
+	if map_element.pin_resource.linked_map == null:
+		pop_up_menu.set_item_disabled(0, true)
+	
+	menu.append(\"edit pin\")
+	pop_up_menu.add_item(\"edit pin\")
+	
+	menu.append(0)
+	pop_up_menu.add_separator()
+	
+	menu.append(\"delete pin\")
+	pop_up_menu.add_item(\"delete\")
+
+	open_menu()
+	
+
+# ------------------------------------------------------------------------------
+
+# event loop
+func _unhandled_input(event):
+	# run when right mouse button is clicked
+	if event is InputEventMouseButton:
+		if event.is_pressed() && event.button_index == BUTTON_MASK_RIGHT:
+			if !mouse_inside_element:
+				open_add_menu()
+			if mouse_inside_element and map_element is MapPinNode:
+				open_pin_menu()
+
+# ------------------------------------------------------------------------------
+
+	# run when left mouse button is clicked
+		if event.is_doubleclick() && event.button_index == BUTTON_MASK_LEFT:
+			if mouse_inside_element and map_element is MapPinNode:
+				EventBus.emit_signal(\"add_pin_inspector\", map_element.pin_resource, map_element)
+				EventBus.emit_signal(\"open_article_panel\", map_element.pin_resource.pin_article)
+
+		elif event.is_pressed() && event.button_index == BUTTON_MASK_LEFT && !mouse_inside_element:
+			EventBus.emit_signal('clear_inspector')
+			EventBus.emit_signal(\"close_article_panel\")
+
+# ------------------------------------------------------------------------------
+
+# right click pop up menu logic
+# NOTE : work in progress...
+func _on_PopupMenu_id_pressed(id):
+	match menu[id]:
+		\"delete pin\":
+			EventBus.emit_signal(\"remove_map_pin\", map_element.pin_resource)
+			EventBus.emit_signal(\"clear_inspector\")
+			map_element.queue_free()
+
+		\"edit pin\":
+			EventBus.emit_signal(\"change_inspector_state\", true)
+			EventBus.emit_signal(\"add_pin_inspector\", map_element.pin_resource, map_element)
+			EventBus.emit_signal(\"move_camera_to\", map_element.get_global_position())
+
+		\"go to map\":
+			EventBus.emit_signal(\"change_map_to\", map_element.pin_resource.linked_map)
+
+		\"delete map\":
+			$\"../Camera2D/CanvasLayer/CanvasLayer/ConfirmationDialog\".popup_centered()
+
+# ------------------------------------------------------------------------------
+
+# right click pop up sub menu logic
+# NOTE : work in progress...
+func _on_AddMenu_id_pressed(id):
+	match id:
+		ADD.PIN:
+			EventBus.emit_signal(\"create_new_pin\", mouse_position)
+		ADD.COMMENT:
+			EventBus.emit_signal(\"create_new_comment\", mouse_position)
+
+# ------------------------------------------------------------------------------
+
+func _on_mouse_inside_element(element)->void:
+	map_element = element
+	mouse_inside_element = true
+	print_debug(\"mouse inside\")
+
+# ------------------------------------------------------------------------------
+
+func _on_mouse_outside_element()->void:
+	mouse_inside_element = false
+	print_debug(\"mouse outside\")
+
+# ------------------------------------------------------------------------------
+
+## check if any map exists
+#func check_if_map_exists()->bool:
+#	if get_owner().map_texture_collection_node.get_children().empty():
+#		print_debug(\"there are no maps\")
+#		return false
+#	else:
+#		print_debug(\"there are maps\")
+#		return true
 "
 
 [sub_resource type="GDScript" id=61]
@@ -93,6 +461,7 @@ script/source = "extends Node2D
 func _physics_process(_delta: float) -> void:
 	update()
 
+# draw the lines of node
 func _draw() -> void:
 	for node in self.get_children():
 		for child_node in node.ChildNodes:
@@ -504,10 +873,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = SubResource( 56 )
-graph_map = ExtResource( 25 )
 
 [node name="MouseInputManager" type="Node" parent="."]
-script = ExtResource( 6 )
+script = SubResource( 62 )
 
 [node name="GraphNodeContainer" type="Node2D" parent="."]
 script = SubResource( 61 )
