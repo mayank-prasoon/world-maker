@@ -18,7 +18,7 @@ static func load_image_texture(image_path:String, flag:int = Texture.FLAGS_DEFAU
 	var new_texture:ImageTexture = ImageTexture.new()
 	
 	var new_image:Image = Image.new()
-	var OK:int = new_image.load(image_path)
+	var _OK:int = new_image.load(image_path)
 	new_texture.create_from_image(new_image, flag) 
 	
 	return new_texture

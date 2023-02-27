@@ -19,9 +19,9 @@ class ThreadLoad extends Object:
 
 	# initialize the class
 	func _init(object, method:String, resource_path:String)->void:
-		self.connect("resource_loaded", object, method)
+		var _1 = self.connect("resource_loaded", object, method)
 
-		thread.start(
+		var _2 = thread.start(
 			self,
 			'load_on_thread',
 			resource_path
@@ -86,6 +86,6 @@ func load_resource_with_thread(object, method:String, path:String)->void:
 
 	match error:
 		FileChecker.OK:
-			ThreadLoad.new(object, method, path)
+			var _1 = ThreadLoad.new(object, method, path)
 
 

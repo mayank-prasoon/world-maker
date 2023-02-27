@@ -234,7 +234,7 @@ class RemoveGraphNode extends Reference:
 # ------------------------------------------------------------------------------
 
 	func disconnect_node_from_resource()->void:
-		graph_map_res.graph_map.erase(graph_node.resource)
+		var _1 = graph_map_res.graph_map.erase(graph_node.resource)
 
 # ------------------------------------------------------------------------------
 
@@ -264,20 +264,20 @@ func _ready() -> void:
 	graph_map                = load('res://save_files/graph_map/new_resource.tres')
 
 	# generate graph node
-	CreateGraphNode.new(graph_node_container, graph_map)
+	var _1 = CreateGraphNode.new(graph_node_container, graph_map)
 	
 	# Add child graph node
-	AddChildNode.new(graph_node_container, graph_node_container.get_child(0), graph_map, \"fllopa\")
-	AddChildNode.new(graph_node_container, graph_node_container.get_child(0), graph_map, \"bingus\")
-	AddChildNode.new(graph_node_container, graph_node_container.get_child(1), graph_map, \"walter\")
+	var _2 = AddChildNode.new(graph_node_container, graph_node_container.get_child(0), graph_map, \"fllopa\")
+	var _3 = AddChildNode.new(graph_node_container, graph_node_container.get_child(0), graph_map, \"bingus\")
+	var _4 = AddChildNode.new(graph_node_container, graph_node_container.get_child(1), graph_map, \"walter\")
 	
 	# Establish connection
-	EstablishConnection.new(graph_node_container.get_child(2), graph_node_container.get_child(3), graph_map)
+	var _5 = EstablishConnection.new(graph_node_container.get_child(2), graph_node_container.get_child(3), graph_map)
 
-	AddNode.new(graph_node_container, graph_map, \"cattle\")
+	var _6 = AddNode.new(graph_node_container, graph_map, \"cattle\")
 
-	RemoveGraphNode.new(graph_node_container.get_child(4), graph_map)
-	RemoveConnection.new(graph_node_container.get_child(3), graph_map)
+	var _7 = RemoveGraphNode.new(graph_node_container.get_child(4), graph_map)
+	var _8 = RemoveConnection.new(graph_node_container.get_child(3), graph_map)
 "
 
 [sub_resource type="GDScript" id=62]
@@ -1197,7 +1197,6 @@ anchor_left = 0.0333333
 anchor_top = 0.0109409
 anchor_right = 0.966667
 anchor_bottom = 0.989059
-margin_left = -9.53674e-07
 __meta__ = {
 "_edit_use_anchors_": true
 }
