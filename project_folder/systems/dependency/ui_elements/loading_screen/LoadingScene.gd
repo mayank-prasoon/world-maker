@@ -14,17 +14,17 @@ signal set_new_value(new_value)
 
 # === Nodes ===
 
-onready var progress_bar:ProgressBar = $ProgressBar
+@onready var progress_bar:ProgressBar = $ProgressBar
 
 # === variables === 
 
-export(float) var new_value:float = 0
-export(float) var min_value:float = 0
-export(float) var max_value:float = 100
+@export var new_value: float:float = 0
+@export var min_value: float:float = 0
+@export var max_value: float:float = 100
 
 func _ready()->void:
 	# connect the signal
-	var _x = self.connect("set_new_value", self, "set_new_value")
+	var _x = self.connect("set_new_value",Callable(self,"set_new_value"))
 
 	# assign value
 	progress_bar.min_value = min_value

@@ -1,5 +1,5 @@
 class_name ArticleSystem
-extends Reference
+extends RefCounted
 
 # creats new article with new uuid
 static func make_new_article(

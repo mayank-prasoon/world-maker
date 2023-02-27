@@ -1,13 +1,13 @@
 extends RootFieldInput
 
-#export(int)    var input_value:bool = false
-export(String) var input_value_if_true:String  = ''
-export(String) var input_value_if_false:String = ''
+#export var input_value: int:bool = false
+@export var input_value_if_true: String:String  = ''
+@export var input_value_if_false: String:String = ''
 
 
 func _ready():
 	$HBoxContainer/Label.text                   = input_name	
-	$HBoxContainer/SpinBox.pressed = input_value
+	$HBoxContainer/SpinBox.button_pressed = input_value
 
 func display():
 	var value = ""

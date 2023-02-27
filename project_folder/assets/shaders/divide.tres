@@ -37,7 +37,7 @@ void fragment() {
 
 // Input:3
 
-// Texture:6
+// Texture2D:6
 	vec3 n_out6p0;
 	float n_out6p1;
 	{
@@ -51,7 +51,7 @@ void fragment() {
 
 // Input:5
 
-// Texture:7
+// Texture2D:7
 	vec3 n_out7p0;
 	float n_out7p1;
 	{
@@ -92,4 +92,4 @@ nodes/fragment/7/node = SubResource( 6 )
 nodes/fragment/7/position = Vector2( -200, 280 )
 nodes/fragment/8/node = SubResource( 7 )
 nodes/fragment/8/position = Vector2( 100, 120 )
-nodes/fragment/connections = PoolIntArray( 3, 0, 6, 2, 2, 0, 6, 0, 4, 0, 7, 0, 5, 0, 7, 2, 6, 0, 8, 0, 7, 0, 8, 1, 8, 0, 0, 0, 6, 1, 0, 1 )
+nodes/fragment/connections = PackedInt32Array( 3, 0, 6, 2, 2, 0, 6, 0, 4, 0, 7, 0, 5, 0, 7, 2, 6, 0, 8, 0, 7, 0, 8, 1, 8, 0, 0, 0, 6, 1, 0, 1 )

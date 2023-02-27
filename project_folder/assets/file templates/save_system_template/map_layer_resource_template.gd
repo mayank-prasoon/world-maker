@@ -42,48 +42,48 @@ const hard_light:int = 12
 # custom_shader
 const custom_shader:int = 13
 
-export(String)                var layer_name:String                  = ""
-export(String, FILE)          var layer_path:String                  = ""
-export(String, MULTILINE)     var layer_description:String           = ""
-export(bool)                  var layer_visibility                   = false setget set_layer_visibility
-export(blending_mode)         var layer_shader:int                   = 0
-export(VisualShader)          var layer_custom_shader:VisualShader   = VisualShader.new()
-export(float, EXP, 0, 100, 1) var layer_opacity:float                = 100.0 
+@export var layer_name: String:String                  = ""
+@export var layer_path:String                  = "" # (String, FILE)
+@export var layer_description:String           = "" # (String, MULTILINE)
+@export var layer_visibility: bool                   = false : set = set_layer_visibility
+@export var layer_shader: blending_mode:int                   = 0
+@export var layer_custom_shader: VisualShader:VisualShader   = VisualShader.new()
+@export var layer_opacity:float                = 100.0  # (float, EXP, 0, 100, 1)
 
 static func fetch_shader_material(blend_mode:int, custom_shader_resource:VisualShader)->ShaderMaterial:
 	var new_material:ShaderMaterial = ShaderMaterial.new()
 
 	match blend_mode:
 		normal:
-			new_material.shader = null
+			new_material.gdshader = null
 		multiply:
-			new_material.shader = load("res://assets/shaders/multiply.tres")
+			new_material.gdshader = load("res://assets/shaders/multiply.tres")
 		divide:
-			new_material.shader = load("res://assets/shaders/divide.tres")
+			new_material.gdshader = load("res://assets/shaders/divide.tres")
 		difference:
-			new_material.shader = load("res://assets/shaders/difference.tres")
+			new_material.gdshader = load("res://assets/shaders/difference.tres")
 		add:
-			new_material.shader = load("res://assets/shaders/add.tres")
+			new_material.gdshader = load("res://assets/shaders/add.tres")
 
 		darken:
-			new_material.shader = load("res://assets/shaders/darken.tres")
+			new_material.gdshader = load("res://assets/shaders/darken.tres")
 		burn:
-			new_material.shader = load("res://assets/shaders/burn.tres")
+			new_material.gdshader = load("res://assets/shaders/burn.tres")
 
 		dodge:
-			new_material.shader = load("res://assets/shaders/dodge.tres")
+			new_material.gdshader = load("res://assets/shaders/dodge.tres")
 		lighten:
-			new_material.shader = load("res://assets/shaders/lighten.tres")
+			new_material.gdshader = load("res://assets/shaders/lighten.tres")
 		overlay:
-			new_material.shader = load("res://assets/shaders/overlay.tres")
+			new_material.gdshader = load("res://assets/shaders/overlay.tres")
 		screen:
-			new_material.shader = load("res://assets/shaders/screen.tres")
+			new_material.gdshader = load("res://assets/shaders/screen.tres")
 		soft_light:
-			new_material.shader = load("res://assets/shaders/soft_light.tres")
+			new_material.gdshader = load("res://assets/shaders/soft_light.tres")
 		hard_light:
-			new_material.shader = load("res://assets/shaders/hard_light.tres")
+			new_material.gdshader = load("res://assets/shaders/hard_light.tres")
 		custom_shader:
-			new_material.shader = custom_shader_resource
+			new_material.gdshader = custom_shader_resource
 
 	return new_material
 

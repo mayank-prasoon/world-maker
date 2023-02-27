@@ -1,5 +1,5 @@
 class_name ThreadPool
-extends Reference
+extends RefCounted
 
 # === Threads and Mutex ===
 var threads:Array     = []
@@ -10,13 +10,13 @@ var threads_running   = [] #
 # === object properties ===
 
 # initialize the object
-func _init(object:Object, method:String, args:Array, cpu_threads:int = OS.get_processor_count()) -> void:
+func _init(object:Object,method:String,args:Array,cpu_threads:int = OS.get_processor_count()):
     self.object       = object
     self.method       = method
     self.args         = args
     self.cpu_threads  = cpu_threads
 
-    # create the threads based on the arguments
+    # create the threads based checked the arguments
     for x in args:
         threads.append(Thread.new())
     

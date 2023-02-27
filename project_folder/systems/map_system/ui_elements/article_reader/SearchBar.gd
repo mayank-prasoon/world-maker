@@ -1,7 +1,7 @@
 extends Control
 
 
-# the search the cards based on the text provided
+# the search the cards based checked the text provided
 func search_card(text:String, pin:Control)->bool:
 	var state:bool = false
 

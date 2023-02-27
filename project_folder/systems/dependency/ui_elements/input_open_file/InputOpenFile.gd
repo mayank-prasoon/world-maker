@@ -23,6 +23,6 @@ func _on_InputOpenFile_input_value_changed():
 	$VBoxContainer/HBoxContainer/LineEdit.text = input_value
 
 
-func _on_FileDialog_files_selected(paths:PoolStringArray):
-	var combined_path = paths.join(", ")
+func _on_FileDialog_files_selected(paths:PackedStringArray):
+	var combined_path = ", ".join(paths)
 	$VBoxContainer/HBoxContainer/LineEdit.text = combined_path

@@ -1,7 +1,7 @@
 extends Node2D
 
 # Obtain access to my plugin
-onready var Log = $Logger
+@onready var Log = $Logger
 
 # Some example calls
 func _ready():

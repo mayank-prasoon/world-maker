@@ -2,12 +2,12 @@ extends Node
 
 # === NODES ===
 
-onready var root            = get_parent()
-onready var Console         = $"../CanvasLayer/CommandSystemInterface/Console/Log"
+@onready var root            = get_parent()
+@onready var Console         = $"../CanvasLayer/CommandSystemInterface/Console/Log"
 
 # === SystemDataManager NODES ===
 
-onready var PORJECT_SETTINGS = ProjectSettingsManager
+@onready var PORJECT_SETTINGS = ProjectSettingsManager
 
 # === VARIABLES === 
 
@@ -23,11 +23,11 @@ func echo(value, record:bool = true)->void:
 	if get_parent().command_line_state:
 		var result:String = str(value)
 		Logger.info("command executed - echo({value})".format({"value":result}))
-		var output = rich_text.instance()
+		var output = rich_text.instantiate()
 		if record:
 			console_log.append(result)
 			
-		output.bbcode_text = result
+		output.text = result
 		Console.add_child(output)
 	else:
 		pass

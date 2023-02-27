@@ -3,8 +3,8 @@ extends Control
 var thread:Thread
 
 # === NODES ===
-onready var layers = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayersContainer/VBoxContainer"
-onready var map_manager = $"../MapManager"
+@onready var layers = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/TabContainer/Map Layers/LayersContainer/VBoxContainer"
+@onready var map_manager = $"../MapManager"
 
 # === VARIABLES ===
 var map:MapData
@@ -20,7 +20,7 @@ func _on_MapManager_load_map(map_path:String) -> void:
 
 	# display map
 	thread = Thread.new()
-	var _x = thread.start(self, 'display_entire_map')
+	var _x = thread.start(Callable(self,'display_entire_map'))
 
 #join thread
 func join_thread()->void:
@@ -82,9 +82,9 @@ func create_layer_node(map_layer_resource)-> void:
 	self.call_deferred("add_child", texture)
 
 	# create layer node
-	var layer_node:Control = load("res://systems/map_system/ui_elements/map_layers/Layers.tscn").instance()
+	var layer_node:Control = load("res://systems/map_system/ui_elements/map_layers/Layers.tscn").instantiate()
 	layer_node.map_layer_node           = texture
 	layer_node.map_layer_resources      = map_layer_resource
 	
 	layers.add_child(layer_node)
-	layer_node.rect_size      = Vector2(272, 30)
+	layer_node.size      = Vector2(272, 30)

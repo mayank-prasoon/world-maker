@@ -1,10 +1,10 @@
 extends RootFieldInput
 
-# export(Array)  var input_value:Array            = [false]
-export(Array)  var input_check_box_option:Array = [""]
+# export var input_value: Array:Array            = [false]
+@export var input_check_box_option: Array:Array = [""]
 
 # === node ===
-onready var checkbox_container = $VBoxContainer/HBoxContainer
+@onready var checkbox_container = $VBoxContainer/HBoxContainer
 
 func _ready():
 	$VBoxContainer/Label.text = input_name
@@ -20,7 +20,7 @@ func _ready():
 	var index = 0
 	for state in input_value:
 		var button:CheckBox = checkbox_container.get_children()[index]
-		button.pressed      = state
+		button.button_pressed      = state
 		index += 1 # increase the index
 
 	# connect the signals
@@ -30,7 +30,7 @@ func _ready():
 func connect_signal_check_box()->void:
 	for x in checkbox_container.get_children():
 		var node:CheckBox = x
-		node.connect("toggled", self, "input_value_change")
+		node.connect("toggled",Callable(self,"input_value_change"))
 
 # emmit signal
 func input_value_change(_state)->void:
@@ -41,7 +41,7 @@ func dispaly()->String:
 	var value:String          = ""
 	
 	for node in checkbox_container.get_children():
-		if node.pressed == true:
+		if node.button_pressed == true:
 			text_collection.append(node.text)
 			text_collection.append(', ')
 	

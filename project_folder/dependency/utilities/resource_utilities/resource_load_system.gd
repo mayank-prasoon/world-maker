@@ -7,19 +7,19 @@
 
 
 class_name ResourceLoadSystem
-extends Reference
+extends RefCounted
 
 #                                === SUB CLASS ===
 
-# This sub class deals with loading resource on differnt thread:
+# This sub class deals with loading resource checked differnt thread:
 class ThreadLoad extends Object:
 	signal resource_loaded(resource)
 
 	var thread:Thread = Thread.new()
 
 	# initialize the class
-	func _init(object, method:String, resource_path:String)->void:
-		var _1 = self.connect("resource_loaded", object, method)
+	func _init(object,method:String,resource_path:String):
+		var _1 = self.connect("resource_loaded",Callable(object,method))
 
 		var _2 = thread.start(
 			self,
@@ -42,7 +42,7 @@ class ThreadLoad extends Object:
 # ------------------------------------------------------------------------------
 
 # This sub class deals with checking if file exits 
-class FileChecker extends Reference:
+class FileChecker extends RefCounted:
 	
 	enum {
 		OK,
@@ -60,8 +60,8 @@ class FileChecker extends Reference:
 
 # ------------------------------------------------------------------------------
 
-# This sub class load resources on a single thread
-class LoadResource extends Reference:
+# This sub class load resources checked a single thread
+class LoadResource extends RefCounted:
 
 	# load Resources
 	static func load_resource(path)->Resource:

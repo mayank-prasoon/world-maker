@@ -2,7 +2,7 @@ extends Control
 
 signal input_value_changed
 
-var input_value = '' setget set_input_value, get_input_value
+var input_value = '' : get = get_input_value, set = set_input_value
 
 func _ready():
 	add_to_group('map_inspector_input_field')

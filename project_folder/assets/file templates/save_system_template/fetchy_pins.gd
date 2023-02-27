@@ -1,11 +1,11 @@
-extends Reference
+extends RefCounted
 
 var pins
 var node
 
 func _init(node):
 	self.node = node
-	self.node.connect('add_item', self, 'create_pin')
+	self.node.connect('add_item',Callable(self,'create_pin'))
 	
 func create_pins(pin_name):
 	print(pin_name)

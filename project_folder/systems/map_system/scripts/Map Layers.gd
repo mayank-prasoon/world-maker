@@ -1,8 +1,8 @@
 extends VBoxContainer
 
 # === NODE ===
-onready var map_node:Control = get_owner()
-onready var menu:Control      = $"../../../../../../../../.."
+@onready var map_node:Control = get_owner()
+@onready var menu:Control      = $"../../../../../../../../.."
 
 var create_layer:PackedScene   = preload("res://systems/map_system/ui_elements/layer_creator/LayerCreator.tscn")
 
@@ -19,12 +19,12 @@ func _on_Delete_pressed()->void:
 
 
 func create_layer()->void:
-	var node = create_layer.instance()
+	var node = create_layer.instantiate()
 	menu.add_child(node)
 
 
 func _on_Edit_pressed()->void:
-	var node = create_layer.instance()
+	var node = create_layer.instantiate()
 
 	for layer_node in get_tree().get_nodes_in_group('map_layers'):
 		if layer_node.selected:

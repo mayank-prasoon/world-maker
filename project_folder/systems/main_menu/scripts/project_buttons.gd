@@ -6,7 +6,7 @@ var project_name:String = ""
 var path:String         = ""
 
 func _ready():
-	self.add_constant_override("separation", 20)
+	self.add_theme_constant_override("separation", 20)
 	self.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 
 	var label   = Label.new()
@@ -16,7 +16,7 @@ func _ready():
 	
 	var p_name   = Label.new()
 	p_name.text  = project_name
-	p_name.align = Label.ALIGN_CENTER
+	p_name.align = Label.ALIGNMENT_CENTER
 
 	p_name.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 
@@ -28,10 +28,10 @@ func _ready():
 	self.add_child(p_name)
 	self.add_child(open)
 
-	open.connect("pressed", self, "open_project")
+	open.connect("pressed",Callable(self,"open_project"))
 
 func open_project():
 	SystemSettings.current_path = path
 	ProjectSettingsManager.open_project()
 	SystemSettings.add_last_project(self.get_position_in_parent())
-	var _x = get_tree().change_scene_to(load("res://systems/Dashboard.tscn"))
+	var _x = get_tree().change_scene_to_packed(load("res://systems/Dashboard.tscn"))

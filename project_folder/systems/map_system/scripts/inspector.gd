@@ -2,21 +2,21 @@ extends Control
 
 
 #show the inspector
-export var state       = false
+@export var state       = false
 
 var switch:Object      = Switch.new(self, 'open_inspector', 'close_inspector') 
 
 # node
-onready var container_node = $Panel/VboxContainer/Inspector/Inspector
+@onready var container_node = $Panel/VboxContainer/Inspector/Inspector
 
-class Switch extends Reference:
+class Switch extends RefCounted:
 	var state = true
 
 	var object          = null
 	var method_1:String = ""  # method called when the state is true
 	var method_2:String = ""  # method called when the state is false
 	
-	func _init(node, true_state_method:String, false_state_method:String)->void:
+	func _init(node,true_state_method:String,false_state_method:String):
 		self.object = node
 		self.method_1 = true_state_method
 		self.method_2 = false_state_method
@@ -33,10 +33,10 @@ class Switch extends Reference:
 
 func _ready():
 	add_to_group("inspector")
-	var _x = EventBus.connect("change_inspector_state", self, 'change_inspector_state')
-	var _y = EventBus.connect("clear_inspector", self, 'clear_inspector')
-	var _z = EventBus.connect("add_pin_inspector", self, 'add_map_pin_inspector')
-	var _p = EventBus.connect("add_comment_inspector", self, 'add_map_comment_inspector')
+	var _x = EventBus.connect("change_inspector_state",Callable(self,'change_inspector_state'))
+	var _y = EventBus.connect("clear_inspector",Callable(self,'clear_inspector'))
+	var _z = EventBus.connect("add_pin_inspector",Callable(self,'add_map_pin_inspector'))
+	var _p = EventBus.connect("add_comment_inspector",Callable(self,'add_map_comment_inspector'))
 # ------------------------------------------------------------------------------
 
 # toggle the display
@@ -76,7 +76,7 @@ func change_inspector_state(new_state)->void:
 func inspector_slide_animation(init_pos, final_pos)->void:
 	$Tween.interpolate_property(
 		get_child(0),
-		"rect_position",
+		"position",
 		init_pos,
 		final_pos,
 		0.5,
@@ -94,7 +94,7 @@ func add_map_pin_inspector(map_pin_resource:MapPin, map_pin_node:Node2D) -> void
 		x.queue_free()
 
 	var scene:PackedScene = load("res://systems/map_system/ui_elements/map_element_inspector/MapPinInspector.tscn")
-	var map_pin_inspector_node:Control = scene.instance()
+	var map_pin_inspector_node:Control = scene.instantiate()
 
 	map_pin_inspector_node.resource_file = map_pin_resource
 	map_pin_inspector_node.map_pin_node  = map_pin_node
@@ -109,7 +109,7 @@ func add_map_comment_inspector(map_comment_resource:MapComment, map_comment_node
 		x.queue_free()
 	
 	var scene:PackedScene = load("res://systems/map_system/ui_elements/map_element_inspector/MapCommentInspector.tscn")
-	var map_comment_inspector_node:Control = scene.instance()
+	var map_comment_inspector_node:Control = scene.instantiate()
 
 	map_comment_inspector_node.resource_file    = map_comment_resource
 	map_comment_inspector_node.map_comment_node = map_comment_node
@@ -122,10 +122,10 @@ func clear_inspector() -> void:
 		x.queue_free()
 
 	var label  = Label.new()
-	label.text = "select an element on the map"
+	label.text = "select an element checked the map"
 
-	label.valign = Label.ALIGN_CENTER
-	label.align  = Label.ALIGN_CENTER
+	label.valign = Label.ALIGNMENT_CENTER
+	label.align  = Label.ALIGNMENT_CENTER
 
 	label.anchor_bottom = 1
 	label.anchor_right  = 1

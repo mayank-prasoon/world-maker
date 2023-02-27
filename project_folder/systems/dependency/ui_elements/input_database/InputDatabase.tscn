@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://systems/dependency/ui_elements/input_database/InputDatabase.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/map/view tool/carbon_subtract.png" type="Texture" id=2]
-[ext_resource path="res://assets/graphics/map/view tool/carbon_add.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/map/view tool/carbon_subtract.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/graphics/map/view tool/carbon_add.png" type="Texture2D" id=3]
 
 [node name="InputDatabase" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 0.222222
-margin_bottom = -65.6004
-rect_min_size = Vector2( 0, 240 )
+offset_bottom = -65.6004
+custom_minimum_size = Vector2( 0, 240 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -19,53 +19,53 @@ anchor_right = 1.0
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1920.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 text = "Name"
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 45.0
-margin_right = 1920.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 45.0
+offset_right = 1920.0
+offset_bottom = 75.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 924.0
-margin_bottom = 30.0
+offset_right = 924.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 placeholder_text = "add item"
 
 [node name="Add" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 928.0
-margin_right = 958.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 0 )
+offset_left = 928.0
+offset_right = 958.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 0 )
 size_flags_horizontal = 0
 icon = ExtResource( 3 )
 expand_icon = true
 
 [node name="Remove" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 962.0
-margin_right = 992.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 0 )
+offset_left = 962.0
+offset_right = 992.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 0 )
 size_flags_horizontal = 0
 icon = ExtResource( 2 )
 expand_icon = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 996.0
-margin_right = 1920.0
-margin_bottom = 30.0
+offset_left = 996.0
+offset_right = 1920.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer"]
-margin_top = 90.0
-margin_right = 1920.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 0, 150 )
+offset_top = 90.0
+offset_right = 1920.0
+offset_bottom = 240.0
+custom_minimum_size = Vector2( 0, 150 )
 allow_reselect = true
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Add" to="." method="_on_Add_pressed"]

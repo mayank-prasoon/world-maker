@@ -1,4 +1,4 @@
 class_name GraphMap
 extends Resource
 
-export(Dictionary) var graph_map:Dictionary = {}
+@export var graph_map: Dictionary:Dictionary = {}

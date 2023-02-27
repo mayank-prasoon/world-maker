@@ -4,7 +4,7 @@ signal save_file
 
 func _ready()->void:
 	Logger.info(name + " - " + "Node loadded")
-	var _x = connect("save_file", self.get_parent(), "save_project_settings")
+	var _x = connect("save_file",Callable(self.get_parent(),"save_project_settings"))
 
 
 func delete_old_keys()->void:

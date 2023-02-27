@@ -4,18 +4,18 @@
 [ext_resource path="res://systems/wiki_dashboard/WikiDashboard.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/RibbonMenu.gd" type="Script" id=3]
 [ext_resource path="res://systems/ribbon_menu.tres" type="ButtonGroup" id=4]
-[ext_resource path="res://assets/graphics/dashboard/icons/home.svg" type="Texture" id=5]
-[ext_resource path="res://assets/graphics/dashboard/icons/map.svg" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/dashboard/icons/settings.svg" type="Texture" id=7]
-[ext_resource path="res://assets/graphics/dashboard/icons/folder.svg" type="Texture" id=8]
-[ext_resource path="res://assets/graphics/dashboard/side bar.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/dashboard/icons/home.svg" type="Texture2D" id=5]
+[ext_resource path="res://assets/graphics/dashboard/icons/map.svg" type="Texture2D" id=6]
+[ext_resource path="res://assets/graphics/dashboard/icons/settings.svg" type="Texture2D" id=7]
+[ext_resource path="res://assets/graphics/dashboard/icons/folder.svg" type="Texture2D" id=8]
+[ext_resource path="res://assets/graphics/dashboard/side bar.png" type="Texture2D" id=9]
 [ext_resource path="res://systems/dashboard UI elements/TabButton.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends Control
 
-onready var editor_layer:CanvasLayer = $EditorLayer
-onready var contianer:Control        = $HBoxContainer/DashboardContainer
+@onready var editor_layer:CanvasLayer = $EditorLayer
+@onready var contianer:Control        = $HBoxContainer/DashboardContainer
 
 
 var wiki_editor:PackedScene    = load(\"res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.tscn\")
@@ -25,22 +25,22 @@ var map_dashboard:PackedScene  = preload(\"res://systems/map_system/MapDashboard
 
 
 func _ready():
-	var _x = EventBus.connect('edit_article', self, 'edit_article')
-	var _y = EventBus.connect('create_article', self, 'create_article')
+	var _x = EventBus.connect('edit_article',Callable(self,'edit_article'))
+	var _y = EventBus.connect('create_article',Callable(self,'create_article'))
 	
-	var _p = EventBus.connect(\"load_wiki_dashboard\", self, 'load_wiki_dashboard')
-	var _q = EventBus.connect(\"load_map_dashboard\", self, 'load_map_dashboard')
+	var _p = EventBus.connect(\"load_wiki_dashboard\",Callable(self,'load_wiki_dashboard'))
+	var _q = EventBus.connect(\"load_map_dashboard\",Callable(self,'load_map_dashboard'))
 	
 
 func edit_article(article)->void:
-	var node = wiki_editor.instance()
+	var node = wiki_editor.instantiate()
 	$EditorLayer.add_child(node)
 	node.open_article(article)
 	clean_dashboard_container()
 
  
 func create_article()->void:
-	var node = wiki_editor.instance()
+	var node = wiki_editor.instantiate()
 	$EditorLayer.add_child(node)
 	clean_dashboard_container()
 
@@ -52,11 +52,11 @@ func clean_dashboard_container()->void:
 
 func load_wiki_dashboard()->void:
 	clean_dashboard_container()
-	contianer.add_child(wiki_dashboard.instance())
+	contianer.add_child(wiki_dashboard.instantiate())
 	
 func load_map_dashboard()->void:
 	clean_dashboard_container()
-	contianer.add_child(map_dashboard.instance())
+	contianer.add_child(map_dashboard.instantiate())
 "
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -86,7 +86,7 @@ func _physics_process(delta:float)->void:
 script/source = "extends Button
 
 func _on_ProjectMenuButton_pressed():
-	get_tree().change_scene_to(load(\"res://systems/main_menu/MainMenu.tscn\"))
+	get_tree().change_scene_to_packed(load(\"res://systems/main_menu/MainMenu.tscn\"))
 "
 
 [sub_resource type="GDScript" id=7]
@@ -95,7 +95,7 @@ script/source = "extends Button
 
 
 func _on_SettingButton_pressed():
-	get_owner().add_child(load(\"res://systems/setting_menu/Settings.tscn\").instance())
+	get_owner().add_child(load(\"res://systems/setting_menu/Settings.tscn\").instantiate())
 "
 
 [node name="Dashboard" type="Control"]
@@ -128,9 +128,9 @@ mouse_filter = 2
 custom_constants/separation = 0
 
 [node name="RibbonMenu" type="Control" parent="HBoxContainer"]
-margin_right = 50.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 50, 0 )
+offset_right = 50.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 50, 0 )
 script = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="HBoxContainer/RibbonMenu"]
@@ -143,7 +143,7 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/RibbonMenu/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 55.0
+offset_right = 55.0
 texture = ExtResource( 9 )
 stretch_mode = 5
 
@@ -160,16 +160,16 @@ __meta__ = {
 
 [node name="HomeButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList/HomeTab/CenterContainer" index="0"]
 modulate = Color( 1, 1, 1, 0.784314 )
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 37.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 25, 25 )
-hint_tooltip = "main dashboard"
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 37.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 25, 25 )
+tooltip_text = "main dashboard"
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
-custom_constants/hseparation = 0
+custom_constants/h_separation = 0
 toggle_mode = true
 pressed = true
 group = ExtResource( 4 )
@@ -178,20 +178,20 @@ expand_icon = true
 script = SubResource( 3 )
 
 [node name="MapTab" parent="HBoxContainer/RibbonMenu/MenuList" instance=ExtResource( 10 )]
-margin_top = 60.0
-margin_bottom = 110.0
+offset_top = 60.0
+offset_bottom = 110.0
 
 [node name="ColorRect" parent="HBoxContainer/RibbonMenu/MenuList/MapTab" index="0"]
 visible = false
 
 [node name="MapTabButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList/MapTab/CenterContainer" index="0"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 37.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 25, 25 )
-hint_tooltip = "map dashboard"
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 37.0
+offset_bottom = 37.0
+custom_minimum_size = Vector2( 25, 25 )
+tooltip_text = "map dashboard"
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
@@ -203,11 +203,11 @@ script = SubResource( 4 )
 
 [node name="StatsTabButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList"]
 visible = false
-margin_left = 12.0
-margin_top = 120.0
-margin_right = 37.0
-margin_bottom = 145.0
-rect_min_size = Vector2( 25, 25 )
+offset_left = 12.0
+offset_top = 120.0
+offset_right = 37.0
+offset_bottom = 145.0
+custom_minimum_size = Vector2( 25, 25 )
 focus_mode = 0
 size_flags_horizontal = 6
 toggle_mode = true
@@ -215,24 +215,24 @@ group = ExtResource( 4 )
 expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/RibbonMenu/MenuList"]
-margin_top = 120.0
-margin_right = 50.0
-margin_bottom = 946.0
+offset_top = 120.0
+offset_right = 50.0
+offset_bottom = 946.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RibbonMenu/MenuList"]
-margin_top = 956.0
-margin_right = 50.0
-margin_bottom = 1026.0
+offset_top = 956.0
+offset_right = 50.0
+offset_bottom = 1026.0
 custom_constants/separation = 20
 
 [node name="ProjectMenuButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 12.0
-margin_right = 37.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 25, 25 )
+offset_left = 12.0
+offset_right = 37.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 25, 25 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
@@ -242,11 +242,11 @@ script = SubResource( 6 )
 
 [node name="SettingButton" type="Button" parent="HBoxContainer/RibbonMenu/MenuList/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.490196 )
-margin_left = 12.0
-margin_top = 45.0
-margin_right = 37.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 25, 25 )
+offset_left = 12.0
+offset_top = 45.0
+offset_right = 37.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 25, 25 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
@@ -255,9 +255,9 @@ expand_icon = true
 script = SubResource( 7 )
 
 [node name="DashboardContainer" type="Control" parent="HBoxContainer"]
-margin_left = 50.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_left = 50.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

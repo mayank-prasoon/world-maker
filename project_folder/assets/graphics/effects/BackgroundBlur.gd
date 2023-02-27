@@ -1,8 +1,8 @@
 extends Control
 
-onready var animationPlayer: = $"AnimationPlayer" 
+@onready var animationPlayer: = $"AnimationPlayer" 
 
-export (bool) var Animate:bool = true
+@export (bool) var Animate:bool = true
 
 func _ready()->void:
 	if Animate == true:

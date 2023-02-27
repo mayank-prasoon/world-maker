@@ -13,7 +13,7 @@ signal editor_changed
 # Requires reference to the ScriptEditor instance.
 func _init(script_edtitor):
 	_script_editor = script_edtitor
-	_script_editor.connect("editor_script_changed", self, '_on_editor_script_changed')
+	_script_editor.connect("editor_script_changed",Callable(self,'_on_editor_script_changed'))
 	_scan_script_editor()
 
 

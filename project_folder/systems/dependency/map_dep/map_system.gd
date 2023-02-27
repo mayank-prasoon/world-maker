@@ -1,5 +1,5 @@
 class_name MapSystem
-extends Reference
+extends RefCounted
 
 # return the array of map resources paths
 static func get_maps()->Array:

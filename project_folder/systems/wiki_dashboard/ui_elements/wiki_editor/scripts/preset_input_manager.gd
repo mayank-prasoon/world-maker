@@ -1,5 +1,5 @@
 class_name PresetInputManager
-extends Reference
+extends RefCounted
 
 # move to system data manager
 const TEXT          = 0
@@ -17,21 +17,21 @@ static func load_prompt(node, template:Resource)->void:
 
 		match x["type"]:
 			TEXT:
-				item = load("res://systems/dependency/ui_elements/input_text/InputText.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_text/InputText.tscn").instantiate()
 
 			BIG_TEXT:
-				item = load("res://systems/dependency/ui_elements/input_large_text/InputLargeText.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_large_text/InputLargeText.tscn").instantiate()
 
 			IMAGE:
-				item = load("res://systems/dependency/ui_elements/input_image/InputImage.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_image/InputImage.tscn").instantiate()
 
 			DROPDOWN:
-				item = load("res://systems/dependency/ui_elements/input_dropdown/InputDropDown.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_dropdown/InputDropDown.tscn").instantiate()
 
 				item.input_dropdown_option = x["input_dropdown_option"]
 
 			SPINBOX:
-				item = load("res://systems/dependency/ui_elements/input_spin_box/InputSpinBox.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_spin_box/InputSpinBox.tscn").instantiate()
 
 				if x.keys().has("input_spin_box_prefix"):
 					item.input_spin_box_prefix = x["input_spin_box_prefix"]
@@ -39,7 +39,7 @@ static func load_prompt(node, template:Resource)->void:
 					item.input_spin_box_suffix = x["input_spin_box_suffix"]
 
 			TOGGLE_BUTTON:
-				item = load("res://systems/dependency/ui_elements/input_toggle_button/InputToggleButton.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_toggle_button/InputToggleButton.tscn").instantiate()
 				
 				if x.keys().has('input_value_if_true'):
 					item.input_value_if_true  = x['input_value_if_true']
@@ -48,11 +48,11 @@ static func load_prompt(node, template:Resource)->void:
 
 
 			CHECKBOX:
-				item = load("res://systems/dependency/ui_elements/input_check_box/InputCheckBox.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_check_box/InputCheckBox.tscn").instantiate()
 
 
 			DATABASE:
-				item = load("res://systems/dependency/ui_elements/input_database/InputDatabase.tscn").instance()
+				item = load("res://systems/dependency/ui_elements/input_database/InputDatabase.tscn").instantiate()
 
 		
 		item.input_name               = x["name"]

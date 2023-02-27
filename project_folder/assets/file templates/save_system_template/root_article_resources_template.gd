@@ -1,17 +1,17 @@
 class_name Article
 extends Resource
 
-export(String)            var article_name:String
-export(String)            var article_id:String
-export(String, FILE)      var article_profile:String
-export(String, FILE)      var article_banner:String
-export(int)               var article_type:int
-export(Resource)          var article_template:Resource
-export(String)            var article_notes:String
-export(String, MULTILINE) var article_raw:String
-export(String)            var article_description:String
-export(Array, String)     var tags:Array
-export(String)            var article_resources:String
+@export var article_name: String:String
+@export var article_id: String:String
+@export var article_profile:String # (String, FILE)
+@export var article_banner:String # (String, FILE)
+@export var article_type: int:int
+@export var article_template: Resource:Resource
+@export var article_notes: String:String
+@export var article_raw:String # (String, MULTILINE)
+@export var article_description: String:String
+@export var tags:Array # (Array, String)
+@export var article_resources: String:String
 
 const BASIC = 0
 const MAP   = 1

@@ -29,10 +29,10 @@ func check_last_project()->void:
 		# if a valid last project exists - open Dashboard 
 		SystemSettings.current_path = SystemSettings.last_project().values()[0]
 		ProjectSettingsManager.open_project()
-		var _x = get_tree().change_scene_to(load(\"res://systems/Dashboard.tscn\"))
+		var _x = get_tree().change_scene_to_packed(load(\"res://systems/Dashboard.tscn\"))
 	else:
 		# if a valid last project exists - open Main Menu
-		get_tree().change_scene_to(load(\"res://systems/main_menu/MainMenu.tscn\"))
+		get_tree().change_scene_to_packed(load(\"res://systems/main_menu/MainMenu.tscn\"))
 
 
 # ------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ func check_last_project()->void:
 
 # check if the last project has null value
 func check_last_project_for_null()->bool:
-	if (SystemSettings.last_project() == null) or SystemSettings.last_project().empty():
+	if (SystemSettings.last_project() == null) or SystemSettings.last_project().is_empty():
 		return true
 	else:
 		return false
@@ -72,7 +72,7 @@ func set_window_to_center()->void:
 
 # set the window size to screen size
 func maximize_window()->void:
-	OS.set_window_maximized(true)
+	get_window().mode = Window.MODE_MAXIMIZED if (true) else Window.MODE_WINDOWED
 "
 
 [node name="OpenLastProject" type="Control"]

@@ -5,8 +5,8 @@
 [node name="InputText" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 0.062963
-margin_bottom = -34.4
-rect_min_size = Vector2( 0, 68 )
+offset_bottom = -34.4
+custom_minimum_size = Vector2( 0, 68 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -18,17 +18,17 @@ anchor_bottom = 1.0
 custom_constants/separation = 5
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1920.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 text = "Name"
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_top = 35.0
-margin_right = 1920.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 35.0
+offset_right = 1920.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 0, 30 )
 placeholder_text = "sample text"
 
 [connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]

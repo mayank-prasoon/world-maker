@@ -4,8 +4,8 @@ signal load_map(map_path)
 
 # === Nodes ===
 
-onready var items_node:OptionButton  = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/MenuButton"
-onready var canvas_layer:CanvasLayer = get_parent().get_node("Camera2D/CanvasLayer")
+@onready var items_node:OptionButton  = $"../Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/MapMenu/HBoxContainer/MenuButton"
+@onready var canvas_layer:CanvasLayer = get_parent().get_node("Camera2D/CanvasLayer")
 
 # === variables ===
 

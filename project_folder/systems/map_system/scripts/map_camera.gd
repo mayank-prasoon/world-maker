@@ -7,12 +7,12 @@ var current_image_size = Vector2(1000, 1000)
 # read the camera 
 func _ready() -> void:
 	add_to_group('camera_movement')
-	var _a = EventBus.connect("disable_camera", self, 'set_disable_camera')
-	var _b = EventBus.connect("move_camera_to", self, '_on_move_camera_to')
+	var _a = EventBus.connect("disable_camera",Callable(self,'set_disable_camera'))
+	var _b = EventBus.connect("move_camera_to",Callable(self,'_on_move_camera_to'))
 	
-	var _c = EventBus.connect("zoom_in", self, '_on_ZoomIn_pressed')
-	var _d = EventBus.connect("zoom_out", self, '_on_ZoomOut_pressed')
-	var _e = EventBus.connect("reset_zoom", self, '_on_Rest_pressed')
+	var _c = EventBus.connect("zoom_in",Callable(self,'_on_ZoomIn_pressed'))
+	var _d = EventBus.connect("zoom_out",Callable(self,'_on_ZoomOut_pressed'))
+	var _e = EventBus.connect("reset_zoom",Callable(self,'_on_Rest_pressed'))
 	
 	get_tree().call_group('map_element', 'change_scale', desiredZooom)
 
@@ -28,7 +28,7 @@ func setup_camera_for_map(camera_position:Vector2, image_size:Vector2)->void:
 
 # main loop
 func _physics_process(_delta:float)->void:
-	var new_zoom_value = current_image_size/OS.get_window_size()
+	var new_zoom_value = current_image_size/get_window().get_size()
 	if new_zoom_value.x == new_zoom_value.y:
 		self.defaultZoom = new_zoom_value
 	else:

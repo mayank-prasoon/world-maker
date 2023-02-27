@@ -1,18 +1,18 @@
 class_name CameraMovement
 extends Camera2D
 
-export(Vector2) var zoomSpeed:Vector2       = Vector2(0.100001, 0.100001)
-export(Vector2) var minZoom:Vector2         = Vector2(0.500001, 0.500001)
-export(Vector2) var maxZoom:Vector2         = Vector2(2.600001, 2.600001)
-export(Vector2) var defaultPosition:Vector2 = Vector2(0, 0)
-export(float)   var panSpeed:float          = 0.2
+@export var zoomSpeed: Vector2:Vector2       = Vector2(0.100001, 0.100001)
+@export var minZoom: Vector2:Vector2         = Vector2(0.500001, 0.500001)
+@export var maxZoom: Vector2:Vector2         = Vector2(2.600001, 2.600001)
+@export var defaultPosition: Vector2:Vector2 = Vector2(0, 0)
+@export var panSpeed: float:float          = 0.2
 
 var desiredZooom:Vector2 = self.zoom
 
-export(Vector2) var defaultZoom:Vector2 = Vector2(2.0,2.0)
+@export var defaultZoom: Vector2:Vector2 = Vector2(2.0,2.0)
 
 var panning:bool = false
-var disableMouse:bool = false setget set_disable_camera
+var disableMouse:bool = false : set = set_disable_camera
 var desiredOffset:Vector2 = self.offset
 
 func set_disable_camera(value)->void:
@@ -36,12 +36,12 @@ func zoomControl(event:InputEvent) -> void:
 		if event.is_pressed():
 
 			# zoom in
-			if event.button_index == BUTTON_WHEEL_UP:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				if minZoom < desiredZooom:
 					desiredZooom -= zoomSpeed
 
 			# zoom out
-			if event.button_index == BUTTON_WHEEL_DOWN:
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				if maxZoom > desiredZooom:
 					desiredZooom += zoomSpeed
 
@@ -58,7 +58,7 @@ func cameraMovement(event:InputEvent)->void:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 	if event is InputEventMouseButton:
-		if event.is_pressed() and event.button_index == BUTTON_MIDDLE:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_MIDDLE:
 			panning = true
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 		else:

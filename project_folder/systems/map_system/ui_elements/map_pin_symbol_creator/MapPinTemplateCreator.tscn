@@ -1,26 +1,26 @@
 [gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://systems/map_system/ui_elements/map_pin/MapPin.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39.png" type="Texture" id=3]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/button_round.png" type="Texture" id=5]
-[ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=2]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-1.png" type="Texture2D" id=4]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/button_round.png" type="Texture2D" id=5]
+[ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture2D" id=7]
 [ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture" id=9]
-[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture" id=10]
-[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture" id=11]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png" type="Texture" id=12]
-[ext_resource path="res://assets/graphics/map/map_pin_creator/chevron-right.png" type="Texture" id=13]
-[ext_resource path="res://assets/graphics/map/new map/spin_box.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture2D" id=9]
+[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture2D" id=10]
+[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture2D" id=11]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/Rectangle 39-2.png" type="Texture2D" id=12]
+[ext_resource path="res://assets/graphics/map/map_pin_creator/chevron-right.png" type="Texture2D" id=13]
+[ext_resource path="res://assets/graphics/map/new map/spin_box.png" type="Texture2D" id=14]
 
 [sub_resource type="GDScript" id=24]
 script/source = "extends Control
 
 # ------------------------------------------------------------------------------x
 
-onready var panel:Panel = $CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel
+@onready var panel:Panel = $CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel
 
 
 # generate confirmation dialog
@@ -31,15 +31,15 @@ func create_confirmation_dialog():
 	new_pop_up.window_title    = \"Please Confirm...\"
 	new_pop_up.dialog_text     = \"you are closing the map creation dialog box,\\n\\nnote: all filled info will be lost\"
 	new_pop_up.dialog_autowrap = true
-	new_pop_up.rect_size       = Vector2(300, 150)
+	new_pop_up.size       = Vector2(300, 150)
 
 	# Label
 	var lable:Label            = new_pop_up.get_child(1)
-	lable.align                = Label.ALIGN_CENTER
+	lable.align                = Label.ALIGNMENT_CENTER
 	lable.valign               = Label.VALIGN_CENTER
 
 
-	var _x = new_pop_up.connect(\"confirmed\", self, 'close_the_dialog')
+	var _x = new_pop_up.connect(\"confirmed\",Callable(self,'close_the_dialog'))
 	$PopUp.add_child(new_pop_up)
 
 # ------------------------------------------------------------------------------
@@ -65,14 +65,14 @@ func _on_Close_pressed():
 [sub_resource type="Animation" id=26]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:rect_position")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
@@ -81,14 +81,14 @@ tracks/0/keys = {
 resource_name = "close"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:rect_position")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( -2, -2 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 850 ) ]
 }
@@ -99,8 +99,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "unBlurBackground"
@@ -113,8 +113,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "queue_free"
@@ -125,14 +125,14 @@ tracks/2/keys = {
 resource_name = "open"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:rect_position")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( -2, -2 ),
 "update": 0,
 "values": [ Vector2( 0, 900 ), Vector2( 0, 0 ) ]
 }
@@ -171,7 +171,7 @@ content_margin_left = 10.0
 [sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="FontFile" id=21]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -197,20 +197,20 @@ script/source = "extends Control
 
 
 # input related
-onready var map_pin_template_container = $MarginContainer/HBoxContainer/VBoxContainer/PinContainer
-onready var template_name              = $MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input/LineEdit
-onready var template_texture           = $MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input/LineEdit
-onready var template_hover_animation   = $MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit
-onready var offset_x                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input/LineEdit
-onready var offset_y                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input/LineEdit
-onready var default_tags               = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input/LineEdit
-onready var default_template           = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input/LineEdit
+@onready var map_pin_template_container = $MarginContainer/HBoxContainer/VBoxContainer/PinContainer
+@onready var template_name              = $MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input/LineEdit
+@onready var template_texture           = $MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Input/LineEdit
+@onready var template_hover_animation   = $MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit
+@onready var offset_x                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input/LineEdit
+@onready var offset_y                   = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input/LineEdit
+@onready var default_tags               = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input/LineEdit
+@onready var default_template           = $MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input/LineEdit
 
 # map pin related
-onready var image_info                 = $MarginContainer/HBoxContainer/VBoxContainer/ImageInfo
+@onready var image_info                 = $MarginContainer/HBoxContainer/VBoxContainer/ImageInfo
 
 # create button
-onready var create_button              = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton
+@onready var create_button              = $MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton
 
 # --------------------------------------------------------------------------------------------------
 
@@ -221,7 +221,7 @@ var article_template_list:Array = [\"\"]
 
 func _ready()->void:
 	for nodes in get_tree().get_nodes_in_group('input_field'):
-		nodes.connect('input_value_changed', self, 'change_in_input')
+		nodes.connect('input_value_changed',Callable(self,'change_in_input'))
 	image_info.text = \"select an Image\"
 
 	load_article_template()
@@ -230,7 +230,7 @@ func _ready()->void:
 # --------------------------------------------------------------------------------------------------
 
 func _process(delta:float)->void:
-	if !(template_name.text.empty() and template_texture.text.empty()):
+	if !(template_name.text.is_empty() and template_texture.text.is_empty()):
 		create_button.get_node(\"TextureRect\").modulate = Color(1.0, 1.0, 1.0, 1.0)
 		create_button.get_node(\"CreateButton\").disabled = false
 	else:
@@ -286,10 +286,10 @@ func change_in_input()->void:
 func load_map_symbol_template(symbol_template:MapSymbolTemplate)->void:
 	template_name.text                  = symbol_template.template_name 
 	template_texture.text               = symbol_template.template_texture
-	template_hover_animation.text       = PoolStringArray(symbol_template.template_hover_animation).join(\", \")
+	template_hover_animation.text       = PackedStringArray(symbol_template.\", \".join(template_hover_animation))
 	offset_x.value                      = symbol_template.template_offset.x
 	offset_y.value                      = symbol_template.template_offset.y
-	default_tags.text                   = PoolStringArray(symbol_template.template_default_tag)
+	default_tags.text                   = PackedStringArray(symbol_template.template_default_tag)
 
 # --------------------------------------------------------------------------------------------------
 
@@ -297,7 +297,7 @@ func load_map_symbol_template(symbol_template:MapSymbolTemplate)->void:
 func _on_save_pressed()->void:
 	var tag = null
 
-	if !(default_tags.text.split(\", \") == PoolStringArray([\"\"])):
+	if !(default_tags.text.split(\", \") == PackedStringArray([\"\"])):
 		tag = default_tags.text.split(\", \")
 
 	ResourceManager.save_file(
@@ -325,7 +325,7 @@ var radius:int = 48
 # ------------------------------------------------------------------------------
 
 func _process(_delta:float)->void:
-	get_child(0).position = self.rect_pivot_offset
+	get_child(0).position = self.pivot_offset
 
 # ------------------------------------------------------------------------------
 
@@ -339,7 +339,7 @@ func load_map_pin(symbol_template:MapSymbolTemplate)->void:
 	var map_pin:MapPin            = MapPin.new()
 	map_pin.pin_symbol_template   = symbol_template
 	map_pin.pin_name              = \"sample name\"
-	map_pin.pin_location          = self.rect_pivot_offset
+	map_pin.pin_location          = self.pivot_offset
 
 	# assign map pin resource to 
 	map_pin_node.pin_resource     = map_pin
@@ -429,8 +429,8 @@ script/source = "extends VBoxContainer
 
 signal value_changed
 
-func _on_FileDialog2_files_selected(paths:PoolStringArray)->void:
-	$HBoxContainer/Input/LineEdit.text = PoolStringArray(paths).join(' ,')
+func _on_FileDialog2_files_selected(paths:PackedStringArray)->void:
+	$HBoxContainer/Input/LineEdit.text = ' ,'.join(PackedStringArray(paths))
 	emit_signal(\"value_changed\")
 
 
@@ -489,20 +489,20 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="PlaceHolderContainer" type="Control" parent="CanvasLayer/Control/CenterContainer"]
-margin_left = 403.0
-margin_top = 276.0
-margin_right = 1516.0
-margin_bottom = 803.0
-rect_min_size = Vector2( 1113, 527 )
+offset_left = 403.0
+offset_top = 276.0
+offset_right = 1516.0
+offset_bottom = 803.0
+custom_minimum_size = Vector2( 1113, 527 )
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_right = 1113.0
-margin_bottom = 527.001
-rect_min_size = Vector2( 1113, 527 )
+offset_right = 1113.0
+offset_bottom = 527.001
+custom_minimum_size = Vector2( 1113, 527 )
 script = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -511,18 +511,18 @@ __meta__ = {
 [node name="Margin" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 
 [node name="Close" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/Margin"]
 modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -24.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 20, 20 )
+offset_left = -24.0
+offset_bottom = 24.0
+custom_minimum_size = Vector2( 20, 20 )
 icon = ExtResource( 9 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel"]
@@ -530,34 +530,34 @@ anchor_left = 0.0333333
 anchor_top = 0.056926
 anchor_right = 0.966667
 anchor_bottom = 0.943074
-margin_left = -1.90735e-06
+offset_left = -1.90735e-06
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer"]
-margin_right = 1038.0
-margin_bottom = 467.0
+offset_right = 1038.0
+offset_bottom = 467.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer"]
-margin_right = 500.0
-margin_bottom = 467.0
-rect_min_size = Vector2( 500, 0 )
+offset_right = 500.0
+offset_bottom = 467.0
+custom_minimum_size = Vector2( 500, 0 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 19.0
+offset_right = 500.0
+offset_bottom = 19.0
 text = "map pin"
 align = 1
 
 [node name="PinContainer" type="Container" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 23.0
-margin_right = 500.0
-margin_bottom = 444.0
-rect_pivot_offset = Vector2( 250, 210 )
+offset_top = 23.0
+offset_right = 500.0
+offset_bottom = 444.0
+pivot_offset = Vector2( 250, 210 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource( 23 )
@@ -567,26 +567,26 @@ position = Vector2( 250, 210 )
 
 [node name="ImageInfo" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
-margin_top = 448.0
-margin_right = 500.0
-margin_bottom = 467.0
+offset_top = 448.0
+offset_right = 500.0
+offset_bottom = 467.0
 text = "select Image"
 align = 1
 
 [node name="TabContainer" type="CenterContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer"]
-margin_left = 504.0
-margin_right = 1038.0
-margin_bottom = 467.0
+offset_left = 504.0
+offset_right = 1038.0
+offset_bottom = 467.0
 size_flags_horizontal = 3
 script = SubResource( 28 )
 
 [node name="Tab1" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer"]
 visible = false
-margin_left = 12.0
-margin_top = 33.0
-margin_right = 522.0
-margin_bottom = 433.0
-rect_min_size = Vector2( 510, 400 )
+offset_left = 12.0
+offset_top = 33.0
+offset_right = 522.0
+offset_bottom = 433.0
+custom_minimum_size = Vector2( 510, 400 )
 size_flags_horizontal = 3
 custom_constants/separation = 35
 __meta__ = {
@@ -594,30 +594,30 @@ __meta__ = {
 }
 
 [node name="Name" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
-margin_right = 510.0
-margin_bottom = 74.0
+offset_right = 510.0
+offset_bottom = 74.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name"]
-margin_right = 510.0
-margin_bottom = 19.0
+offset_right = 510.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 1 )
 text = "name"
 
 [node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name"]
-margin_top = 29.0
-margin_right = 510.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 29.0
+offset_right = 510.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 0, 45 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 4 )
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Name/Input"]
@@ -627,42 +627,42 @@ custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 placeholder_text = "map name"
 
-[node name="Texture" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
-margin_top = 109.0
-margin_right = 510.0
-margin_bottom = 183.0
+[node name="Texture2D" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
+offset_top = 109.0
+offset_right = 510.0
+offset_bottom = 183.0
 custom_constants/separation = 10
 script = SubResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture"]
-margin_right = 510.0
-margin_bottom = 19.0
+[node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D"]
+offset_right = 510.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 4 )
 text = "texture"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture"]
-margin_top = 29.0
-margin_right = 510.0
-margin_bottom = 74.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D"]
+offset_top = 29.0
+offset_right = 510.0
+offset_bottom = 74.0
 custom_constants/separation = 20
 
-[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer"]
-margin_right = 389.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 389, 45 )
+[node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer"]
+offset_right = 389.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 389, 45 )
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Input"]
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 3 )
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Input"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -670,25 +670,25 @@ custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 placeholder_text = "path to texture"
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer"]
-margin_left = 409.0
-margin_right = 510.0
-margin_bottom = 45.0
+[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer"]
+offset_left = 409.0
+offset_right = 510.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -20.0
-margin_right = 25.0
-margin_bottom = 30.0
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 30.0
 texture = ExtResource( 10 )
 
-[node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control"]
+[node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 80, 0 )
+custom_minimum_size = Vector2( 80, 0 )
 custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
@@ -698,9 +698,9 @@ custom_styles/normal = SubResource( 11 )
 text = "browse"
 
 [node name="AnimationFrames" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
-margin_top = 218.0
-margin_right = 510.0
-margin_bottom = 292.0
+offset_top = 218.0
+offset_right = 510.0
+offset_bottom = 292.0
 custom_constants/separation = 10
 script = SubResource( 31 )
 __meta__ = {
@@ -708,28 +708,28 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames"]
-margin_right = 510.0
-margin_bottom = 19.0
+offset_right = 510.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 4 )
 text = "animation frames"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames"]
-margin_top = 29.0
-margin_right = 510.0
-margin_bottom = 74.0
+offset_top = 29.0
+offset_right = 510.0
+offset_bottom = 74.0
 custom_constants/separation = 20
 
 [node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer"]
-margin_right = 389.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 389, 45 )
+offset_right = 389.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 389, 45 )
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 3 )
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input"]
@@ -741,24 +741,24 @@ custom_styles/normal = SubResource( 6 )
 placeholder_text = "animation frames"
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer"]
-margin_left = 409.0
-margin_right = 510.0
-margin_bottom = 45.0
+offset_left = 409.0
+offset_right = 510.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -20.0
-margin_right = 25.0
-margin_bottom = 30.0
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 30.0
 texture = ExtResource( 10 )
 
 [node name="Open" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 80, 0 )
+custom_minimum_size = Vector2( 80, 0 )
 custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
@@ -768,32 +768,32 @@ custom_styles/normal = SubResource( 11 )
 text = "browse"
 
 [node name="NextTab" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1"]
-margin_left = 465.0
-margin_top = 355.0
-margin_right = 510.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 45, 45 )
+offset_left = 465.0
+offset_top = 355.0
+offset_right = 510.0
+offset_bottom = 400.0
+custom_minimum_size = Vector2( 45, 45 )
 size_flags_horizontal = 10
 size_flags_vertical = 14
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.5
-margin_top = -20.0
-margin_right = 24.5
-margin_bottom = 75.0
+offset_left = -25.5
+offset_top = -20.0
+offset_right = 24.5
+offset_bottom = 75.0
 texture = ExtResource( 5 )
 
 [node name="NextButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab"]
 modulate = Color( 0.145098, 0.145098, 0.145098, 1 )
 anchor_right = 0.118421
 anchor_bottom = 1.0
-rect_min_size = Vector2( 45, 0 )
+custom_minimum_size = Vector2( 45, 0 )
 size_flags_horizontal = 10
 size_flags_vertical = 10
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_constants/hseparation = 10
+custom_constants/h_separation = 10
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
@@ -806,11 +806,11 @@ __meta__ = {
 }
 
 [node name="Tab2" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer"]
-margin_left = 12.0
-margin_top = 33.0
-margin_right = 522.0
-margin_bottom = 433.0
-rect_min_size = Vector2( 380, 400 )
+offset_left = 12.0
+offset_top = 33.0
+offset_right = 522.0
+offset_bottom = 433.0
+custom_minimum_size = Vector2( 380, 400 )
 size_flags_horizontal = 3
 custom_constants/separation = 35
 __meta__ = {
@@ -818,14 +818,14 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
-margin_right = 510.0
-margin_bottom = 74.0
+offset_right = 510.0
+offset_bottom = 74.0
 custom_constants/separation = 60
 
 [node name="Offsetx" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer"]
-margin_right = 225.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 225, 0 )
+offset_right = 225.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 225, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 __meta__ = {
@@ -833,34 +833,34 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx"]
-margin_right = 225.0
-margin_bottom = 19.0
+offset_right = 225.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 1 )
 text = "Offset x"
 
 [node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx"]
-margin_top = 29.0
-margin_right = 225.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 29.0
+offset_right = 225.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 0, 45 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 14 )
 
 [node name="LineEdit" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsetx/Input"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -5.0
+offset_right = -5.0
 
 [node name="Offsety" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer"]
-margin_left = 285.0
-margin_right = 510.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 225, 0 )
+offset_left = 285.0
+offset_right = 510.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 225, 0 )
 size_flags_horizontal = 3
 custom_constants/separation = 10
 __meta__ = {
@@ -868,55 +868,55 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety"]
-margin_right = 225.0
-margin_bottom = 19.0
+offset_right = 225.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 1 )
 text = "Offset y"
 
 [node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety"]
-margin_top = 29.0
-margin_right = 225.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 29.0
+offset_right = 225.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 0, 45 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 14 )
 
 [node name="LineEdit" type="SpinBox" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer/Offsety/Input"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -5.0
+offset_right = -5.0
 
 [node name="DefaultTags" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
-margin_top = 109.0
-margin_right = 510.0
-margin_bottom = 183.0
+offset_top = 109.0
+offset_right = 510.0
+offset_bottom = 183.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags"]
-margin_right = 510.0
-margin_bottom = 19.0
+offset_right = 510.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 1 )
 text = "default tags"
 
 [node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags"]
-margin_top = 29.0
-margin_right = 510.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 29.0
+offset_right = 510.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 0, 45 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 4 )
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTags/Input"]
@@ -927,32 +927,32 @@ custom_styles/normal = SubResource( 3 )
 placeholder_text = "map tags, eg: cat, dog"
 
 [node name="DefaultTemplate" type="VBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
-margin_top = 218.0
-margin_right = 510.0
-margin_bottom = 292.0
+offset_top = 218.0
+offset_right = 510.0
+offset_bottom = 292.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate"]
-margin_right = 510.0
-margin_bottom = 19.0
+offset_right = 510.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 1 )
 text = "default template"
 
 [node name="Input" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate"]
-margin_top = 29.0
-margin_right = 275.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 275, 45 )
+offset_top = 29.0
+offset_right = 275.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 275, 45 )
 size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 12 )
 
 [node name="LineEdit" type="OptionButton" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/DefaultTemplate/Input"]
@@ -963,37 +963,37 @@ custom_styles/normal = SubResource( 3 )
 text = "template name"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2"]
-margin_top = 327.0
-margin_right = 510.0
-margin_bottom = 400.0
+offset_top = 327.0
+offset_right = 510.0
+offset_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="CreateButton" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2"]
-margin_top = 28.0
-margin_right = 461.0
-margin_bottom = 73.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 28.0
+offset_right = 461.0
+offset_bottom = 73.0
+custom_minimum_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 size_flags_vertical = 14
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.5
-margin_top = -20.0
-margin_right = 24.5
-margin_bottom = 75.0
+offset_left = -25.5
+offset_top = -20.0
+offset_right = 24.5
+offset_bottom = 75.0
 texture = ExtResource( 7 )
 
 [node name="CreateButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton"]
 anchor_right = 0.339474
 anchor_bottom = 1.0
-rect_min_size = Vector2( 80, 0 )
+custom_minimum_size = Vector2( 80, 0 )
 size_flags_horizontal = 10
 size_flags_vertical = 10
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_constants/hseparation = 10
+custom_constants/h_separation = 10
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
@@ -1007,31 +1007,31 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Control" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2"]
-margin_left = 465.0
-margin_top = 28.0
-margin_right = 510.0
-margin_bottom = 73.0
-rect_min_size = Vector2( 45, 45 )
+offset_left = 465.0
+offset_top = 28.0
+offset_right = 510.0
+offset_bottom = 73.0
+custom_minimum_size = Vector2( 45, 45 )
 size_flags_horizontal = 8
 size_flags_vertical = 14
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.5
-margin_top = -20.0
-margin_right = 24.5
-margin_bottom = 75.0
+offset_left = -25.5
+offset_top = -20.0
+offset_right = 24.5
+offset_bottom = 75.0
 texture = ExtResource( 5 )
 
 [node name="BackButton" type="Button" parent="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton"]
 anchor_right = 0.339474
 anchor_bottom = 1.0
-margin_right = 29.7237
+offset_right = 29.7237
 size_flags_horizontal = 10
 size_flags_vertical = 10
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_constants/hseparation = 10
+custom_constants/h_separation = 10
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
@@ -1051,10 +1051,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -422.0
-margin_top = -253.0
-margin_right = 422.0
-margin_bottom = 253.0
+offset_left = -422.0
+offset_top = -253.0
+offset_right = 422.0
+offset_bottom = 253.0
 window_title = "Open a File"
 resizable = true
 mode = 0
@@ -1068,10 +1068,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -422.0
-margin_top = -253.0
-margin_right = 422.0
-margin_bottom = 253.0
+offset_left = -422.0
+offset_top = -253.0
+offset_right = 422.0
+offset_bottom = 253.0
 window_title = "Open File(s)"
 resizable = true
 mode = 1
@@ -1081,14 +1081,14 @@ current_dir = "/media/mayank/Assets1/Software Dev/world building software"
 current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/Margin/Close" to="." method="_on_Close_pressed"]
-[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
-[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_LineEdit_text_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_Open_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
+[connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D" method="_on_Open_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="change_in_input"]
 [connection signal="text_changed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Input/LineEdit" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames/HBoxContainer/Control/Open" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_Open_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/NextTab/NextButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer" method="_on_NextButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/CreateButton/CreateButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel" method="_on_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab2/HBoxContainer2/BackButton/BackButton" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer" method="_on_BackButton_pressed"]
-[connection signal="file_selected" from="PopUp/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture" method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="PopUp/FileDialog" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/Texture2D" method="_on_FileDialog_file_selected"]
 [connection signal="files_selected" from="PopUp/FileDialog2" to="CanvasLayer/Control/CenterContainer/PlaceHolderContainer/Panel/MarginContainer/HBoxContainer/TabContainer/Tab1/AnimationFrames" method="_on_FileDialog2_files_selected"]

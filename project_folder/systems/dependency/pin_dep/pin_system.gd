@@ -1,5 +1,5 @@
 class_name PinSystem
-extends Reference
+extends RefCounted
 
 # make new pin
 static func make_new_pin(

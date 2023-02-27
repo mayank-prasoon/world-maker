@@ -96,7 +96,7 @@ func _init():
 	_printers.console = _utils.Printers.ConsolePrinter.new()
 	# There were some problems in the timing of disabling this at the right
 	# time in gut_cmdln so it is disabled by default.  This is enabled
-	# by plugin_control.gd based on settings.
+	# by plugin_control.gd based checked settings.
 	_printers.console.set_disabled(true)
 
 func get_indent_text():

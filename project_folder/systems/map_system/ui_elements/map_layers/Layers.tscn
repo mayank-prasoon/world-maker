@@ -2,8 +2,8 @@
 
 [ext_resource path="res://systems/map_system/ui_elements/map_layers/layers.gd" type="Script" id=1]
 [ext_resource path="res://systems/map_system/ui_elements/map_layers/theme/default_layer_style_box.tres" type="StyleBox" id=2]
-[ext_resource path="res://assets/graphics/map/map layer/eye.svg" type="Texture" id=3]
-[ext_resource path="res://assets/graphics/map/map layer/eye-off.svg" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/map/map layer/eye.svg" type="Texture2D" id=3]
+[ext_resource path="res://assets/graphics/map/map layer/eye-unchecked.svg" type="Texture2D" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -25,8 +25,8 @@ Button/styles/pressed = SubResource( 5 )
 [node name="Layers" type="Control"]
 anchor_right = 0.126563
 anchor_bottom = 0.0277778
-rect_min_size = Vector2( 0, 30 )
-rect_pivot_offset = Vector2( 141, 15 )
+custom_minimum_size = Vector2( 0, 30 )
+pivot_offset = Vector2( 141, 15 )
 size_flags_horizontal = 3
 theme = SubResource( 6 )
 script = ExtResource( 1 )
@@ -43,18 +43,18 @@ custom_styles/panel = ExtResource( 2 )
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 mouse_filter = 2
 custom_constants/separation = 10
 
 [node name="Visible" type="TextureButton" parent="Panel/HBoxContainer"]
 modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
-margin_right = 20.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 0 )
+offset_right = 20.0
+offset_bottom = 20.0
+custom_minimum_size = Vector2( 20, 0 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -67,10 +67,10 @@ stretch_mode = 3
 
 [node name="Label" type="Label" parent="Panel/HBoxContainer"]
 modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
-margin_left = 30.0
-margin_top = 3.0
-margin_right = 233.0
-margin_bottom = 17.0
+offset_left = 30.0
+offset_top = 3.0
+offset_right = 233.0
+offset_bottom = 17.0
 size_flags_horizontal = 3
 text = "layer name"
 

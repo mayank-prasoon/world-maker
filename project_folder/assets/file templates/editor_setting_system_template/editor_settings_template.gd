@@ -1,6 +1,6 @@
 class_name EditorSettingsTemplate
 extends Resource
 
-export(Dictionary)         var last_project
-export(Array, Dictionary)  var project_list
-export(Array, int)         var pinned_projects
+@export var last_project: Dictionary
+@export var project_list # (Array, Dictionary)
+@export var pinned_projects # (Array, int)

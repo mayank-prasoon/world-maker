@@ -7,7 +7,7 @@ func _ready():
 	$VBoxContainer/ProjectVersion/LineEdit.text  = ProjectSettingsManager.project_version
 
 func _on_Back_pressed():
-	var _x = get_tree().change_scene_to(load("res://systems/system_menu/SystemMenu.tscn"))
+	var _x = get_tree().change_scene_to_packed(load("res://systems/system_menu/SystemMenu.tscn"))
 
 
 func _on_Save_pressed():

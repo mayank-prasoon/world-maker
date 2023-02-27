@@ -8,11 +8,11 @@
 
 
 class_name ImageUtilities
-extends Reference
+extends RefCounted
 
 #                            === SUB CLASS ===
 
-# load images on main thread
+# load images checked main thread
 class ImageLoader extends Resource:
 
 	# locad images
@@ -28,18 +28,18 @@ class ImageLoader extends Resource:
 # ------------------------------------------------------------------------------
 
 	# load image texture
-	static func load_image_texture(image_path:String, flag:int = Texture.FLAGS_DEFAULT)->ImageTexture:
+	static func load_image_texture(image_path:String, flag:int = Texture2D.FLAGS_DEFAULT)->ImageTexture:
 		var new_texture:ImageTexture = ImageTexture.new()
 		var file_checker = ResourceLoadSystem.FileChecker
 		if file_checker.check_file_exists(image_path) == OK:
-			new_texture.create_from_image(load_image(image_path), flag)
+			new_texture.create_from_image(load_image(image_path)) #,flag
 		
 		return new_texture
 
 # ------------------------------------------------------------------------------
 
 # change the image size
-class ImageResize extends Reference:
+class ImageResize extends RefCounted:
 
 	# image type
 	enum {
@@ -65,7 +65,7 @@ class ImageResize extends Reference:
 			ARTICLE_PROFILE:
 				selected_size = Vector2(250, 250)
 
-		image_texture.set_size_override(selected_size)
+		image_texture.set_size_2d_override(selected_size)
 
 		return image_texture
 
@@ -73,20 +73,20 @@ class ImageResize extends Reference:
 
 	# resize image to specific size
 	static func resize_image_to(image_texture:ImageTexture, new_image_size:Vector2)->ImageTexture:
-		image_texture.set_size_override(new_image_size)
+		image_texture.set_size_2d_override(new_image_size)
 		return image_texture
 
 # ------------------------------------------------------------------------------
 
-# This sub class deals with loading resource on differnt thread:
+# This sub class deals with loading resource checked differnt thread:
 class ThreadLoad extends Object:
 	signal resource_loaded(resource)
 
 	var thread:Thread = Thread.new()
 
 	# initialize the class
-	func _init(object, method:String, resource_path:String)->void:
-		var _1 = self.connect("resource_loaded", object, method)
+	func _init(object,method:String,resource_path:String):
+		var _1 = self.connect("resource_loaded",Callable(object,method))
 
 		var _2 = thread.start(
 			self,
@@ -117,7 +117,7 @@ static func load_image(image_path:String)->ImageTexture:
 		image_texture = ImageLoader.load_image_texture(image_path)
 	return image_texture
 
-# load image on thread
+# load image checked thread
 static func load_image_on_thread(object, method:String, image_path:String)->void:
 	if ResourceLoadSystem.FileChecker.check_file_exists(image_path) == OK:
 		var _thread_load:ThreadLoad = ThreadLoad.new(object, method, image_path)

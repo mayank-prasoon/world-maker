@@ -1,10 +1,10 @@
 extends Panel
 
 # === node ===
-onready var map_name:LineEdit        = $HBoxContainer/CenterContainer2/InputField/MapName/Input/LineEdit
-onready var map_texture:LineEdit     = $HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input/LineEdit
-onready var create_article:CheckBox  = $HBoxContainer/CenterContainer2/InputField/HBoxContainer2/CheckBox
-onready var create_button:Button     = $HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton
+@onready var map_name:LineEdit        = $HBoxContainer/CenterContainer2/InputField/MapName/Input/LineEdit
+@onready var map_texture:LineEdit     = $HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input/LineEdit
+@onready var create_article:CheckBox  = $HBoxContainer/CenterContainer2/InputField/HBoxContainer2/CheckBox
+@onready var create_button:Button     = $HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton
 
 #onready var map_chunk_size_x:SpinBox = $VBoxContainer2/VBoxContainer3/HBoxContainer/ChunkX
 #onready var map_chunk_size_y:SpinBox = $VBoxContainer2/VBoxContainer3/HBoxContainer/Chunky
@@ -30,15 +30,15 @@ func create_confirmation_dialog()->void:
 	new_pop_up.window_title    = "Please Confirm..."
 	new_pop_up.dialog_text     = "you are closing the map creation dialog box,\n\nnote: all filled info will be lost"
 	new_pop_up.dialog_autowrap = true
-	new_pop_up.rect_size       = Vector2(300, 150)
+	new_pop_up.size       = Vector2(300, 150)
 
 	# Label
 	var lable:Label            = new_pop_up.get_child(1)
-	lable.align                = Label.ALIGN_CENTER
+	lable.align                = Label.ALIGNMENT_CENTER
 	lable.valign               = Label.VALIGN_CENTER
 	
-	var _x = new_pop_up.connect("confirmed", self, "close_the_dialog")
-	var _y = new_pop_up.connect("confirmed", new_pop_up, "close_the_dialog")
+	var _x = new_pop_up.connect("confirmed",Callable(self,"close_the_dialog"))
+	var _y = new_pop_up.connect("confirmed",Callable(new_pop_up,"close_the_dialog"))
 	self.add_child(new_pop_up)
 
 
@@ -66,7 +66,7 @@ func _on_FileDialog_file_selected(path)->void:
 
 # hide dialog box
 func hide_map_creator()->void:
-	if (map_name.get_text().empty()) and (map_texture.get_text().empty()):
+	if (map_name.get_text().is_empty()) and (map_texture.get_text().is_empty()):
 		# check if the fields are filled
 		EventBus.emit_signal("disable_camera", false)
 		close_the_dialog()

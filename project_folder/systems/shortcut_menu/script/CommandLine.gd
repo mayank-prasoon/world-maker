@@ -1,9 +1,9 @@
 extends HBoxContainer
 
-export(String) var action_name
+@export var action_name: String
 
 func _ready():
-	var _x = $Button.connect("pressed", self, 'open_accept_dialog')
+	var _x = $Button.connect("pressed",Callable(self,'open_accept_dialog'))
 
 func open_accept_dialog():
 	var remap_dialog = get_parent().get_parent().get_node("ShortcutRemapDialog")

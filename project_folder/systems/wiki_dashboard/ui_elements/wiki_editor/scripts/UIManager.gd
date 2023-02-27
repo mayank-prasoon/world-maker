@@ -1,5 +1,5 @@
 class_name UIManager
-extends Reference
+extends RefCounted
 
 static func add_text_input(
 		node:VBoxContainer,
@@ -8,7 +8,7 @@ static func add_text_input(
 		input_value:String = ""
 	)->void:
 	
-	var input_ui:Control       = load("res://systems/dependency/ui_elements/input_text/InputText.tscn").instance()
+	var input_ui:Control       = load("res://systems/dependency/ui_elements/input_text/InputText.tscn").instantiate()
 	input_ui.name              = input_name
 
 	input_ui.input_name        = input_name
@@ -24,7 +24,7 @@ static func add_select_file(
 		input_value:String = ""
 	)->void:
 	
-	var input_ui:Control       = load("res://systems/dependency/ui_elements/input_open_file/InputOpenFile.tscn").instance()
+	var input_ui:Control       = load("res://systems/dependency/ui_elements/input_open_file/InputOpenFile.tscn").instantiate()
 	input_ui.name              = input_name
 
 	input_ui.input_name        = input_name
@@ -42,7 +42,7 @@ static func add_dropdown_input(
 		disabled:bool   = false
 	)->void:
 	
-	var input_ui:Control           = load("res://systems/dependency/ui_elements/input_dropdown/InputDropDown.tscn").instance()
+	var input_ui:Control           = load("res://systems/dependency/ui_elements/input_dropdown/InputDropDown.tscn").instantiate()
 	input_ui.name                  = input_name
 
 	input_ui.input_name            = input_name
@@ -62,7 +62,7 @@ static func add_description_input(
 		input_value:String = ""
 	)->void:
 
-	var input_ui:Control       = load("res://systems/dependency/ui_elements/input_large_text/InputLargeText.tscn").instance()
+	var input_ui:Control       = load("res://systems/dependency/ui_elements/input_large_text/InputLargeText.tscn").instantiate()
 	input_ui.name              = input_name
 	
 	input_ui.input_name        = input_name

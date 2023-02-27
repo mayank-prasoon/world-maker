@@ -5,7 +5,7 @@
 #                                     #
 
 class_name FolderManager
-extends Reference
+extends RefCounted
 
 # loop though folder and returns the file path in the form of array
 static func fetch_files_from(base_folder:String, return_path:bool = false)-> Array:
@@ -17,7 +17,7 @@ static func fetch_files_from(base_folder:String, return_path:bool = false)-> Arr
 	if folder.dir_exists(base_folder):
 		# open the directory
 		var _x = folder.open(base_folder)
-		var _y = folder.list_dir_begin()
+		var _y = folder.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		
 		# loop though the base folder
 		while true:

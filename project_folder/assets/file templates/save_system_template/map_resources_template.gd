@@ -3,12 +3,12 @@ extends Resource
 
 # === DATA OF THE MAP ====
 
-export(String)                      var map_name:String               # name of the map
-export(String, FILE)                var image_path:String             # path to the image 
-export(Vector2)                     var image_size:Vector2            # size of the image
-export(Array, Resource)             var layers:Array                  # layer used in the map
-export(Array, Resource)             var map_pins:Array                # map pins
-export(Array, String)               var tags:Array                    # tags
+@export var map_name: String:String               # name of the map
+@export var image_path:String             # path to the image  # (String, FILE)
+@export var image_size: Vector2:Vector2            # size of the image
+@export var layers:Array                  # layer used in the map # (Array, Resource)
+@export var map_pins:Array                # map pins # (Array, Resource)
+@export var tags:Array                    # tags # (Array, String)
 
 # === methods ===
 
@@ -21,7 +21,7 @@ static func fetch_save_path()->String:
 
 
 # default template prompts
-# export(Array, Dictionary)           var template_prompts:Array = [
+# export var template_prompts:Array = [ # (Array, Dictionary)
 # 	{
 # 		'name'        : 'Pins',
 # 		'description' : 'pins in the the map',

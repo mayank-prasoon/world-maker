@@ -1,6 +1,6 @@
 extends Control
 
-onready var textedit:TextEdit = $VBoxContainer/TextEdit
+@onready var textedit:TextEdit = $VBoxContainer/TextEdit
 
 func _on_Bold_pressed():
 	textedit.insert_text_at_cursor('[b]' + textedit.get_selection_text() + '[/b]')

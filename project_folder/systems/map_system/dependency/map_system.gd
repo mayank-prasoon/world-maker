@@ -51,7 +51,7 @@ class MapManager extends Object:
 	var map_layer_system:Object        = null
 
 	# initialize object
-	func _init(pin_node:Control, comment_node:Control, map_node:Control, camera_node:Camera2D)->void:
+	func _init(pin_node:Control,comment_node:Control,map_node:Control,camera_node:Camera2D):
 		self.map_layer_system       = map_layer_system
 		self.map_container_node     = map_node
 		self.pin_container_node     = pin_node
@@ -68,9 +68,9 @@ class MapManager extends Object:
 		add_pin_thread     = Thread.new()
 		add_comment_thread = Thread.new()
 		
-		var _x = add_map_thread.start(self, 'create_map_texture_node')
-		var _y = add_pin_thread.start(self, 'add_map_pins')
-		var _z = add_comment_thread.start(self, 'add_map_comments')
+		var _x = add_map_thread.start(Callable(self,'create_map_texture_node'))
+		var _y = add_pin_thread.start(Callable(self,'add_map_pins'))
+		var _z = add_comment_thread.start(Callable(self,'add_map_comments'))
 
 	# join thread
 	func join_thread()->void:
@@ -101,7 +101,7 @@ class MapManager extends Object:
 
 		for resource in self.map_resource.map_pins:
 			if resource is MapPin: 
-				var map_pin_node = map_pin_scene.instance()
+				var map_pin_node = map_pin_scene.instantiate()
 				map_pin_node.pin_resource = resource
 				pin_container_node.call_deferred("add_child", map_pin_node)
 
@@ -114,7 +114,7 @@ class MapManager extends Object:
 
 		for resource in self.map_resource.map_pins:
 			if resource is MapComment:
-				var map_comment_node = map_comment_scene.instance()
+				var map_comment_node = map_comment_scene.instantiate()
 				map_comment_node.comment_resource = resource
 				comment_container_node.call_deferred("add_child", map_comment_node)
 
@@ -132,8 +132,8 @@ class MapManager extends Object:
 
 # == initialize ==
 func _init():
-	EventBus.connect("save_map", self, '_on_save_map')
-	EventBus.connect("create_new_map", self, '_on_create_new_map')
+	EventBus.connect("save_map",Callable(self,'_on_save_map'))
+	EventBus.connect("create_new_map",Callable(self,'_on_create_new_map'))
 
 # saves map
 func _on_save_map(map_resource:MapData)->void:

@@ -7,15 +7,15 @@ var map_manger:Object                  = null
 # ------------------------------------------------------------------------------
 
 # initialize
-func _init(map_node:Control, layer_node:VBoxContainer, map_manager:Object):
+func _init(map_node:Control,layer_node:VBoxContainer,map_manager:Object):
 	self.map_texture_node_container = map_node
 	self.layer_container_node       = layer_node
 	self.map_manger                 = map_manager
 	
 	# connect signals
-	var _a = EventBus.connect("create_new_layer",  self, 'create_layer')
-	var _b = EventBus.connect("save_map_layer", self, 'save_layer')
-	var _c = EventBus.connect("assign_layer", self, 'assign_layers')
+	var _a = EventBus.connect("create_new_layer",Callable(self,'create_layer'))
+	var _b = EventBus.connect("save_map_layer",Callable(self,'save_layer'))
+	var _c = EventBus.connect("assign_layer",Callable(self,'assign_layers'))
 
 # ------------------------------------------------------------------------------
 
@@ -68,9 +68,9 @@ func create_layer_node(map_layer_resource:MapLayer)-> void:
 	map_texture_node_container.call_deferred("add_child", texture)
 
 	# create layer node
-	var layer_node:Control = load("res://systems/map_system/ui_elements/map_layers/Layers.tscn").instance()
+	var layer_node:Control = load("res://systems/map_system/ui_elements/map_layers/Layers.tscn").instantiate()
 	layer_node.texture_node             = texture
 	layer_node.map_layer_resources      = map_layer_resource
 
 	layer_container_node.add_child(layer_node)
-	layer_node.rect_size      = Vector2(272, 30)
+	layer_node.size      = Vector2(272, 30)

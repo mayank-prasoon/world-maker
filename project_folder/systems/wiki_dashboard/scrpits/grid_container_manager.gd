@@ -1,7 +1,7 @@
 extends Node 
 
 # nodes
-onready var grid:GridContainer = $"../ScrollContainer/GridContainer"
+@onready var grid:GridContainer = $"../ScrollContainer/GridContainer"
 
 # const
 const CARD_SIZE:int           = 370
@@ -26,4 +26,4 @@ func change_grid()->void:
 
 # check if size of the screen changed
 func _on_GridContainer_item_rect_changed():
-	screen_size = OS.window_size
+

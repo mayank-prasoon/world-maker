@@ -11,10 +11,10 @@ var mouse_inside:bool = true
 func if_inside_rect()->bool:
 	var is_inside = false
 
-	if get_global_mouse_position().x >= self.rect_global_position.x:
-		if get_global_mouse_position().x <= self.rect_size.x + self.rect_global_position.x:
-			if get_global_mouse_position().y >= self.rect_global_position.y:
-				if get_global_mouse_position().y <= self.rect_size.y + self.rect_global_position.y:
+	if get_global_mouse_position().x >= self.global_position.x:
+		if get_global_mouse_position().x <= self.size.x + self.global_position.x:
+			if get_global_mouse_position().y >= self.global_position.y:
+				if get_global_mouse_position().y <= self.size.y + self.global_position.y:
 					is_inside = true
 
 	return is_inside

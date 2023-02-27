@@ -1,5 +1,5 @@
 class_name PinManager
-extends Reference
+extends RefCounted
 
 # retruns the article associated with the pin
 static func get_article(pin_name:String) -> Resource:

@@ -1,6 +1,6 @@
 extends RootFieldInput
 
-#export(String) var input_value:String       = ""
+#export var input_value: String:String       = ""
 
 func _ready()->void:
 	$VBoxContainer/Label.text    = input_name

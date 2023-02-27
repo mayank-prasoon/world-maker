@@ -10,7 +10,7 @@ var default_value:Dictionary = {
 
 func _ready()->void:
 	Logger.info(name + " - " + "Node loadded")
-	var _x = connect("save_file", self.get_parent(), "save_project_settings")
+	var _x = connect("save_file",Callable(self.get_parent(),"save_project_settings"))
 
 
 func delete_old_keys()->void:
@@ -28,7 +28,7 @@ func setup_keys() -> void:
 	for i in get_parent().shortcuts:
 		for j in get_tree().get_nodes_in_group("button_keys"):
 			if(j.action_name == i):
-				j.text = OS.get_scancode_string(get_parent().shortcuts[i])
+				j.text = OS.get_keycode_string(get_parent().shortcuts[i])
 		var newkey = InputEventKey.new()
 		newkey.scancode = int(get_parent().shortcuts[i])
 		InputMap.action_add_event(i, newkey)
@@ -60,7 +60,7 @@ func default_keys():
 	for i in default_value:
 		for j in get_tree().get_nodes_in_group("button_keys"):
 			if(j.action_name == i):
-				j.text = OS.get_scancode_string(default_value[i])
+				j.text = OS.get_keycode_string(default_value[i])
 
 		var newkey = InputEventKey.new()
 		newkey.scancode = int(default_value[i])

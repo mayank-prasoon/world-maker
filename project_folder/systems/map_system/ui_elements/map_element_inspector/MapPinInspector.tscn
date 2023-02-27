@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=1]
 [ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinTags.gd" type="Script" id=2]
 [ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinPosition.gd" type="Script" id=3]
 [ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/PinArticle.gd" type="Script" id=4]
@@ -100,7 +100,7 @@ content_margin_top = 10.0
 content_margin_bottom = 10.0
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -133,9 +133,9 @@ anchor_bottom = 1.0
 script = ExtResource( 5 )
 
 [node name="MapPinInspector" type="Control" parent="."]
-margin_right = 1920.0
-margin_bottom = 750.0
-rect_min_size = Vector2( 0, 750 )
+offset_right = 1920.0
+offset_bottom = 750.0
+custom_minimum_size = Vector2( 0, 750 )
 size_flags_horizontal = 3
 theme = SubResource( 2 )
 __meta__ = {
@@ -152,23 +152,23 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="MapPinInspector/VBoxContainer"]
-margin_right = 1878.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
+offset_right = 1878.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 0, 25 )
 
 [node name="PinInspector" type="Label" parent="MapPinInspector/VBoxContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 0, 25 )
+custom_minimum_size = Vector2( 0, 25 )
 text = "Pin Inspector"
 align = 1
 valign = 1
 
 [node name="PinName" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 50.0
-margin_right = 1878.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 25 )
+offset_top = 50.0
+offset_right = 1878.0
+offset_bottom = 75.0
+custom_minimum_size = Vector2( 0, 25 )
 script = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinName"]
@@ -176,23 +176,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinName/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Pin Name"
 
 [node name="LineEdit" type="LineEdit" parent="MapPinInspector/VBoxContainer/PinName/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="PinPosition" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 100.0
-margin_right = 1878.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 0, 70 )
+offset_top = 100.0
+offset_right = 1878.0
+offset_bottom = 170.0
+custom_minimum_size = Vector2( 0, 70 )
 script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinPosition"]
@@ -200,67 +200,67 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer"]
-margin_right = 125.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 125, 0 )
+offset_right = 125.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 125, 0 )
 size_flags_vertical = 7
 text = "Pin Position"
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer"]
-margin_left = 129.0
-margin_right = 238.0
-margin_bottom = 70.0
+offset_left = 129.0
+offset_right = 238.0
+offset_bottom = 70.0
 custom_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer"]
-margin_right = 109.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
+offset_right = 109.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 0, 25 )
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 10.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 10, 0 )
+offset_top = 3.0
+offset_right = 10.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 10, 0 )
 text = "x"
 
 [node name="SpinBox" type="SpinBox" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 25.0
-margin_right = 109.0
-margin_bottom = 25.0
+offset_left = 25.0
+offset_right = 109.0
+offset_bottom = 25.0
 min_value = -100000.0
 max_value = 100000.0
 align = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer"]
-margin_top = 45.0
-margin_right = 109.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 0, 25 )
+offset_top = 45.0
+offset_right = 109.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 0, 25 )
 custom_constants/separation = 15
 
 [node name="Label2" type="Label" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer2"]
-margin_top = 3.0
-margin_right = 10.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 10, 0 )
+offset_top = 3.0
+offset_right = 10.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 10, 0 )
 text = "y"
 
 [node name="SpinBox2" type="SpinBox" parent="MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer2"]
-margin_left = 25.0
-margin_right = 109.0
-margin_bottom = 25.0
+offset_left = 25.0
+offset_right = 109.0
+offset_bottom = 25.0
 min_value = -100000.0
 max_value = 100000.0
 align = 2
 
 [node name="PinTemplate" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 195.0
-margin_right = 1878.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 0, 25 )
-rect_pivot_offset = Vector2( -373.999, 55 )
+offset_top = 195.0
+offset_right = 1878.0
+offset_bottom = 220.0
+custom_minimum_size = Vector2( 0, 25 )
+pivot_offset = Vector2( -373.999, 55 )
 script = ExtResource( 6 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinTemplate"]
@@ -268,23 +268,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinTemplate/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Pin Template"
 
 [node name="OptionButton" type="OptionButton" parent="MapPinInspector/VBoxContainer/PinTemplate/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="PinTexture" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 245.0
-margin_right = 1878.0
-margin_bottom = 445.0
-rect_min_size = Vector2( 0, 200 )
+offset_top = 245.0
+offset_right = 1878.0
+offset_bottom = 445.0
+custom_minimum_size = Vector2( 0, 200 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MapPinInspector/VBoxContainer/PinTexture"]
 anchor_right = 1.0
@@ -292,28 +292,28 @@ anchor_bottom = 1.0
 custom_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinTexture/VBoxContainer"]
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_right = 1878.0
+offset_bottom = 25.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Display Image"
 
 [node name="Button" type="Button" parent="MapPinInspector/VBoxContainer/PinTexture/VBoxContainer/HBoxContainer"]
-margin_left = 1803.0
-margin_right = 1878.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 75, 25 )
+offset_left = 1803.0
+offset_right = 1878.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 75, 25 )
 size_flags_horizontal = 10
 text = "new"
 
 [node name="Panel" type="Panel" parent="MapPinInspector/VBoxContainer/PinTexture/VBoxContainer"]
-margin_top = 35.0
-margin_right = 1878.0
-margin_bottom = 200.0
+offset_top = 35.0
+offset_right = 1878.0
+offset_bottom = 200.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="MapPinInspector/VBoxContainer/PinTexture/VBoxContainer/Panel"]
@@ -324,11 +324,11 @@ expand = true
 stretch_mode = 4
 
 [node name="PinArticle" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 470.0
-margin_right = 1878.0
-margin_bottom = 495.0
-rect_min_size = Vector2( 0, 25 )
-rect_pivot_offset = Vector2( -373.999, 55 )
+offset_top = 470.0
+offset_right = 1878.0
+offset_bottom = 495.0
+custom_minimum_size = Vector2( 0, 25 )
+pivot_offset = Vector2( -373.999, 55 )
 script = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinArticle"]
@@ -336,43 +336,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinArticle/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Pin Article"
 
 [node name="OptionButton" type="LineEdit" parent="MapPinInspector/VBoxContainer/PinArticle/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="CreateArticle" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 520.0
-margin_right = 1878.0
-margin_bottom = 545.0
-rect_min_size = Vector2( 0, 25 )
-rect_pivot_offset = Vector2( -373.999, 55 )
+offset_top = 520.0
+offset_right = 1878.0
+offset_bottom = 545.0
+custom_minimum_size = Vector2( 0, 25 )
+pivot_offset = Vector2( -373.999, 55 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/CreateArticle"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="NewArticle" type="Button" parent="MapPinInspector/VBoxContainer/CreateArticle/HBoxContainer"]
-margin_left = 1803.0
-margin_right = 1878.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 75, 25 )
+offset_left = 1803.0
+offset_right = 1878.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 75, 25 )
 size_flags_horizontal = 10
 text = "new "
 
 [node name="LinkMap" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 570.0
-margin_right = 1878.0
-margin_bottom = 595.0
-rect_min_size = Vector2( 0, 25 )
-rect_pivot_offset = Vector2( -373.999, 55 )
+offset_top = 570.0
+offset_right = 1878.0
+offset_bottom = 595.0
+custom_minimum_size = Vector2( 0, 25 )
+pivot_offset = Vector2( -373.999, 55 )
 script = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/LinkMap"]
@@ -380,23 +380,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/LinkMap/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Link Map"
 
 [node name="OptionButton" type="OptionButton" parent="MapPinInspector/VBoxContainer/LinkMap/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="PinTags" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 620.0
-margin_right = 1878.0
-margin_bottom = 645.0
-rect_min_size = Vector2( 0, 25 )
+offset_top = 620.0
+offset_right = 1878.0
+offset_bottom = 645.0
+custom_minimum_size = Vector2( 0, 25 )
 script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/PinTags"]
@@ -404,30 +404,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/PinTags/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Pin Tags"
 
 [node name="LineEdit" type="LineEdit" parent="MapPinInspector/VBoxContainer/PinTags/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 placeholder_text = "eg: house, cat"
 
 [node name="HSeparator" type="HSeparator" parent="MapPinInspector/VBoxContainer"]
-margin_top = 670.0
-margin_right = 1878.0
-margin_bottom = 674.0
+offset_top = 670.0
+offset_right = 1878.0
+offset_bottom = 674.0
 
 [node name="DeletePin" type="Control" parent="MapPinInspector/VBoxContainer"]
-margin_top = 699.0
-margin_right = 1878.0
-margin_bottom = 724.0
-rect_min_size = Vector2( 0, 25 )
-rect_pivot_offset = Vector2( -373.999, 55 )
+offset_top = 699.0
+offset_right = 1878.0
+offset_bottom = 724.0
+custom_minimum_size = Vector2( 0, 25 )
+pivot_offset = Vector2( -373.999, 55 )
 script = ExtResource( 8 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapPinInspector/VBoxContainer/DeletePin"]
@@ -435,26 +435,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapPinInspector/VBoxContainer/DeletePin/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Delete Pin"
 
 [node name="DeletePinButton" type="Button" parent="MapPinInspector/VBoxContainer/DeletePin/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_styles/hover = SubResource( 18 )
 text = "delete"
 
 [node name="FileDialog" type="FileDialog" parent="MapPinInspector"]
-margin_left = 262.0
-margin_top = 89.0
-margin_right = 721.0
-margin_bottom = 521.0
+offset_left = 262.0
+offset_top = 89.0
+offset_right = 721.0
+offset_bottom = 521.0
 theme = SubResource( 19 )
 window_title = "Open a File"
 mode = 0

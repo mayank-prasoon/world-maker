@@ -1,9 +1,9 @@
 extends RootFieldInput
 
-#export(int)    var input_value:int              = 0
-export(Array)  var input_dropdown_option:Array  = [""]
+#export var input_value: int:int              = 0
+@export var input_dropdown_option: Array:Array  = [""]
 
-onready var drop_down_menu:OptionButton = $VBoxContainer/HBoxContainer/OptionButton
+@onready var drop_down_menu:OptionButton = $VBoxContainer/HBoxContainer/OptionButton
 
 func _ready()->void:
 	$VBoxContainer/Label.text = input_name

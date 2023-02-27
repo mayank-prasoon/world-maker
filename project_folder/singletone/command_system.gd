@@ -2,13 +2,13 @@ extends Node
 
 # === NODES ===
 
-onready var console:VBoxContainer = $CanvasLayer/CommandSystemInterface/Console/Log
-onready var API:Node              = $CommandAPI
-onready var command_line:LineEdit = $CanvasLayer/CommandSystemInterface/HBoxContainer/CommandInput
+@onready var console:VBoxContainer = $CanvasLayer/CommandSystemInterface/Console/Log
+@onready var API:Node              = $CommandAPI
+@onready var command_line:LineEdit = $CanvasLayer/CommandSystemInterface/HBoxContainer/CommandInput
 
 # === VARIABLES ===
 
-export(bool) var command_line_state = false
+@export var command_line_state: bool = false
 
 func _ready():
 	$EffectLayer/Control.visible = false

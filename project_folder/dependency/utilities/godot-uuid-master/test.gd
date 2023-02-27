@@ -10,14 +10,14 @@ const uuid_util = preload("res://utilities/godot-uuid-master/uuid.gd")
 func benchmark():
 	print('Benchmarking ...')
 
-	var begin = OS.get_ticks_msec()
+	var begin = Time.get_ticks_msec()
 	var index = 0
 
 	while index < NUMBER_OF_TEST:
 		uuid_util.generate()
 		index += 1
 
-	var duration = 1.0 * OS.get_ticks_msec() - begin
+	var duration = 1.0 * Time.get_ticks_msec() - begin
 
 	print('uuid/sec: %.02f (time: %sms)' % [ NUMBER_OF_TEST / duration, duration])
 	print('Benchmark done')

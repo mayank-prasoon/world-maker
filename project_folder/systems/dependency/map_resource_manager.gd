@@ -9,7 +9,7 @@
 #
 
 class_name MapResourceSystem
-extends Reference
+extends RefCounted
 
 # =============================================== #
 #               MAP RESOURCE MANAGER              # 
@@ -17,7 +17,7 @@ extends Reference
 
 # map resource manager
 
-class MapResourceManager extends Reference:
+class MapResourceManager extends RefCounted:
 	# create new map
 	static func create_map_resource(map_name:String, map_texture:String, article:bool)->void:
 		# instance and add the loading scene to the scene	
@@ -57,7 +57,7 @@ class MapResourceManager extends Reference:
 			ResourceManager.MAP
 		)
 
-class MapPinResourceManager extends Reference:
+class MapPinResourceManager extends RefCounted:
 	# create new map pin
 	static func create_new_pin_resource(pin_uid:String, pin_location:Vector2)->void:
 		ResourceManager.save_file(

@@ -1,13 +1,13 @@
 extends Control
 
 # === NODES ===
-onready var pin_name_node:LineEdit            = $MapPinInspector/VBoxContainer/PinName/HBoxContainer/LineEdit
-onready var template_select_node:OptionButton = $MapPinInspector/VBoxContainer/PinTemplate/HBoxContainer/OptionButton
-onready var pin_x_location_node:SpinBox       = $MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
-onready var pin_y_location_node:SpinBox       = $MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
-onready var pin_article_node:LineEdit         = $MapPinInspector/VBoxContainer/PinArticle/HBoxContainer/OptionButton
-onready var create_pin_article_node:Button    = $MapPinInspector/VBoxContainer/CreateArticle/HBoxContainer/NewArticle
-onready var select_link_map_node:OptionButton = $MapPinInspector/VBoxContainer/LinkMap/HBoxContainer/OptionButton
+@onready var pin_name_node:LineEdit            = $MapPinInspector/VBoxContainer/PinName/HBoxContainer/LineEdit
+@onready var template_select_node:OptionButton = $MapPinInspector/VBoxContainer/PinTemplate/HBoxContainer/OptionButton
+@onready var pin_x_location_node:SpinBox       = $MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
+@onready var pin_y_location_node:SpinBox       = $MapPinInspector/VBoxContainer/PinPosition/HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
+@onready var pin_article_node:LineEdit         = $MapPinInspector/VBoxContainer/PinArticle/HBoxContainer/OptionButton
+@onready var create_pin_article_node:Button    = $MapPinInspector/VBoxContainer/CreateArticle/HBoxContainer/NewArticle
+@onready var select_link_map_node:OptionButton = $MapPinInspector/VBoxContainer/LinkMap/HBoxContainer/OptionButton
 
 # === RESOURCE FILE ===
 var resource_file:MapPin = MapPin.new()
@@ -42,7 +42,7 @@ func _ready() -> void:
 		
 
 	for node in get_tree().get_nodes_in_group('map_inspector_input_field'):
-		node.connect('input_value_changed', self, 'input_value_changed')
+		node.connect('input_value_changed',Callable(self,'input_value_changed'))
 	
 
 # ------------------------------------------------------------------------------

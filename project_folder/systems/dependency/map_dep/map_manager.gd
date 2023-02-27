@@ -1,6 +1,6 @@
 # this handles the map properties
 class_name MapPropertyManager
-extends Reference
+extends RefCounted
 
 # fetches all the tags in a map resource
 static func get_tags(map_name:String) -> Array:

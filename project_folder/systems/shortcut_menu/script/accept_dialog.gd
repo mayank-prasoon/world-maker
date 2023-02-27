@@ -1,7 +1,7 @@
-extends PopupDialog
+extends Popup
 
-export(String) var action_name:String  = ''
-export(InputEvent) var input:InputEvent
+@export var action_name: String:String  = ''
+@export var input: InputEvent:InputEvent
 
 var i:bool = false
 

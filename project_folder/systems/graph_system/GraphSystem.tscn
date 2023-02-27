@@ -2,34 +2,34 @@
 
 [ext_resource path="res://systems/map_system/scripts/map_camera.gd" type="Script" id=2]
 [ext_resource path="res://systems/map_system/scripts/LayerOptions.gd" type="Script" id=3]
-[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/map/article reader/ci_close-big.png" type="Texture2D" id=4]
 [ext_resource path="res://systems/map_system/scripts/inspector.gd" type="Script" id=5]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=7]
 [ext_resource path="res://systems/map_system/scripts/Map Layers.gd" type="Script" id=8]
 [ext_resource path="res://systems/map_system/scripts/ViewTools.gd" type="Script" id=9]
-[ext_resource path="res://assets/graphics/map/Polygon 7.png" type="Texture" id=10]
-[ext_resource path="res://assets/graphics/dashboard/icons/plus.svg" type="Texture" id=11]
-[ext_resource path="res://assets/graphics/map/new Symbol/icon/menu.svg" type="Texture" id=12]
-[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture" id=13]
-[ext_resource path="res://assets/graphics/map/heroicons-solid_pencil-alt.png" type="Texture" id=14]
-[ext_resource path="res://assets/graphics/map/clarity_layers-solid.png" type="Texture" id=15]
-[ext_resource path="res://assets/graphics/map/Group 3.png" type="Texture" id=16]
-[ext_resource path="res://assets/graphics/map/cil_trash.png" type="Texture" id=17]
-[ext_resource path="res://assets/graphics/map/edit.svg" type="Texture" id=18]
+[ext_resource path="res://assets/graphics/map/Polygon 7.png" type="Texture2D" id=10]
+[ext_resource path="res://assets/graphics/dashboard/icons/plus.svg" type="Texture2D" id=11]
+[ext_resource path="res://assets/graphics/map/new Symbol/icon/menu.svg" type="Texture2D" id=12]
+[ext_resource path="res://assets/graphics/map/chevron-right.svg" type="Texture2D" id=13]
+[ext_resource path="res://assets/graphics/map/heroicons-solid_pencil-alt.png" type="Texture2D" id=14]
+[ext_resource path="res://assets/graphics/map/clarity_layers-solid.png" type="Texture2D" id=15]
+[ext_resource path="res://assets/graphics/map/Group 3.png" type="Texture2D" id=16]
+[ext_resource path="res://assets/graphics/map/cil_trash.png" type="Texture2D" id=17]
+[ext_resource path="res://assets/graphics/map/edit.svg" type="Texture2D" id=18]
 [ext_resource path="res://systems/map_system/scripts/article_reader.gd" type="Script" id=19]
-[ext_resource path="res://assets/graphics/map/article reader/eva_expand-fill.png" type="Texture" id=20]
-[ext_resource path="res://assets/graphics/map/view tool/carbon_add.png" type="Texture" id=21]
-[ext_resource path="res://assets/graphics/map/view tool/carbon_subtract.png" type="Texture" id=22]
-[ext_resource path="res://assets/graphics/map/view tool/ant-design_expand-outlined.png" type="Texture" id=23]
-[ext_resource path="res://assets/graphics/map/external-content.duckduckgo.com.png" type="Texture" id=24]
+[ext_resource path="res://assets/graphics/map/article reader/eva_expand-fill.png" type="Texture2D" id=20]
+[ext_resource path="res://assets/graphics/map/view tool/carbon_add.png" type="Texture2D" id=21]
+[ext_resource path="res://assets/graphics/map/view tool/carbon_subtract.png" type="Texture2D" id=22]
+[ext_resource path="res://assets/graphics/map/view tool/ant-design_expand-outlined.png" type="Texture2D" id=23]
+[ext_resource path="res://assets/graphics/map/external-content.duckduckgo.com.png" type="Texture2D" id=24]
 
 [sub_resource type="GDScript" id=56]
 script/source = "extends Control
 
-export(Resource) var graph_map:Resource = GraphMap.new()
+@export var graph_map: Resource:Resource = GraphMap.new()
 
 # create the graph node
-class CreateGraphNode extends Reference:
+class CreateGraphNode extends RefCounted:
 	const GRAPH_NODE_SCENE:PackedScene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
 
 	var graph_node_container:Node2D   = Node2D.new()
@@ -37,7 +37,7 @@ class CreateGraphNode extends Reference:
 
 # ------------------------------------------------------------------------------
 
-	func _init(graph_node_container:Node2D, resource:GraphMap) -> void:
+	func _init(graph_node_container:Node2D,resource:GraphMap):
 		self.graph_map_resource = resource
 		self.graph_node_container = graph_node_container
 		self.create_graph_nodes()
@@ -51,7 +51,7 @@ class CreateGraphNode extends Reference:
 
 		# this algorithum needs to optimized
 		for graph_node in graph_map_resource.graph_map.keys():
-			var graph_node_instance = GRAPH_NODE_SCENE.instance()
+			var graph_node_instance = GRAPH_NODE_SCENE.instantiate()
 			graph_node_instance.resource = graph_node
 			node_list[graph_node] = graph_node_instance
 			graph_node_container.add_child(graph_node_instance)
@@ -77,7 +77,7 @@ class CreateGraphNode extends Reference:
 # ------------------------------------------------------------------------------
 
 # add a Graph node
-class AddNode extends Reference:
+class AddNode extends RefCounted:
 	const GRAPH_NODE_SCENE:PackedScene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
 	
 	var graph_node_container:Node2D = Node2D.new()
@@ -88,7 +88,7 @@ class AddNode extends Reference:
 
 # ------------------------------------------------------------------------------
 
-	func _init(c_node:Node2D, res:GraphMap, node_name:String=\"\", node_image:String=\"\", node_article:String=\"\") -> void:
+	func _init(c_node:Node2D,res:GraphMap,node_name:String=\"\",node_image:String=\"\",node_article:String=\"\"):
 		self.graph_node_container = c_node
 		self.graph_map_res        = res
 
@@ -103,14 +103,14 @@ class AddNode extends Reference:
 	# creates new graph node
 	func create_new_graph_node()->void:
 		graph_map_res.graph_map[child_resource] = []
-		child_node = GRAPH_NODE_SCENE.instance()
+		child_node = GRAPH_NODE_SCENE.instantiate()
 		child_node.resource = child_resource
 		graph_node_container.add_child(child_node)
 
 # ------------------------------------------------------------------------------
 
 # add child to the graph node
-class AddChildNode extends Reference:
+class AddChildNode extends RefCounted:
 	const GRAPH_NODE_SCENE:PackedScene = preload('res://systems/graph_system/graph_node/graph_node.tscn')
 	
 	var graph_node_container:Node2D = Node2D.new()
@@ -122,7 +122,7 @@ class AddChildNode extends Reference:
 
 # ------------------------------------------------------------------------------
 
-	func _init(c_node:Node2D, node:Node2D, res:GraphMap, node_name:String=\"\", node_image:String=\"\", node_article:String=\"\") -> void:
+	func _init(c_node:Node2D,node:Node2D,res:GraphMap,node_name:String=\"\",node_image:String=\"\",node_article:String=\"\"):
 		self.graph_node_container = c_node
 		self.graph_node           = node
 		self.graph_map_res        = res
@@ -145,7 +145,7 @@ class AddChildNode extends Reference:
 
 	# add child node
 	func add_child_node()->void:
-		child_node = GRAPH_NODE_SCENE.instance()
+		child_node = GRAPH_NODE_SCENE.instantiate()
 		child_node.resource = child_resource
 		graph_node_container.add_child(child_node)
 		graph_node.ChildNodes.append(child_node)
@@ -154,7 +154,7 @@ class AddChildNode extends Reference:
 # ------------------------------------------------------------------------------
 
 # add establish connection between nodes
-class EstablishConnection extends Reference:
+class EstablishConnection extends RefCounted:
 
 	var graph_map_res:GraphMap = GraphMap.new()
 	
@@ -163,7 +163,7 @@ class EstablishConnection extends Reference:
 
 # ------------------------------------------------------------------------------
 
-	func _init(graph_node:Node2D, child_node:Node2D, res:GraphMap) -> void:
+	func _init(graph_node:Node2D,child_node:Node2D,res:GraphMap):
 		self.graph_node    = graph_node
 		self.child_node    = child_node
 		self.graph_map_res = res
@@ -180,14 +180,14 @@ class EstablishConnection extends Reference:
 # ------------------------------------------------------------------------------
 
 # remove the connection of the given nodes
-class RemoveConnection extends Reference:
+class RemoveConnection extends RefCounted:
 
 	var graph_map_res:GraphMap = GraphMap.new()
 	var graph_node:Node2D      = Node2D.new() 
 
 # ------------------------------------------------------------------------------
 
-	func _init(graph_node:Node2D, res:GraphMap) -> void:
+	func _init(graph_node:Node2D,res:GraphMap):
 		self.graph_node    = graph_node
 		self.graph_map_res = res
 		self.remove_graph_node()
@@ -218,7 +218,7 @@ class RemoveConnection extends Reference:
 # ------------------------------------------------------------------------------
 
 # remove the graph node
-class RemoveGraphNode extends Reference:
+class RemoveGraphNode extends RefCounted:
 
 	var graph_map_res:GraphMap = GraphMap.new()
 	var graph_node:Node2D      = Node2D.new() 
@@ -226,7 +226,7 @@ class RemoveGraphNode extends Reference:
 # ------------------------------------------------------------------------------
 
 
-	func _init(graph_node:Node2D, res:GraphMap) -> void:
+	func _init(graph_node:Node2D,res:GraphMap):
 		self.graph_node    = graph_node
 		self.graph_map_res = res
 		self.remove_graph_node()
@@ -301,7 +301,7 @@ enum ADD {
 
 # === NODE(s) ===
 
-onready var pop_up_menu:PopupMenu = $\"../Camera2D/CanvasLayer/Menu/PopupMenu\"
+@onready var pop_up_menu:PopupMenu = $\"../Camera2D/CanvasLayer/Menu/PopupMenu\"
 
 var mouse_position:Vector2 = Vector2(0,0)
 
@@ -311,15 +311,15 @@ var mouse_position:Vector2 = Vector2(0,0)
 
 
 func _ready()->void:
-	var _y = EventBus.connect(\"mouse_outside_map_element\", self, '_on_mouse_outside_element')
-	var _z = EventBus.connect(\"mouse_inside_map_element\", self, '_on_mouse_inside_element')
+	var _y = EventBus.connect(\"mouse_outside_map_element\",Callable(self,'_on_mouse_outside_element'))
+	var _z = EventBus.connect(\"mouse_inside_map_element\",Callable(self,'_on_mouse_inside_element'))
 	
 
 # ------------------------------------------------------------------------------
 
 func open_add_menu()->void:
 	pop_up_menu.items = []
-	pop_up_menu.rect_size.y = 0
+	pop_up_menu.size.y = 0
 
 	menu = []
 	
@@ -344,14 +344,14 @@ func open_add_menu()->void:
 # opens the menu
 func open_menu()->void:
 	pop_up_menu.popup()
-	pop_up_menu.rect_global_position = get_viewport().get_mouse_position()
+	pop_up_menu.global_position = get_viewport().get_mouse_position()
 	mouse_position                   = get_owner().get_global_mouse_position()
 
 # ------------------------------------------------------------------------------
 
 func open_pin_menu() ->void:
 	pop_up_menu.items = []
-	pop_up_menu.rect_size.y = 0
+	pop_up_menu.size.y = 0
 	
 	menu = []
 	
@@ -379,7 +379,7 @@ func open_pin_menu() ->void:
 func _unhandled_input(event):
 	# run when right mouse button is clicked
 	if event is InputEventMouseButton:
-		if event.is_pressed() && event.button_index == BUTTON_MASK_RIGHT:
+		if event.is_pressed() && event.button_index == MOUSE_BUTTON_MASK_RIGHT:
 			if !mouse_inside_element:
 				open_add_menu()
 			if mouse_inside_element and map_element is MapPinNode:
@@ -388,12 +388,12 @@ func _unhandled_input(event):
 # ------------------------------------------------------------------------------
 
 	# run when left mouse button is clicked
-		if event.is_doubleclick() && event.button_index == BUTTON_MASK_LEFT:
+		if event.is_double_click() && event.button_index == MOUSE_BUTTON_MASK_LEFT:
 			if mouse_inside_element and map_element is MapPinNode:
 				EventBus.emit_signal(\"add_pin_inspector\", map_element.pin_resource, map_element)
 				EventBus.emit_signal(\"open_article_panel\", map_element.pin_resource.pin_article)
 
-		elif event.is_pressed() && event.button_index == BUTTON_MASK_LEFT && !mouse_inside_element:
+		elif event.is_pressed() && event.button_index == MOUSE_BUTTON_MASK_LEFT && !mouse_inside_element:
 			EventBus.emit_signal('clear_inspector')
 			EventBus.emit_signal(\"close_article_panel\")
 
@@ -447,7 +447,7 @@ func _on_mouse_outside_element()->void:
 
 ## check if any map exists
 #func check_if_map_exists()->bool:
-#	if get_owner().map_texture_collection_node.get_children().empty():
+#	if get_owner().map_texture_collection_node.get_children().is_empty():
 #		print_debug(\"there are no maps\")
 #		return false
 #	else:
@@ -513,7 +513,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 7 )
@@ -554,7 +554,7 @@ var map_creator:PackedScene = load(\"res://systems/map_system/ui_elements/map_cr
 # map creator as child
 func _on_Button_pressed():
 	var root_node = $\"../../../..\"
-	root_node.add_child(map_creator.instance())
+	root_node.add_child(map_creator.instantiate())
 "
 
 [sub_resource type="StyleBoxEmpty" id=16]
@@ -564,7 +564,7 @@ func _on_Button_pressed():
 [sub_resource type="GDScript" id=18]
 script/source = "extends Button
 
-onready var inspector_tab = $\"../../Inspector\"
+@onready var inspector_tab = $\"../../Inspector\"
 
 func _physics_process(_delta:float)->void:
 	if self.pressed:
@@ -585,7 +585,7 @@ corner_radius_top_left = 5
 [sub_resource type="GDScript" id=20]
 script/source = "extends Button
 
-onready var map_layer_tab = $\"../../MapLayers\"
+@onready var map_layer_tab = $\"../../MapLayers\"
 
 func _physics_process(_delta:float)->void:
 	if self.pressed:
@@ -674,14 +674,14 @@ func _on_Button_toggled(button_pressed):
 [sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("TextureRect:rect_rotation")
+tracks/0/path = NodePath("TextureRect:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -690,14 +690,14 @@ tracks/0/keys = {
 resource_name = "button_pressed"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("TextureRect:rect_rotation")
+tracks/0/path = NodePath("TextureRect:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( -2, -2 ),
 "update": 0,
 "values": [ -180.0, 0.0 ]
 }
@@ -725,7 +725,7 @@ bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 [sub_resource type="StyleBoxFlat" id=37]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
-[sub_resource type="DynamicFont" id=38]
+[sub_resource type="FontFile" id=38]
 size = 20
 use_mipmaps = true
 use_filter = true
@@ -757,14 +757,14 @@ content_margin_bottom = 25.0
 script/source = "extends ConfirmationDialog
 
 func _ready()->void:
-	get_child(1).align  = Label.ALIGN_CENTER
+	get_child(1).align  = Label.ALIGNMENT_CENTER
 	get_child(1).valign = Label.VALIGN_CENTER
 
 func _on_ConfirmationDialog_confirmed()->void:
 	EventBus.emit_signal(\"delete_current_map\")
 "
 
-[sub_resource type="DynamicFont" id=52]
+[sub_resource type="FontFile" id=52]
 size = 30
 use_mipmaps = true
 use_filter = true
@@ -779,8 +779,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.847 ]
 }
@@ -790,14 +790,14 @@ resource_name = "loop_animation"
 length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("TextureRect:rect_scale")
+tracks/0/path = NodePath("TextureRect:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( -2, 2, 0.5 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2 ),
+"transitions": PackedFloat32Array( -2, 2, 0.5 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 0.5 ), Vector2( 0.5, 1.5 ) ]
 }
@@ -808,8 +808,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.794 ]
 }
@@ -823,8 +823,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -835,8 +835,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0 ]
 }
@@ -850,8 +850,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.7, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -862,8 +862,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.9, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 0, 2 ]
 }
@@ -883,7 +883,7 @@ script = SubResource( 61 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 limit_smoothed = true
-smoothing_enabled = true
+follow_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource( 2 )
@@ -897,8 +897,8 @@ layer = -1
 [node name="Background" type="Control" parent="Camera2D/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.0
-margin_bottom = -1.0
+offset_top = -1.0
+offset_bottom = -1.0
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Background/Background"]
@@ -923,8 +923,8 @@ anchor_left = 0.47168
 anchor_top = 0.451667
 anchor_right = 0.491211
 anchor_bottom = 0.485
-margin_right = 80.0
-rect_min_size = Vector2( 100, 0 )
+offset_right = 80.0
+custom_minimum_size = Vector2( 100, 0 )
 theme = SubResource( 58 )
 allow_search = true
 __meta__ = {
@@ -932,10 +932,10 @@ __meta__ = {
 }
 
 [node name="AddMenu" type="PopupMenu" parent="Camera2D/CanvasLayer/Menu/PopupMenu"]
-margin_left = 29.0
-margin_top = 9.0
-margin_right = 133.0
-margin_bottom = 79.0
+offset_left = 29.0
+offset_top = 9.0
+offset_right = 133.0
+offset_bottom = 79.0
 items = [ "pin", null, 0, false, false, 0, 0, null, "", false, "comment", null, 0, false, false, 1, 0, null, "", false ]
 allow_search = true
 
@@ -951,9 +951,9 @@ __meta__ = {
 }
 
 [node name="MapToolBar" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer"]
-margin_right = 1890.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
+offset_right = 1890.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 0, 40 )
 mouse_filter = 2
 script = SubResource( 59 )
 
@@ -965,9 +965,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 0 )
+offset_right = 40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 0 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -975,19 +975,19 @@ toggle_mode = true
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
 [node name="MapSelectionMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer"]
-margin_left = 48.0
-margin_right = 1890.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 184, 0 )
+offset_left = 48.0
+offset_right = 1890.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 184, 0 )
 mouse_filter = 2
 size_flags_horizontal = 7
 size_flags_vertical = 3
@@ -1004,20 +1004,20 @@ __meta__ = {
 }
 
 [node name="MenuButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer"]
-margin_left = 1542.0
-margin_right = 1792.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 250, 40 )
+offset_left = 1542.0
+offset_right = 1792.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 250, 40 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 10
 align = 1
 
 [node name="Button" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/MapToolBar/HBoxContainer/MapSelectionMenu/HBoxContainer"]
-margin_left = 1802.0
-margin_right = 1842.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 1802.0
+offset_right = 1842.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 
@@ -1025,17 +1025,17 @@ mouse_default_cursor_shape = 2
 modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 texture = ExtResource( 11 )
 expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer"]
-margin_top = 55.0
-margin_right = 1890.0
-margin_bottom = 1049.0
+offset_top = 55.0
+offset_right = 1890.0
+offset_bottom = 1049.0
 mouse_filter = 2
 size_flags_vertical = 3
 __meta__ = {
@@ -1043,10 +1043,10 @@ __meta__ = {
 }
 
 [node name="SideMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer"]
-margin_left = 1590.0
-margin_right = 1890.0
-margin_bottom = 994.0
-rect_min_size = Vector2( 300, 0 )
+offset_left = 1590.0
+offset_right = 1890.0
+offset_bottom = 994.0
+custom_minimum_size = Vector2( 300, 0 )
 mouse_filter = 2
 size_flags_horizontal = 10
 
@@ -1058,9 +1058,9 @@ size_flags_horizontal = 0
 custom_constants/separation = 20
 
 [node name="Inspector" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 934.0
-rect_min_size = Vector2( 300, 400 )
+offset_right = 300.0
+offset_bottom = 934.0
+custom_minimum_size = Vector2( 300, 400 )
 mouse_filter = 2
 size_flags_vertical = 7
 script = ExtResource( 5 )
@@ -1069,8 +1069,8 @@ script = ExtResource( 5 )
 anchor_left = 1.05556
 anchor_right = 2.05556
 anchor_bottom = 1.0
-margin_left = -1.66669
-margin_right = -1.66669
+offset_left = -1.66669
+offset_right = -1.66669
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -1081,16 +1081,16 @@ anchor_bottom = 1.0
 custom_constants/separation = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer"]
-margin_right = 300.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
-rect_pivot_offset = Vector2( -411.001, 124 )
+offset_right = 300.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
+pivot_offset = Vector2( -411.001, 124 )
 custom_constants/separation = 0
 
 [node name="Inspector" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer"]
-margin_right = 150.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 0 )
+offset_right = 150.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 16 )
@@ -1112,31 +1112,31 @@ custom_styles/panel = SubResource( 21 )
 anchor_left = 0.0537634
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
+offset_left = 10.0
 mouse_filter = 2
 custom_constants/separation = 5
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer/Inspector/HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_right = 30.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 mouse_filter = 2
 texture = ExtResource( 14 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer/Inspector/HBoxContainer"]
-margin_left = 35.0
-margin_top = 5.0
-margin_right = 100.0
-margin_bottom = 24.0
+offset_left = 35.0
+offset_top = 5.0
+offset_right = 100.0
+offset_bottom = 24.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Inspector"
 
 [node name="Layer" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer"]
-margin_left = 150.0
-margin_right = 300.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 150.0
+offset_right = 300.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 16 )
@@ -1157,33 +1157,33 @@ color = Color( 0.203922, 0.203922, 0.203922, 1 )
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer/Layer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -15.0
+offset_right = -15.0
 mouse_filter = 2
 custom_constants/separation = 5
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer/Layer/HBoxContainer"]
-margin_left = 30.0
-margin_right = 60.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 30.0
+offset_right = 60.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 mouse_filter = 2
 texture = ExtResource( 15 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/HBoxContainer/Layer/HBoxContainer"]
-margin_left = 65.0
-margin_top = 5.0
-margin_right = 104.0
-margin_bottom = 24.0
+offset_left = 65.0
+offset_top = 5.0
+offset_right = 104.0
+offset_bottom = 24.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Layer"
 
 [node name="Inspector" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer"]
 visible = false
-margin_top = 30.0
-margin_right = 300.0
-margin_bottom = 944.0
+offset_top = 30.0
+offset_right = 300.0
+offset_bottom = 944.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -1204,14 +1204,14 @@ __meta__ = {
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/Inspector/Inspector"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "select an element on the map"
+text = "select an element checked the map"
 align = 1
 valign = 1
 
 [node name="MapLayers" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer"]
-margin_top = 30.0
-margin_right = 300.0
-margin_bottom = 934.0
+offset_top = 30.0
+offset_right = 300.0
+offset_bottom = 934.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -1223,17 +1223,17 @@ custom_styles/panel = SubResource( 27 )
 [node name="VboxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 custom_constants/separation = 15
 script = ExtResource( 8 )
 
 [node name="LayerOptions" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer"]
-margin_right = 280.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
+offset_right = 280.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 0, 25 )
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions"]
@@ -1243,16 +1243,16 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer"]
-margin_right = 298.0
-margin_bottom = 29.0
+offset_right = 298.0
+offset_bottom = 29.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OptionButton" type="OptionButton" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_right = 88.0
-margin_bottom = 29.0
+offset_right = 88.0
+offset_bottom = 29.0
 size_flags_horizontal = 7
 custom_styles/hover = SubResource( 31 )
 custom_styles/pressed = SubResource( 32 )
@@ -1263,10 +1263,10 @@ items = [ "Normal", null, false, 0, null, "Multiply", null, false, 1, null, "Div
 selected = 0
 
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_left = 98.0
-margin_top = 5.0
-margin_right = 150.0
-margin_bottom = 24.0
+offset_left = 98.0
+offset_top = 5.0
+offset_right = 150.0
+offset_bottom = 24.0
 text = "opacity"
 align = 1
 valign = 1
@@ -1275,9 +1275,9 @@ __meta__ = {
 }
 
 [node name="SpinBox" type="SpinBox" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerOptions/VBoxContainer/HBoxContainer"]
-margin_left = 160.0
-margin_right = 298.0
-margin_bottom = 29.0
+offset_left = 160.0
+offset_right = 298.0
+offset_bottom = 29.0
 theme = SubResource( 30 )
 value = 100.0
 align = 1
@@ -1287,9 +1287,9 @@ __meta__ = {
 }
 
 [node name="LayersContainer" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer"]
-margin_top = 40.0
-margin_right = 280.0
-margin_bottom = 844.0
+offset_top = 40.0
+offset_right = 280.0
+offset_bottom = 844.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
@@ -1307,10 +1307,10 @@ __meta__ = {
 }
 
 [node name="LayerMenu" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer"]
-margin_top = 859.0
-margin_right = 280.0
-margin_bottom = 884.0
-rect_min_size = Vector2( 0, 25 )
+offset_top = 859.0
+offset_right = 280.0
+offset_bottom = 884.0
+custom_minimum_size = Vector2( 0, 25 )
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerMenu"]
@@ -1319,9 +1319,9 @@ anchor_bottom = 1.0
 custom_constants/separation = 25
 
 [node name="Add" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerMenu/HBoxContainer"]
-margin_right = 25.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 25, 0 )
+offset_right = 25.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 25, 0 )
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 28 )
 custom_styles/pressed = SubResource( 28 )
@@ -1333,10 +1333,10 @@ expand_icon = true
 
 [node name="Edit" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerMenu/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.666667 )
-margin_left = 50.0
-margin_right = 75.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 25, 0 )
+offset_left = 50.0
+offset_right = 75.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 25, 0 )
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 28 )
 custom_styles/pressed = SubResource( 28 )
@@ -1347,10 +1347,10 @@ icon = ExtResource( 18 )
 expand_icon = true
 
 [node name="Delete" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/VboxContainer/MapLayers/VboxContainer/LayerMenu/HBoxContainer"]
-margin_left = 255.0
-margin_right = 280.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 25, 0 )
+offset_left = 255.0
+offset_right = 280.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 25, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 10
 custom_styles/hover = SubResource( 28 )
@@ -1366,11 +1366,11 @@ anchor_left = -0.052
 anchor_top = 0.53
 anchor_right = -0.052
 anchor_bottom = 0.53
-margin_left = -14.4
-margin_top = -15.0
-margin_right = 15.6
-margin_bottom = 15.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = -14.4
+offset_top = -15.0
+offset_right = 15.6
+offset_bottom = 15.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 24 )
@@ -1383,7 +1383,7 @@ script = SubResource( 13 )
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector/Panel/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 15, 15 )
+pivot_offset = Vector2( 15, 15 )
 texture = ExtResource( 13 )
 expand = true
 
@@ -1394,11 +1394,11 @@ anims/button_pressed = SubResource( 15 )
 [node name="Tween" type="Tween" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/Inspector"]
 
 [node name="ViewTools" type="Control" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer"]
-margin_left = 165.0
-margin_top = 954.0
-margin_right = 300.0
-margin_bottom = 994.0
-rect_min_size = Vector2( 135, 40 )
+offset_left = 165.0
+offset_top = 954.0
+offset_right = 300.0
+offset_bottom = 994.0
+custom_minimum_size = Vector2( 135, 40 )
 mouse_filter = 1
 size_flags_horizontal = 10
 size_flags_vertical = 8
@@ -1407,7 +1407,7 @@ script = ExtResource( 9 )
 [node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 100, 0 )
+custom_minimum_size = Vector2( 100, 0 )
 custom_styles/panel = SubResource( 44 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel"]
@@ -1417,9 +1417,9 @@ size_flags_horizontal = 0
 alignment = 1
 
 [node name="ZoomIn" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_right = 40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 45 )
@@ -1429,16 +1429,16 @@ custom_styles/disabled = SubResource( 48 )
 custom_styles/normal = SubResource( 49 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer/ZoomIn"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 21 )
 stretch_mode = 4
 
 [node name="ZoomOut" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 48.0
-margin_right = 88.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 48.0
+offset_right = 88.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 45 )
@@ -1448,16 +1448,16 @@ custom_styles/disabled = SubResource( 48 )
 custom_styles/normal = SubResource( 49 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer/ZoomOut"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 22 )
 stretch_mode = 4
 
 [node name="Rest" type="Button" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer"]
-margin_left = 96.0
-margin_right = 136.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 96.0
+offset_right = 136.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 45 )
@@ -1467,8 +1467,8 @@ custom_styles/disabled = SubResource( 48 )
 custom_styles/normal = SubResource( 49 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/VBoxContainer/HBoxContainer/SideMenu/VBoxContainer/ViewTools/Panel/HBoxContainer/Rest"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 23 )
 stretch_mode = 4
 
@@ -1476,7 +1476,7 @@ stretch_mode = 4
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 450, 0 )
+custom_minimum_size = Vector2( 450, 0 )
 mouse_filter = 2
 script = ExtResource( 19 )
 __meta__ = {
@@ -1486,7 +1486,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/ArticleReader"]
 anchor_right = 0.286458
 anchor_bottom = 1.0
-rect_min_size = Vector2( 550, 0 )
+custom_minimum_size = Vector2( 550, 0 )
 custom_styles/panel = SubResource( 36 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -1498,9 +1498,9 @@ anchor_bottom = 1.0
 custom_constants/separation = 0
 
 [node name="CloseBar" type="Control" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer"]
-margin_right = 550.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 60 )
+offset_right = 550.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
 
 [node name="Panel" type="Panel" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar"]
@@ -1520,16 +1520,16 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_right = 40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer"]
-margin_left = 50.0
-margin_right = 421.0
-margin_bottom = 40.0
+offset_left = 50.0
+offset_right = 421.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 38 )
@@ -1537,15 +1537,15 @@ text = "Sample text"
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer"]
-margin_left = 431.0
-margin_right = 536.0
-margin_bottom = 40.0
+offset_left = 431.0
+offset_right = 536.0
+offset_bottom = 40.0
 custom_constants/separation = 25
 
 [node name="expand" type="Button" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer/HBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_right = 40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 custom_styles/hover = SubResource( 39 )
@@ -1555,16 +1555,16 @@ custom_styles/disabled = SubResource( 42 )
 custom_styles/normal = SubResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer/HBoxContainer/expand"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 20 )
 stretch_mode = 4
 
 [node name="close" type="Button" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer/HBoxContainer"]
-margin_left = 65.0
-margin_right = 105.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
+offset_left = 65.0
+offset_right = 105.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 40, 40 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 custom_styles/hover = SubResource( 39 )
@@ -1574,16 +1574,16 @@ custom_styles/disabled = SubResource( 42 )
 custom_styles/normal = SubResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/CloseBar/HBoxContainer/HBoxContainer/close"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 4 )
 stretch_mode = 4
 
 [node name="Container" type="Control" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer"]
-margin_top = 60.0
-margin_right = 550.0
-margin_bottom = 640.0
-rect_min_size = Vector2( 430, 580 )
+offset_top = 60.0
+offset_right = 550.0
+offset_bottom = 640.0
+custom_minimum_size = Vector2( 430, 580 )
 mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": true
@@ -1595,28 +1595,28 @@ anchor_bottom = 1.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/Container/ScrollContainer"]
-margin_right = 550.0
-margin_bottom = 580.0
+offset_right = 550.0
+offset_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/Container/ScrollContainer/VBoxContainer"]
-margin_right = 550.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 0, 400 )
+offset_right = 550.0
+offset_bottom = 400.0
+custom_minimum_size = Vector2( 0, 400 )
 expand = true
 stretch_mode = 7
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/CanvasLayer/Menu/ArticleReader/Panel/VBoxContainer/Container/ScrollContainer/VBoxContainer"]
-margin_top = 420.0
-margin_right = 550.0
-margin_bottom = 580.0
+offset_top = 420.0
+offset_right = 550.0
+offset_bottom = 580.0
 size_flags_vertical = 3
 custom_styles/focus = SubResource( 60 )
 custom_styles/normal = SubResource( 43 )
 bbcode_enabled = true
-bbcode_text = "sample text"
+text = "sample text"
 text = "sample text"
 fit_content_height = true
 scroll_active = false
@@ -1629,10 +1629,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -75.0
-margin_right = 100.0
-margin_bottom = 75.0
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
 dialog_text = "Delete this map. This is irreversible"
 dialog_autowrap = true
 script = SubResource( 55 )
@@ -1653,12 +1653,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -70.0
-margin_top = -88.0434
-margin_right = 70.0
-margin_bottom = 36.9565
-rect_rotation = 1.0
-rect_pivot_offset = Vector2( 70, 125 )
+offset_left = -70.0
+offset_top = -88.0434
+offset_right = 70.0
+offset_bottom = 36.9565
+rotation = 1.0
+pivot_offset = Vector2( 70, 125 )
 mouse_filter = 2
 texture = ExtResource( 24 )
 expand = true
@@ -1669,10 +1669,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -152.0
-margin_top = -18.0
-margin_right = 152.0
-margin_bottom = 18.0
+offset_left = -152.0
+offset_top = -18.0
+offset_right = 152.0
+offset_bottom = 18.0
 custom_fonts/font = SubResource( 52 )
 text = "map is loading...."
 align = 1

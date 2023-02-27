@@ -7,14 +7,14 @@ var map_manager:Object          = null
 # ------------------------------------------------------------------------------
 
 # initialize
-func _init(pin_node:Control, inspector:Control, map_manager:Object)->void:
+func _init(pin_node:Control,inspector:Control,map_manager:Object):
 	self.pin_collection_node = pin_node
 	self.inspector_node      = inspector
 	self.map_manager         = map_manager
 
-	EventBus.connect("create_new_pin", self, "create_new_pin")
-	EventBus.connect("remove_map_pin", self, 'remove_map_pin')
-	EventBus.connect("move_pin_to_top", self, 'move_pin_to_top')
+	EventBus.connect("create_new_pin",Callable(self,"create_new_pin"))
+	EventBus.connect("remove_map_pin",Callable(self,'remove_map_pin'))
+	EventBus.connect("move_pin_to_top",Callable(self,'move_pin_to_top'))
 
 # ------------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ func create_new_pin(position:Vector2, map_resource:MapData = self.map_manager.ma
 	
 	var map_pin = MapPin.new()
 	var pin_scene:PackedScene = load("res://systems/map_system/ui_elements/map_pin/MapPin.tscn")
-	var pin_node:Node2D       = pin_scene.instance()
+	var pin_node:Node2D       = pin_scene.instantiate()
 
 	map_pin.pin_location      = position
 	map_pin.pin_id            = uuid

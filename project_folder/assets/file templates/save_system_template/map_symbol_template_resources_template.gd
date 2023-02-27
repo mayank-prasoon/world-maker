@@ -3,14 +3,14 @@ extends Resource
 
 # === MAP SYMBOLTEMPLATE ===
 
-export(String)              var template_name:String                                         # name of the symbol template     
-export(String, FILE)        var template_texture:String                                      # texture path of the template
-export(Array, String, FILE) var template_hover_animation:Array                               # animtion which is played on hover
-export(Vector2)             var template_offset:Vector2                                      # offset of the template
-export(Color)               var template_color:Color                                         # color of the symbol
-export(float)               var template_area2D_radius:int = 48
-export(Array, String)       var template_default_tag:Array
-export(String, FILE)        var template_default_article_template:String
+@export var template_name: String:String                                         # name of the symbol template     
+@export var template_texture:String                                      # texture path of the template # (String, FILE)
+@export var template_hover_animation:Array                               # animtion which is played checked hover # (Array, String, FILE)
+@export var template_offset: Vector2:Vector2                                      # offset of the template
+@export var template_color: Color:Color                                         # color of the symbol
+@export var template_area2D_radius: float:int = 48
+@export var template_default_tag:Array # (Array, String)
+@export var template_default_article_template:String # (String, FILE)
 
 # === methods ===
 

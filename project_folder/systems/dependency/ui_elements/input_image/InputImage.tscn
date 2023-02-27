@@ -4,8 +4,8 @@
 
 [node name="InputImage" type="Control"]
 anchor_right = 1.0
-rect_min_size = Vector2( 0, 240 )
-rect_pivot_offset = Vector2( -349, -349 )
+custom_minimum_size = Vector2( 0, 240 )
+pivot_offset = Vector2( -349, -349 )
 script = ExtResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -13,51 +13,51 @@ anchor_right = 1.0
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1920.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 text = "Name"
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 45.0
-margin_right = 1920.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 45.0
+offset_right = 1920.0
+offset_bottom = 75.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 916.0
-margin_bottom = 30.0
+offset_right = 916.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 placeholder_text = "image path"
 
 [node name="Browse" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 920.0
-margin_right = 1000.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 80, 0 )
+offset_left = 920.0
+offset_right = 1000.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 80, 0 )
 size_flags_horizontal = 0
 text = "browse"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1004.0
-margin_right = 1920.0
-margin_bottom = 30.0
+offset_left = 1004.0
+offset_right = 1920.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="Image" type="TextureRect" parent="VBoxContainer"]
-margin_top = 90.0
-margin_right = 1920.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 0, 150 )
+offset_top = 90.0
+offset_right = 1920.0
+offset_bottom = 240.0
+custom_minimum_size = Vector2( 0, 150 )
 expand = true
 stretch_mode = 6
 
 [node name="FileDialog" type="FileDialog" parent="."]
-margin_left = 222.0
-margin_top = 49.0
-margin_right = 612.0
-margin_bottom = 320.0
+offset_left = 222.0
+offset_top = 49.0
+offset_right = 612.0
+offset_bottom = 320.0
 window_title = "Open a File"
 resizable = true
 mode = 0

@@ -25,22 +25,22 @@ func _ready()->void:
 # load the resouces
 func load_resource()->void:
 	
-	$Sprite.frames = animation_resource
+	$Sprite2D.frames = animation_resource
 	self.position  = pin_resource.pin_location
 
 	$Area2D/CollisionShape2D.shape.radius = pin_resource.pin_symbol_template.template_area2D_radius
 
 	$Control/ColorRect/Label.text  = pin_resource.pin_name
 
-	$Control.rect_position = Vector2(0, pin_resource.pin_symbol_template.template_area2D_radius - 5)
+	$Control.position = Vector2(0, pin_resource.pin_symbol_template.template_area2D_radius - 5)
 
-	$Sprite.offset         = pin_resource.pin_symbol_template.template_offset
+	$Sprite2D.offset         = pin_resource.pin_symbol_template.template_offset
 
 # ------------------------------------------------------------------------------
 
 # add animation and texture to the map pin
 func add_animation_and_texture()->void:
-	animation_resource.add_animation("hover")
+	animation_resource.add_animation_library("hover")
 	
 	if pin_resource.pin_symbol_template == null:
 		pin_resource.pin_symbol_template = MapSymbolTemplate.new()

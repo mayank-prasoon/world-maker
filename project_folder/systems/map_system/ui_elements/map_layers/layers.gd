@@ -32,8 +32,8 @@ var rect_pos_value:Vector2  = Vector2(0, 0)
 
 func _ready()->void:
 	# assign default value
-	$Panel.rect_size  = Vector2(272, 30)
-	$Panel.rect_position = Vector2(0, 0)
+	$Panel.size  = Vector2(272, 30)
+	$Panel.position = Vector2(0, 0)
 	
 	default_rect_size = Vector2(272, 30)
 	default_rect_pos  = Vector2(0, 0)
@@ -58,7 +58,7 @@ func setup_layer()->void:
 	)
 
 	# assign visibility
-	$Panel/HBoxContainer/Visible.pressed = !map_layer_resources.layer_visibility
+	$Panel/HBoxContainer/Visible.button_pressed = !map_layer_resources.layer_visibility
 	texture_node.visible = map_layer_resources.layer_visibility
 
 
@@ -74,7 +74,7 @@ func _physics_process(_delta:float)->void:
 func _input(event):
 	if move == true:
 		if event is InputEventMouseButton:
-			if !event.is_pressed() and event.button_index == BUTTON_LEFT:
+			if !event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 				get_tree().call_group('map_layers', '_on_being_dragged', false)
 
 # ------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ func layer_selected()->void:
 func _on_Layers_gui_input(event)->void:
 	if if_inside_rect():
 		if event is InputEventMouse:
-			if event.is_pressed() and event.button_index == BUTTON_LEFT:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 				layer_selected()
 				get_tree().call_group('map_layers', '_on_being_dragged', true)
 				reset_to_default()
@@ -106,14 +106,14 @@ func _on_Layers_gui_input(event)->void:
 # === UI ANIMATIONS ===
 
 func lerp_animation()->void:
-	$Panel.rect_position = Vector2(
-		lerp($Panel.rect_position.x, rect_pos_value.x, 0.35),
-		lerp($Panel.rect_position.y, rect_pos_value.y, 0.35)
+	$Panel.position = Vector2(
+		lerp($Panel.position.x, rect_pos_value.x, 0.35),
+		lerp($Panel.position.y, rect_pos_value.y, 0.35)
 	)
 
-	$Panel.rect_size     = Vector2(
-		lerp($Panel.rect_size.x, rect_size_value.x, 0.35),
-		lerp($Panel.rect_size.y, rect_size_value.y, 0.35)
+	$Panel.size     = Vector2(
+		lerp($Panel.size.x, rect_size_value.x, 0.35),
+		lerp($Panel.size.y, rect_size_value.y, 0.35)
 	)
 
 
@@ -132,7 +132,7 @@ func reset_to_default()->void:
 # === DARG AND DROP SYSTEM ===
 
 # exicutes when the control node is being dragged
-func get_drag_data(_position)->Dictionary:
+func _get_drag_data(_position)->Dictionary:
 	
 	# assign data
 	var data = {}
@@ -144,19 +144,19 @@ func get_drag_data(_position)->Dictionary:
 	# create preview texture
 	var texture              = ColorRect.new()
 	texture.color            = Color('25252a')
-	texture.rect_min_size    = Vector2(100,50)
+	texture.custom_minimum_size    = Vector2(100,50)
 
 	var label                = Label.new()
 	label.text               = name
-	label.align              = Label.ALIGN_CENTER
+	label.align              = Label.ALIGNMENT_CENTER
 	label.valign             = Label.VALIGN_CENTER
-	label.rect_min_size      = texture.rect_min_size
+	label.custom_minimum_size      = texture.custom_minimum_size
 	
 	texture.add_child(label)
 	
 	var control:Control      = Control.new()
 	control.add_child(texture)
-	texture.rect_position = texture.rect_min_size * - 0.5
+	texture.position = texture.custom_minimum_size * - 0.5
 
 	set_drag_preview(control)
 
@@ -165,11 +165,11 @@ func get_drag_data(_position)->Dictionary:
 	return data
 
 # check if it can drop
-func can_drop_data(_position, _data)->bool:
+func _can_drop_data(_position, _data)->bool:
 	return true
 
 # exicute when a dragged control node is dropped
-func drop_data(_position, data)->void:
+func _drop_data(_position, data)->void:
 	# move data
 	move_layer(data)
 
@@ -186,7 +186,7 @@ func move_layer(data):
 	data["layer_node"].get_parent().move_child(data["layer_node"], self.get_position_in_parent() + 1)
 	
 	
-	# move the node on which the other node is dropped 'self'
+	# move the node checked which the other node is dropped 'self'
 	texture_node.get_parent().move_child(texture_node, data["node_position"] + 1)
 	get_parent().move_child(self, data["node_position"])
 	
@@ -207,7 +207,7 @@ func move_layer(data):
 #		map_node.map_resource.tags
 #	)
 
-# on being_dragged signal reciver 
+# checked being_dragged signal reciver 
 func _on_being_dragged(state:bool)->void:
 	move = state
 
@@ -248,10 +248,10 @@ func set_layer_visibility(visiblity:bool)->void:
 func if_inside_rect()->bool:
 	var is_inside = false
 	
-	if get_global_mouse_position().x >= self.rect_global_position.x:
-		if get_global_mouse_position().x <= self.rect_size.x + self.rect_global_position.x:
-			if get_global_mouse_position().y >= self.rect_global_position.y:
-				if get_global_mouse_position().y <= self.rect_size.y + self.rect_global_position.y:
+	if get_global_mouse_position().x >= self.global_position.x:
+		if get_global_mouse_position().x <= self.size.x + self.global_position.x:
+			if get_global_mouse_position().y >= self.global_position.y:
+				if get_global_mouse_position().y <= self.size.y + self.global_position.y:
 					is_inside = true
 
 	return is_inside
@@ -277,8 +277,8 @@ func _on_Layers_mouse_pointer_exited()->void:
 func _on_Layers_mouse_pointer_entered()->void:
 	if move and hover == false:
 		set_position_size_value(
-			$Panel.rect_position + Vector2(25.0, 0.0),
-			$Panel.rect_size - Vector2(25.0, 0.0)
+			$Panel.position + Vector2(25.0, 0.0),
+			$Panel.size - Vector2(25.0, 0.0)
 		)
 		hover = true
 

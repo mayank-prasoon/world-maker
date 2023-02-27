@@ -1,5 +1,5 @@
 class_name ArticleManager
-extends Reference
+extends RefCounted
 
 static func get_tags(article_name:String) -> Array:
 	var _temp_article_resource:Resource  = ResourceManager.open_file(article_name, ResourceManager.ARTICLE)

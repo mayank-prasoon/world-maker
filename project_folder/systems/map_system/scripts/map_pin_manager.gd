@@ -14,7 +14,7 @@ enum ADD {
 
 # === NODE(s) ===
 
-onready var pop_up_menu:PopupMenu = $"../Camera2D/CanvasLayer/Menu/PopupMenu"
+@onready var pop_up_menu:PopupMenu = $"../Camera2D/CanvasLayer/Menu/PopupMenu"
 
 var mouse_position:Vector2 = Vector2(0,0)
 
@@ -24,15 +24,15 @@ var mouse_position:Vector2 = Vector2(0,0)
 
 
 func _ready()->void:
-	var _y = EventBus.connect("mouse_outside_map_element", self, '_on_mouse_outside_element')
-	var _z = EventBus.connect("mouse_inside_map_element", self, '_on_mouse_inside_element')
+	var _y = EventBus.connect("mouse_outside_map_element",Callable(self,'_on_mouse_outside_element'))
+	var _z = EventBus.connect("mouse_inside_map_element",Callable(self,'_on_mouse_inside_element'))
 	
 
 # ------------------------------------------------------------------------------
 
 func open_add_menu()->void:
 	pop_up_menu.items = []
-	pop_up_menu.rect_size.y = 0
+	pop_up_menu.size.y = 0
 
 	menu = []
 	
@@ -57,14 +57,14 @@ func open_add_menu()->void:
 # opens the menu
 func open_menu()->void:
 	pop_up_menu.popup()
-	pop_up_menu.rect_global_position = get_viewport().get_mouse_position()
+	pop_up_menu.global_position = get_viewport().get_mouse_position()
 	mouse_position                   = get_owner().get_global_mouse_position()
 
 # ------------------------------------------------------------------------------
 
 func open_pin_menu() ->void:
 	pop_up_menu.items = []
-	pop_up_menu.rect_size.y = 0
+	pop_up_menu.size.y = 0
 	
 	menu = []
 	
@@ -92,7 +92,7 @@ func open_pin_menu() ->void:
 func _unhandled_input(event):
 	# run when right mouse button is clicked
 	if event is InputEventMouseButton:
-		if event.is_pressed() && event.button_index == BUTTON_MASK_RIGHT:
+		if event.is_pressed() && event.button_index == MOUSE_BUTTON_MASK_RIGHT:
 			if !mouse_inside_element:
 				open_add_menu()
 			if mouse_inside_element and map_element is MapPinNode:
@@ -101,12 +101,12 @@ func _unhandled_input(event):
 # ------------------------------------------------------------------------------
 
 	# run when left mouse button is clicked
-		if event.is_doubleclick() && event.button_index == BUTTON_MASK_LEFT:
+		if event.is_double_click() && event.button_index == MOUSE_BUTTON_MASK_LEFT:
 			if mouse_inside_element and map_element is MapPinNode:
 				EventBus.emit_signal("add_pin_inspector", map_element.pin_resource, map_element)
 				EventBus.emit_signal("open_article_panel", map_element.pin_resource.pin_article)
 
-		elif event.is_pressed() && event.button_index == BUTTON_MASK_LEFT && !mouse_inside_element:
+		elif event.is_pressed() && event.button_index == MOUSE_BUTTON_MASK_LEFT && !mouse_inside_element:
 			EventBus.emit_signal('clear_inspector')
 			EventBus.emit_signal("close_article_panel")
 
@@ -160,7 +160,7 @@ func _on_mouse_outside_element()->void:
 
 # check if any map exists
 func check_if_map_exists()->bool:
-	if get_owner().map_texture_collection_node.get_children().empty():
+	if get_owner().map_texture_collection_node.get_children().is_empty():
 		print_debug("there are no maps")
 		return false
 	else:

@@ -11,8 +11,8 @@ var index:int         = 0
 
 # NODES
 
-onready var top_connector:Sprite    = $TopArrowConnector        # top connector
-onready var bottom_connector:Sprite = $BottomCricleConnector    # bottom connector
+@onready var top_connector:Sprite2D    = $TopArrowConnector        # top connector
+@onready var bottom_connector:Sprite2D = $BottomCricleConnector    # bottom connector
 
 # ------------------------------------------------------------------------------
 
@@ -52,16 +52,16 @@ func assign_tier()->void:
 	self.tier = 0
 	var node_postion = Vector2(0, 0)
 
-	if ParentNodes.empty():
+	if ParentNodes.is_empty():
 		self.tier = 0
 	else:
-		ParentNodes.sort_custom(SortingSystem, 'sort_by_tier')
+		ParentNodes.sort_custom(Callable(SortingSystem,'sort_by_tier'))
 		self.tier += ParentNodes[-1].tier + 1
 
 
 	var tier_list  = []
 	var child_nodes:Array = get_parent().get_children()
-	child_nodes.sort_custom(SortingSystem, 'sort_by_parent_node_index')
+	child_nodes.sort_custom(Callable(SortingSystem,'sort_by_parent_node_index'))
 
 	for nodes in child_nodes:
 		if nodes.tier == self.tier:
@@ -82,12 +82,12 @@ func assign_tier()->void:
 
 # display connector
 func display_connector() -> void:
-	if ChildNodes.empty():
+	if ChildNodes.is_empty():
 		bottom_connector.visible = false
 	else:
 		bottom_connector.visible = true
 
-	if ParentNodes.empty():
+	if ParentNodes.is_empty():
 		top_connector.visible = false
 	else:
 		top_connector.visible = true

@@ -5,8 +5,8 @@
 [node name="InputOpenFile" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 0.0601852
-margin_bottom = -31.4
-rect_min_size = Vector2( 0, 65 )
+offset_bottom = -31.4
+custom_minimum_size = Vector2( 0, 65 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -18,36 +18,36 @@ anchor_bottom = 1.0
 custom_constants/separation = 5
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1920.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 text = "Name"
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 35.0
-margin_right = 1920.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 35.0
+offset_right = 1920.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 0, 30 )
 custom_constants/separation = 20
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 1825.0
-margin_bottom = 30.0
+offset_right = 1825.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1845.0
-margin_right = 1920.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 75, 0 )
+offset_left = 1845.0
+offset_right = 1920.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 75, 0 )
 text = "browse "
 
 [node name="FileDialog" type="FileDialog" parent="."]
-margin_left = 344.0
-margin_top = 160.0
-margin_right = 683.0
-margin_bottom = 392.0
+offset_left = 344.0
+offset_top = 160.0
+offset_right = 683.0
+offset_bottom = 392.0
 window_title = "Open a File"
 resizable = true
 mode = 0

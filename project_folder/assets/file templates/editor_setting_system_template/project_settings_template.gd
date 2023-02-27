@@ -1,11 +1,11 @@
 extends Resource
 	
 # basic imformation
-export(String) var project_name
-export(String) var project_version
-export(String) var date_of_creation
-export(String) var project_location
+@export var project_name: String
+@export var project_version: String
+@export var date_of_creation: String
+@export var project_location: String
 
 # shortcuts
-export(Dictionary) var shortcuts
-export(Dictionary) var visual_settings
+@export var shortcuts: Dictionary
+@export var visual_settings: Dictionary

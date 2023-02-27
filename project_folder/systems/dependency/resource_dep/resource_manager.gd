@@ -1,5 +1,5 @@
 class_name ResourceManager
-extends Reference
+extends RefCounted
 
 enum {
 	#  == map related == 
@@ -16,7 +16,7 @@ class SaveData extends Object:
 	var thread = Thread.new()
 
 	# initailization
-	func _init(path, resource):
+	func _init(path,resource):
 		thread.start(
 			self,
 			'save',
@@ -139,7 +139,7 @@ static func remove_all_files(resource_type:int):
 	# loop though folder and remove all the files
 	if folder.dir_exists(base_folder):
 		folder.open(base_folder)
-		folder.list_dir_begin()
+		folder.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		while true:
 			var file = folder.get_next()
 			if file == "":

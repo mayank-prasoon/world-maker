@@ -5,8 +5,8 @@
 [node name="InputDropDown" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 0.0633333
-margin_bottom = -38.0
-rect_min_size = Vector2( 0, 65 )
+offset_bottom = -38.0
+custom_minimum_size = Vector2( 0, 65 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -17,34 +17,34 @@ anchor_right = 1.0
 custom_constants/separation = 5
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1920.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 text = "Name"
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 35.0
-margin_right = 1920.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 0, 30 )
+offset_top = 35.0
+offset_right = 1920.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 0, 30 )
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
-margin_right = 958.0
-margin_bottom = 30.0
+offset_right = 958.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 962.0
-margin_right = 1920.0
-margin_bottom = 30.0
+offset_left = 962.0
+offset_right = 1920.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 visible = false
-margin_left = 685.0
-margin_right = 1024.0
-margin_bottom = 20.0
+offset_left = 685.0
+offset_right = 1024.0
+offset_bottom = 20.0
 size_flags_horizontal = 3
 
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]

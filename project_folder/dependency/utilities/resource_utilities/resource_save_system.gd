@@ -8,7 +8,7 @@
 #
 
 class_name ResourceSaveSystem
-extends Reference
+extends RefCounted
 
 #                              === SUB CLASS ===  
 
@@ -17,7 +17,7 @@ class SaveThead extends Object:
 	var thread = Thread.new()
 
 	# initailization
-	func _init(path, resource):
+	func _init(path,resource):
 		thread.start(
 			self,
 			'save',

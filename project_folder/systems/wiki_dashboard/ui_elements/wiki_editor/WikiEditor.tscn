@@ -2,23 +2,23 @@
 
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/WikiEditor.gd" type="Script" id=1]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/text_editor.gd" type="Script" id=2]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa6-solid_user-pen.svg" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa6-solid_user-pen.svg" type="Texture2D" id=3]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/scripts/Preview.gd" type="Script" id=4]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa6-solid_person-circle-question.svg" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa-solid_pen-nib.svg" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=9]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/Rectangle 1.png" type="Texture" id=10]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Italic.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-BoldItalic.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://assets/fonts/Roboto/NovaMono-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=5]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa6-solid_person-circle-question.svg" type="Texture2D" id=6]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/fa-solid_pen-nib.svg" type="Texture2D" id=7]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Bold.ttf" type="FontFile" id=8]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture2D" id=9]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/Rectangle 1.png" type="Texture2D" id=10]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Italic.ttf" type="FontFile" id=11]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-BoldItalic.ttf" type="FontFile" id=12]
+[ext_resource path="res://assets/fonts/Roboto/NovaMono-Regular.ttf" type="FontFile" id=13]
 [ext_resource path="res://systems/wiki_dashboard/ui_elements/wiki_editor/Notes.gd" type="Script" id=14]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=15]
-[ext_resource path="res://assets/fonts/Patrick_Hand/PatrickHand-Regular.ttf" type="DynamicFontData" id=16]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-center.svg" type="Texture" id=17]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-justify.svg" type="Texture" id=18]
-[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-right.svg" type="Texture" id=19]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="FontFile" id=15]
+[ext_resource path="res://assets/fonts/Patrick_Hand/PatrickHand-Regular.ttf" type="FontFile" id=16]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-center.svg" type="Texture2D" id=17]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-justify.svg" type="Texture2D" id=18]
+[ext_resource path="res://assets/graphics/wiki_dashboard/wiki_reader/align-right.svg" type="Texture2D" id=19]
 
 [sub_resource type="StyleBoxFlat" id=44]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
@@ -73,7 +73,7 @@ border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
-[sub_resource type="DynamicFont" id=37]
+[sub_resource type="FontFile" id=37]
 size = 14
 use_mipmaps = true
 use_filter = true
@@ -150,7 +150,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
@@ -196,7 +196,7 @@ VScrollBar/styles/scroll = SubResource( 19 )
 [sub_resource type="GDScript" id=10]
 script/source = "extends Button
 
-onready var basic_tab = $\"../../Basic\"
+@onready var basic_tab = $\"../../Basic\"
 
 func _physics_process(_delta:float)->void:
 	if self.pressed:
@@ -214,7 +214,7 @@ func _physics_process(_delta:float)->void:
 [sub_resource type="GDScript" id=11]
 script/source = "extends Button
 
-onready var prompts_tab = $\"../../Prompts\"
+@onready var prompts_tab = $\"../../Prompts\"
 
 func _physics_process(delta:float)->void:
 	if self.pressed:
@@ -231,7 +231,7 @@ func _physics_process(delta:float)->void:
 [sub_resource type="GDScript" id=12]
 script/source = "extends Button
 
-onready var notes_tab:Control = $\"../../Notes\"
+@onready var notes_tab:Control = $\"../../Notes\"
 
 func _physics_process(delta:float)->void:
 	if self.pressed:
@@ -249,7 +249,7 @@ func _physics_process(delta:float)->void:
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[sub_resource type="DynamicFont" id=35]
+[sub_resource type="FontFile" id=35]
 size = 20
 use_mipmaps = true
 use_filter = true
@@ -264,7 +264,7 @@ bg_color = Color( 0.219608, 0.356863, 0.886275, 1 )
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.219608, 0.564706, 0.886275, 1 )
 
-[sub_resource type="DynamicFont" id=54]
+[sub_resource type="FontFile" id=54]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 8 )
@@ -290,29 +290,29 @@ Button/styles/hover = SubResource( 50 )
 Button/styles/normal = SubResource( 51 )
 Button/styles/pressed = SubResource( 52 )
 
-[sub_resource type="DynamicFont" id=55]
+[sub_resource type="FontFile" id=55]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=56]
+[sub_resource type="FontFile" id=56]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=58]
+[sub_resource type="FontFile" id=58]
 size = 22
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=59]
+[sub_resource type="FontFile" id=59]
 resource_local_to_scene = true
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=60]
+[sub_resource type="FontFile" id=60]
 resource_local_to_scene = true
 size = 18
 use_mipmaps = true
@@ -333,30 +333,30 @@ content_margin_top = 10.0
 content_margin_bottom = 10.0
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
-[sub_resource type="DynamicFont" id=38]
+[sub_resource type="FontFile" id=38]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=45]
+[sub_resource type="FontFile" id=45]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=46]
+[sub_resource type="FontFile" id=46]
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=47]
+[sub_resource type="FontFile" id=47]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=48]
+[sub_resource type="FontFile" id=48]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=49]
+[sub_resource type="FontFile" id=49]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
@@ -379,8 +379,8 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 custom_styles/panel = SubResource( 44 )
@@ -392,16 +392,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextEditor" type="Control" parent="HBoxContainer/Panel/HSplitContainer"]
-margin_right = 500.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 500, 0 )
+offset_right = 500.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 500, 0 )
 theme = SubResource( 5 )
 script = ExtResource( 2 )
 
 [node name="shadow" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 93.0
+offset_right = 93.0
 mouse_filter = 2
 texture = ExtResource( 10 )
 expand = true
@@ -420,15 +420,15 @@ size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="TabContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
-margin_right = 500.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 500.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 custom_constants/separation = 0
 
 [node name="Basic" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer"]
-margin_right = 150.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 0 )
+offset_right = 150.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 7 )
@@ -449,31 +449,31 @@ color = Color( 0.203922, 0.203922, 0.203922, 1 )
 anchor_left = 0.0537634
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
+offset_left = 10.0
 mouse_filter = 2
 custom_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Basic/HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_right = 30.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 mouse_filter = 2
 texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Basic/HBoxContainer"]
-margin_left = 40.0
-margin_top = 5.0
-margin_right = 79.0
-margin_bottom = 24.0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 79.0
+offset_bottom = 24.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Basic"
 
 [node name="Prompts" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer"]
-margin_left = 150.0
-margin_right = 300.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 150.0
+offset_right = 300.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 8 )
@@ -500,26 +500,26 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Prompts/HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_right = 30.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 mouse_filter = 2
 texture = ExtResource( 6 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Prompts/HBoxContainer"]
-margin_left = 40.0
-margin_top = 5.0
-margin_right = 100.0
-margin_bottom = 24.0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 100.0
+offset_bottom = 24.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Prompts"
 
 [node name="Notes" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer"]
-margin_left = 300.0
-margin_right = 450.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 300.0
+offset_right = 450.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 150, 0 )
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 8 )
@@ -539,7 +539,7 @@ color = Color( 0.145098, 0.145098, 0.145098, 1 )
 anchor_left = 0.133333
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.90735e-06
+offset_left = -1.90735e-06
 mouse_filter = 2
 custom_constants/separation = 10
 __meta__ = {
@@ -547,26 +547,26 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Notes/HBoxContainer"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_right = 30.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 mouse_filter = 2
 texture = ExtResource( 7 )
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/TabContainer/Notes/HBoxContainer"]
-margin_left = 40.0
-margin_top = 5.0
-margin_right = 81.0
-margin_bottom = 24.0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 81.0
+offset_bottom = 24.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Notes"
 
 [node name="Basic" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
 visible = false
-margin_top = 30.0
-margin_right = 500.0
-margin_bottom = 380.0
+offset_top = 30.0
+offset_right = 500.0
+offset_bottom = 380.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -585,16 +585,16 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer"]
-margin_right = 480.0
-margin_bottom = 323.333
+offset_right = 480.0
+offset_bottom = 323.333
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
 
 [node name="Title" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer"]
-margin_right = 480.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 480.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 custom_colors/font_color = Color( 0.901961, 0.901961, 0.901961, 1 )
 custom_fonts/font = SubResource( 35 )
 text = "Basics"
@@ -605,11 +605,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -96.0
-margin_top = -44.0
-margin_right = -16.0
-margin_bottom = -14.0
-rect_min_size = Vector2( 80, 30 )
+offset_left = -96.0
+offset_top = -44.0
+offset_right = -16.0
+offset_bottom = -14.0
+custom_minimum_size = Vector2( 80, 30 )
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 custom_styles/hover = SubResource( 20 )
@@ -619,9 +619,9 @@ text = "save"
 
 [node name="Prompts" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
 visible = false
-margin_top = 30.0
-margin_right = 500.0
-margin_bottom = 555.0
+offset_top = 30.0
+offset_right = 500.0
+offset_bottom = 555.0
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts"]
@@ -634,19 +634,19 @@ anchor_left = 0.0179211
 anchor_top = 0.0190476
 anchor_right = 0.982079
 anchor_bottom = 0.990476
-margin_left = -9.53674e-07
+offset_left = -9.53674e-07
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/ScrollContainer"]
-margin_right = 482.079
-margin_bottom = 510.0
+offset_right = 482.079
+offset_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
 
 [node name="Notes" type="Control" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer"]
-margin_top = 30.0
-margin_right = 500.0
-margin_bottom = 1080.0
+offset_top = 30.0
+offset_right = 500.0
+offset_bottom = 1080.0
 size_flags_vertical = 3
 script = ExtResource( 14 )
 
@@ -666,63 +666,63 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
-margin_right = 489.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+offset_right = 489.0
+offset_bottom = 20.0
+custom_minimum_size = Vector2( 0, 20 )
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/HBoxContainer"]
-margin_right = 41.0
-margin_bottom = 19.0
+offset_right = 41.0
+offset_bottom = 19.0
 text = "Notes"
 
 [node name="Panel" type="Panel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
-margin_top = 30.0
-margin_right = 489.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 0, 40 )
+offset_top = 30.0
+offset_right = 489.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 0, 40 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 custom_constants/separation = 5
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer"]
-margin_right = 483.0
-margin_bottom = 30.0
+offset_right = 483.0
+offset_bottom = 30.0
 size_flags_horizontal = 3
 theme = SubResource( 53 )
 custom_constants/separation = 5
 
 [node name="Bold" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_right = 30.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
 custom_fonts/font = SubResource( 55 )
-enabled_focus_mode = 0
+focus_mode = 0
 text = "B"
 
 [node name="Italic" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 35.0
-margin_right = 65.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 35.0
+offset_right = 65.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
 custom_fonts/font = SubResource( 56 )
-enabled_focus_mode = 0
+focus_mode = 0
 text = "I"
 
 [node name="Underline" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 70.0
-margin_right = 100.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 70.0
+offset_right = 100.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/Underline"]
 anchor_right = 1.0
@@ -730,16 +730,16 @@ anchor_bottom = 1.0
 mouse_filter = 2
 custom_fonts/normal_font = SubResource( 58 )
 bbcode_enabled = true
-bbcode_text = "[center][u]u[/u][/center]"
+text = "[center][u]u[/u][/center]"
 text = "u"
 
 [node name="strikethrough" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 105.0
-margin_right = 135.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 105.0
+offset_right = 135.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2/strikethrough"]
 anchor_right = 1.0
@@ -747,122 +747,122 @@ anchor_bottom = 1.0
 mouse_filter = 2
 custom_fonts/normal_font = SubResource( 58 )
 bbcode_enabled = true
-bbcode_text = "[center][s]s[/s][/center]"
+text = "[center][s]s[/s][/center]"
 text = "s"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 140.0
-margin_right = 148.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 8, 0 )
+offset_left = 140.0
+offset_right = 148.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 8, 0 )
 
 [node name="Heading" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 153.0
-margin_right = 193.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 153.0
+offset_right = 193.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 text = "H1"
 
 [node name="Code" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 198.0
-margin_right = 254.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 198.0
+offset_right = 254.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 focus_mode = 0
 custom_fonts/font = SubResource( 59 )
-enabled_focus_mode = 0
+focus_mode = 0
 text = "Code"
 
 [node name="Quote" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 259.0
-margin_right = 318.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-hint_tooltip = "Quote"
+offset_left = 259.0
+offset_right = 318.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
+tooltip_text = "Quote"
 focus_mode = 0
 custom_fonts/font = SubResource( 60 )
-enabled_focus_mode = 0
+focus_mode = 0
 text = "Quote"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 323.0
-margin_right = 331.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 8, 0 )
+offset_left = 323.0
+offset_right = 331.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 8, 0 )
 
 [node name="Fill" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 336.0
-margin_right = 380.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 336.0
+offset_right = 380.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 icon = ExtResource( 18 )
 
 [node name="Center" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 385.0
-margin_right = 429.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 385.0
+offset_right = 429.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 icon = ExtResource( 17 )
 
 [node name="Right" type="Button" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 434.0
-margin_right = 478.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = 434.0
+offset_right = 478.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 30, 30 )
 icon = ExtResource( 19 )
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 483.0
-margin_right = 483.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_left = 483.0
+offset_right = 483.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
 
 [node name="TextEdit" type="TextEdit" parent="HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer"]
-margin_top = 80.0
-margin_right = 489.0
-margin_bottom = 1032.0
+offset_top = 80.0
+offset_right = 489.0
+offset_bottom = 1032.0
 size_flags_vertical = 3
 custom_styles/focus = SubResource( 42 )
 custom_styles/normal = SubResource( 43 )
 wrap_enabled = true
 
 [node name="Preview" type="Control" parent="HBoxContainer/Panel/HSplitContainer"]
-margin_left = 512.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 300, 0 )
+offset_left = 512.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/Preview"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 custom_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer"]
-margin_right = 1398.0
-margin_bottom = 20.0
+offset_right = 1398.0
+offset_bottom = 20.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.498039 )
-margin_right = 1374.0
-margin_bottom = 19.0
+offset_right = 1374.0
+offset_bottom = 19.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 38 )
 text = "Untitled"
 align = 1
 
 [node name="Close" type="Button" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer"]
-margin_left = 1378.0
-margin_right = 1398.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 0 )
+offset_left = 1378.0
+offset_right = 1398.0
+offset_bottom = 20.0
+custom_minimum_size = Vector2( 20, 0 )
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer/HBoxContainer/Close"]
@@ -873,9 +873,9 @@ texture = ExtResource( 9 )
 expand = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel/HSplitContainer/Preview/VBoxContainer"]
-margin_top = 40.0
-margin_right = 1398.0
-margin_bottom = 1060.0
+offset_top = 40.0
+offset_right = 1398.0
+offset_bottom = 1060.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/mono_font = SubResource( 45 )

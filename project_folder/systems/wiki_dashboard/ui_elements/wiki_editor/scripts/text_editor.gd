@@ -2,7 +2,7 @@ extends Control
 
 # === Node ===
 
-onready var basics_tab:VBoxContainer = $Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
+@onready var basics_tab:VBoxContainer = $Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
 
 var prompts:Array = [
 	{
@@ -21,10 +21,10 @@ func _ready():
 	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',') and no space")
 	UIManager.add_description_input(basics_tab, "Description", "short description of the article.\nwill show up in the card")
 
-	var _x = basics_tab.get_node("Article Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_template")
+	var _x = basics_tab.get_node("Article Type/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected",Callable(self,"assign_template"))
 	basics_tab.get_node("Article Type/VBoxContainer/HBoxContainer/OptionButton").emit_signal("item_selected", 0)
 
-	var _y = basics_tab.get_node("Article Template/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected", self, "assign_prompts")
+	var _y = basics_tab.get_node("Article Template/VBoxContainer/HBoxContainer/OptionButton").connect("item_selected",Callable(self,"assign_prompts"))
 	basics_tab.get_node("Article Template/VBoxContainer/HBoxContainer/OptionButton").emit_signal("item_selected", 0)
 
 

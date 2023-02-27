@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=8 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -19,7 +19,7 @@ border_color = Color( 0.219608, 0.564706, 0.886275, 1 )
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 outline_color = Color( 0.768627, 0.768627, 0.768627, 1 )
 use_mipmaps = true
 use_filter = true

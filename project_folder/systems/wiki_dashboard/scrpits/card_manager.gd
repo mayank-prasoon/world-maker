@@ -1,6 +1,6 @@
 extends Node
 
-onready var cards_grid = $"../ScrollContainer/GridContainer"
+@onready var cards_grid = $"../ScrollContainer/GridContainer"
 
 func get_article(text:String)->void:
 	var cards = cards_grid.get_children()
@@ -15,7 +15,7 @@ func get_article(text:String)->void:
 		for card in cards:
 			card.visible = filter_card(card)
 
-# the search the cards based on the text provided
+# the search the cards based checked the text provided
 func search_card(text:String, card:Control)->bool:
 	var state:bool = false
 	
@@ -30,7 +30,7 @@ func search_card(text:String, card:Control)->bool:
 	
 	return state
 
-# filter card based on the check box ticked
+# filter card based checked the check box ticked
 func filter_card(card:Control)->bool:
 	var filter = $"../../SearchBar/FilterPopup/Panel/VBoxContainer".get_children()
 	
@@ -53,7 +53,7 @@ func filter_card(card:Control)->bool:
 # NOTE: currently under developemnt
 func open_card_reader(card_article:Resource):
 	var reader:PackedScene = load("res://systems/wiki_dashboard/ui_elements/wiki_reader/WikiReader.tscn")
-	var x = reader.instance()
+	var x = reader.instantiate()
 	x.article = card_article
 	get_owner().add_child(x)
 

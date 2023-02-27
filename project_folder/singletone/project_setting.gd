@@ -1,7 +1,7 @@
 extends Node
 
 # === NODES ===
-onready var shortcut_settings = $ShortcutSettings
+@onready var shortcut_settings = $ShortcutSettings
 
 # === VARIABLES ===
 var save_file_location:String = "/project_settings.tres"
@@ -15,17 +15,17 @@ var default_keybinding:Dictionary = {
 # === SETTINGS ===
 
 # basic imformation
-export(String) var project_name
-export(String) var project_version
-export(String) var date_of_creation
-export(String) var project_location
+@export var project_name: String
+@export var project_version: String
+@export var date_of_creation: String
+@export var project_location: String
 
 # shortcut
-export(Dictionary) var shortcuts:Dictionary
-export(Dictionary) var visual_settings:Dictionary
+@export var shortcuts: Dictionary:Dictionary
+@export var visual_settings: Dictionary:Dictionary
 
 # mods and addons
-export(Array,Dictionary) var addons
+@export var addons # (Array,Dictionary)
 
 # === SIGNALS ===
 signal load_data

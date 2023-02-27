@@ -1,22 +1,22 @@
-tool
+@tool
 extends Node
 
 var log_file = null
-export var persist_debug = true
+@export var persist_debug = true
 var logy = null
 
-export var file_dir = "user://"
-export var file_name = "{dt}.log"
-export var file_name_time_format = "{month}-{year}"
-export var formatting = "{dt} {level} {msg}"
-export var time_format = "{month}/{day}/{year} {24hour}:{min}:{sec}"
+@export var file_dir = "user://"
+@export var file_name = "{dt}.log"
+@export var file_name_time_format = "{month}-{year}"
+@export var formatting = "{dt} {level} {msg}"
+@export var time_format = "{month}/{day}/{year} {24hour}:{min}:{sec}"
 
 # Allow toggling what you want
-export var DEBUG = true
-export var INFO = true
-export var WARN = true
-export var ERROR = true
-export var CRIT = true
+@export var DEBUG = true
+@export var INFO = true
+@export var WARN = true
+@export var ERROR = true
+@export var CRIT = true
 
 func _enter_tree():
 	logy = self
@@ -42,7 +42,7 @@ func pos2str(pos: Vector2 = Vector2(0, 0)) -> String:
 	return "(" + str(pos.x) + ", " + str(pos.y) + ")"
 
 func timestamp(fmat : String ="{month}/{day}/{year} {24hour}:{min}:{sec}", in_utc: bool = false):
-	var t = OS.get_datetime(in_utc)
+	var t = Time.get_datetime_dict_from_system(in_utc)
 	var hour12 = t.hour
 	var ampm = "" # Fill it in only if 12hour is requested
 	if "12hour" in fmat: # Only use if 12hour is visible in formating

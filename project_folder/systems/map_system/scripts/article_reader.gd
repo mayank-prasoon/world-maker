@@ -1,9 +1,9 @@
 extends Control
 
-onready var banner_node:TextureRect  = $Panel/VBoxContainer/Container/ScrollContainer/VBoxContainer/TextureRect
-onready var profile_node:TextureRect = $Panel/VBoxContainer/CloseBar/HBoxContainer/TextureRect
-onready var raw_text:RichTextLabel   = $Panel/VBoxContainer/Container/ScrollContainer/VBoxContainer/RichTextLabel
-onready var title_node:Label         = $Panel/VBoxContainer/CloseBar/HBoxContainer/Label
+@onready var banner_node:TextureRect  = $Panel/VBoxContainer/Container/ScrollContainer/VBoxContainer/TextureRect
+@onready var profile_node:TextureRect = $Panel/VBoxContainer/CloseBar/HBoxContainer/TextureRect
+@onready var raw_text:RichTextLabel   = $Panel/VBoxContainer/Container/ScrollContainer/VBoxContainer/RichTextLabel
+@onready var title_node:Label         = $Panel/VBoxContainer/CloseBar/HBoxContainer/Label
 
 enum TOGGLE_STATE {
 	OPEN,
@@ -16,8 +16,8 @@ var resource = null
 func _ready()->void:
 	self.hide()
 	add_to_group("article_viewer")
-	var _x = EventBus.connect("open_article_panel", self, '_on_open_panel')
-	var _y = EventBus.connect("close_article_panel", self, '_on_close_panel')
+	var _x = EventBus.connect("open_article_panel",Callable(self,'_on_open_panel'))
+	var _y = EventBus.connect("close_article_panel",Callable(self,'_on_close_panel'))
 
 
 # button pressed button method
@@ -52,7 +52,7 @@ func load_article(article:Article)->void:
 	else:
 		profile_node.visible = false
 
-	raw_text.bbcode_text = article.article_raw
+	raw_text.text = article.article_raw
 	title_node.text      = article.article_name
 	
 	

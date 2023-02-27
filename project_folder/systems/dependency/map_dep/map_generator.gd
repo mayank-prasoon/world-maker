@@ -1,10 +1,10 @@
 class_name MapGen
-extends Reference
+extends RefCounted
 
 class MapChunkSaver extends Object:
 	var thread = Thread.new() 
 	# saves texture
-	func _init(path:String, chunk:Image) -> void:
+	func _init(path:String,chunk:Image):
 		thread.start(
 			self,
 			'save_chunk',
@@ -107,7 +107,7 @@ static func make_texture(image:Image, chunk_size:Vector2, index_x:int, index_y:i
 	var path = SystemDataManager.root_save_file_path + \
 	"/map_chunks/{uuid}_save_data.png".format({"uuid" : UUID.generate()})
 	
-	# save the image on the disk
+	# save the image checked the disk
 	var _x = MapChunkSaver.new(path, new_image)
 
 	return path

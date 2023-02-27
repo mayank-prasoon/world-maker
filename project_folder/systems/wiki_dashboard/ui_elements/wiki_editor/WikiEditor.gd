@@ -6,10 +6,10 @@ signal data_changed
 
 # === nodes ===
 
-onready var basic_tab        = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
-onready var prompt_container = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/ScrollContainer/VBoxContainer
-onready var notes            = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/TextEdit
-onready var basics_tab       = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
+@onready var basic_tab        = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
+@onready var prompt_container = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Prompts/ScrollContainer/VBoxContainer
+@onready var notes            = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Notes/VBoxContainer/TextEdit
+@onready var basics_tab       = $HBoxContainer/Panel/HSplitContainer/TextEditor/Panel/TabContainer/Basic/ScrollContainer/VBoxContainer
 
 # === properties ===
 
@@ -45,7 +45,7 @@ func open_article(resources:Article)->void:
 	else:
 		UIManager.add_dropdown_input(basics_tab, "Article Template", "prompt template for article", ["empty"], 0, true)
 
-	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',') no space", PoolStringArray(resources.tags).join(','))
+	UIManager.add_text_input(basics_tab, "Article Tag", "add tag.\nSeprate the Tags by (',') no space", PackedStringArray(resources.','.join(tags)))
 	notes.text = resources.article_notes
 	UIManager.add_description_input(basics_tab, "Description", "short description of the article.\nwill show up in the card", resources.article_description)
 
@@ -78,8 +78,8 @@ func check_change()->void:
 func connect_nodes()->void:
 	for x in get_tree().get_nodes_in_group("input_field"):
 		var node:RootFieldInput = x
-		if !(node.is_connected("input_value_changed", self, "check_change")):
-			var _x = node.connect("input_value_changed", self, "check_change")
+		if !(node.is_connected("input_value_changed",Callable(self,"check_change"))):
+			var _x = node.connect("input_value_changed",Callable(self,"check_change"))
 
 # save the data
 func _on_Button_pressed()->void:
@@ -123,12 +123,12 @@ func _on_Close_pressed()->void:
 	if changes: # open a warning popup
 		var pop_up:ConfirmationDialog = ConfirmationDialog.new()
 		pop_up.set_text('All the filled data will be LOST\n\nAre you sure you want to close')
-		pop_up.get_child(1).align = Label.ALIGN_CENTER
-		pop_up.set_autowrap(true)
+		pop_up.get_child(1).align = Label.ALIGNMENT_CENTER
+		pop_up.set_autowrap_mode(true)
 		pop_up.set_title('WARNING')
-		pop_up.rect_size = Vector2(200, 100)
+		pop_up.size = Vector2(200, 100)
 		
-		var _x = pop_up.connect("confirmed", self, 'close')
+		var _x = pop_up.connect("confirmed",Callable(self,'close'))
 
 		self.add_child(pop_up)
 		pop_up.popup_centered()

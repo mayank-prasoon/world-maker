@@ -5,6 +5,6 @@ func _ready()->void:
 
 func _change_tab(index:int)->void:
 	for button in get_children():
-		button.pressed = false
+		button.button_pressed = false
 
-	self.get_children()[index].pressed = true
+	self.get_children()[index].button_pressed = true

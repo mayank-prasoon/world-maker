@@ -1,16 +1,16 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=1]
 [ext_resource path="res://systems/map_system/ui_elements/map_element_inspector/scripts/DeletePin.gd" type="Script" id=8]
 
 [sub_resource type="GDScript" id=20]
 script/source = "extends ScrollContainer
 
 # === NODES ===
-onready var comment_name_node:LineEdit            = $MapCommentInspector/VBoxContainer/CommentName/HBoxContainer/LineEdit
-onready var comment_x_location_node:SpinBox       = $MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
-onready var comment_y_location_node:SpinBox       = $MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
-onready var comment_text_node:TextEdit            = $MapCommentInspector/VBoxContainer/CommentText/VBoxContainer/TextEdit
+@onready var comment_name_node:LineEdit            = $MapCommentInspector/VBoxContainer/CommentName/HBoxContainer/LineEdit
+@onready var comment_x_location_node:SpinBox       = $MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
+@onready var comment_y_location_node:SpinBox       = $MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
+@onready var comment_text_node:TextEdit            = $MapCommentInspector/VBoxContainer/CommentText/VBoxContainer/TextEdit
 
 # === RESOURCE FILE ===
 var resource_file:MapComment = MapComment.new()
@@ -29,7 +29,7 @@ func _ready() -> void:
 	comment_text_node.text = resource_file.comment_text
 
 	for node in get_tree().get_nodes_in_group('map_inspector_input_field'):
-		node.connect('input_value_changed', self, 'input_value_changed')
+		node.connect('input_value_changed',Callable(self,'input_value_changed'))
 
 # ------------------------------------------------------------------------------
 
@@ -162,7 +162,7 @@ content_margin_top = 10.0
 content_margin_bottom = 10.0
 bg_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -197,8 +197,8 @@ func _on_LineEdit_text_changed(new_text):
 [sub_resource type="GDScript" id=22]
 script/source = "extends \"res://systems/map_system/ui_elements/map_element_inspector/inspector_input.gd\"
 
-onready var x_axis = $HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
-onready var y_axis = $HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
+@onready var x_axis = $HBoxContainer/HBoxContainer/HBoxContainer/SpinBox
+@onready var y_axis = $HBoxContainer/HBoxContainer/HBoxContainer2/SpinBox2
 
 func _ready()->void:
 	input_value = get_owner().resource_file.comment_location
@@ -215,7 +215,7 @@ func value_changed(_value)->void:
 [sub_resource type="GDScript" id=23]
 script/source = "extends \"res://systems/map_system/ui_elements/map_element_inspector/inspector_input.gd\"
 
-#export(String) var input_value:String       = \"\"
+#export var input_value: String:String       = \"\"
 
 func _ready()->void:
 	input_value = get_owner().resource_file.comment_text
@@ -235,9 +235,9 @@ anchor_bottom = 1.0
 script = SubResource( 20 )
 
 [node name="MapCommentInspector" type="Control" parent="."]
-margin_right = 1920.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 0, 600 )
+offset_right = 1920.0
+offset_bottom = 600.0
+custom_minimum_size = Vector2( 0, 600 )
 size_flags_horizontal = 3
 theme = SubResource( 2 )
 __meta__ = {
@@ -254,23 +254,23 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="MapCommentInspector/VBoxContainer"]
-margin_right = 1878.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
+offset_right = 1878.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 0, 25 )
 
 [node name="PinInspector" type="Label" parent="MapCommentInspector/VBoxContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 0, 25 )
+custom_minimum_size = Vector2( 0, 25 )
 text = "Pin Inspector"
 align = 1
 valign = 1
 
 [node name="CommentName" type="Control" parent="MapCommentInspector/VBoxContainer"]
-margin_top = 50.0
-margin_right = 1878.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 25 )
+offset_top = 50.0
+offset_right = 1878.0
+offset_bottom = 75.0
+custom_minimum_size = Vector2( 0, 25 )
 script = SubResource( 21 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapCommentInspector/VBoxContainer/CommentName"]
@@ -278,23 +278,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapCommentInspector/VBoxContainer/CommentName/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Comment Title"
 
 [node name="LineEdit" type="LineEdit" parent="MapCommentInspector/VBoxContainer/CommentName/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="CommentPosition" type="Control" parent="MapCommentInspector/VBoxContainer"]
-margin_top = 100.0
-margin_right = 1878.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 0, 70 )
+offset_top = 100.0
+offset_right = 1878.0
+offset_bottom = 170.0
+custom_minimum_size = Vector2( 0, 70 )
 script = SubResource( 22 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapCommentInspector/VBoxContainer/CommentPosition"]
@@ -302,67 +302,67 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer"]
-margin_right = 125.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 125, 0 )
+offset_right = 125.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 125, 0 )
 size_flags_vertical = 7
 text = "Comment
 Position"
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer"]
-margin_left = 129.0
-margin_right = 238.0
-margin_bottom = 70.0
+offset_left = 129.0
+offset_right = 238.0
+offset_bottom = 70.0
 custom_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer"]
-margin_right = 109.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
+offset_right = 109.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 0, 25 )
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 10.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 10, 0 )
+offset_top = 3.0
+offset_right = 10.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 10, 0 )
 text = "x"
 
 [node name="SpinBox" type="SpinBox" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 25.0
-margin_right = 109.0
-margin_bottom = 25.0
+offset_left = 25.0
+offset_right = 109.0
+offset_bottom = 25.0
 min_value = -100000.0
 max_value = 100000.0
 align = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer"]
-margin_top = 45.0
-margin_right = 109.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 0, 25 )
+offset_top = 45.0
+offset_right = 109.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 0, 25 )
 custom_constants/separation = 15
 
 [node name="Label2" type="Label" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer2"]
-margin_top = 3.0
-margin_right = 10.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 10, 0 )
+offset_top = 3.0
+offset_right = 10.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 10, 0 )
 text = "y"
 
 [node name="SpinBox2" type="SpinBox" parent="MapCommentInspector/VBoxContainer/CommentPosition/HBoxContainer/HBoxContainer/HBoxContainer2"]
-margin_left = 25.0
-margin_right = 109.0
-margin_bottom = 25.0
+offset_left = 25.0
+offset_right = 109.0
+offset_bottom = 25.0
 min_value = -100000.0
 max_value = 100000.0
 align = 2
 
 [node name="CommentText" type="Control" parent="MapCommentInspector/VBoxContainer"]
-margin_top = 195.0
-margin_right = 1878.0
-margin_bottom = 430.0
-rect_min_size = Vector2( 0, 235 )
+offset_top = 195.0
+offset_right = 1878.0
+offset_bottom = 430.0
+custom_minimum_size = Vector2( 0, 235 )
 script = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -374,31 +374,31 @@ anchor_bottom = 1.0
 custom_constants/separation = 5
 
 [node name="Label" type="Label" parent="MapCommentInspector/VBoxContainer/CommentText/VBoxContainer"]
-margin_right = 1878.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 0, 30 )
+offset_right = 1878.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 0, 30 )
 text = "Comment Text"
 valign = 1
 
 [node name="TextEdit" type="TextEdit" parent="MapCommentInspector/VBoxContainer/CommentText/VBoxContainer"]
-margin_top = 35.0
-margin_right = 1878.0
-margin_bottom = 235.0
-rect_min_size = Vector2( 0, 200 )
+offset_top = 35.0
+offset_right = 1878.0
+offset_bottom = 235.0
+custom_minimum_size = Vector2( 0, 200 )
 smooth_scrolling = true
 wrap_enabled = true
 
 [node name="HSeparator" type="HSeparator" parent="MapCommentInspector/VBoxContainer"]
-margin_top = 455.0
-margin_right = 1878.0
-margin_bottom = 459.0
+offset_top = 455.0
+offset_right = 1878.0
+offset_bottom = 459.0
 
 [node name="DeleteComment" type="Control" parent="MapCommentInspector/VBoxContainer"]
-margin_top = 484.0
-margin_right = 1878.0
-margin_bottom = 509.0
-rect_min_size = Vector2( 0, 25 )
-rect_pivot_offset = Vector2( -373.999, 55 )
+offset_top = 484.0
+offset_right = 1878.0
+offset_bottom = 509.0
+custom_minimum_size = Vector2( 0, 25 )
+pivot_offset = Vector2( -373.999, 55 )
 script = ExtResource( 8 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MapCommentInspector/VBoxContainer/DeleteComment"]
@@ -406,26 +406,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="MapCommentInspector/VBoxContainer/DeleteComment/HBoxContainer"]
-margin_top = 3.0
-margin_right = 125.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 125, 0 )
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 22.0
+custom_minimum_size = Vector2( 125, 0 )
 text = "Delete Comment"
 
 [node name="DeleteCommentButton" type="Button" parent="MapCommentInspector/VBoxContainer/DeleteComment/HBoxContainer"]
-margin_left = 129.0
-margin_right = 1878.0
-margin_bottom = 25.0
+offset_left = 129.0
+offset_right = 1878.0
+offset_bottom = 25.0
 size_flags_horizontal = 3
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_styles/hover = SubResource( 18 )
 text = "delete"
 
 [node name="FileDialog" type="FileDialog" parent="MapCommentInspector"]
-margin_left = 262.0
-margin_top = 89.0
-margin_right = 721.0
-margin_bottom = 521.0
+offset_left = 262.0
+offset_top = 89.0
+offset_right = 721.0
+offset_bottom = 521.0
 theme = SubResource( 19 )
 window_title = "Open a File"
 mode = 0

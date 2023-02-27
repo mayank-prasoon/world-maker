@@ -30,14 +30,14 @@ func _on_CreateButton_pressed():
 	Logger.info(name + " _on_CreateButton_pressed()")
 	if project_name == "":
 		#throw out an error
-		$WindowDialog.popup_centered()
-		$WindowDialog/Label.text = "project name can't be empty"
+		$Window.popup_centered()
+		$Window/Label.text = "project name can't be empty"
 		Logger.error(name + " _on_CreateButton_pressed()" + " aborted")
 		Logger.error("project name is invalid")
 	elif project_location == "":
 		#throw out an error
-		$WindowDialog.popup_centered()
-		$WindowDialog/Label.text = "choose a directory to save the project"
+		$Window.popup_centered()
+		$Window/Label.text = "choose a directory to save the project"
 		Logger.error(name + " _on_CreateButton_pressed()" + " aborted")
 		Logger.error("browser has not been selected")
 	else:
@@ -53,4 +53,4 @@ func _on_CreateButton_pressed():
 		ProjectSettingsManager.folder_integrity()
 		SystemSettings.add_last_project_by_name(project_name, project_location)
 
-		var _x = get_tree().change_scene_to(load("res://systems/Dashboard.tscn"))
+		var _x = get_tree().change_scene_to_packed(load("res://systems/Dashboard.tscn"))

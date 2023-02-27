@@ -2,7 +2,7 @@ class_name Animaion
 extends Tween
 
 # === EXPORT ===
-export(String, 'zoom', 'pop_bounce') var animation = 'pop_bounce'
+@export var animation = 'pop_bounce' # (String, 'zoom', 'pop_bounce')
 
 # === FUNCTIONS ===
 
@@ -13,7 +13,7 @@ func popBounce()->void:
 # this is pops in the parent node from the center of the pivot offset 
 	var parent: = get_parent()
 	var _i = self.interpolate_property(
-		parent, 'rect_scale', Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_QUINT, Tween.EASE_IN_OUT
+		parent, 'scale', Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_QUINT, Tween.EASE_IN_OUT
 	)
 	var _s = self.start()
 
@@ -22,7 +22,7 @@ func popBounceBack()->void:
 # this is pops out the parent node from the center of the pivot offset 
 	var parent: = get_parent()
 	var _i = self.interpolate_property(
-		parent, 'rect_scale', Vector2(1, 1), Vector2(0,0), 0.5, Tween.TRANS_QUINT, Tween.EASE_IN_OUT
+		parent, 'scale', Vector2(1, 1), Vector2(0,0), 0.5, Tween.TRANS_QUINT, Tween.EASE_IN_OUT
 	)
 	var _s = self.start()
 
@@ -41,7 +41,7 @@ func shrinkEnter()->void:
 # this shrinks in the parent node from the side of the pivot offset
 	var parent: = get_parent()
 	var _i: = self.interpolate_property(
-		parent, 'rect_scale', Vector2(0,1), Vector2(1,1), 0.25, Tween.TRANS_QUAD, Tween.EASE_IN_OUT
+		parent, 'scale', Vector2(0,1), Vector2(1,1), 0.25, Tween.TRANS_QUAD, Tween.EASE_IN_OUT
 	)
 	var _s: = self.start()
 
@@ -50,7 +50,7 @@ func shrinkExit()->void:
 # this shrinks out the parent node from the side of the pivot offset
 	var parent: = get_parent()
 	var _i: = self.interpolate_property(
-		parent, 'rect_scale', Vector2(1,1), Vector2(0,1), 0.25, Tween.TRANS_QUAD, Tween.EASE_IN_OUT
+		parent, 'scale', Vector2(1,1), Vector2(0,1), 0.25, Tween.TRANS_QUAD, Tween.EASE_IN_OUT
 	)
 	var _s: = self.start()
 
@@ -70,7 +70,7 @@ func rotateLeft()->void:
 # this rotate the parent node to the left (initial position) from the pivot offset
 	var parent: = get_parent()
 	var _i: = self.interpolate_property(
-		parent, "rect_rotation", 0, -180, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
+		parent, "rotation", 0, -180, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
 	)
 	var _s: = self.start()
 
@@ -79,7 +79,7 @@ func rotateRight()->void:
 # this rotate the parent node to the right from the pivot offset
 	var parent: = get_parent()
 	var _i: = self.interpolate_property(
-		parent, "rect_rotation", -180, 0, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
+		parent, "rotation", -180, 0, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
 	)
 	var _s: = self.start()
 
@@ -126,7 +126,7 @@ func slideEnter(new_postion:Vector2)->void:
 # this slides in the parent node from the side of the pivot offset
 	var parent: = get_parent()
 	var _i: = self.interpolate_property(
-		parent, "rect_position", parent.get_position() , new_postion, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
+		parent, "position", parent.get_position() , new_postion, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
 	)
 	var _s: = self.start()
 
@@ -134,7 +134,7 @@ func slideExit(new_postion:Vector2)->void:
 # this slides out the parent node from the side of the pivot offset
 	var parent: = get_parent()
 	var _i: = self.interpolate_property(
-		parent, "rect_position", parent.get_position() , new_postion, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
+		parent, "position", parent.get_position() , new_postion, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT
 	)
 	var _s: = self.start()
 
@@ -148,7 +148,7 @@ func slide(state:bool, true_state_position:Vector2, false_state_postion:Vector2)
 
 # === COMMENTED FUNCTIONS ===
 
-#onready var parent_scale:Vector2 = parent.rect_scale
+#onready var parent_scale:Vector2 = parent.scale
 #onready var desired_scale:Vector2 = parent_scale
 
 #func _physics(_delta: float) -> void:

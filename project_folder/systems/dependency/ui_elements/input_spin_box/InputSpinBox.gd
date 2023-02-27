@@ -1,8 +1,8 @@
 extends RootFieldInput
 
-#export(int)    var input_value:int              = 0
-export(String) var input_spin_box_prefix:String = "" 
-export(String) var input_spin_box_suffix:String = ""
+#export var input_value: int:int              = 0
+@export var input_spin_box_prefix: String:String = "" 
+@export var input_spin_box_suffix: String:String = ""
 
 func _ready()->void:
 	$VBoxContainer/Label.text                   = input_name

@@ -3,11 +3,11 @@ extends Panel
 signal create_layer(layer_name, layer_texture, article)
 
 # === node ===
-onready var layer_name:LineEdit        = $HBoxContainer/CenterContainer2/InputField/MapName/Input/LineEdit
-onready var layer_texture:LineEdit     = $HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input/LineEdit
-onready var layer_shader:LineEdit      = $HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Input/LineEdit
+@onready var layer_name:LineEdit        = $HBoxContainer/CenterContainer2/InputField/MapName/Input/LineEdit
+@onready var layer_texture:LineEdit     = $HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input/LineEdit
+@onready var layer_shader:LineEdit      = $HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Input/LineEdit
 
-onready var create_button:Button       = $HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton
+@onready var create_button:Button       = $HBoxContainer/CenterContainer2/InputField/CreateButton/CreateButton
 
 var layer_node  = null
 var layer_index = -1
@@ -27,7 +27,7 @@ func _ready()->void:
 
 	# layer manager
 	var map:Control = self.get_parent().get_owner()
-	var _x = self.connect("create_layer", map, "create_layer")
+	var _x = self.connect("create_layer",Callable(map,"create_layer"))
 
 
 func edit_mode(layer_resource:MapLayer, node:Control, index:int)->void:
@@ -48,14 +48,14 @@ func create_confirmation_dialog()->void:
 	new_pop_up.window_title    = "Please Confirm..."
 	new_pop_up.dialog_text     = "you are closing the layer creation dialog box,\n\nnote: all filled info will be lost"
 	new_pop_up.dialog_autowrap = true
-	new_pop_up.rect_size       = Vector2(300, 150)
+	new_pop_up.size       = Vector2(300, 150)
 
 	# Label
 	var lable:Label            = new_pop_up.get_child(1)
-	lable.align                = Label.ALIGN_CENTER
+	lable.align                = Label.ALIGNMENT_CENTER
 	lable.valign               = Label.VALIGN_CENTER
 	
-	var _x = new_pop_up.connect("confirmed", self, "close_the_dialog")
+	var _x = new_pop_up.connect("confirmed",Callable(self,"close_the_dialog"))
 	self.add_child(new_pop_up)
 
 
@@ -99,7 +99,7 @@ func _on_OpenCustomShader_file_selected(path)->void:
 
 # hide dialog box
 func hide_map_creator()->void:
-	if (layer_name.get_text().empty()) and (layer_texture.get_text().empty()):
+	if (layer_name.get_text().is_empty()) and (layer_texture.get_text().is_empty()):
 		# check if the fields are filled
 		close_the_dialog()
 	else:
@@ -107,8 +107,8 @@ func hide_map_creator()->void:
 		create_confirmation_dialog()
 		var confirm:ConfirmationDialog  = self.get_node("ConfirmationDialog")
 		confirm.popup_centered()
-		if confirm.is_connected("confirmed", self, "close_the_dialog"):
-			var _x = confirm.connect("confirmed", self, "close_the_dialog")
+		if confirm.is_connected("confirmed",Callable(self,"close_the_dialog")):
+			var _x = confirm.connect("confirmed",Callable(self,"close_the_dialog"))
 
 
 func _on_OpenBrowser_pressed()->void:

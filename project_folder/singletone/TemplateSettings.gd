@@ -14,7 +14,7 @@ func get_all_template()->Array:
 	var base_folder = save_location
 	if folder.dir_exists(base_folder):
 		folder.open(base_folder)
-		folder.list_dir_begin()
+		folder.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		while true:
 			var file = folder.get_next()
 			if file == "":

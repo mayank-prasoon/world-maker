@@ -7,12 +7,12 @@
 
 
 class_name ResourceUtilies
-extends Reference
+extends RefCounted
 
 #                  === SUB CLASS ===
 
 # this sub class check if file is null
-class NullCheck extends Reference:
+class NullCheck extends RefCounted:
 	
 	enum {
 		OK,

@@ -7,11 +7,11 @@ var dragged           = false
 # === NODES ===
 
 # animation
-onready var hover_animation:AnimationPlayer        = $"../AnimationTree/HoverAnimation"
-onready var progress_bar_animation:AnimationPlayer = $"../AnimationTree/ProgressBarProgress"
-onready var drag_animation:AnimationPlayer         = $"../AnimationTree/DragAnimation"
+@onready var hover_animation:AnimationPlayer        = $"../AnimationTree/HoverAnimation"
+@onready var progress_bar_animation:AnimationPlayer = $"../AnimationTree/ProgressBarProgress"
+@onready var drag_animation:AnimationPlayer         = $"../AnimationTree/DragAnimation"
 
-onready var timer:Timer                            = $"../Timer"
+@onready var timer:Timer                            = $"../Timer"
 
 enum STATE {
 	NULL,
@@ -149,16 +149,16 @@ func _exit_state(old_state, new_state) -> void:
 # ------------------------------------------------------------------------------
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx)->void:
-	var sprite:AnimatedSprite = $"../Sprite"
+	var sprite:AnimatedSprite2D = $"../Sprite2D"
 
 	if event is InputEventMouseButton:
-		if event.is_pressed() and event.button_index == BUTTON_LEFT:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			clicked = true
 
-		elif !event.is_pressed() and event.button_index == BUTTON_LEFT:
+		elif !event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			reset_drag()
 		
-		if event.is_doubleclick() and event.button_index == BUTTON_LEFT:
+		if event.is_double_click() and event.button_index == MOUSE_BUTTON_LEFT:
 			EventBus.emit_signal("open_article_panel", get_parent().pin_resource.pin_article)
 		
 	if event is InputEventMouseMotion:

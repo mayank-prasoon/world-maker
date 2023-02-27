@@ -2,16 +2,16 @@
 
 [ext_resource path="res://systems/map_system/ui_elements/layer_creator/LayerCreator.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/effects/BackgroundBlur.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/graphics/map/new map/uncheck_button.svg" type="Texture" id=5]
-[ext_resource path="res://assets/graphics/map/new map/check_button.svg" type="Texture" id=6]
-[ext_resource path="res://assets/graphics/map/new map/text.png" type="Texture" id=7]
-[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture" id=8]
-[ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture" id=9]
-[ext_resource path="res://assets/graphics/map/new map/image.png" type="Texture" id=10]
-[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture" id=11]
-[ext_resource path="res://assets/graphics/map/new map/test_browse.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/wiki_dashboard/x.svg" type="Texture2D" id=3]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=4]
+[ext_resource path="res://assets/graphics/map/new map/uncheck_button.svg" type="Texture2D" id=5]
+[ext_resource path="res://assets/graphics/map/new map/check_button.svg" type="Texture2D" id=6]
+[ext_resource path="res://assets/graphics/map/new map/text.png" type="Texture2D" id=7]
+[ext_resource path="res://assets/graphics/map/new map/button.png" type="Texture2D" id=8]
+[ext_resource path="res://assets/graphics/map/new map/carbon_add.png" type="Texture2D" id=9]
+[ext_resource path="res://assets/graphics/map/new map/image.png" type="Texture2D" id=10]
+[ext_resource path="res://assets/graphics/map/new map/button_small.png" type="Texture2D" id=11]
+[ext_resource path="res://assets/graphics/map/new map/test_browse.png" type="Texture2D" id=12]
 
 [sub_resource type="GDScript" id=37]
 script/source = "extends Control
@@ -61,7 +61,7 @@ content_margin_left = 15.0
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="FontFile" id=9]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
@@ -72,7 +72,7 @@ Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
-CheckBox/constants/hseparation = 20
+CheckBox/constants/h_separation = 20
 CheckBox/icons/checked = ExtResource( 6 )
 CheckBox/icons/unchecked = ExtResource( 5 )
 CheckBox/styles/disabled = SubResource( 10 )
@@ -91,26 +91,26 @@ VBoxContainer/constants/separation = 25
 [sub_resource type="Animation" id=34]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Layer/Control/LayerCreator:rect_position")
+tracks/0/path = NodePath("Layer/Control/LayerCreator:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 403.5, 276.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Layer/Control/PlaceHolder/LayerCreator:rect_position")
+tracks/1/path = NodePath("Layer/Control/PlaceHolder/LayerCreator:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -557, -264 ) ]
 }
@@ -125,8 +125,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "queue_free"
@@ -139,22 +139,22 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "unBlurBackground"
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Layer/Control/PlaceHolder/LayerCreator:rect_position")
+tracks/2/path = NodePath("Layer/Control/PlaceHolder/LayerCreator:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( -2, -2 ),
 "update": 0,
 "values": [ Vector2( -557, -264 ), Vector2( -557, 600 ) ]
 }
@@ -163,14 +163,14 @@ tracks/2/keys = {
 resource_name = "open"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Layer/Control/PlaceHolder/LayerCreator:rect_position")
+tracks/0/path = NodePath("Layer/Control/PlaceHolder/LayerCreator:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( -2, -2 ),
 "update": 0,
 "values": [ Vector2( -557, 600 ), Vector2( -557, -264 ) ]
 }
@@ -247,17 +247,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="PlaceHolder" type="Control" parent="Layer/Control"]
-margin_left = 960.0
-margin_top = 540.0
-margin_right = 960.0
-margin_bottom = 540.0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="LayerCreator" type="Panel" parent="Layer/Control/PlaceHolder"]
-margin_left = -557.0
-margin_top = -264.0
-margin_right = 556.0
-margin_bottom = 263.0
-rect_min_size = Vector2( 1113, 527 )
+offset_left = -557.0
+offset_top = -264.0
+offset_right = 556.0
+offset_bottom = 263.0
+custom_minimum_size = Vector2( 1113, 527 )
 theme = SubResource( 1 )
 script = ExtResource( 1 )
 
@@ -272,11 +272,11 @@ anims/open = SubResource( 36 )
 modulate = Color( 1, 1, 1, 0.627451 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -48.0
-margin_top = 20.0
-margin_right = -18.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 30, 30 )
+offset_left = -48.0
+offset_top = 20.0
+offset_right = -18.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 30, 30 )
 mouse_default_cursor_shape = 2
 flat = true
 
@@ -287,71 +287,71 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="OpenTexture" type="FileDialog" parent="Layer/Control/PlaceHolder/LayerCreator"]
-margin_left = 114.0
-margin_top = 8.0
-margin_right = 450.0
-margin_bottom = 296.0
+offset_left = 114.0
+offset_top = 8.0
+offset_right = 450.0
+offset_bottom = 296.0
 window_title = "Open a File or Directory"
 resizable = true
 dialog_hide_on_ok = true
 mode = 3
 access = 2
-filters = PoolStringArray( "*.png", "*.jpg" )
+filters = PackedStringArray( "*.png", "*.jpg" )
 current_dir = "/media/mayank/Assets1/Software Dev/world building software"
 current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
 [node name="OpenCustomShader" type="FileDialog" parent="Layer/Control/PlaceHolder/LayerCreator"]
-margin_left = 114.0
-margin_top = 8.0
-margin_right = 450.0
-margin_bottom = 296.0
+offset_left = 114.0
+offset_top = 8.0
+offset_right = 450.0
+offset_bottom = 296.0
 window_title = "Open a File or Directory"
 resizable = true
 dialog_hide_on_ok = true
 mode = 3
 access = 2
-filters = PoolStringArray( "*.png", "*.jpg" )
+filters = PackedStringArray( "*.png", "*.jpg" )
 current_dir = "/media/mayank/Assets1/Software Dev/world building software"
 current_path = "/media/mayank/Assets1/Software Dev/world building software/"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = 40.0
-margin_right = -30.0
-margin_bottom = -30.0
+offset_left = 50.0
+offset_top = 40.0
+offset_right = -30.0
+offset_bottom = -30.0
 custom_constants/separation = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer"]
-margin_right = 580.0
-margin_bottom = 457.0
-rect_min_size = Vector2( 580, 0 )
+offset_right = 580.0
+offset_bottom = 457.0
+custom_minimum_size = Vector2( 580, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer"]
-margin_left = 5.0
-margin_top = 39.0
-margin_right = 575.0
-margin_bottom = 417.0
-rect_min_size = Vector2( 570, 378 )
+offset_left = 5.0
+offset_top = 39.0
+offset_right = 575.0
+offset_bottom = 417.0
+custom_minimum_size = Vector2( 570, 378 )
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
 [node name="CenterContainer2" type="CenterContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer"]
-margin_left = 580.0
-margin_right = 1033.0
-margin_bottom = 457.0
+offset_left = 580.0
+offset_right = 1033.0
+offset_bottom = 457.0
 size_flags_horizontal = 3
 
 [node name="InputField" type="VBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2"]
-margin_left = 36.0
-margin_top = 38.0
-margin_right = 416.0
-margin_bottom = 418.0
-rect_min_size = Vector2( 380, 380 )
+offset_left = 36.0
+offset_top = 38.0
+offset_right = 416.0
+offset_bottom = 418.0
+custom_minimum_size = Vector2( 380, 380 )
 size_flags_horizontal = 3
 custom_constants/separation = 35
 __meta__ = {
@@ -359,30 +359,30 @@ __meta__ = {
 }
 
 [node name="MapName" type="VBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
-margin_right = 380.0
-margin_bottom = 74.0
+offset_right = 380.0
+offset_bottom = 74.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
-margin_right = 380.0
-margin_bottom = 19.0
+offset_right = 380.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 21 )
 text = "name"
 
 [node name="Input" type="Control" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName"]
-margin_top = 29.0
-margin_right = 380.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 29.0
+offset_right = 380.0
+offset_bottom = 74.0
+custom_minimum_size = Vector2( 0, 45 )
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 7 )
 
 [node name="LineEdit" type="LineEdit" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapName/Input"]
@@ -393,37 +393,37 @@ custom_styles/normal = SubResource( 23 )
 placeholder_text = "map name"
 
 [node name="Shader" type="VBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
-margin_top = 109.0
-margin_right = 380.0
-margin_bottom = 183.0
+offset_top = 109.0
+offset_right = 380.0
+offset_bottom = 183.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader"]
-margin_right = 380.0
-margin_bottom = 19.0
+offset_right = 380.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 24 )
 text = "shader path"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader"]
-margin_top = 29.0
-margin_right = 380.0
-margin_bottom = 74.0
+offset_top = 29.0
+offset_right = 380.0
+offset_bottom = 74.0
 custom_constants/separation = 20
 
 [node name="Input" type="Control" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer"]
-margin_right = 257.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 257, 45 )
+offset_right = 257.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 257, 45 )
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 12 )
 
 [node name="LineEdit" type="LineEdit" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Input"]
@@ -435,24 +435,24 @@ custom_styles/normal = SubResource( 26 )
 placeholder_text = "path to shader"
 
 [node name="Control" type="Control" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer"]
-margin_left = 277.0
-margin_right = 380.0
-margin_bottom = 45.0
+offset_left = 277.0
+offset_right = 380.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -20.0
-margin_right = 25.0
-margin_bottom = 30.0
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 30.0
 texture = ExtResource( 11 )
 
 [node name="AddCustomShader" type="Button" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/Shader/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 80, 0 )
+custom_minimum_size = Vector2( 80, 0 )
 custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 custom_styles/hover = SubResource( 27 )
 custom_styles/pressed = SubResource( 28 )
@@ -462,37 +462,37 @@ custom_styles/normal = SubResource( 31 )
 text = "browse"
 
 [node name="MapTexture" type="VBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
-margin_top = 218.0
-margin_right = 380.0
-margin_bottom = 292.0
+offset_top = 218.0
+offset_right = 380.0
+offset_bottom = 292.0
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
-margin_right = 380.0
-margin_bottom = 19.0
+offset_right = 380.0
+offset_bottom = 19.0
 custom_styles/normal = SubResource( 24 )
 text = "map texture"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture"]
-margin_top = 29.0
-margin_right = 380.0
-margin_bottom = 74.0
+offset_top = 29.0
+offset_right = 380.0
+offset_bottom = 74.0
 custom_constants/separation = 20
 
 [node name="Input" type="Control" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
-margin_right = 257.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 257, 45 )
+offset_right = 257.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 257, 45 )
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
-margin_left = -24.5
-margin_top = -20.0
-margin_right = 404.5
-margin_bottom = 75.0
+offset_left = -24.5
+offset_top = -20.0
+offset_right = 404.5
+offset_bottom = 75.0
 texture = ExtResource( 12 )
 
 [node name="LineEdit" type="LineEdit" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Input"]
@@ -504,24 +504,24 @@ custom_styles/normal = SubResource( 26 )
 placeholder_text = "image path"
 
 [node name="Control" type="Control" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer"]
-margin_left = 277.0
-margin_right = 380.0
-margin_bottom = 45.0
+offset_left = 277.0
+offset_right = 380.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.0
-margin_top = -20.0
-margin_right = 25.0
-margin_bottom = 30.0
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 30.0
 texture = ExtResource( 11 )
 
 [node name="OpenBrowser" type="Button" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/MapTexture/HBoxContainer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 80, 0 )
+custom_minimum_size = Vector2( 80, 0 )
 custom_colors/font_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 custom_styles/hover = SubResource( 27 )
 custom_styles/pressed = SubResource( 28 )
@@ -532,46 +532,46 @@ text = "browse"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
 visible = false
-margin_top = 194.0
-margin_right = 526.0
-margin_bottom = 246.0
+offset_top = 194.0
+offset_right = 526.0
+offset_bottom = 246.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
-margin_right = 526.0
-margin_bottom = 19.0
+offset_right = 526.0
+offset_bottom = 19.0
 text = "chunlk size"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3"]
-margin_top = 23.0
-margin_right = 526.0
-margin_bottom = 52.0
+offset_top = 23.0
+offset_right = 526.0
+offset_bottom = 52.0
 custom_constants/separation = 30
 
 [node name="ChunkX" type="SpinBox" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
-margin_right = 84.0
-margin_bottom = 29.0
-rect_min_size = Vector2( 80, 0 )
+offset_right = 84.0
+offset_bottom = 29.0
+custom_minimum_size = Vector2( 80, 0 )
 max_value = 2000.0
 value = 512.0
 suffix = "px"
 
 [node name="Chunky" type="SpinBox" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
-margin_left = 114.0
-margin_right = 198.0
-margin_bottom = 29.0
-rect_min_size = Vector2( 80, 0 )
+offset_left = 114.0
+offset_right = 198.0
+offset_bottom = 29.0
+custom_minimum_size = Vector2( 80, 0 )
 max_value = 2000.0
 value = 288.0
 suffix = "px"
 
 [node name="Label" type="Label" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
-margin_left = 295.0
-margin_top = 5.0
-margin_right = 396.0
-margin_bottom = 24.0
+offset_left = 295.0
+offset_top = 5.0
+offset_right = 396.0
+offset_bottom = 24.0
 size_flags_horizontal = 10
 text = "chunk number"
 __meta__ = {
@@ -579,38 +579,38 @@ __meta__ = {
 }
 
 [node name="LineEdit3" type="SpinBox" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/VBoxContainer3/HBoxContainer"]
-margin_left = 426.0
-margin_right = 526.0
-margin_bottom = 29.0
-rect_min_size = Vector2( 100, 0 )
+offset_left = 426.0
+offset_right = 526.0
+offset_bottom = 29.0
+custom_minimum_size = Vector2( 100, 0 )
 size_flags_horizontal = 8
 max_value = 5000.0
 
 [node name="CreateButton" type="Control" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField"]
-margin_top = 335.0
-margin_right = 380.0
-margin_bottom = 380.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 335.0
+offset_right = 380.0
+offset_bottom = 380.0
+custom_minimum_size = Vector2( 0, 45 )
 size_flags_horizontal = 3
 size_flags_vertical = 14
 
 [node name="TextureRect" type="TextureRect" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -25.5
-margin_top = -20.0
-margin_right = 24.5
-margin_bottom = 75.0
+offset_left = -25.5
+offset_top = -20.0
+offset_right = 24.5
+offset_bottom = 75.0
 texture = ExtResource( 8 )
 
 [node name="CreateButton" type="Button" parent="Layer/Control/PlaceHolder/LayerCreator/HBoxContainer/CenterContainer2/InputField/CreateButton"]
 anchor_right = 0.339474
 anchor_bottom = 1.0
-rect_min_size = Vector2( 80, 0 )
+custom_minimum_size = Vector2( 80, 0 )
 size_flags_horizontal = 10
 size_flags_vertical = 10
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_constants/hseparation = 10
+custom_constants/h_separation = 10
 custom_styles/hover = SubResource( 32 )
 custom_styles/pressed = SubResource( 32 )
 custom_styles/focus = SubResource( 32 )

@@ -13,8 +13,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ false ]
 }
@@ -29,8 +29,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.5 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -41,8 +41,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "unBlurBackground"
@@ -77,23 +77,23 @@ anchor_left = 0.00976562
 anchor_top = 0.0166667
 anchor_right = 0.990234
 anchor_bottom = 0.0566667
-margin_top = -9.53674e-07
-margin_bottom = -34.0
+offset_top = -9.53674e-07
+offset_bottom = -34.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="CommandInput" type="LineEdit" parent="CanvasLayer/CommandSystemInterface/HBoxContainer"]
-margin_right = 1828.0
-margin_bottom = 24.0
+offset_right = 1828.0
+offset_bottom = 24.0
 size_flags_horizontal = 3
 placeholder_text = "type the command..."
 
 [node name="RunButton" type="Button" parent="CanvasLayer/CommandSystemInterface/HBoxContainer"]
-margin_left = 1832.0
-margin_right = 1882.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 50, 0 )
+offset_left = 1832.0
+offset_right = 1882.0
+offset_bottom = 24.0
+custom_minimum_size = Vector2( 50, 0 )
 text = "run"
 
 [node name="Console" type="ScrollContainer" parent="CanvasLayer/CommandSystemInterface"]
@@ -106,8 +106,8 @@ __meta__ = {
 }
 
 [node name="Log" type="VBoxContainer" parent="CanvasLayer/CommandSystemInterface/Console"]
-margin_right = 1882.5
-margin_bottom = 981.0
+offset_right = 1882.5
+offset_bottom = 981.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
@@ -117,5 +117,5 @@ anims/RESET = SubResource( 2 )
 anims/unblur = SubResource( 1 )
 
 [connection signal="text_changed" from="CanvasLayer/CommandSystemInterface/HBoxContainer/CommandInput" to="." method="_on_CommandInput_text_changed"]
-[connection signal="text_entered" from="CanvasLayer/CommandSystemInterface/HBoxContainer/CommandInput" to="." method="_on_CommandInput_text_entered"]
+[connection signal="text_submitted" from="CanvasLayer/CommandSystemInterface/HBoxContainer/CommandInput" to="." method="_on_CommandInput_text_entered"]
 [connection signal="pressed" from="CanvasLayer/CommandSystemInterface/HBoxContainer/RunButton" to="." method="_on_RunButton_pressed"]

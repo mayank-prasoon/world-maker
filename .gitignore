@@ -6,6 +6,9 @@
 project_folder/.import/
 *.import
 
+# cache files
+project_folder/.godot/
+
 # save files for testing
 project_folder/save_files/
 project_folder/project_settings.tres

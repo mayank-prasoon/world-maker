@@ -7,7 +7,7 @@
 
 
 class_name ResourceSystem
-extends Reference
+extends RefCounted
 
 # creates a cache file to store
 class CacheSystem:

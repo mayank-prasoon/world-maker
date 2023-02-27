@@ -4,13 +4,13 @@ extends Control
 signal input_value_changed
 
 
-export(String)            var input_name:String            = ""
-export(String, MULTILINE) var input_description:String     = ""
-export(String)            var input_display:String         = ""
-export(String)            var input_null_display_value     = ""
-export(String)            var input_script:String          = ""
+@export var input_name: String:String            = ""
+@export var input_description:String     = "" # (String, MULTILINE)
+@export var input_display: String:String         = ""
+@export var input_null_display_value: String     = ""
+@export var input_script: String:String          = ""
 
-var input_value                                 = "" setget set_input_value
+var input_value                                 = "" : set = set_input_value
 var script_object
 
 func _ready()->void:

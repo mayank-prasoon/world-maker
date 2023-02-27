@@ -4,7 +4,7 @@ signal map_layer_changed
 # signal blend_mode_changed
 # signal opacity_changed
 
-var layerNode:Control setget set_map_layer, get_map_layer 
+var layerNode:Control : get = get_map_layer, set = set_map_layer 
 
 
 func _ready():

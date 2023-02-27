@@ -3,8 +3,8 @@ extends RootFieldInput
 #signal add_item(item_name)
 #signal remove_item(item_name)
 
-onready var line_edit:LineEdit = $VBoxContainer/HBoxContainer/LineEdit
-onready var itemlist:ItemList  = $VBoxContainer/ItemList
+@onready var line_edit:LineEdit = $VBoxContainer/HBoxContainer/LineEdit
+@onready var itemlist:ItemList  = $VBoxContainer/ItemList
 
 var selected_item
 

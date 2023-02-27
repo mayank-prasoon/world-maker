@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/graphics/map/chevron-down.png" type="Texture" id=3]
-[ext_resource path="res://assets/graphics/wiki_dashboard/edit-3.svg" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Regular.ttf" type="FontFile" id=1]
+[ext_resource path="res://assets/fonts/Roboto/Roboto-Medium.ttf" type="FontFile" id=2]
+[ext_resource path="res://assets/graphics/map/chevron-down.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/graphics/wiki_dashboard/edit-3.svg" type="Texture2D" id=5]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
@@ -26,7 +26,7 @@ func load_comment()->void:
 	self.position                                          = comment_resource.comment_location
 	$Comment/HBoxContainer/Label.text                      = comment_resource.comment_name
 	$CommentWindow/VBoxContainer/HBoxContainer/Label.text  = comment_resource.comment_name
-	$CommentWindow/VBoxContainer/RichTextLabel.bbcode_text = comment_resource.comment_text
+	$CommentWindow/VBoxContainer/RichTextLabel.text = comment_resource.comment_text
 	
 	match comment_resource.comment_state:
 		MapComment.COLLAPSE:
@@ -105,7 +105,7 @@ content_margin_right = 20.0
 content_margin_top = 20.0
 content_margin_bottom = 20.0
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -119,7 +119,7 @@ border_width_bottom = 5
 border_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 expand_margin_top = 45.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="FontFile" id=8]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -128,14 +128,14 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 8 )
 Panel/styles/panel = SubResource( 20 )
 RichTextLabel/styles/normal = SubResource( 10 )
-WindowDialog/colors/title_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-WindowDialog/constants/close_h_ofs = 35
-WindowDialog/constants/close_v_ofs = 33
-WindowDialog/constants/title_height = 45
-WindowDialog/fonts/title_font = SubResource( 6 )
-WindowDialog/icons/close = ExtResource( 3 )
-WindowDialog/icons/close_highlight = ExtResource( 3 )
-WindowDialog/styles/panel = SubResource( 7 )
+Window/colors/title_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Window/constants/close_h_offset = 35
+Window/constants/close_v_offset = 33
+Window/constants/title_height = 45
+Window/fonts/title_font = SubResource( 6 )
+Window/icons/close = ExtResource( 3 )
+Window/icons/close_highlight = ExtResource( 3 )
+Window/styles/panel = SubResource( 7 )
 
 [sub_resource type="GDScript" id=1]
 script/source = "tool
@@ -156,7 +156,7 @@ var center:Vector2 = Vector2(0,0)
 
 func _process(delta:float)->void:
 	if self.visible:
-		self.center = self.rect_size/2
+		self.center = self.size/2
 
 # ------------------------------------------------------------------------------
 
@@ -164,7 +164,7 @@ func _process(delta:float)->void:
 func _input(event):
 	if event is InputEventMouseMotion: 
 		if resize:
-			self.rect_size = (get_global_mouse_position() - get_global_position())
+			self.size = (get_global_mouse_position() - get_global_position())
 
 		if drag:
 			self.get_parent().set_global_position(get_global_mouse_position() + Vector2(0, center.y))
@@ -198,7 +198,7 @@ func _on_CommentWindow_visibility_changed():
 		$AnimationPlayer.play_backwards(\"pop_up_animation\")
 "
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="FontFile" id=25]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -206,14 +206,14 @@ font_data = ExtResource( 2 )
 [sub_resource type="Animation" id=28]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -224,8 +224,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -235,14 +235,14 @@ resource_name = "close_pop_up_animation"
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3 ),
-"transitions": PoolRealArray( -2, -2, -2 ),
+"times": PackedFloat32Array( 0, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( -2, -2, -2 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
 }
@@ -253,8 +253,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "hide_window"
@@ -266,14 +266,14 @@ resource_name = "pop_up_animation"
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3 ),
-"transitions": PoolRealArray( -2, -2, -2 ),
+"times": PackedFloat32Array( 0, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( -2, -2, -2 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
 }
@@ -284,13 +284,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="FontFile" id=24]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -341,12 +341,12 @@ script/source = "tool
 extends Button
 
 func _process(delta:float)->void:
-	self.rect_size  = get_child(0).rect_size
+	self.size  = get_child(0).size
 	self.text       = \"\"
-	self.rect_scale = Vector2(1, 1) 
+	self.scale = Vector2(1, 1) 
 "
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="FontFile" id=26]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -361,12 +361,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -175.0
-margin_right = 250.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 400, 250 )
-rect_pivot_offset = Vector2( 250, 175 )
+offset_left = -250.0
+offset_top = -175.0
+offset_right = 250.0
+offset_bottom = 175.0
+custom_minimum_size = Vector2( 400, 250 )
+pivot_offset = Vector2( 250, 175 )
 theme = SubResource( 9 )
 script = SubResource( 1 )
 __meta__ = {
@@ -379,22 +379,22 @@ anchor_bottom = 1.0
 mouse_filter = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CommentWindow/VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 25.0
+offset_right = 500.0
+offset_bottom = 25.0
 mouse_filter = 0
 mouse_default_cursor_shape = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="CommentWindow/VBoxContainer/HBoxContainer"]
-margin_right = 25.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 25, 0 )
+offset_right = 25.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 25, 0 )
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="CommentWindow/VBoxContainer/HBoxContainer"]
-margin_left = 29.0
-margin_top = 3.0
-margin_right = 471.0
-margin_bottom = 22.0
+offset_left = 29.0
+offset_top = 3.0
+offset_right = 471.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 25 )
 text = "Title"
@@ -402,10 +402,10 @@ align = 1
 valign = 1
 
 [node name="Button" type="Button" parent="CommentWindow/VBoxContainer/HBoxContainer"]
-margin_left = 475.0
-margin_right = 500.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 25, 0 )
+offset_left = 475.0
+offset_right = 500.0
+offset_bottom = 25.0
+custom_minimum_size = Vector2( 25, 0 )
 mouse_default_cursor_shape = 2
 flat = true
 align = 0
@@ -418,9 +418,9 @@ expand = true
 stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CommentWindow/VBoxContainer"]
-margin_top = 29.0
-margin_right = 500.0
-margin_bottom = 350.0
+offset_top = 29.0
+offset_right = 500.0
+offset_bottom = 350.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -431,26 +431,26 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -21.0
-margin_top = -22.0
+offset_left = -21.0
+offset_top = -22.0
 mouse_default_cursor_shape = 12
 
 [node name="Control" type="Control" parent="CommentWindow"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 mouse_filter = 2
 
 [node name="Button2" type="Button" parent="CommentWindow/Control"]
 modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -25.0
-margin_right = 20.0
-rect_min_size = Vector2( 25, 25 )
+offset_top = -25.0
+offset_right = 20.0
+custom_minimum_size = Vector2( 25, 25 )
 mouse_default_cursor_shape = 2
 flat = true
 expand_icon = true
@@ -473,11 +473,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -12.0
-margin_right = 40.0
-margin_bottom = 12.0
-rect_pivot_offset = Vector2( 40, 12 )
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 12.0
+pivot_offset = Vector2( 40, 12 )
 custom_fonts/font = SubResource( 24 )
 custom_styles/hover = SubResource( 21 )
 custom_styles/pressed = SubResource( 22 )
@@ -491,14 +491,14 @@ anchor_bottom = 1.0
 custom_constants/separation = 10
 
 [node name="MarginContainer2" type="MarginContainer" parent="Comment/HBoxContainer"]
-margin_right = 5.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 5, 0 )
+offset_right = 5.0
+offset_bottom = 24.0
+custom_minimum_size = Vector2( 5, 0 )
 
 [node name="Label" type="Label" parent="Comment/HBoxContainer"]
-margin_left = 15.0
-margin_right = 46.0
-margin_bottom = 24.0
+offset_left = 15.0
+offset_right = 46.0
+offset_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 26 )
@@ -507,9 +507,9 @@ align = 1
 valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="Comment/HBoxContainer"]
-margin_left = 56.0
-margin_right = 80.0
-margin_bottom = 24.0
+offset_left = 56.0
+offset_right = 80.0
+offset_bottom = 24.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 

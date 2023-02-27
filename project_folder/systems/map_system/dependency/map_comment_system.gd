@@ -7,13 +7,13 @@ var map_manager:Object              = null
 # ------------------------------------------------------------------------------
 
 # load the nodes where the comments will be stored
-func _init(comment_node:Control, inspector:Control, map_manager:Object)->void:
+func _init(comment_node:Control,inspector:Control,map_manager:Object):
 	self.comment_collection_node = comment_node
 	self.inspector_node          = inspector
 	self.map_manager             = map_manager
 	
-	EventBus.connect("create_new_comment", self, "create_new_comment")
-	EventBus.connect("remove_map_comment", self, 'remove_map_comment')
+	EventBus.connect("create_new_comment",Callable(self,"create_new_comment"))
+	EventBus.connect("remove_map_comment",Callable(self,'remove_map_comment'))
 	
 # ------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ func create_new_comment(position, map_resource:MapData = self.map_manager.map_re
 	
 	var map_comment = MapComment.new()
 	var comment_scene:PackedScene = load("res://systems/map_system/ui_elements/map_comments/MapComment.tscn")
-	var comment_node:Node2D       = comment_scene.instance()
+	var comment_node:Node2D       = comment_scene.instantiate()
 
 	map_comment.comment_location   = position
 	map_comment.comment_id         = uuid
