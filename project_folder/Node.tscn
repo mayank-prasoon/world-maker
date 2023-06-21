@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://04id13bur1l5"]
+
+[ext_resource type="Script" path="res://node.gd" id="1_cljbt"]
+[ext_resource type="PackedScene" uid="uid://c2nrioxr6g6wi" path="res://CharacterBody2d.tscn" id="2_v3any"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cljbt")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_v3any")]
+position = Vector2(0, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 127.0
+offset_top = 320.0
+offset_right = 646.0
+offset_bottom = 385.0
+text = "random written stuff"
